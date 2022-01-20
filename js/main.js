@@ -3,6 +3,14 @@
 borderOffProperty = "1px solid rgba(100, 100, 100, 0.0)";
 borderOnProperty  = "1px solid white";
 
+pageButtons = document.getElementsByClassName("pageButton");
+pageContainers = document.getElementsByClassName("pageContainer");
+
+    for(let i=0; i<pageContainers.length; i++) {
+        pageContainers[i].style.display = "none";
+        pageButtons[i].style.borderBottom = borderOffProperty;
+    }
+
 window.onload = function () {
 
 
