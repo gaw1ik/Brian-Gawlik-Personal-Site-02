@@ -200,6 +200,7 @@ button {
 .navbar {
   display:flex;
   justify-content:flex-start;
+  align-items: center;
   padding:0 2rem;
   position:fixed;
   top: 0;
@@ -216,7 +217,7 @@ button {
 
 .socialButtonsBar {
   display:flex;
-  justify-content:flex-end;
+  /* justify-content:flex-end; */
   align-items: center;
   height: 3rem;
   margin-left:auto;
@@ -320,30 +321,45 @@ button {
 
 @media ( max-aspect-ratio: 1/1 ) {
 
+  :root{
+    --pageButtonFontSize: calc(0.03 * 100vh);
+  }
+
+  
+  .navbar {
+    background-color: black;
+    
+  }
   .pageButtonsBar {
     flex-direction:column;
+    margin-bottom: 2rem;
   }
 
   .pageButton {
     padding:0.5rem;
+    margin: 1rem 0;
     text-align: left;
+    font-size: var(--pageButtonFontSize);
   }
 
   .pageContainer{
-    margin-top:6rem;
+    margin-top:400px;
   }
   
   .socialButtonsBar {
     flex-direction:column;
     justify-content:flex-start;
-    width: 3rem;
+    /* width: 3rem; */
+    height:100%;
     margin-left:auto;
     /* padding: 0.5rem 0; */
+    
   }
 
-  .socialButtonsBar img {
+  .socialButton {
     margin: 0.5rem 0;
-    height:  calc(0.02 * 100vw);
+    /* padding:0.5rem; */
+    height: var(--pageButtonFontSize);
   }
 
 }
