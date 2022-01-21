@@ -6,10 +6,17 @@ borderOnProperty  = "1px solid white";
 pageButtons = document.getElementsByClassName("pageButton");
 pageContainers = document.getElementsByClassName("pageContainer");
 
-    for(let i=0; i<pageContainers.length; i++) {
-        pageContainers[i].style.display = "none";
-        pageButtons[i].style.borderBottom = borderOffProperty;
-    }
+for(let i=0; i<pageContainers.length; i++) {
+    pageContainers[i].style.display = "none";
+    pageButtons[i].style.borderBottom = borderOffProperty;
+}
+
+
+navToggleOn = -1;
+
+
+
+
 
 window.onload = function () {
 
@@ -17,6 +24,9 @@ window.onload = function () {
     // get elements for the pageButtons and pageContainers
     pageButtons = document.getElementsByClassName("pageButton");
     pageContainers = document.getElementsByClassName("pageContainer");
+
+
+    
 
     
 
@@ -39,6 +49,17 @@ window.onload = function () {
         pageButtons[i].addEventListener( "click", onPageButtonClick );
     
     }
+
+
+
+
+
+
+    // Nav Toggle Stuff
+    navToggleButton = document.getElementById("navToggleButton");
+    navbar = document.getElementById("navbar");
+    navToggleButton.addEventListener( "click", onNavToggleButtonClick );
+    
 
 };
 
@@ -65,6 +86,35 @@ function onPageButtonClick() {
     pageContainers[pageIndex].style.display = "block";
     pageButtons[pageIndex].style.borderBottom = borderOnProperty;
 
+    onNavToggleButtonClick()
+
+}
+
+
+
+
+
+
+
+function onNavToggleButtonClick() {
+
+    if( navToggleOn == 1 ) {
+
+        // navbar.style.display = "none";
+        navbar.className = "navbarClosed";
+
+    } else if ( navToggleOn == -1 ) {
+
+        // navbar.style.display = "flex";
+        navbar.className = "navbarOpen";
+
+    }
+
+    // flip the value of navToggleOn
+    navToggleOn = navToggleOn * -1;
+
+    //console.log("navToggleOn",navToggleOn)
+    
 }
 
 
