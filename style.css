@@ -19,9 +19,9 @@
   --bg-clr02: hsl(0,0%,12%);
   --bg-clr03: hsl(0,0%,10%);
 
-  --image-height: 50vh;
+  --image-height: 70vh;
 
-  --navBarsBackgroundColor: hsla(0,0%,10%,0.8);
+  --navBarsBackgroundColor: hsla(0,0%,8%,0.8);
 
 }
 
@@ -211,7 +211,7 @@ button :hover {
   flex-direction: row;
   justify-content:flex-start;
   align-items: center;
-  padding:0 2rem;
+  padding:0 5vw;
   position:fixed;
   top: 0;
   width: 100%;
@@ -235,7 +235,7 @@ button :hover {
 
 .socialButtonsBar img {
   margin: 18px 0;
-  height: calc(0.02 * 100vw);
+  height: 2vw;
 }
 
 .pageButton {
@@ -267,7 +267,7 @@ button :hover {
 .pageContainer {
   /* background-color: white; */
   background-color: var(--bg-clr01);
-  margin:1rem;
+  margin:10vw;
   margin-top:5rem;
   
   /* border:1px solid black; */
@@ -331,9 +331,9 @@ button :hover {
 
   :root{
     --pageButtonFontSize: 3vh;
-    --navToggleBar_height: 5vh;
+    --navToggleBar_height: 8vh;
     --navbarHeight: 30vh;
-    --navBarsBackgroundColor: hsla(0,0%,0%,0.8);
+    --navBarsBackgroundColor: hsla(0,0%,8%,0.8);
   }
   
 
@@ -362,7 +362,7 @@ button :hover {
     display:flex;
     position:fixed;
     width:100vw;
-    top: 5vh; 
+    top: var(--navToggleBar_height);
     background-color: var(--navBarsBackgroundColor);
     transition: height 0.5s;
     overflow: hidden;
@@ -391,8 +391,10 @@ button :hover {
     font-size: var(--pageButtonFontSize);
   }
 
-  .pageContainer{
-    margin-top: var(--navToggleBar_height);
+  .pageContainer {
+    
+    margin:4vw;
+    margin-top: calc( 1.5 * var(--navToggleBar_height) );
   }
   
   .socialButtonsBar {

@@ -81,12 +81,17 @@ function onPageButtonClick() {
         pageButtons[i].style.borderBottom = borderOffProperty;
     }
 
-    let pageIndex = getNamedIndexOfElement("Page", this)
+    let pageIndex = getNamedIndexOfElement("Page", this);
+
+    // // for changing image heights depending on the page selected
+    // if(pageIndex==1) {
+    //     document.documentElement.style.setProperty('--image-height', '70vh');
+    // }
 
     pageContainers[pageIndex].style.display = "block";
     pageButtons[pageIndex].style.borderBottom = borderOnProperty;
 
-    onNavToggleButtonClick()
+    onNavToggleButtonClick();
 
 }
 
