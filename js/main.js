@@ -1,4 +1,7 @@
 
+versionNumber = "1.03c";
+console.log("version ", versionNumber);
+
 //window.addEventListener('DOMContentLoaded', () => {
 borderOffProperty = "1px solid rgba(100, 100, 100, 0.0)";
 borderOnProperty  = "1px solid white";

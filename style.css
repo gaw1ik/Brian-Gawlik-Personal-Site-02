@@ -361,7 +361,7 @@ button :hover {
   #navbar {
     display:flex;
     position:fixed;
-    width:100vw;
+    width:100%;
     top: var(--navToggleBar_height);
     background-color: var(--navBarsBackgroundColor);
     transition: height 0.5s;
