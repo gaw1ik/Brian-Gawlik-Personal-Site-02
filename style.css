@@ -354,6 +354,7 @@ button :hover {
     height: var(--navToggleBar_height);
     justify-content:flex-end;
     background-color: var(--navBarsBackgroundColor);
+    padding:2vw;
     
   }
 
