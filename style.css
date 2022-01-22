@@ -350,7 +350,7 @@ button :hover {
     display:flex;
     position:fixed;
     top:0;
-    width:100vw;
+    width:100%;
     height: var(--navToggleBar_height);
     justify-content:flex-end;
     background-color: var(--navBarsBackgroundColor);
