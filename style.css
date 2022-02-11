@@ -21,7 +21,7 @@
 
   --image-height: 70vh;
 
-  --navBarsBackgroundColor: hsla(0,0%,8%,0.8);
+  --navBarsBackgroundColor: hsla(0,0%,8%,0.97);
 
 }
 
@@ -121,10 +121,10 @@ p {
 }
 
 img{
-  /* width:100%; */
-  height:100%;
+  width:50%;
+  height:auto;
   /* height:400px; */
-  /* margin:0 1rem; */
+  margin:0 1rem 0rem 0rem;
   object-fit: cover;
 }
 
@@ -219,6 +219,11 @@ button :hover {
   /* border-bottom: 1px solid black; */
 }
 
+.navToggleBar img {
+  width:auto;
+  height:100%;
+}
+
 .pageButtonsBar {
   display:flex;
   justify-content:flex-start;
@@ -246,7 +251,7 @@ button :hover {
   /* border-color: ; */
   
   margin:0 0.5rem;
-  font-size: calc(0.02 * 100vw);
+  font-size: 1.5vw;
   font-family:'Courier New', Courier, monospace;
   padding:1rem;
 }
@@ -266,8 +271,12 @@ button :hover {
 
 .pageContainer {
   /* background-color: white; */
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
   background-color: var(--bg-clr01);
-  margin:10vw;
+  margin:2vw;
   margin-top:5rem;
   
   /* border:1px solid black; */
@@ -305,23 +314,27 @@ button :hover {
 }
 
 
-.image-grid-1xN {
-  display:grid;
-  grid-template-columns: 1fr;
-}
 
-.image-grid-2xN {
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-}
 
 .image-container {
-  display:inline-block;
-  height:100%;  
-  justify-content: center;
+  display:flex;
+  width:90%;  
+  height:35vw;
   align-content: center;
-  /* padding:1rem 5%; */
-  border-top:1px solid black;
+  padding:1rem 5%;
+  border-top:1px solid gray;
+  overflow-x:scroll;
+  /* height:var(--image-height); */
+  overscroll-behavior-inline: contain;
+}
+
+
+
+.art-img{
+  /* object-fit: contain; */
+  height:100%;
+  width:auto;
+  margin:0 1rem;   
 }
 
 
@@ -343,7 +356,7 @@ button :hover {
     --pageButtonFontSize: 3vh;
     --navToggleBar_height: 8vh;
     --navbarHeight: 30vh;
-    --navBarsBackgroundColor: hsla(0,0%,8%,0.8);
+    /* --navBarsBackgroundColor: hsla(0,0%,8%,0.8); */
   }
   
 
@@ -353,6 +366,12 @@ button :hover {
   h2 {
     font-size: 3.0vh;
     
+  }
+
+  .art-img{
+    width:100%;
+    height:auto;
+    margin:0 0 1rem 0;   
   }
 
 
@@ -365,8 +384,7 @@ button :hover {
     justify-content:flex-end;
     background-color: var(--navBarsBackgroundColor);
     padding:2vw;
-    border-bottom: 1px solid white;
-    
+    border-bottom: 1px solid gray;
   }
 
   
@@ -408,6 +426,25 @@ button :hover {
     margin:4vw;
     margin-top: calc( 1.5 * var(--navToggleBar_height) );
   }
+
+
+
+  .image-container {
+    display:flex;
+    flex-direction:column;
+    /* width:100%;   */
+    height:auto;
+    align-content: center;
+    padding:1rem 0;
+    border-top:none;
+    /* background-color: black; */
+    /* overflow-x:scroll; */
+    /* height:var(--image-height); */
+    /* overscroll-behavior-inline: contain; */
+  }
+
+
+
   
   .socialButtonsBar {
     flex-direction:column;
@@ -428,6 +465,7 @@ button :hover {
 
   .socialButton img {
     height: 100%;
+    width:auto;
   }
 
 }

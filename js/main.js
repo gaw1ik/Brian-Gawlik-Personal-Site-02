@@ -1,5 +1,5 @@
 
-versionNumber = "1.04d";
+versionNumber = "1.05a";
 console.log("version ", versionNumber);
 
 //window.addEventListener('DOMContentLoaded', () => {
@@ -16,6 +16,7 @@ for(let i=0; i<pageContainers.length; i++) {
 
 
 navToggleOn = -1;
+
 
 
 
@@ -41,7 +42,7 @@ window.onload = function () {
         pageButtons[i].style.borderBottom = borderOffProperty;
     }
 
-    pageContainers[0].style.display = "block";
+    pageContainers[0].style.display = "flex";
     pageButtons[0].style.borderBottom = borderOnProperty;
 
 
@@ -91,7 +92,7 @@ function onPageButtonClick() {
     //     document.documentElement.style.setProperty('--image-height', '70vh');
     // }
 
-    pageContainers[pageIndex].style.display = "block";
+    pageContainers[pageIndex].style.display = "flex";
     pageButtons[pageIndex].style.borderBottom = borderOnProperty;
 
     onNavToggleButtonClick();
