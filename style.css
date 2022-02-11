@@ -119,6 +119,7 @@ h5 {
 
 p {
   margin: 1rem;
+  font-size: 1.0vw;
 }
 
 img{
@@ -278,7 +279,7 @@ button :hover {
   align-content: center;
   background-color: var(--bg-clr01);
   margin:2vw;
-  margin-top:5rem;
+  margin-top:3rem;
   
   /* border:1px solid black; */
 
@@ -365,8 +366,10 @@ button :hover {
     font-size: 6.0vh;
   }
   h2 {
-    font-size: 3.0vh;
-    
+    font-size: 5.0vh;
+  }
+  p {
+    font-size: 1.0vh;
   }
 
   .art-img{
