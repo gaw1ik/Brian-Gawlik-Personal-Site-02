@@ -90,7 +90,7 @@ h1 {
 }
 
 h2 {
-  font-size: 2.0vw;
+  font-size: 3.0vw;
   margin:2rem 1rem 0.5rem 1rem;
   /* margin-top: 0.5rem; */
   font-weight: 500;
@@ -119,15 +119,16 @@ h5 {
 
 p {
   margin: 1rem;
-  font-size: 1.0vw;
+  font-size: 2.0vw;
 }
 
 img{
-  width:50%;
+  width:100%;
   height:auto;
   /* height:400px; */
-  margin:0 1rem 0rem 0rem;
-  object-fit: cover;
+  margin: 1rem 0;
+  /* margin:0 1rem 0rem 0rem; */
+  /* object-fit: cover; */
 }
 
 button {
@@ -229,6 +230,7 @@ button :hover {
 .pageButtonsBar {
   display:flex;
   justify-content:flex-start;
+  ;
   /* margin:0 2rem; */
 }
 
@@ -249,6 +251,7 @@ button :hover {
   /* background-color: var(--bg-clr02); */
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  cursor:pointer;
   /* border-bottom: 2px solid rgba(100, 100, 100, 0.0); */
   /* border-color: ; */
   
@@ -284,6 +287,32 @@ button :hover {
   /* border:1px solid black; */
 
 }
+
+
+
+
+
+.about_text_container {
+  margin:10vh;
+  margin-left: 20vw;
+  margin-right: 20vw;
+}
+
+.about_text_container > p {
+  font-size:1.2rem;
+  text-align:justify;
+}
+
+.about_text_container > h2 {
+  font-size:2.0rem;
+  /* text-align:justify; */
+}
+
+
+
+
+
+
 
 .image-carousel-container {
   background-color: var(--bg-clr03);
@@ -429,6 +458,21 @@ button :hover {
     text-align:left;
     margin:4vw;
     margin-top: calc( 1.5 * var(--navToggleBar_height) );
+  }
+
+
+
+  .about_text_container {
+    margin: 0vh 2vw 0 2vw;
+  }
+  
+  .about_text_container > p {
+    font-size:1.2rem;
+    text-align:justify;
+  }
+  
+  .about_text_container > h2 {
+    font-size:2.0rem;
   }
 
 
