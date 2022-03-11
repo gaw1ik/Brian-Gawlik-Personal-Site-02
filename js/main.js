@@ -1,5 +1,5 @@
 
-versionNumber = "1.05d";
+versionNumber = "1.06c";
 console.log("version ", versionNumber);
 
 //window.addEventListener('DOMContentLoaded', () => {
