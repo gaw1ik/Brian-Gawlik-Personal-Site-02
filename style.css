@@ -23,6 +23,8 @@
 
   --navBarsBackgroundColor: hsla(0,0%,8%,0.97);
 
+  --navToggleBar_height: 8vh;
+
 }
 
 
@@ -47,11 +49,14 @@ html {
 body {
   line-height: 1.5;
   margin: 0;
-  font-family: "Book Antiqua";
+  font-family: "Cambria Math";
   font-size: 8pt;
   /* color: white; */
   background-color: var(--bg-clr01);
   overflow-y:scroll;
+  width: 60vw;
+  /* max-width:600px; */
+  margin:5rem auto;
 }
 
 * {
@@ -67,7 +72,10 @@ body {
 
 
 
-
+.with_code_span {
+  color:bisque;
+  font-style:italic;
+}
 
 
 
@@ -80,22 +88,23 @@ body {
 
 p {
   margin: 1rem 0;
-  font-size: 2.5vh;
+  font-size: 2vw;
   text-align: justify;
 }
 
 h1 {
-  font-size: 5.0vh;
-  text-align: center;
+  font-size: 6vw;
+  text-align: left;
   font-weight: 700;
   margin:0;
-  margin-top: 2.0rem;
-  margin-bottom: 2.0rem;
-  color: hsl(0,0%,50%);
+  margin-top: 0;
+  margin-bottom: 1.0rem;
+  color:hsl(0,10%,80%);
+  /* color: hsl(0,0%,50%); */
 }
 
 h2 {
-  font-size: 3.0vw;
+  font-size: 2rem;
   margin:2rem 0 1rem 0;
   /* margin-top: 0.5rem; */
   font-weight: 500;
@@ -122,6 +131,9 @@ h5 {
   font-weight: 500;
 }
 
+a {
+  color:hsl(200,80%,50%);
+}
 
 
 img{
@@ -216,11 +228,12 @@ button :hover {
   flex-direction: row;
   justify-content:flex-start;
   align-items: center;
-  padding:0 5vw;
-  position:fixed;
-  top: 0;
-  width: 100vw;
-  background-color: var(--navBarsBackgroundColor);
+  /* padding:0 5vw; */
+  /* position:fixed; */
+  /* top: 20px; */
+  margin:20px auto;
+  max-width: 600px;
+  /* background-color: var(--navBarsBackgroundColor); */
   /* border-bottom: 1px solid black; */
 }
 
@@ -231,22 +244,24 @@ button :hover {
 
 .pageButtonsBar {
   display:flex;
-  justify-content:flex-start;
+  justify-content:space-evenly;
   ;
   /* margin:0 2rem; */
 }
 
 .socialButtonsBar {
   display:flex;
-  /* justify-content:flex-end; */
+  justify-content:space-around;
   align-items: center;
+
   height: 3rem;
-  margin-left:auto;
+  /* margin-left:auto; */
+  margin:0 auto;
 }
 
 .socialButtonsBar img {
-  margin: 18px 0;
-  height: 2vw;
+  /* margin: 18px 0; */
+  height: 2rem;
 }
 
 .pageButton {
@@ -254,11 +269,12 @@ button :hover {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   cursor:pointer;
+  color:hsl(20,40%,65%);
   /* border-bottom: 2px solid rgba(100, 100, 100, 0.0); */
   /* border-color: ; */
   
   margin:0 0.5rem;
-  font-size: 1.5vw;
+  font-size: 1.6rem;
   font-family:'Courier New', Courier, monospace;
   padding:1rem;
 }
@@ -283,9 +299,9 @@ button :hover {
   align-items: center;
   align-content: center;
   background-color: var(--bg-clr01);
-  margin:0;
-  padding:10vw;
-  margin-top: calc( 1.5 * var(--navToggleBar_height) );
+
+  /* padding:10vw; */
+  /* margin-top: calc( 1.5 * var(--navToggleBar_height) ); */
   overflow-x:hidden;
   /* margin-top:3rem; */
   
@@ -293,6 +309,18 @@ button :hover {
 
 }
 
+
+.profileCard {
+  display:grid;
+  align-items:start;
+  grid-template-columns: 1fr 2fr;
+  border-bottom:1px solid gray;
+  padding:1rem 0;
+}
+.profileInfo {
+  padding:0 1rem;
+  /* font-size:1vw; */
+}
 
 
 
@@ -344,7 +372,8 @@ button :hover {
 
 
 .spacer {
-  height:30vh;
+  height:5vh;
+  border-bottom:1px solid gray;
 }
 
 .spacer_img_vert {

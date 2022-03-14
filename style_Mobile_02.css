@@ -1,0 +1,24 @@
+@media ( max-aspect-ratio: 1/1 ) {
+
+    :root{
+      --pageButtonFontSize: 3vh;
+      --navToggleBar_height: 8vh;
+      --navbarHeight: 30vh;
+      /* --navBarsBackgroundColor: hsla(0,0%,8%,0.8); */
+    }
+    
+  
+  
+
+  
+    body {
+        /* display:none; */
+        width:90vw;
+
+    }
+  
+  
+
+
+  
+  }

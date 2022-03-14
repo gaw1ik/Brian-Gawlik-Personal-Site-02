@@ -1,5 +1,5 @@
 
-versionNumber = "1.06c";
+versionNumber = "1.07a";
 console.log("version ", versionNumber);
 
 //window.addEventListener('DOMContentLoaded', () => {
@@ -42,8 +42,10 @@ window.onload = function () {
         pageButtons[i].style.borderBottom = borderOffProperty;
     }
 
-    pageContainers[0].style.display = "flex";
-    pageButtons[0].style.borderBottom = borderOnProperty;
+    let defaultPageIndex = 0;
+
+    pageContainers[defaultPageIndex].style.display = "block";
+    pageButtons[defaultPageIndex].style.borderBottom = borderOnProperty;
 
 
 
@@ -92,7 +94,7 @@ function onPageButtonClick() {
     //     document.documentElement.style.setProperty('--image-height', '70vh');
     // }
 
-    pageContainers[pageIndex].style.display = "flex";
+    pageContainers[pageIndex].style.display = "block";
     pageButtons[pageIndex].style.borderBottom = borderOnProperty;
 
     onNavToggleButtonClick();
