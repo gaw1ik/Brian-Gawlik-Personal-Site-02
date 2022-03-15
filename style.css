@@ -261,7 +261,8 @@ button :hover {
 
 .socialButtonsBar img {
   /* margin: 18px 0; */
-  height: 2rem;
+  margin: 0;
+  height: 3rem;
 }
 
 .pageButton {

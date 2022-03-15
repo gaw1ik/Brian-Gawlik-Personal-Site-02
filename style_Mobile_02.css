@@ -1,4 +1,4 @@
-@media ( max-aspect-ratio: 1/1 ) {
+@media ( max-aspect-ratio: 3/4 ) {
 
     :root{
       --pageButtonFontSize: 3vh;
@@ -13,9 +13,27 @@
   
     body {
         /* display:none; */
+        /* font-size: 12pt; */
         width:90vw;
 
     }
+
+    h1 {
+      font-size:8vw;
+    }
+
+    h2 {
+      font-size:8vw;
+    }
+
+    p {
+      font-size:5vw;
+    }
+
+    .pageButton {
+      font-size:8vw;
+    }
+    
   
   
 
