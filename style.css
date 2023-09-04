@@ -53,10 +53,10 @@ body {
   font-size: 8pt;
   /* color: white; */
   background-color: var(--bg-clr01);
-  overflow-y:scroll;
-  width: 60vw;
+  /* overflow-y:scroll; */
+  /* width: 60vw; */
   /* max-width:600px; */
-  margin:5rem auto;
+  /* margin:5rem auto; */
 }
 
 * {
@@ -88,26 +88,28 @@ body {
 
 p {
   margin: 1rem 0;
-  font-size: 2vw;
-  text-align: justify;
+  font-size: 1rem;
+  text-align: center;
 }
 
 h1 {
-  font-size: 6vw;
-  text-align: left;
+  font-size: 5rem;
+  text-align: center;
   font-weight: 700;
   margin:0;
   margin-top: 0;
   margin-bottom: 1.0rem;
   color:hsl(0,10%,80%);
+  line-height:1;
   /* color: hsl(0,0%,50%); */
 }
 
 h2 {
   font-size: 2rem;
-  margin:2rem 0 1rem 0;
+  margin:4rem 0 1rem 0;
   /* margin-top: 0.5rem; */
   font-weight: 500;
+  text-align: center;
 }
 
 h3 {
@@ -133,6 +135,9 @@ h5 {
 
 a {
   color:hsl(200,80%,50%);
+  font-size: 1rem;
+  text-align: center;
+
 }
 
 
@@ -249,22 +254,6 @@ button :hover {
   /* margin:0 2rem; */
 }
 
-.socialButtonsBar {
-  display:flex;
-  justify-content:space-around;
-  align-items: center;
-
-  height: 3rem;
-  /* margin-left:auto; */
-  margin:0 auto;
-}
-
-.socialButtonsBar img {
-  /* margin: 18px 0; */
-  margin: 0;
-  height: 3rem;
-}
-
 .pageButton {
   /* background-color: var(--bg-clr02); */
   border-top-left-radius: 10px;
@@ -282,28 +271,51 @@ button :hover {
 
 
 
-.socialButtonsBar img {
-    margin:0 0.5rem;
+
+
+.socialButtonsBar {
+  display:flex;
+  justify-content:space-around;
+  align-items: center;
+
+  height: 5rem;
+  /* margin-left:auto; */
+  margin:0 auto;
+  border-top:1px solid white;
 }
+
+.socialButtonsBar img {
+  margin: 0;
+  height: 3rem;
+}
+
+
 
 .socialButton {
   display:flex;
   align-items:center;
   justify-content:center;
+  /* height: 1rem; */
+  /* width: 2rem; */
 }
 
 
 .pageContainer {
   /* background-color: white; */
-  display:none;
-  flex-direction: column;
+  display:flex;
+  /* flex-direction: column; */
   align-items: center;
   align-content: center;
-  background-color: var(--bg-clr01);
+  justify-content: center;
+  /* width:80vw; */
+  height:100vh;
+
+  
+  /* background-color: var(--bg-clr01); */
 
   /* padding:10vw; */
   /* margin-top: calc( 1.5 * var(--navToggleBar_height) ); */
-  overflow-x:hidden;
+  /* overflow-x:hidden; */
   /* margin-top:3rem; */
   
   /* border:1px solid black; */
@@ -317,7 +329,9 @@ button :hover {
   grid-template-columns: 1fr 2fr;
   border-bottom:1px solid gray;
   padding:1rem 0;
+  background-color: var(--bg-clr01);
 }
+
 .profileInfo {
   padding:0 1rem;
   /* font-size:1vw; */

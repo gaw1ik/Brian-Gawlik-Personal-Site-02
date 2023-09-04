@@ -6,17 +6,65 @@
       --navbarHeight: 30vh;
       /* --navBarsBackgroundColor: hsla(0,0%,8%,0.8); */
     }
+
+    body {
+      margin:0 0;
+            /* width: 90vw; */
+
+    }
     
   
     h1 {
-      font-size: 10vh;
+      font-size: 7rem;
     }
     h2 {
-      font-size: 7vh;
+      font-size: 4rem;
     }
     p {
-      font-size: 3vh;
+      font-size: 2rem;
     }
+
+
+
+
+
+
+
+
+    .socialButtonsBar {
+      flex-direction:row;
+      justify-content:space-evenly;
+      /* width: 3rem; */
+      /* height:100%; */
+      height:10rem;
+
+      /* margin-left:auto; */
+      /* margin-right: 2vw; */
+      /* padding: 0.5rem 0; */
+      
+    }
+  
+    .socialButton {
+      /* margin: 0.5rem 0; */
+      /* padding:0.5rem; */
+      height: var(--pageButtonFontSize);
+    }
+  
+    .socialButton img {
+      height: 100%;
+      width:auto;
+    }
+
+
+
+
+
+
+
+
+
+
+
   
     .art-img{
       width:100%;
@@ -73,9 +121,14 @@
     }
   
     .pageContainer {
-      margin:0;
-      padding:4vw;
-      margin-top: calc( 1.5 * var(--navToggleBar_height) );
+      display:flex;
+      flex-direction:column;
+      height:100vh;
+      /* width: 80vw; */
+
+      /* margin:0; */
+      /* padding:4vw; */
+      /* margin-top: calc( 1.5 * var(--navToggleBar_height) ); */
     }
   
   
@@ -128,26 +181,6 @@
   
   
     
-    .socialButtonsBar {
-      flex-direction:column;
-      justify-content:space-evenly;
-      /* width: 3rem; */
-      height:100%;
-      margin-left:auto;
-      margin-right: 2vw;
-      /* padding: 0.5rem 0; */
-      
-    }
-  
-    .socialButton {
-      /* margin: 0.5rem 0; */
-      /* padding:0.5rem; */
-      height: var(--pageButtonFontSize);
-    }
-  
-    .socialButton img {
-      height: 100%;
-      width:auto;
-    }
+
   
   }
