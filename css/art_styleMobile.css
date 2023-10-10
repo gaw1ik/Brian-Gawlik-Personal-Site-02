@@ -1,0 +1,187 @@
+@media ( max-aspect-ratio: 1/1 ) {
+
+    :root{
+      --pageButtonFontSize: 3vh;
+      --navToggleBar_height: 8vh;
+      --navbarHeight: 30vh;
+      /* --navBarsBackgroundColor: hsla(0,0%,8%,0.8); */
+    }
+
+    body {
+      margin:0 0;
+            /* width: 90vw; */
+
+    }
+    
+  
+    h1 {
+      font-size: 7rem;
+    }
+    h2 {
+      font-size: 4rem;
+    }
+    p {
+      font-size: 2rem;
+    }
+
+
+
+
+
+
+
+
+    .socialButtonsBar {
+      flex-direction:row;
+      justify-content:space-evenly;
+      /* width: 3rem; */
+      /* height:100%; */
+      height:10rem;
+
+      /* margin-left:auto; */
+      /* margin-right: 2vw; */
+      /* padding: 0.5rem 0; */
+      
+    }
+  
+    .socialButton {
+      /* margin: 0.5rem 0; */
+      /* padding:0.5rem; */
+      height: var(--pageButtonFontSize);
+    }
+  
+    .socialButton img {
+      height: 100%;
+      width:auto;
+    }
+
+
+
+
+
+
+
+
+
+
+
+  
+    .art-img{
+      width:100%;
+      height:auto;
+      margin: 0;
+      /* margin:0 0 1rem 0;    */
+    }
+  
+  
+    .navToggleBar {
+      display:flex;
+      position:fixed;
+      top:0;
+      width:100%;
+      height: var(--navToggleBar_height);
+      justify-content:flex-end;
+      background-color: var(--navBarsBackgroundColor);
+      padding:2vw;
+      border-bottom: 1px solid gray;
+    }
+  
+    
+    #navbar {
+      display:flex;
+      position:fixed;
+      width:100%;
+      top: var(--navToggleBar_height);
+      background-color: var(--navBarsBackgroundColor);
+      transition: height 0.5s;
+      overflow: hidden;
+      
+    }
+    .navbarOpen {
+      height: var(--navbarHeight);
+    }
+    .navbarClosed {
+      height: 0;    
+    }
+  
+  
+    .pageButtonsBar {
+      flex-direction:column;
+      justify-content:space-evenly;
+      margin-left: 2vw;
+      height:100%;
+    }
+  
+    .pageButton {
+      padding:0.5rem;
+      /* margin: 1rem 0; */
+      margin:0;
+      text-align: left;
+      font-size: var(--pageButtonFontSize);
+    }
+  
+    .pageContainer {
+      display:flex;
+      flex-direction:column;
+      height:100vh;
+      /* width: 80vw; */
+      /* background-image: url("Astoria Cross Sign Photo 3.18c.jpg"); */
+
+      /* margin:0; */
+      /* padding:4vw; */
+      /* margin-top: calc( 1.5 * var(--navToggleBar_height) ); */
+    }
+  
+  
+  
+    .about_text_container {
+        width:100%;
+      /* margin: 0vh 2vw 0 2vw; */
+    }
+    
+    .about_text_container > p {
+      font-size:1.2rem;
+      text-align:justify;
+    }
+    
+    .about_text_container > h2 {
+      font-size:2.0rem;
+    }
+  
+  
+  
+    .image-container {
+      display:flex;
+      flex-direction:column;
+      /* width:100%;   */
+      height:auto;
+      align-content: center;
+      padding:1rem 0;
+      border-top:none;
+      /* background-color: black; */
+      /* overflow-x:scroll; */
+      /* height:var(--image-height); */
+      /* overscroll-behavior-inline: contain; */
+    }
+
+
+
+    .fixed_width_img_container {
+        display:flex;
+        width:100vw;
+        height:30vh;
+    }
+
+    .fixed_width_img_container > img {
+    object-fit: contain;
+    height:100%;
+    width:auto;
+    margin:0 auto;   
+    }
+  
+  
+  
+    
+
+  
+  }
