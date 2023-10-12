@@ -48,20 +48,22 @@ html {
 
 body {
   line-height: 1.5;
-  margin: 0;
+  /* margin: 0; */
   font-family: "Cambria Math";
   font-size: 8pt;
   /* color: white; */
-  background-color: var(--bg-clr01);
+  /* background-color: var(--bg-clr01); */
+  background-color: white;
+
   /* overflow-y:scroll; */
   /* width: 60vw; */
   /* max-width:600px; */
-  /* margin:5rem auto; */
+  margin:auto auto;
   
 }
 
 * {
-  color: white;
+  /* color: white; */
   box-sizing: border-box;
 }
 
@@ -70,13 +72,6 @@ body {
 
 
 
-
-
-
-.with_code_span {
-  color:bisque;
-  font-style:italic;
-}
 
 
 
@@ -94,9 +89,9 @@ p {
 }
 
 h1 {
-  font-size: 5rem;
-  text-align: center;
-  font-weight: 700;
+  font-size: 4rem;
+  /* text-align: center; */
+  font-weight: 500;
   margin:0;
   margin-top: 0;
   margin-bottom: 1.0rem;
@@ -138,6 +133,7 @@ a {
   color:hsl(200,80%,50%);
   font-size: 1rem;
   text-align: center;
+  text-decoration: none;
 
 }
 
@@ -176,48 +172,6 @@ button :hover {
 
 
 
-/* =============
-   components
-   ============= */
-/* width */
-::-webkit-scrollbar {
-  width: 5px;
-}
-/* Track */
-::-webkit-scrollbar-track {
-  /* border-radius: 10px; */
-  /* background-color:var(--bg-clr03); */
-  outline:none;
-}
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: white;
-  /* width:1px; */
-  border-radius: 1px;
-  border: 8px solid rgba(0, 0, 0, 0);
-  /* border-top: 20px solid rgba(0, 0, 0, 0); */
-  /* border-bottom: 20px solid rgba(0, 0, 0, 0); */
-  /* padding: 10rem; */
-  background-clip: padding-box;
-}
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  /* width: 3px; */
-  /* background: #555; */
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -225,23 +179,25 @@ button :hover {
    layout
    ============= */
 
+.navbar {
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color:hsl(200,80%,30%);
+  text-align: center;
+  /* padding: 14px 16px; */
+  text-decoration: none;
+}
+
 .navToggleBar {
   display:none;
 }
 
-#navbar {
-  display:flex;
-  flex-direction: row;
-  justify-content:flex-start;
-  align-items: center;
-  /* padding:0 5vw; */
-  /* position:fixed; */
-  /* top: 20px; */
-  margin:20px auto;
-  max-width: 600px;
-  /* background-color: var(--navBarsBackgroundColor); */
-  /* border-bottom: 1px solid black; */
-}
+
 
 .navToggleBar img {
   width:auto;
@@ -311,7 +267,7 @@ button :hover {
   background-size: contain;
   /* background-size: cover; */
 
-  background-color:black;
+  /* background-color:black; */
 
   opacity:0.5;
   position: relative;
@@ -324,23 +280,26 @@ button :hover {
 
   /* background-color: white; */
   display:flex;
-  /* flex-direction: column; */
-  align-items: center;
+  flex-direction: column;
+  align-items: start;
   align-content: center;
   justify-content: center;
-  /* width:80vw; */
+  width:40rem;
+  max-width:100%;
   height:100vh;
-  background: none;
-  background-color: transparent;
+  margin-left:auto;
+  margin-right:auto;
+  /* background: none; */
+  /* background-color: transparent; */
   /* opacity:0.5; */
 
 
   /* position: relative; */
 
-  position: absolute;
+  /* position: absolute;
   left: 0;
-  top: 0;
-  width:100%;
+  top: 0; */
+  /* width:100%; */
 
   
   /* background-color: var(--bg-clr01); */
@@ -454,3 +413,36 @@ button :hover {
 
 
 
+
+
+
+
+/* =============
+   components
+   ============= */
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  /* border-radius: 10px; */
+  /* background-color:var(--bg-clr03); */
+  outline:none;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: white;
+  /* width:1px; */
+  border-radius: 1px;
+  border: 8px solid rgba(0, 0, 0, 0);
+  /* border-top: 20px solid rgba(0, 0, 0, 0); */
+  /* border-bottom: 20px solid rgba(0, 0, 0, 0); */
+  /* padding: 10rem; */
+  background-clip: padding-box;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  /* width: 3px; */
+  /* background: #555; */
+}

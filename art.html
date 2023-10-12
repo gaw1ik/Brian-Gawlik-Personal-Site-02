@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="css/art_style.css">
     <link rel="stylesheet" type="text/css" href="css/art_styleMobile.css">
 
-    
+    <script src="js/main.js"></script>
     <script src="js/utils.js"></script>
 
     <title>Brian Gawlik Art</title>
@@ -18,9 +18,49 @@
 
   <body>   
 
+    
 
 
-    <div class="mainArtContainer0">
+
+    <div id="curtainForFullScreen" style="display:none;">
+    </div>
+
+
+    <div class="mainArtContainer0" id="mainArtContainer0">
+
+
+
+        <div class="artOnTop" id="artOnTop" style="display:none;">
+            <button onclick="returnFromFullScreenImage()">
+                <img src="images/Astoria Cross Sign 3.18c - web version.jpg">
+            </button>
+        </div>
+
+        <div >
+            <a href="index.html">
+                <h1 style="display:inline" >Brian Gawlik</h1>
+            </a>
+            <h2 style="display:inline">&nbsp/art</h2>
+        </div>
+
+            <p style="font-style:italic">Algorithmic artist creating digital art 
+                with code. My work is often, but not always, in the style 
+                of photorealism.
+            </p>
+    
+            <div class="socialButtonsBar">
+
+                <h2 style="font-style:italic; margin:0">Socials:</h2>
+    
+                <a class="socialButton" href="https://www.instagram.com/brian_gawlik/?hl=en" target="_blank">
+                    <img src="icons/instagram logo.svg" >
+                </a>
+    
+                <a class="socialButton" href="https://twitter.com/gaw1ik" target="_blank">
+                    <img src="icons/twitter logo.svg">
+                </a>
+    
+            </div>
 
 
 
@@ -28,7 +68,9 @@
 
             <div class="artVerticalContainer" style="gap:0">
 
+                <!-- <button onclick="showFullScreenImage(this)"> -->
                 <img src="images/Astoria Cross Sign 3.18c - web version.jpg" id="Astoria Cross Sign">
+                <!-- </button> -->
 
             </div>
 
