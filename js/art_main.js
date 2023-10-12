@@ -16,14 +16,18 @@
 
 
 
-document.addEventListener("DOMContentLoaded", handleResize);
+// document.addEventListener("DOMContentLoaded", handleResize);
 
-addEventListener("resize", handleResize);
+window.addEventListener("resize", handleResize);
+
+window.addEventListener("load", handleResize);
 
 
 // navToggleOn = -1;
 
 function handleResize() {
+
+    console.log("resize")
 
     Siding = document.getElementById("Tree On Siding");
     Siding.style.width = "60%";
