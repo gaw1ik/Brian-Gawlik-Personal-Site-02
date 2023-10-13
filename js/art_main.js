@@ -22,14 +22,38 @@ window.addEventListener("resize", handleResize);
 
 window.addEventListener("load", handleResize);
 
+// children = mainArtContainer0.childNodes;
+// for(var i in children) {
+//     if(children[i])
+//     children[i].addEventListener("click", showFullScreenImage);
+// }
 
-// navToggleOn = -1;
+document.getElementById("Astoria Cross Sign").addEventListener("click", showFullScreenImage);
+document.getElementById("Birds on the Line").addEventListener("click", showFullScreenImage);
+document.getElementById("Bus Stop").addEventListener("click", showFullScreenImage);
+document.getElementById("STLL1").addEventListener("click", showFullScreenImage);
+document.getElementById("Tree on Siding").addEventListener("click", showFullScreenImage);
 
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////// some of the major nodes
+artOnTop = document.getElementById("artOnTop");
+curtainForFullScreen = document.getElementById("curtainForFullScreen");
+mainArtContainer0 = document.getElementById("mainArtContainer0");
+
+
+
+
+/////////////////////////////////////////////////////////////////// handle window resize
 function handleResize() {
 
     console.log("resize")
 
-    Siding = document.getElementById("Tree On Siding");
+    Siding = document.getElementById("Tree on Siding");
     Siding.style.width = "60%";
 
 
@@ -60,7 +84,46 @@ function handleResize() {
 
 
 
+function showFullScreenImage() {
 
+    curtainForFullScreen.style.display = "block";
+
+    // mainArtContainer0.style.display = "none";
+
+    mainArtContainer0.style.overflowY = "hidden";
+
+    // document.body.style.overflowY = "hidden";
+
+    artOnTop.style.display = "flex";
+    // artOnTop.style.top = "0";
+
+    fullScreenImg = document.createElement("img");
+
+    fullScreenImg.src = this.src;
+
+    // console.log(e)
+    // console.log(this)
+
+    artOnTop.appendChild(fullScreenImg);
+
+    fullScreenImg.addEventListener("click", returnFromFullScreenImage);
+}
+
+
+function returnFromFullScreenImage() {
+
+    artOnTop.removeChild(fullScreenImg);
+
+    curtainForFullScreen.style.display = "none";
+
+    // mainArtContainer0.style.display = "flex";
+
+    document.body.style.overflowY = "scroll";
+
+    artOnTop.style.display = "none";
+
+    handleResize();
+}
 
 
 

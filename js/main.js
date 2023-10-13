@@ -21,31 +21,7 @@
 
 
 
-function showFullScreenImage(e) {
 
-    document.getElementById("curtainForFullScreen").style.display = "block";
-
-    document.body.style.overflowY = "hidden";
-
-    artOnTop = document.getElementById("artOnTop").style.display = "block";
-
-    let img = document.createElement("img");
-    img.src = e.child.src;
-
-    // console.log(img)
-
-    // artOnTop.appendChild("")
-}
-
-
-function returnFromFullScreenImage() {
-
-    document.getElementById("curtainForFullScreen").style.display = "none";
-
-    document.body.style.overflowY = "scroll";
-
-    document.getElementById("artOnTop").style.display = "none";
-}
 
 
 
