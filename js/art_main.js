@@ -34,6 +34,12 @@ document.getElementById("Bus Stop").addEventListener("click", showFullScreenImag
 document.getElementById("STLL1").addEventListener("click", showFullScreenImage);
 document.getElementById("Tree on Siding").addEventListener("click", showFullScreenImage);
 
+document.getElementById("Astoria Cross Sign").addEventListener("touchstart", showFullScreenImage);
+document.getElementById("Birds on the Line").addEventListener("touchstart", showFullScreenImage);
+document.getElementById("Bus Stop").addEventListener("touchstart", showFullScreenImage);
+document.getElementById("STLL1").addEventListener("touchstart", showFullScreenImage);
+document.getElementById("Tree on Siding").addEventListener("touchstart", showFullScreenImage);
+
 
 
 
