@@ -66,7 +66,7 @@ function handleResize() {
     console.log("resize")
 
     Siding = document.getElementById("Tree on Siding");
-    Siding.style.width = "60%";
+    // Siding.style.width = "60%";
 
 
     let h1 = document.getElementById("Birds on the Line").clientHeight;
@@ -77,17 +77,22 @@ function handleResize() {
     BirdsOnTheLine= document.getElementById("Birds on the Line");
     BusStop = document.getElementById("Bus Stop");
 
+    BirdsOnTheLine.style.width = "50%";
+    BusStop.style.width = "50%";
+
     // BirdsOnTheLine.style.height = h1 + 'px';
     // BusStop.style.height = h2 + 'px';
 
     //////////////////////////////////////// these are reset to round them to the nearest pixel (prevents a slight misalignment)
-    BirdsOnTheLine.style.height = h1;
-    BusStop.style.height = h2;
+    // BirdsOnTheLine.style.height = h1;
+    // BusStop.style.height = h2;
 
     hTotal = h1+h2+10;
 
     AstoriaCrossSign = document.getElementById("Astoria Cross Sign");
-    AstoriaCrossSign.style.height = hTotal + 'px';
+    // AstoriaCrossSign.style.width = "60%";
+
+    // AstoriaCrossSign.style.height = hTotal + 'px';
 
 }
 

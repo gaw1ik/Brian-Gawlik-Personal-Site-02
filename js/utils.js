@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 function getNamedIndexOfElement(name,element) {
 
     var id = element.id;
