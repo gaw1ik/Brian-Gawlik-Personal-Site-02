@@ -28,11 +28,21 @@ window.addEventListener("load", handleResize);
 //     children[i].addEventListener("click", showFullScreenImage);
 // }
 
-document.getElementById("Astoria Cross Sign").addEventListener("click", showFullScreenImage);
-document.getElementById("Birds on the Line").addEventListener("click", showFullScreenImage);
-document.getElementById("Bus Stop").addEventListener("click", showFullScreenImage);
-document.getElementById("STLL1").addEventListener("click", showFullScreenImage);
-document.getElementById("Tree on Siding").addEventListener("click", showFullScreenImage);
+
+let screenHeight = screen.height;
+let screenWidth  = screen.width;
+let screenAR = screenHeight/screenWidth;
+
+if(screenAR < 1) {
+    document.getElementById("STLL3").addEventListener("click", showFullScreenImage);
+    document.getElementById("Astoria Cross Sign").addEventListener("click", showFullScreenImage);
+    document.getElementById("Birds on the Line").addEventListener("click", showFullScreenImage);
+    document.getElementById("Bus Stop").addEventListener("click", showFullScreenImage);
+    document.getElementById("STLL1").addEventListener("click", showFullScreenImage);
+    document.getElementById("Tree on Siding").addEventListener("click", showFullScreenImage);
+}
+
+
 
 // document.getElementById("Astoria Cross Sign").addEventListener("touchstart", showFullScreenImage);
 // document.getElementById("Birds on the Line").addEventListener("touchstart", showFullScreenImage);
@@ -40,11 +50,12 @@ document.getElementById("Tree on Siding").addEventListener("click", showFullScre
 // document.getElementById("STLL1").addEventListener("touchstart", showFullScreenImage);
 // document.getElementById("Tree on Siding").addEventListener("touchstart", showFullScreenImage);
 
-document.getElementById("Astoria Cross Sign").addEventListener("touchend", showFullScreenImage);
-document.getElementById("Birds on the Line").addEventListener("touchend", showFullScreenImage);
-document.getElementById("Bus Stop").addEventListener("touchend", showFullScreenImage);
-document.getElementById("STLL1").addEventListener("touchend", showFullScreenImage);
-document.getElementById("Tree on Siding").addEventListener("touchend", showFullScreenImage);
+// document.getElementById("STLL3").addEventListener("touchend", showFullScreenImage);
+// document.getElementById("Astoria Cross Sign").addEventListener("touchend", showFullScreenImage);
+// document.getElementById("Birds on the Line").addEventListener("touchend", showFullScreenImage);
+// document.getElementById("Bus Stop").addEventListener("touchend", showFullScreenImage);
+// document.getElementById("STLL1").addEventListener("touchend", showFullScreenImage);
+// document.getElementById("Tree on Siding").addEventListener("touchend", showFullScreenImage);
 
 
 
@@ -93,6 +104,8 @@ function handleResize() {
     // AstoriaCrossSign.style.width = "60%";
 
     // AstoriaCrossSign.style.height = hTotal + 'px';
+
+
 
 }
 
@@ -200,55 +213,9 @@ function returnFromFullScreenImage() {
 
 
 
-// function onPageButtonClick() {
-
-//     //console.log(this.id);
-
-//     for(let i=0; i<pageContainers.length; i++) {
-//         pageContainers[i].style.display = "none";
-//         pageButtons[i].style.borderBottom = borderOffProperty;
-//     }
-
-//     let pageIndex = getNamedIndexOfElement("Page", this);
-
-//     // // for changing image heights depending on the page selected
-//     // if(pageIndex==1) {
-//     //     document.documentElement.style.setProperty('--image-height', '70vh');
-//     // }
-
-//     pageContainers[pageIndex].style.display = "block";
-//     pageButtons[pageIndex].style.borderBottom = borderOnProperty;
-
-//     onNavToggleButtonClick();
-
-// }
 
 
 
-
-
-
-
-// function onNavToggleButtonClick() {
-
-//     if( navToggleOn == 1 ) {
-
-//         // navbar.style.display = "none";
-//         navbar.className = "navbarClosed";
-
-//     } else if ( navToggleOn == -1 ) {
-
-//         // navbar.style.display = "flex";
-//         navbar.className = "navbarOpen";
-
-//     }
-
-//     // flip the value of navToggleOn
-//     navToggleOn = navToggleOn * -1;
-
-//     //console.log("navToggleOn",navToggleOn)
-    
-// }
 
 
 
