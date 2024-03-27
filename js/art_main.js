@@ -85,11 +85,11 @@ function handleResize() {
 
     // console.log(h1,h2);
 
-    BirdsOnTheLine= document.getElementById("Birds on the Line");
-    BusStop = document.getElementById("Bus Stop");
+    // BirdsOnTheLine= document.getElementById("Birds on the Line");
+    // BusStop = document.getElementById("Bus Stop");
 
-    BirdsOnTheLine.style.width = "50%";
-    BusStop.style.width = "50%";
+    // BirdsOnTheLine.style.width = "50%";
+    // BusStop.style.width = "50%";
 
     // BirdsOnTheLine.style.height = h1 + 'px';
     // BusStop.style.height = h2 + 'px';

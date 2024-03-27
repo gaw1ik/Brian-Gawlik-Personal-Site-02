@@ -1,17 +1,4 @@
-/* TABLE OF CONTENTS
-  0. variables
-  1. global styles
-  2. typography
-  3. components
-  4. layout */
 
-
-
-
-
-/* =============
-   variables
-   ============= */
 
 :root {
 
@@ -143,6 +130,12 @@ a {
   text-align: center;
 }
 
+.NFTPlatformLinks {
+  color:hsl(200,80%,30%);
+  font-size: 2rem;
+  text-align: center;
+}
+
 
 img{
   width:100%;
@@ -203,6 +196,20 @@ button :hover {
 /* =============
    layout
    ============= */
+
+   
+.pageContainer {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  background: none;
+  width:30rem;
+  max-width:80%;
+  margin-left:auto;
+  margin-right:auto;
+}
 
 .navToggleBar {
   display:none;
@@ -316,42 +323,6 @@ button :hover {
 
 
 
-.pageContainer {
-
-  /* background-color: white; */
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-  /* width:80vw; */
-  /* height:100vh; */
-  background: none;
-  /* background-color: transparent; */
-  /* opacity:0.5; */
-
-
-  /* position: relative; */
-
-  /* position: absolute;
-  left: 0;
-  top: 0; */
-  width:30rem;
-
-  margin-left:auto;
-  margin-right:auto;
-
-  
-  /* background-color: var(--bg-clr01); */
-
-  /* padding:10vw; */
-  /* margin-top: calc( 1.5 * var(--navToggleBar_height) ); */
-  /* overflow-x:hidden; */
-  /* margin-top:3rem; */
-  
-  /* border:1px solid black; */
-
-}
 
 .mainArtContainer0 {
 
@@ -360,30 +331,20 @@ button :hover {
   align-items: start;
   align-content: center;
   justify-content: start;
-
   background: none;
-
   width: 40rem;
-
-  max-width:100%;
-  /* height:50rem; */
-
+  max-width:80%;
   margin-left:auto;
   margin-right:auto;
-
-  /* gap:1rem; */
-
   margin-top:var(--artContainer_marginTop);
-
-
 }
 
 
 .mainArtContainer1 {
 
   display:flex;
-  flex-direction: row;
-  align-items: end;
+  flex-direction: column;
+  align-items: center;
   align-content: center;
   justify-content: center;
 
@@ -465,7 +426,7 @@ button :hover {
 }
 
 .singleFrameTall img {
-  width: 60%;
+  width: 100%;
 }
 
 .mainArtContainer2 {
