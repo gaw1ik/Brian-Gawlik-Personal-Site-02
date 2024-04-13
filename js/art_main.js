@@ -34,6 +34,11 @@ let screenWidth  = screen.width;
 let screenAR = screenHeight/screenWidth;
 
 if(screenAR < 1) {
+    document.getElementById("TreesForSale").addEventListener("click", showFullScreenImage);
+    document.getElementById("Campus").addEventListener("click", showFullScreenImage);
+    document.getElementById("BoutToRain").addEventListener("click", showFullScreenImage);
+    document.getElementById("WildfiresHaze").addEventListener("click", showFullScreenImage);
+
     document.getElementById("STLL3").addEventListener("click", showFullScreenImage);
     document.getElementById("Astoria Cross Sign").addEventListener("click", showFullScreenImage);
     document.getElementById("Birds on the Line").addEventListener("click", showFullScreenImage);
