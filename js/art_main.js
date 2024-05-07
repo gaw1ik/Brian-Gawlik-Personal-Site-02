@@ -33,18 +33,29 @@ let screenHeight = screen.height;
 let screenWidth  = screen.width;
 let screenAR = screenHeight/screenWidth;
 
-if(screenAR < 1) {
-    //document.getElementById("TreesForSale").addEventListener("click", showFullScreenImage);
-    document.getElementById("Campus").addEventListener("click", showFullScreenImage);
-    document.getElementById("BoutToRain").addEventListener("click", showFullScreenImage);
-    document.getElementById("WildfiresHaze").addEventListener("click", showFullScreenImage);
+// if(screenAR < 1) {
+//     //document.getElementById("TreesForSale").addEventListener("click", showFullScreenImage);
+//     document.getElementById("Campus").addEventListener("click", showFullScreenImage);
+//     document.getElementById("BoutToRain").addEventListener("click", showFullScreenImage);
+//     document.getElementById("WildfiresHaze").addEventListener("click", showFullScreenImage);
 
-    document.getElementById("STLL3").addEventListener("click", showFullScreenImage);
-    document.getElementById("Astoria Cross Sign").addEventListener("click", showFullScreenImage);
-    document.getElementById("Birds on the Line").addEventListener("click", showFullScreenImage);
-    document.getElementById("Bus Stop").addEventListener("click", showFullScreenImage);
-    document.getElementById("STLL1").addEventListener("click", showFullScreenImage);
-    document.getElementById("Tree on Siding").addEventListener("click", showFullScreenImage);
+//     document.getElementById("STLL3").addEventListener("click", showFullScreenImage);
+//     document.getElementById("Astoria Cross Sign").addEventListener("click", showFullScreenImage);
+//     document.getElementById("Birds on the Line").addEventListener("click", showFullScreenImage);
+//     document.getElementById("Bus Stop").addEventListener("click", showFullScreenImage);
+//     document.getElementById("STLL1").addEventListener("click", showFullScreenImage);
+//     document.getElementById("Tree on Siding").addEventListener("click", showFullScreenImage);
+// }
+
+if(screenAR < 1) {
+    ARTIMGS = document.getElementsByClassName("art-img")
+
+    for(let i=0; i<ARTIMGS.length; i++) {
+        ARTIMGS[i].addEventListener("click", showFullScreenImage);
+    }
+
+    console.log("auto click listeners")
+
 }
 
 
