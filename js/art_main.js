@@ -34,7 +34,7 @@ let screenWidth  = screen.width;
 let screenAR = screenHeight/screenWidth;
 
 if(screenAR < 1) {
-    document.getElementById("TreesForSale").addEventListener("click", showFullScreenImage);
+    //document.getElementById("TreesForSale").addEventListener("click", showFullScreenImage);
     document.getElementById("Campus").addEventListener("click", showFullScreenImage);
     document.getElementById("BoutToRain").addEventListener("click", showFullScreenImage);
     document.getElementById("WildfiresHaze").addEventListener("click", showFullScreenImage);
