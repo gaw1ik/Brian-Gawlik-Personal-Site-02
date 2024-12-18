@@ -297,10 +297,11 @@ function setupCanvases(device) {
         param_gain.value = VAL[0]*157.0;
 
         const param_prob = device.parametersById.get("prob");
-        param_prob.value = VAL[1]*100;
+        param_prob.value = VAL[1]*60;
 
         const param_time = device.parametersById.get("time");
-        param_time.value = 100 + VAL[2]*(8000-100);
+        param_time.value = 100 + VAL[2]*(4000-100);
+        // param_time.value = 100 + VAL[2]*(4000-100);
 
         drawKnob(canvas,val);
 
@@ -314,19 +315,21 @@ function setupCanvases(device) {
 
 
 
-
+    ///////// INITIAL PARAMETER SETTING
     const param_gain = device.parametersById.get("gain");
     param_gain.value = VAL[0]*157.0;
 
     const param_prob = device.parametersById.get("prob");
-    param_prob.value = VAL[1]*100;
+    param_prob.value = VAL[1]*60;
 
     const param_time = device.parametersById.get("time");
     param_time.value = 100 + VAL[2]*(4000-100);
+    // param_time.value = 100 + VAL[2]*(4000-100);
 
     drawKnob(canvas1,VAL[0]);
     drawKnob(canvas2,VAL[1]);
-    drawKnob(canvas3,VAL[2]);
+    drawKnob(canvas3,VAL[1]);
+    // drawKnob(canvas3,VAL[2]);
     drawKnob(canvas4,VAL[3]);
 
 

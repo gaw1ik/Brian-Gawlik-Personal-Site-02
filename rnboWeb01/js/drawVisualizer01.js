@@ -54,7 +54,7 @@ function drawVisualizer(canvas,val0) {
         let yCPix = yC*HEIGHT_VIZ;
 
         //// when the radius exceeds this value reset the shape
-        if(age>1.0) {
+        if(age>1.0 || rad>0.2) {
             age = 0.0;
             rad = 0.0;
             alpha = 1.0;
@@ -63,7 +63,7 @@ function drawVisualizer(canvas,val0) {
             aspect = 1.0;
         }
 
-        let rPixX = val*HEIGHT_VIZ*rad*rMax;
+        let rPixX = val*WIDTH_VIZ*rad*rMax;
 
         let rPixY = rPixX*aspect;
 
