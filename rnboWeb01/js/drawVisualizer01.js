@@ -42,10 +42,11 @@ function drawVisualizer(canvas,val0) {
         let shape = SHAPES[i];
 
         let speed = shape.speed;
-        let xC = shape.xC -0.001 + getRandomFloat(0.0007,0.001)*speed*val0*4.0;
+        let xC = shape.xC - 0.001 + getRandomFloat(0.0007,0.001)*speed*val0*4.0;
         let yC = shape.yC + getRandomFloat(0.0007,0.001)*speed;
-        let rad = shape.rad + getRandomFloat(0.001,0.01)*val0*4.0;
+        let rad = shape.rad + 0.001 + getRandomFloat(0.001,0.01)*val0*4.0;
         // let aspect = shape.aspect + randomSign() * val*getRandomFloat(0.005,0.01);
+        let age = shape.age + 0.01;
         let aspect = 1.0 + val0*0.1;
         let alpha = shape.alpha * 0.96;
 
@@ -53,7 +54,8 @@ function drawVisualizer(canvas,val0) {
         let yCPix = yC*HEIGHT_VIZ;
 
         //// when the radius exceeds this value reset the shape
-        if(rad>0.5) {
+        if(age>1.0) {
+            age = 0.0;
             rad = 0.0;
             alpha = 1.0;
             xC = getRandomFloat(-0.2,1.0);
@@ -84,6 +86,7 @@ function drawVisualizer(canvas,val0) {
         ctx.fill();
 
         shape.rad = rad;
+        shape.age = age;
         shape.alpha = alpha;
         shape.xC = xC;
         shape.yC = yC;
