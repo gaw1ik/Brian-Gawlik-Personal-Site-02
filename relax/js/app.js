@@ -5,7 +5,7 @@ async function silenceTrick() {
     el = document.createElement( 'audio' );
     el.id = "silence";
     el.loop = true;
-    el.src = 'rain-street-01.wav'; // media file with tiny bit of silence
+    el.src = 'silence.mp3'; // media file with tiny bit of silence
     el.volume = 0.2;
     el.play();
     console.log("silence playing")
