@@ -90,6 +90,10 @@ h2, em {
     z-index: 0;
 }
 
+canvas {
+    -webkit-tap-highlight-color: transparent;
+}
+
 h1 {
     text-align: center;
     font-family: "Alumni Sans Pinstripe", serif;

@@ -31,4 +31,6 @@ function drawToggle(canvas,val) {
         ctx.fill();
     }
 
+    document.getElementById("muteText").innerText = "Mute (" + val.toString() + ")";
+
 }
