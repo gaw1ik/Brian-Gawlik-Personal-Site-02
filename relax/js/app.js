@@ -1,6 +1,9 @@
 async function setup() {
     const patchExportURL = "export/patch.export.json";
 
+
+
+
     // Create AudioContext
     WAContext = window.AudioContext || window.webkitAudioContext; // const
     context = new WAContext(); // const
@@ -227,6 +230,14 @@ function handleResize() {
 
 // window.addEventListener("load", setupCanvases); // commented this out bc setupCanvases() is already called in setup()
 
+window.addEventListener("DOMContentLoaded", silenceTrick);    
+
+function silenceTrick() {
+    el = document.createElement( 'audio' );
+    el.id = "silence";
+    el.src = 'ari.mp3'; // media file with tiny bit of silence
+    el.play();
+}
 
 function setupCanvases(device) {
 
