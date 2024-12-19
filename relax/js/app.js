@@ -383,12 +383,12 @@ function setupCanvases(device) {
 
     muteControl.addEventListener("touchstart", (event) => {
 
+        event.preventDefault();
+
         isToggled = !isToggled; 
 
-    // console.log("Toggled state:", isToggled); 
-
         currentMuteState = 1 - currentMuteState; 
-        console.log("currentMuteState",currentMuteState);
+        console.log("currentMuteState (touched)",currentMuteState);
         outputNode.gain.setValueAtTime(currentMuteState, context.currentTime);
         drawToggle(muteControl,currentMuteState);
 
