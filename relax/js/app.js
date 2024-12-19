@@ -7,7 +7,34 @@ async function setup() {
 
     // Create gain node and connect it to audio output
     outputNode = context.createGain(); // const
-    outputNode.connect(context.destination);
+    
+
+
+
+    document.body.onclick = () => {
+        document.getElementById("titleHeader").textContent = "Relax";
+        outputNode.connect(context.destination);
+        context.resume();
+    }
+
+
+
+    window.addEventListener('touchstart',playSoundIOS)
+    
+    function playSoundIOS() {
+        // context.resume();
+        document.getElementById("titleHeader").textContent = "Relax";
+
+        // outputNode.gain.setValueAtTime(1, context.currentTime);
+        bufferSource = context.createBufferSource();
+        bufferSource.connect(context.destination);
+        bufferSource.start(0);
+
+        window.removeEventListener('touchstart', playSoundIOS);
+
+    }
+
+
 
     
     
@@ -96,15 +123,9 @@ async function setup() {
     // });
 
 
-    document.body.onclick = () => {
-        context.resume();
-    }
 
-    window.addEventListener('touchstart',() => {
-            context.resume();
-            outputNode.gain.setValueAtTime(1, context.currentTime);
-        }
-    )
+
+
 
     // // Skip if you're not using guardrails.js
     // if (typeof guardrails === "function")
@@ -162,7 +183,7 @@ function handleResize() {
 
     ////////// Control Canvases
     if( window_innerHeight/window_innerWidth < 1 ) {
-        HEIGHTSTYLE = window_innerHeight*0.1;
+        HEIGHTSTYLE = window_innerHeight*0.15;
         WIDTHSTYLE = HEIGHTSTYLE;
     } else {
         WIDTHSTYLE = window_innerWidth*0.2;
