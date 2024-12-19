@@ -240,7 +240,7 @@ function setupCanvases(device) {
     let isDragging = false;
     // let startX, startY;
 
-    VAL = [0.75,0.05,0.0,0.0]; // Initial Param Values
+    VAL = [0.75,0.15,0.03,0.0]; // Initial Param Values
     LASTY = [0,0,0,0];
 
     for(let i=0; i<CANVAS.length; i++) {
