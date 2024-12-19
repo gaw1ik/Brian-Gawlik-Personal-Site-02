@@ -25,10 +25,12 @@ async function setup() {
     document.body.addEventListener('click', playSound) 
     
     function playSound() {
+
+        silenceTrick();
     
         document.getElementById("titleHeader").textContent = "Relax";
         context.resume();
-        document.body.removeEventListener('click', playSound);
+        // document.body.removeEventListener('click', playSound);
 
     };
 
