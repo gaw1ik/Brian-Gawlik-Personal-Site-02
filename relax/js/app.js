@@ -142,10 +142,14 @@ function loadRNBOScript(version) {
 window.addEventListener("resize",handleResize);
 
 function handleResize() {
+
+    window_innerWidth = window.innerWidth;
+    window_innerHeight = window.innerHeight;
+
+
     ////////// Visualizer Canvas
-    canvasViz01 = document.getElementById("canvasViz01");
-    WIDTHSTYLE_VIZ = window.innerWidth;
-    HEIGHTSTYLE_VIZ = window.innerHeight;
+    WIDTHSTYLE_VIZ = window_innerWidth;
+    HEIGHTSTYLE_VIZ = window_innerHeight;
     WIDTH_VIZ = WIDTHSTYLE_VIZ*2;
     HEIGHT_VIZ = HEIGHTSTYLE_VIZ*2;
 
@@ -153,11 +157,46 @@ function handleResize() {
     canvasViz01.height = HEIGHT_VIZ;
     canvasViz01.style.width = WIDTHSTYLE_VIZ.toString() + "px";
     canvasViz01.style.height = HEIGHTSTYLE_VIZ.toString() + "px";
+
+
+
+    ////////// Control Canvases
+    if( window_innerHeight/window_innerWidth < 1 ) {
+        HEIGHTSTYLE = window_innerHeight*0.1;
+        WIDTHSTYLE = HEIGHTSTYLE;
+    } else {
+        WIDTHSTYLE = window_innerWidth*0.2;
+        HEIGHTSTYLE = WIDTHSTYLE;
+    }
+
+    WIDTH = WIDTHSTYLE*2;
+    HEIGHT = HEIGHTSTYLE*2;
+
+    for(let i=0; i<CANVAS.length; i++) {
+        let canvas = CANVAS[i];
+        canvas.width = WIDTH;
+        canvas.height = HEIGHT;
+        canvas.style.width = WIDTHSTYLE.toString() + "px";
+        canvas.style.height = HEIGHTSTYLE.toString() + "px";
+        drawKnob(canvas,VAL[i]);
+    }
+
+    ////////// Mute Control Canvas
+    muteControl.width = WIDTH;
+    muteControl.height = HEIGHT;
+    muteControl.style.width = WIDTHSTYLE.toString() + "px";
+    muteControl.style.height = HEIGHTSTYLE.toString() + "px";
+
+    drawToggle(muteControl,currentMuteState);
+
+
+
+
 }
 
 
 
-window.addEventListener("load", setupCanvases);
+// window.addEventListener("load", setupCanvases); // commented this out bc setupCanvases() is already called in setup()
 
 
 function setupCanvases(device) {
@@ -172,6 +211,12 @@ function setupCanvases(device) {
     PIo4  = Math.PI * 0.25;
     PIo8  = Math.PI * 0.125;
     PIo16 = Math.PI * 0.0625;
+
+
+    // INITIAL STATE VALUES
+    currentMuteState = 1;
+    VAL = [0.75,0.15,0.03,0.0]; // Initial Param Values
+    LASTY = [0,0,0,0];
 
     xC_arr = [];
     yC_arr = [];
@@ -191,10 +236,12 @@ function setupCanvases(device) {
     }
 
 
-    WIDTHSTYLE = 150;
-    HEIGHTSTYLE = 150;
-    WIDTH = WIDTHSTYLE*2;
-    HEIGHT = HEIGHTSTYLE*2;
+    canvasViz01 = document.getElementById("canvasViz01");
+
+    // WIDTHSTYLE = window.innerWidth*0.1;
+    // HEIGHTSTYLE = WIDTHSTYLE;
+    // WIDTH = WIDTHSTYLE*2;
+    // HEIGHT = HEIGHTSTYLE*2;
 
 
 
@@ -203,31 +250,28 @@ function setupCanvases(device) {
     canvas3 = document.getElementById("canvas3");
     canvas4 = document.getElementById("canvas4");
 
-
-
     CANVAS = [canvas1,canvas2,canvas3,canvas4];
 
-    for(let i=0; i<CANVAS.length; i++) {
-        CANVAS[i].width = WIDTH;
-        CANVAS[i].height = HEIGHT;
-        CANVAS[i].style.width = WIDTHSTYLE.toString() + "px";
-        CANVAS[i].style.height = HEIGHTSTYLE.toString() + "px";
-        // canvasViz01.style.zindex = "1";
-
-    }
 
 
-    ////////// Visualizer Canvas
-    canvasViz01 = document.getElementById("canvasViz01");
-    WIDTHSTYLE_VIZ = window.innerWidth;
-    HEIGHTSTYLE_VIZ = window.innerHeight;
-    WIDTH_VIZ = WIDTHSTYLE_VIZ*2;
-    HEIGHT_VIZ = HEIGHTSTYLE_VIZ*2;
+    // /////////////////////////// INITIALIZE MUTE CONTROL SIZE
+    muteControl = document.getElementById("mute");
 
-    canvasViz01.width = WIDTH_VIZ;
-    canvasViz01.height = HEIGHT_VIZ;
-    canvasViz01.style.width = WIDTHSTYLE_VIZ.toString() + "px";
-    canvasViz01.style.height = HEIGHTSTYLE_VIZ.toString() + "px";
+
+
+    handleResize();
+
+    // ////////// Visualizer Canvas
+    // canvasViz01 = document.getElementById("canvasViz01");
+    // WIDTHSTYLE_VIZ = window.innerWidth;
+    // HEIGHTSTYLE_VIZ = window.innerHeight;
+    // WIDTH_VIZ = WIDTHSTYLE_VIZ*2;
+    // HEIGHT_VIZ = HEIGHTSTYLE_VIZ*2;
+
+    // canvasViz01.width = WIDTH_VIZ;
+    // canvasViz01.height = HEIGHT_VIZ;
+    // canvasViz01.style.width = WIDTHSTYLE_VIZ.toString() + "px";
+    // canvasViz01.style.height = HEIGHTSTYLE_VIZ.toString() + "px";
 
 
 
@@ -240,8 +284,7 @@ function setupCanvases(device) {
     let isDragging = false;
     // let startX, startY;
 
-    VAL = [0.75,0.15,0.03,0.0]; // Initial Param Values
-    LASTY = [0,0,0,0];
+
 
     for(let i=0; i<CANVAS.length; i++) {
 
@@ -263,7 +306,6 @@ function setupCanvases(device) {
             isDragging = false;
         });
     }
-    
     
     
     document.addEventListener('mousemove', (event) => {
@@ -323,6 +365,37 @@ function setupCanvases(device) {
 
 
 
+    console.log("hi")
+
+    muteControl.addEventListener('click', (event) => {
+
+        currentMuteState = 1 - currentMuteState; 
+        console.log("currentMuteState",currentMuteState);
+        outputNode.gain.setValueAtTime(currentMuteState, context.currentTime);
+        drawToggle(muteControl,currentMuteState);
+
+    });
+
+
+
+
+    let isToggled = false; 
+
+    muteControl.addEventListener("touchstart", (event) => {
+
+        isToggled = !isToggled; 
+
+    // console.log("Toggled state:", isToggled); 
+
+        currentMuteState = 1 - currentMuteState; 
+        console.log("currentMuteState",currentMuteState);
+        outputNode.gain.setValueAtTime(currentMuteState, context.currentTime);
+        drawToggle(muteControl,currentMuteState);
+
+    }); 
+
+
+
     ///////// INITIAL PARAMETER SETTING
     const param_gain = device.parametersById.get("gain");
     param_gain.value = VAL[0]*157.0;
@@ -334,11 +407,10 @@ function setupCanvases(device) {
     param_time.value = 100 + VAL[2]*(4000-100);
     // param_time.value = 100 + VAL[2]*(4000-100);
 
-    drawKnob(canvas1,VAL[0]);
-    drawKnob(canvas2,VAL[1]);
-    drawKnob(canvas3,VAL[1]);
-    // drawKnob(canvas3,VAL[2]);
-    drawKnob(canvas4,VAL[3]);
+    // drawKnob(canvas2,VAL[1]);
+    // drawKnob(canvas3,VAL[1]);
+    // // drawKnob(canvas3,VAL[2]);
+    // drawKnob(canvas4,VAL[3]);
 
 
 
