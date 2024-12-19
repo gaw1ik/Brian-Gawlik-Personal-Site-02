@@ -1,8 +1,9 @@
-async function setup() {
-    const patchExportURL = "export/patch.export.json";
 
+document.body.addEventListener('click', playSound) ;
+    
+async function playSound() {
 
-
+    await silenceTrick();
 
     // Create AudioContext
     WAContext = window.AudioContext || window.webkitAudioContext; // const
@@ -11,6 +12,26 @@ async function setup() {
     // Create gain node and connect it to audio output
     outputNode = context.createGain(); // const
     outputNode.connect(context.destination);
+
+    document.getElementById("titleHeader").textContent = "Relax";
+    context.resume();
+    // document.body.removeEventListener('click', playSound);
+
+    setup();
+
+};
+
+
+
+
+
+async function setup() {
+    const patchExportURL = "export/patch.export.json";
+
+    // await playSound();
+
+
+
 
     
 
@@ -22,17 +43,7 @@ async function setup() {
     //     context.resume();
     // }
 
-    document.body.addEventListener('click', playSound) 
-    
-    function playSound() {
 
-        silenceTrick();
-    
-        document.getElementById("titleHeader").textContent = "Relax";
-        context.resume();
-        // document.body.removeEventListener('click', playSound);
-
-    };
 
 
 
@@ -232,9 +243,9 @@ function handleResize() {
 
 // window.addEventListener("load", setupCanvases); // commented this out bc setupCanvases() is already called in setup()
 
-window.addEventListener("DOMContentLoaded", silenceTrick);    
+// window.addEventListener("DOMContentLoaded", silenceTrick);    
 
-function silenceTrick() {
+async function silenceTrick() {
     el = document.createElement( 'audio' );
     el.id = "silence";
     el.src = 'ari.mp3'; // media file with tiny bit of silence
