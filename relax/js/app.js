@@ -7,32 +7,40 @@ async function setup() {
 
     // Create gain node and connect it to audio output
     outputNode = context.createGain(); // const
+    outputNode.connect(context.destination);
+
     
 
 
 
-    document.body.onclick = () => {
+    // document.body.onclick = () => {
+    //     document.getElementById("titleHeader").textContent = "Relax";
+    //     // outputNode.connect(context.destination);
+    //     context.resume();
+    // }
+
+    document.body.addEventListener('click', playSound) 
+    
+    function playSound() {
+    
         document.getElementById("titleHeader").textContent = "Relax";
-        outputNode.connect(context.destination);
         context.resume();
-    }
+        document.body.removeEventListener('click', playSound);
+
+    };
 
 
 
-    window.addEventListener('touchstart',playSoundIOS)
+
+    // window.addEventListener('touchstart', playSoundIOS) 
     
-    function playSoundIOS() {
-        // context.resume();
-        document.getElementById("titleHeader").textContent = "Relax";
+    // function playSoundIOS() {
+    
+    //     document.getElementById("titleHeader").textContent = "Relax";
+    //     context.resume();
+    //     window.removeEventListener('touchstart', playSoundIOS);
 
-        // outputNode.gain.setValueAtTime(1, context.currentTime);
-        bufferSource = context.createBufferSource();
-        bufferSource.connect(context.destination);
-        bufferSource.start(0);
-
-        window.removeEventListener('touchstart', playSoundIOS);
-
-    }
+    // };
 
 
 
