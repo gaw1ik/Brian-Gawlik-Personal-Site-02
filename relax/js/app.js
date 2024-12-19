@@ -2,12 +2,14 @@ async function setup() {
     const patchExportURL = "export/patch.export.json";
 
     // Create AudioContext
-    const WAContext = window.AudioContext || window.webkitAudioContext;
-    const context = new WAContext();
+    WAContext = window.AudioContext || window.webkitAudioContext; // const
+    context = new WAContext(); // const
 
     // Create gain node and connect it to audio output
-    const outputNode = context.createGain();
+    outputNode = context.createGain(); // const
     outputNode.connect(context.destination);
+
+    
     
     // Fetch the exported patcher
     let response, patcher;
@@ -100,6 +102,7 @@ async function setup() {
 
     window.addEventListener('touchstart',() => {
             context.resume();
+            outputNode.gain.setValueAtTime(1, context.currentTime);
         }
     )
 
