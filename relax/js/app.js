@@ -17,7 +17,7 @@ window.addEventListener("load", setupCanvases); // commented this out bc setupCa
 async function playSound() {
 
 
-
+    await silenceTrick();
     
 
     // Create AudioContext
@@ -366,7 +366,7 @@ function handleResize() {
 
 function setupCanvases() {
 
-    silenceTrick();
+    
 
 
     console.log("window loaded")
