@@ -4,7 +4,7 @@ document.body.addEventListener('click', playSound) ;
 async function silenceTrick() {
     el = document.createElement( 'audio' );
     el.id = "silence";
-    el.loop = 'true';
+    el.loop = true;
     el.src = 'silence.mp3'; // media file with tiny bit of silence
     el.play();
     console.log("silence playing")
