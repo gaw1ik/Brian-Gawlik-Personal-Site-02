@@ -98,6 +98,11 @@ async function setup() {
         context.resume();
     }
 
+    window.addEventListener('touchstart',() => {
+            context.resume();
+        }
+    )
+
     // // Skip if you're not using guardrails.js
     // if (typeof guardrails === "function")
     //     guardrails();
