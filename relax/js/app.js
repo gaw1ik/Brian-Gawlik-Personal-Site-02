@@ -1,9 +1,23 @@
 
 document.body.addEventListener('click', playSound) ;
+
+async function silenceTrick() {
+    el = document.createElement( 'audio' );
+    el.id = "silence";
+    el.loop = 'true';
+    el.src = 'silence.mp3'; // media file with tiny bit of silence
+    el.play();
+    console.log("silence playing")
+}
+
+window.addEventListener("load", setupCanvases); // commented this out bc setupCanvases() is already called in setup()
+
     
 async function playSound() {
 
-    await silenceTrick();
+
+
+    
 
     // Create AudioContext
     WAContext = window.AudioContext || window.webkitAudioContext; // const
@@ -13,9 +27,11 @@ async function playSound() {
     outputNode = context.createGain(); // const
     outputNode.connect(context.destination);
 
-    document.getElementById("titleHeader").textContent = "Relax";
+    document.getElementById("clickMessage").textContent = "";
     context.resume();
-    // document.body.removeEventListener('click', playSound);
+
+    document.body.removeEventListener('click', playSound);
+
 
     setup();
 
@@ -156,7 +172,107 @@ async function setup() {
     //     guardrails();
 
 
-    setupCanvases(device);
+    // setupCanvases(device);
+
+
+        ///////// INITIAL PARAMETER SETTING
+        const param_gain = device.parametersById.get("gain");
+        param_gain.value = VAL[0]*157.0;
+    
+        const param_prob = device.parametersById.get("prob");
+        param_prob.value = VAL[1]*60;
+    
+        const param_time = device.parametersById.get("time");
+        param_time.value = 100 + VAL[2]*(4000-100);
+
+        let isDragging = false;
+
+
+        document.addEventListener('mousemove', (event) => {
+            if (!isDragging) return;
+    
+            // startX = lastX;
+            // lastY = startY;
+    
+            const x = event.clientX - thisCanvasOffsetLeft;
+            const y = event.clientY - thisCanvasOffsetTop;
+    
+            // calculate delta movements
+    
+            let dy = y - lastY;
+            //dx = startX - x;
+            //dxy = dy+dx;
+    
+            let v = VAL[activeCanvasNum] - dy*0.007;
+    
+            val = Math.min(Math.max(0,v),1);
+    
+            VAL[activeCanvasNum] = val;
+    
+            // console.log("VAL",VAL);
+    
+            let canvas = document.getElementById(activeCanvasID);
+    
+            // // Listen to parameter changes from the device
+            // device.parameterChangeEvent.subscribe(param => {
+            //     if (!isDraggingSlider)
+            //         uiElements[param.id].slider.value = param.value;
+            //         uiElements[param.id].text.value = param.value.toFixed(1);
+            // });
+    
+                    // param is of type Parameter
+            // const param = device.parametersById.get("gain");
+            // param.value = VAL[0]*157.0;
+            const param_gain = device.parametersById.get("gain");
+            param_gain.value = VAL[0]*157.0;
+    
+            const param_prob = device.parametersById.get("prob");
+            param_prob.value = VAL[1]*60;
+    
+            const param_time = device.parametersById.get("time");
+            param_time.value = 100 + VAL[2]*(4000-100);
+            // param_time.value = 100 + VAL[2]*(4000-100);
+    
+            drawKnob(canvas,val);
+    
+            lastY = y;
+            LASTY[activeCanvasNum] = lastY;
+            // console.log("LASTY",LASTY);
+    
+        });
+        
+    
+    
+    
+    
+        // console.log("hi")
+    
+        muteControl.addEventListener('click', (event) => {
+    
+            currentMuteState = 1 - currentMuteState; 
+            console.log("currentMuteState",currentMuteState);
+            outputNode.gain.setValueAtTime(currentMuteState, context.currentTime);
+            drawToggle(muteControl,currentMuteState);
+    
+        });
+    
+    
+    
+    
+        let isToggled = false; 
+    
+        muteControl.addEventListener("touchstart", (event) => {
+    
+            event.preventDefault();
+    
+            isToggled = !isToggled; 
+    
+            currentMuteState = 1 - currentMuteState; 
+            console.log("currentMuteState (touched)",currentMuteState);
+            outputNode.gain.setValueAtTime(currentMuteState, context.currentTime);
+            drawToggle(muteControl,currentMuteState);
+    
+        }); 
 
 
 
@@ -245,14 +361,12 @@ function handleResize() {
 
 // window.addEventListener("DOMContentLoaded", silenceTrick);    
 
-async function silenceTrick() {
-    el = document.createElement( 'audio' );
-    el.id = "silence";
-    el.src = 'ari.mp3'; // media file with tiny bit of silence
-    el.play();
-}
 
-function setupCanvases(device) {
+
+function setupCanvases() {
+
+    silenceTrick();
+
 
     console.log("window loaded")
 
@@ -334,7 +448,6 @@ function setupCanvases(device) {
 
 
 
-    let isDragging = false;
     // let startX, startY;
 
 
@@ -361,103 +474,11 @@ function setupCanvases(device) {
     }
     
     
-    document.addEventListener('mousemove', (event) => {
-        if (!isDragging) return;
-
-        // startX = lastX;
-        // lastY = startY;
-
-        const x = event.clientX - thisCanvasOffsetLeft;
-        const y = event.clientY - thisCanvasOffsetTop;
-
-        // calculate delta movements
-
-        let dy = y - lastY;
-        //dx = startX - x;
-        //dxy = dy+dx;
-
-        let v = VAL[activeCanvasNum] - dy*0.007;
-
-        val = Math.min(Math.max(0,v),1);
-
-        VAL[activeCanvasNum] = val;
-
-        // console.log("VAL",VAL);
-
-        let canvas = document.getElementById(activeCanvasID);
-
-        // // Listen to parameter changes from the device
-        // device.parameterChangeEvent.subscribe(param => {
-        //     if (!isDraggingSlider)
-        //         uiElements[param.id].slider.value = param.value;
-        //         uiElements[param.id].text.value = param.value.toFixed(1);
-        // });
-
-                // param is of type Parameter
-        // const param = device.parametersById.get("gain");
-        // param.value = VAL[0]*157.0;
-        const param_gain = device.parametersById.get("gain");
-        param_gain.value = VAL[0]*157.0;
-
-        const param_prob = device.parametersById.get("prob");
-        param_prob.value = VAL[1]*60;
-
-        const param_time = device.parametersById.get("time");
-        param_time.value = 100 + VAL[2]*(4000-100);
-        // param_time.value = 100 + VAL[2]*(4000-100);
-
-        drawKnob(canvas,val);
-
-        lastY = y;
-        LASTY[activeCanvasNum] = lastY;
-        // console.log("LASTY",LASTY);
-
-    });
-    
 
 
 
 
-    console.log("hi")
 
-    muteControl.addEventListener('click', (event) => {
-
-        currentMuteState = 1 - currentMuteState; 
-        console.log("currentMuteState",currentMuteState);
-        outputNode.gain.setValueAtTime(currentMuteState, context.currentTime);
-        drawToggle(muteControl,currentMuteState);
-
-    });
-
-
-
-
-    let isToggled = false; 
-
-    muteControl.addEventListener("touchstart", (event) => {
-
-        event.preventDefault();
-
-        isToggled = !isToggled; 
-
-        currentMuteState = 1 - currentMuteState; 
-        console.log("currentMuteState (touched)",currentMuteState);
-        outputNode.gain.setValueAtTime(currentMuteState, context.currentTime);
-        drawToggle(muteControl,currentMuteState);
-
-    }); 
-
-
-
-    ///////// INITIAL PARAMETER SETTING
-    const param_gain = device.parametersById.get("gain");
-    param_gain.value = VAL[0]*157.0;
-
-    const param_prob = device.parametersById.get("prob");
-    param_prob.value = VAL[1]*60;
-
-    const param_time = device.parametersById.get("time");
-    param_time.value = 100 + VAL[2]*(4000-100);
     // param_time.value = 100 + VAL[2]*(4000-100);
 
     // drawKnob(canvas2,VAL[1]);
@@ -474,4 +495,4 @@ function setupCanvases(device) {
 
 
 
-setup();
+// setup();
