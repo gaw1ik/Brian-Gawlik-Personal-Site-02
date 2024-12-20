@@ -45,7 +45,6 @@ async function playSound() {
 async function setup() {
     const patchExportURL = "export/patch.export.json";
 
-    // await playSound();
 
 
 
@@ -186,10 +185,15 @@ async function setup() {
         const param_time = device.parametersById.get("time");
         param_time.value = 100 + VAL[2]*(4000-100);
 
-        let isDragging = false;
+        const param_curve = device.parametersById.get("curve");
+        param_curve.value = -0.90 + VAL[3]*(32 - -0.90);
+
+        isDragging = false;
 
 
         document.addEventListener('mousemove', (event) => {
+
+            console.log("isDragging",isDragging)
             if (!isDragging) return;
     
             // startX = lastX;
@@ -226,12 +230,19 @@ async function setup() {
             // param.value = VAL[0]*157.0;
             const param_gain = device.parametersById.get("gain");
             param_gain.value = VAL[0]*157.0;
+            console.log("gain",param_gain.value);
     
             const param_prob = device.parametersById.get("prob");
             param_prob.value = VAL[1]*60;
+            console.log("prob",param_prob.value);
     
             const param_time = device.parametersById.get("time");
             param_time.value = 100 + VAL[2]*(4000-100);
+            console.log("time",param_time.value);
+
+            const param_curve = device.parametersById.get("curve");
+            param_curve.value = -0.90 + VAL[3]*(32 - -0.90);
+            console.log("release",param_curve.value);
             // param_time.value = 100 + VAL[2]*(4000-100);
     
             drawKnob(canvas,val);
@@ -383,7 +394,7 @@ function setupCanvases() {
 
     // INITIAL STATE VALUES
     currentMuteState = 1;
-    VAL = [0.75,0.15,0.03,0.0]; // Initial Param Values
+    VAL = [0.75,0.15,0.03,0.1]; // Initial Param Values
     LASTY = [0,0,0,0];
 
     xC_arr = [];
@@ -460,6 +471,8 @@ function setupCanvases() {
         canvas.addEventListener('mousedown', (event) => {
             
             isDragging = true;
+            console.log("isDragging",isDragging)
+
             lastX = event.clientX - canvas.offsetLeft;
             lastY = event.clientY - canvas.offsetTop;
             thisCanvasOffsetLeft = canvas.offsetLeft
@@ -471,6 +484,8 @@ function setupCanvases() {
 
         document.addEventListener('mouseup', () => {
             isDragging = false;
+            console.log("isDragging",isDragging)
+
         });
     }
     
