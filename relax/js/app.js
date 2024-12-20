@@ -177,16 +177,30 @@ async function setup() {
 
         ///////// INITIAL PARAMETER SETTING
         const param_gain = device.parametersById.get("gain");
-        param_gain.value = VAL[0]*157.0;
-    
+        thevalue = VAL[0]*157.0;
+        param_gain.value = thevalue;
+        console.log("gain",thevalue);
+        document.getElementById("canvas1label").textContent = "Drive (" + thevalue.toFixed(0) + " dB)";
+
+
         const param_prob = device.parametersById.get("prob");
-        param_prob.value = VAL[1]*60;
-    
+        thevalue = VAL[1]*60;
+        param_prob.value = thevalue;
+        console.log("prob",thevalue);
+        document.getElementById("canvas2label").textContent = "Density (" + thevalue.toFixed(0) + "%)";
+
         const param_time = device.parametersById.get("time");
-        param_time.value = 100 + VAL[2]*(4000-100);
+        thevalue = 100 + VAL[2]*(4000-100);
+        param_time.value = thevalue;
+        console.log("time",thevalue);
+        document.getElementById("canvas3label").textContent = "Time (" + thevalue.toFixed(0) + "ms)";
 
         const param_curve = device.parametersById.get("curve");
-        param_curve.value = -0.90 + VAL[3]*(32 - -0.90);
+        thevalue = -0.90 + VAL[3]*(32 - -0.90);
+        param_curve.value = thevalue;
+        console.log("release",thevalue);
+        document.getElementById("canvas4label").textContent = "Release (" + thevalue.toFixed(1) + ")";
+
 
         isDragging = false;
 
@@ -228,22 +242,33 @@ async function setup() {
                     // param is of type Parameter
             // const param = device.parametersById.get("gain");
             // param.value = VAL[0]*157.0;
+            var thevalue;
+
+
             const param_gain = device.parametersById.get("gain");
-            param_gain.value = VAL[0]*157.0;
-            console.log("gain",param_gain.value);
+            thevalue = VAL[0]*157.0;
+            param_gain.value = thevalue;
+            console.log("gain",thevalue);
+            document.getElementById("canvas1label").textContent = "Drive (" + thevalue.toFixed(0) + " dB)";
+
     
             const param_prob = device.parametersById.get("prob");
-            param_prob.value = VAL[1]*60;
-            console.log("prob",param_prob.value);
-    
+            thevalue = VAL[1]*60;
+            param_prob.value = thevalue;
+            console.log("prob",thevalue);
+            document.getElementById("canvas2label").textContent = "Density (" + thevalue.toFixed(0) + "%)";
+
             const param_time = device.parametersById.get("time");
-            param_time.value = 100 + VAL[2]*(4000-100);
-            console.log("time",param_time.value);
+            thevalue = 100 + VAL[2]*(4000-100);
+            param_time.value = thevalue;
+            console.log("time",thevalue);
+            document.getElementById("canvas3label").textContent = "Time (" + thevalue.toFixed(0) + "ms)";
 
             const param_curve = device.parametersById.get("curve");
-            param_curve.value = -0.90 + VAL[3]*(32 - -0.90);
-            console.log("release",param_curve.value);
-            // param_time.value = 100 + VAL[2]*(4000-100);
+            thevalue = -0.90 + VAL[3]*(32 - -0.90);
+            param_curve.value = thevalue;
+            console.log("release",thevalue);
+            document.getElementById("canvas4label").textContent = "Release (" + thevalue.toFixed(1) + ")";
     
             drawKnob(canvas,val);
     
