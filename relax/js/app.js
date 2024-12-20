@@ -149,7 +149,7 @@ async function setup() {
 
     // With ParameterNotificationSetting.All, the device AND the parameter emit an event when we change the value
     param_monosynth1note.changeEvent.subscribe((v) => {
-        console.log(`ChangeEvent: ${v}`);
+        // console.log(`ChangeEvent: ${v}`);
         // vizCall = vizCallMax; // this resets the viz
     });
 
@@ -193,7 +193,7 @@ async function setup() {
 
         document.addEventListener('mousemove', (event) => {
 
-            console.log("isDragging",isDragging)
+            // console.log("isDragging",isDragging)
             if (!isDragging) return;
     
             // startX = lastX;
@@ -471,7 +471,7 @@ function setupCanvases() {
         canvas.addEventListener('mousedown', (event) => {
             
             isDragging = true;
-            console.log("isDragging",isDragging)
+            // console.log("isDragging",isDragging)
 
             lastX = event.clientX - canvas.offsetLeft;
             lastY = event.clientY - canvas.offsetTop;
@@ -484,7 +484,7 @@ function setupCanvases() {
 
         document.addEventListener('mouseup', () => {
             isDragging = false;
-            console.log("isDragging",isDragging)
+            // console.log("isDragging",isDragging)
 
         });
     }
