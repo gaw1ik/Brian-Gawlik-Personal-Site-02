@@ -180,7 +180,7 @@ async function setup() {
         thevalue = VAL[0]*157.0;
         param_gain.value = thevalue;
         console.log("gain",thevalue);
-        document.getElementById("canvas1label").textContent = "Drive (" + thevalue.toFixed(0) + " dB)";
+        document.getElementById("canvas1label").textContent = "Drive (" + thevalue.toFixed(0) + ")";
 
 
         const param_prob = device.parametersById.get("prob");
@@ -249,7 +249,7 @@ async function setup() {
             thevalue = VAL[0]*157.0;
             param_gain.value = thevalue;
             console.log("gain",thevalue);
-            document.getElementById("canvas1label").textContent = "Drive (" + thevalue.toFixed(0) + " dB)";
+            document.getElementById("canvas1label").textContent = "Drive (" + thevalue.toFixed(0) + ")";
 
     
             const param_prob = device.parametersById.get("prob");
