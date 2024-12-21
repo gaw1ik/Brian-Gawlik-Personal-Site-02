@@ -206,80 +206,80 @@ async function setup() {
         isTouching = false;
 
 
-        // document.addEventListener('mousemove', (event) => {
+        document.addEventListener('mousemove', (event) => {
 
-        //     // console.log("isDragging",isDragging)
-        //     if (!isDragging) return;
+            // console.log("isDragging",isDragging)
+            if (!isDragging) return;
     
-        //     // startX = lastX;
-        //     // lastY = startY;
+            // startX = lastX;
+            // lastY = startY;
     
-        //     const x = event.clientX;
-        //     const y = event.clientY;
-        //      //const x = event.clientX - thisCanvasOffsetLeft;
-        //     //const y = event.clientY - thisCanvasOffsetTop;
+            const x = event.clientX;
+            const y = event.clientY;
+             //const x = event.clientX - thisCanvasOffsetLeft;
+            //const y = event.clientY - thisCanvasOffsetTop;
     
-        //     // calculate delta movements
+            // calculate delta movements
     
-        //     let dy = y - lastY;
-        //     //dx = startX - x;
-        //     //dxy = dy+dx;
+            let dy = y - lastY;
+            //dx = startX - x;
+            //dxy = dy+dx;
     
-        //     let v = VAL[activeCanvasNum] - dy*0.007;
+            let v = VAL[activeCanvasNum] - dy*0.007;
     
-        //     val = Math.min(Math.max(0,v),1);
+            val = Math.min(Math.max(0,v),1);
     
-        //     VAL[activeCanvasNum] = val;
+            VAL[activeCanvasNum] = val;
     
-        //     // console.log("VAL",VAL);
+            // console.log("VAL",VAL);
     
-        //     let canvas = document.getElementById(activeCanvasID);
+            let canvas = document.getElementById(activeCanvasID);
     
-        //     // // Listen to parameter changes from the device
-        //     // device.parameterChangeEvent.subscribe(param => {
-        //     //     if (!isDraggingSlider)
-        //     //         uiElements[param.id].slider.value = param.value;
-        //     //         uiElements[param.id].text.value = param.value.toFixed(1);
-        //     // });
+            // // Listen to parameter changes from the device
+            // device.parameterChangeEvent.subscribe(param => {
+            //     if (!isDraggingSlider)
+            //         uiElements[param.id].slider.value = param.value;
+            //         uiElements[param.id].text.value = param.value.toFixed(1);
+            // });
     
-        //             // param is of type Parameter
-        //     // const param = device.parametersById.get("gain");
-        //     // param.value = VAL[0]*157.0;
-        //     var thevalue;
+                    // param is of type Parameter
+            // const param = device.parametersById.get("gain");
+            // param.value = VAL[0]*157.0;
+            var thevalue;
 
 
-        //     const param_gain = device.parametersById.get("gain");
-        //     thevalue = VAL[0]*157.0;
-        //     param_gain.value = thevalue;
-        //     // console.log("gain",thevalue);
-        //     document.getElementById("canvas1label").textContent = "Drive (" + thevalue.toFixed(0) + ")";
+            const param_gain = device.parametersById.get("gain");
+            thevalue = VAL[0]*157.0;
+            param_gain.value = thevalue;
+            // console.log("gain",thevalue);
+            document.getElementById("canvas1label").textContent = "Drive (" + thevalue.toFixed(0) + ")";
 
     
-        //     const param_prob = device.parametersById.get("prob");
-        //     thevalue = VAL[1]*60;
-        //     param_prob.value = thevalue;
-        //     // console.log("prob",thevalue);
-        //     document.getElementById("canvas2label").textContent = "Density (" + thevalue.toFixed(0) + "%)";
+            const param_prob = device.parametersById.get("prob");
+            thevalue = VAL[1]*60;
+            param_prob.value = thevalue;
+            // console.log("prob",thevalue);
+            document.getElementById("canvas2label").textContent = "Density (" + thevalue.toFixed(0) + "%)";
 
-        //     const param_time = device.parametersById.get("time");
-        //     thevalue = 100 + VAL[2]*(4000-100);
-        //     param_time.value = thevalue;
-        //     // console.log("time",thevalue);
-        //     document.getElementById("canvas3label").textContent = "Time (" + thevalue.toFixed(0) + "ms)";
+            const param_time = device.parametersById.get("time");
+            thevalue = 100 + VAL[2]*(4000-100);
+            param_time.value = thevalue;
+            // console.log("time",thevalue);
+            document.getElementById("canvas3label").textContent = "Time (" + thevalue.toFixed(0) + "ms)";
 
-        //     const param_curve = device.parametersById.get("curve");
-        //     thevalue = -0.90 + VAL[3]*(32 - -0.90);
-        //     param_curve.value = thevalue;
-        //     // console.log("release",thevalue);
-        //     document.getElementById("canvas4label").textContent = "Release (" + thevalue.toFixed(1) + ")";
+            const param_curve = device.parametersById.get("curve");
+            thevalue = -0.90 + VAL[3]*(32 - -0.90);
+            param_curve.value = thevalue;
+            // console.log("release",thevalue);
+            document.getElementById("canvas4label").textContent = "Release (" + thevalue.toFixed(1) + ")";
     
-        //     drawKnob(canvas,val);
+            drawKnob(canvas,val);
     
-        //     lastY = y;
-        //     LASTY[activeCanvasNum] = lastY;
-        //     // console.log("LASTY",LASTY);
+            lastY = y;
+            LASTY[activeCanvasNum] = lastY;
+            console.log("LASTY",LASTY);
     
-        // });
+        });
 
 
         document.addEventListener('touchmove', (event) => {
@@ -535,25 +535,27 @@ function setupCanvases() {
 
         let canvas = CANVAS[i];
 
-        // canvas.addEventListener('mousedown', (event) => {
+        canvas.addEventListener('mousedown', (event) => {
             
-        //     isDragging = true;
-        //     // console.log("isDragging",isDragging)
+            isDragging = true;
+            // console.log("isDragging",isDragging)
 
-        //     lastX = event.clientX - canvas.offsetLeft;
-        //     lastY = event.clientY - canvas.offsetTop;
-        //     //thisCanvasOffsetLeft = canvas.offsetLeft
-        //     //thisCanvasOffsetTop = canvas.offsetTop
-        //     activeCanvasID = event.target.id;
-        //     activeCanvasNum = activeCanvasID.substr(6,1) - 1; // index of the current active canvas (0,1,2,3,etc)
-        //     console.log("event.target.id",event.target.id);
-        // });
+            // lastX = event.clientX - canvas.offsetLeft;
+            // lastY = event.clientY - canvas.offsetTop;
+            lastX = event.clientX;
+            lastY = event.clientY;
+            //thisCanvasOffsetLeft = canvas.offsetLeft
+            //thisCanvasOffsetTop = canvas.offsetTop
+            activeCanvasID = event.target.id;
+            activeCanvasNum = activeCanvasID.substr(6,1) - 1; // index of the current active canvas (0,1,2,3,etc)
+            console.log("event.target.id",event.target.id);
+        });
 
-        // document.addEventListener('mouseup', () => {
-        //     isDragging = false;
-        //     // console.log("isDragging",isDragging)
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+            // console.log("isDragging",isDragging)
 
-        // });
+        });
 
 
         canvas.addEventListener('touchstart', (event) => {
