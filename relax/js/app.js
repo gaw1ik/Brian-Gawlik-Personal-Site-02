@@ -432,6 +432,9 @@ function handleResize() {
     window_innerWidth = window.innerWidth;
     window_innerHeight = window.innerHeight;
 
+    siteContainer = document.getElementById("siteContainer");
+    siteContainer.style.height = window_innerHeight + "px";
+
     if(window_innerWidth < mobileCutoff) {
         let controlRow01 = document.getElementById("controlRow01");
         controlRow01.style.gridTemplateRows = "200px 200px";
@@ -504,7 +507,9 @@ function setupCanvases() {
     
 
 
-    console.log("window loaded")
+    console.log("window loaded");
+
+    
 
     myrng = new Math.seedrandom();
 
