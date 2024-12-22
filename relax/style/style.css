@@ -131,6 +131,15 @@ h2, em {
 
 canvas {
     -webkit-tap-highlight-color: transparent;
+    user-select:none;
+}
+
+.dial {
+    /* cursor: default; */
+}
+
+.toggle {
+    cursor: pointer;
 }
 
 h1 {
@@ -149,7 +158,16 @@ h1 {
     left: 0;
     top: 0;
     user-select:none;
+}
 
+#briangawliktag {
+    font-size: 2rem;
+    position: absolute;
+    right:30px;
+    bottom: 30px;
+    user-select:none;
+    text-decoration:none;
+    color:hsl(200, 50%, 50%, 0.5);
 }
 
 h3 {
