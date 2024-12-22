@@ -1,14 +1,20 @@
+// GLOBAL VARS
+mobileCutoff = 700;
 
-document.body.addEventListener('click', playSound) ;
+
+
+
+// document.body.addEventListener('click', playSound) ;
+
 
 async function silenceTrick() {
     el = document.createElement( 'audio' );
     el.id = "silence";
     el.loop = true;
-    el.src = 'silence.mp3'; // media file with tiny bit of silence
+    // el.src = 'silence.mp3'; // media file with tiny bit of silence
     el.volume = 0.2;
     el.play();
-    console.log("silence playing")
+    // console.log("silence playing")
 }
 
 window.addEventListener("load", setupCanvases); // commented this out bc setupCanvases() is already called in setup()
@@ -24,14 +30,30 @@ async function playSound() {
     WAContext = window.AudioContext || window.webkitAudioContext; // const
     context = new WAContext(); // const
 
-    // Create gain node and connect it to audio output
-    outputNode = context.createGain(); // const
-    outputNode.connect(context.destination);
+    const audioElementSource = context.createMediaElementSource(el);
 
-    document.getElementById("clickMessage").textContent = "";
+    gainNode = context.createGain(); // const
+
+
+    // Create gain node and connect it to audio output
+    audioElementSource.connect(gainNode).connect(context.destination);
+    // gainNode.connect(context.destination);
+
+
+    // document.getElementById("clickMessage").textContent = "";
     context.resume();
 
-    document.body.removeEventListener('click', playSound);
+    // document.body.removeEventListener('click', playSound);
+
+    currentMuteState = 1 - currentMuteState; 
+    console.log("currentMuteState",currentMuteState);
+    gainNode.gain.setValueAtTime(currentMuteState, context.currentTime);
+    drawToggle(muteControl,currentMuteState,0);
+
+    // document.getElementById("clickhereText").textContent = "ON";
+
+    muteControl.removeEventListener('click', playSound);
+
 
 
     setup();
@@ -55,7 +77,7 @@ async function setup() {
 
     // document.body.onclick = () => {
     //     document.getElementById("titleHeader").textContent = "Relax";
-    //     // outputNode.connect(context.destination);
+    //     // gainNode.connect(context.destination);
     //     context.resume();
     // }
 
@@ -138,7 +160,7 @@ async function setup() {
         await device.loadDataBufferDependencies(dependencies);
 
     // Connect the device to the web audio graph
-    device.node.connect(outputNode);
+    device.node.connect(gainNode);
 
 
     // Let's assume this exists in our patcher
@@ -153,56 +175,26 @@ async function setup() {
         // vizCall = vizCallMax; // this resets the viz
     });
 
-    param_rms.changeEvent.subscribe((v) => {
+    param_rms.changeEvent.subscribe((rms) => {
         // console.log(`RMS: ${v}`);
-        drawVisualizer(canvasViz01,v);
+        drawVisualizer(canvasViz01,rms);
+        drawToggle(muteControl,currentMuteState,rms);
     });
 
-    // device.parameterChangeEvent.subscribe((v) => {
-    //     console.log(`ParameterChangeEvent: ${v}`);
-    // });
 
-
-
-
-
-
-    // // Skip if you're not using guardrails.js
-    // if (typeof guardrails === "function")
-    //     guardrails();
-
-
-    // setupCanvases(device);
 
 
         ///////// INITIAL PARAMETER SETTING
-        const param_gain = device.parametersById.get("gain");
-        thevalue = VAL[0]*157.0;
-        param_gain.value = thevalue;
-        console.log("gain",thevalue);
-        document.getElementById("canvas1label").textContent = "Drive (" + thevalue.toFixed(0) + ")";
+        assignParam_gain(device);
+    
+        assignParam_prob(device);
 
+        assignParam_time(device);
 
-        const param_prob = device.parametersById.get("prob");
-        thevalue = VAL[1]*60;
-        param_prob.value = thevalue;
-        console.log("prob",thevalue);
-        document.getElementById("canvas2label").textContent = "Density (" + thevalue.toFixed(0) + "%)";
-
-        const param_time = device.parametersById.get("time");
-        thevalue = 100 + VAL[2]*(4000-100);
-        param_time.value = thevalue;
-        console.log("time",thevalue);
-        document.getElementById("canvas3label").textContent = "Time (" + thevalue.toFixed(0) + "ms)";
-
-        const param_curve = device.parametersById.get("curve");
-        thevalue = -0.90 + VAL[3]*(32 - -0.90);
-        param_curve.value = thevalue;
-        console.log("release",thevalue);
-        document.getElementById("canvas4label").textContent = "Release (" + thevalue.toFixed(1) + ")";
-
+        assignParam_curve(device);
 
         isDragging = false;
+        isTouching = false;
 
 
         document.addEventListener('mousemove', (event) => {
@@ -213,8 +205,10 @@ async function setup() {
             // startX = lastX;
             // lastY = startY;
     
-            const x = event.clientX - thisCanvasOffsetLeft;
-            const y = event.clientY - thisCanvasOffsetTop;
+            const x = event.clientX;
+            const y = event.clientY;
+             //const x = event.clientX - thisCanvasOffsetLeft;
+            //const y = event.clientY - thisCanvasOffsetTop;
     
             // calculate delta movements
     
@@ -232,44 +226,62 @@ async function setup() {
     
             let canvas = document.getElementById(activeCanvasID);
     
-            // // Listen to parameter changes from the device
-            // device.parameterChangeEvent.subscribe(param => {
-            //     if (!isDraggingSlider)
-            //         uiElements[param.id].slider.value = param.value;
-            //         uiElements[param.id].text.value = param.value.toFixed(1);
-            // });
+
+            // var adjustedValue;
+
+
+            assignParam_gain(device);
     
-                    // param is of type Parameter
-            // const param = device.parametersById.get("gain");
-            // param.value = VAL[0]*157.0;
-            var thevalue;
-
-
-            const param_gain = device.parametersById.get("gain");
-            thevalue = VAL[0]*157.0;
-            param_gain.value = thevalue;
-            console.log("gain",thevalue);
-            document.getElementById("canvas1label").textContent = "Drive (" + thevalue.toFixed(0) + ")";
-
+            assignParam_prob(device);
     
-            const param_prob = device.parametersById.get("prob");
-            thevalue = VAL[1]*60;
-            param_prob.value = thevalue;
-            console.log("prob",thevalue);
-            document.getElementById("canvas2label").textContent = "Density (" + thevalue.toFixed(0) + "%)";
-
-            const param_time = device.parametersById.get("time");
-            thevalue = 100 + VAL[2]*(4000-100);
-            param_time.value = thevalue;
-            console.log("time",thevalue);
-            document.getElementById("canvas3label").textContent = "Time (" + thevalue.toFixed(0) + "ms)";
-
-            const param_curve = device.parametersById.get("curve");
-            thevalue = -0.90 + VAL[3]*(32 - -0.90);
-            param_curve.value = thevalue;
-            console.log("release",thevalue);
-            document.getElementById("canvas4label").textContent = "Release (" + thevalue.toFixed(1) + ")";
+            assignParam_time(device);
     
+            assignParam_curve(device);
+
+            
+            drawKnob(canvas,val);
+    
+            lastY = y;
+            LASTY[activeCanvasNum] = lastY;
+            // console.log("LASTY",LASTY);
+    
+        });
+
+
+        document.addEventListener('touchmove', (event) => {
+
+            // console.log("touchmove")
+            if (!isTouching) return;
+
+            const touch = event.touches[0]; // Get the first touch point
+    
+            // const x = touch.clientX;
+            const y = touch.clientY;
+    
+            // calculate delta movements
+            let dy = y - lastY;
+    
+            let v = VAL[activeCanvasNum] - dy*0.007;
+    
+            val = Math.min(Math.max(0,v),1);
+    
+            VAL[activeCanvasNum] = val;
+    
+            // console.log("VAL",VAL);
+    
+            let canvas = document.getElementById(activeCanvasID);
+    
+            var adjustedValue;
+
+
+            assignParam_gain(device);
+    
+            assignParam_prob(device);
+    
+            assignParam_time(device);
+    
+            assignParam_curve(device);
+
             drawKnob(canvas,val);
     
             lastY = y;
@@ -283,12 +295,14 @@ async function setup() {
     
     
         // console.log("hi")
+
+
     
         muteControl.addEventListener('click', (event) => {
     
             currentMuteState = 1 - currentMuteState; 
             console.log("currentMuteState",currentMuteState);
-            outputNode.gain.setValueAtTime(currentMuteState, context.currentTime);
+            gainNode.gain.setValueAtTime(currentMuteState, context.currentTime);
             drawToggle(muteControl,currentMuteState);
     
         });
@@ -306,7 +320,7 @@ async function setup() {
     
             currentMuteState = 1 - currentMuteState; 
             console.log("currentMuteState (touched)",currentMuteState);
-            outputNode.gain.setValueAtTime(currentMuteState, context.currentTime);
+            gainNode.gain.setValueAtTime(currentMuteState, context.currentTime);
             drawToggle(muteControl,currentMuteState);
     
         }); 
@@ -317,6 +331,14 @@ async function setup() {
 
 
 }
+
+
+
+
+
+
+
+
 
 function loadRNBOScript(version) {
     return new Promise((resolve, reject) => {
@@ -344,6 +366,16 @@ function handleResize() {
     window_innerWidth = window.innerWidth;
     window_innerHeight = window.innerHeight;
 
+    if(window_innerWidth < mobileCutoff) {
+        let controlRow01 = document.getElementById("controlRow01");
+        controlRow01.style.gridTemplateRows = "200px 200px";
+        controlRow01.style.gridTemplateColumns = "200px 200px";
+    } else {
+        let controlRow01 = document.getElementById("controlRow01");
+        controlRow01.style.gridTemplateRows = "200px";
+        controlRow01.style.gridTemplateColumns = "200px 200px 200px 200px";
+    }
+
 
     ////////// Visualizer Canvas
     WIDTHSTYLE_VIZ = window_innerWidth;
@@ -359,11 +391,12 @@ function handleResize() {
 
 
     ////////// Control Canvases
-    if( window_innerHeight/window_innerWidth < 1 ) {
+    if( window_innerWidth > mobileCutoff ) { //horizontal
         HEIGHTSTYLE = window_innerHeight*0.15;
         WIDTHSTYLE = HEIGHTSTYLE;
-    } else {
-        WIDTHSTYLE = window_innerWidth*0.2;
+    } else { // vertical
+        // WIDTHSTYLE = window_innerWidth*0.2;
+        WIDTHSTYLE = 150;
         HEIGHTSTYLE = WIDTHSTYLE;
     }
 
@@ -385,7 +418,7 @@ function handleResize() {
     muteControl.style.width = WIDTHSTYLE.toString() + "px";
     muteControl.style.height = HEIGHTSTYLE.toString() + "px";
 
-    drawToggle(muteControl,currentMuteState);
+    drawToggle(muteControl,currentMuteState,0);
 
 
 
@@ -418,7 +451,7 @@ function setupCanvases() {
 
 
     // INITIAL STATE VALUES
-    currentMuteState = 1;
+    currentMuteState = 0;
     VAL = [0.75,0.15,0.03,0.1]; // Initial Param Values
     LASTY = [0,0,0,0];
 
@@ -442,10 +475,6 @@ function setupCanvases() {
 
     canvasViz01 = document.getElementById("canvasViz01");
 
-    // WIDTHSTYLE = window.innerWidth*0.1;
-    // HEIGHTSTYLE = WIDTHSTYLE;
-    // WIDTH = WIDTHSTYLE*2;
-    // HEIGHT = HEIGHTSTYLE*2;
 
 
 
@@ -460,32 +489,13 @@ function setupCanvases() {
 
     // /////////////////////////// INITIALIZE MUTE CONTROL SIZE
     muteControl = document.getElementById("mute");
+    muteControl.addEventListener('click', playSound);
+
 
 
 
     handleResize();
 
-    // ////////// Visualizer Canvas
-    // canvasViz01 = document.getElementById("canvasViz01");
-    // WIDTHSTYLE_VIZ = window.innerWidth;
-    // HEIGHTSTYLE_VIZ = window.innerHeight;
-    // WIDTH_VIZ = WIDTHSTYLE_VIZ*2;
-    // HEIGHT_VIZ = HEIGHTSTYLE_VIZ*2;
-
-    // canvasViz01.width = WIDTH_VIZ;
-    // canvasViz01.height = HEIGHT_VIZ;
-    // canvasViz01.style.width = WIDTHSTYLE_VIZ.toString() + "px";
-    // canvasViz01.style.height = HEIGHTSTYLE_VIZ.toString() + "px";
-
-
-
-
-
-
-
-
-
-    // let startX, startY;
 
 
 
@@ -498,10 +508,12 @@ function setupCanvases() {
             isDragging = true;
             // console.log("isDragging",isDragging)
 
-            lastX = event.clientX - canvas.offsetLeft;
-            lastY = event.clientY - canvas.offsetTop;
-            thisCanvasOffsetLeft = canvas.offsetLeft
-            thisCanvasOffsetTop = canvas.offsetTop
+            // lastX = event.clientX - canvas.offsetLeft;
+            // lastY = event.clientY - canvas.offsetTop;
+            lastX = event.clientX;
+            lastY = event.clientY;
+            //thisCanvasOffsetLeft = canvas.offsetLeft
+            //thisCanvasOffsetTop = canvas.offsetTop
             activeCanvasID = event.target.id;
             activeCanvasNum = activeCanvasID.substr(6,1) - 1; // index of the current active canvas (0,1,2,3,etc)
             console.log("event.target.id",event.target.id);
@@ -512,20 +524,35 @@ function setupCanvases() {
             // console.log("isDragging",isDragging)
 
         });
+
+
+        canvas.addEventListener('touchstart', (event) => {
+            
+            isTouching = true;
+            console.log("touchstart")
+
+            const touch = event.touches[0];
+            lastX = touch.clientX;
+            lastY = touch.clientY;
+            // thisCanvasOffsetLeft = canvas.offsetLeft
+            // thisCanvasOffsetTop = canvas.offsetTop
+            activeCanvasID = event.target.id;
+            activeCanvasNum = activeCanvasID.substr(6,1) - 1; // index of the current active canvas (0,1,2,3,etc)
+            console.log("event.target.id",event.target.id);
+        });
+
+        document.addEventListener('touchend', () => {
+            console.log("touchend")
+            isTouching = false;
+            // lastY[activeCanvasNum] = 0; // reset lastY back to 0
+            // console.log("isDragging",isDragging)
+
+        });
     }
     
     
 
 
-
-
-
-    // param_time.value = 100 + VAL[2]*(4000-100);
-
-    // drawKnob(canvas2,VAL[1]);
-    // drawKnob(canvas3,VAL[1]);
-    // // drawKnob(canvas3,VAL[2]);
-    // drawKnob(canvas4,VAL[3]);
 
 
 

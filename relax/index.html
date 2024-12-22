@@ -25,12 +25,9 @@
             <canvas id="canvasViz01"></canvas>
         </div>
 
-        <div id="versionNumber">Version 1.03-david-2</div>
+        <div id="versionNumber">Version 1.04a</div>
 
         <div id="controlsContainer01">
-
-
-    
 
 
             <!-- Load the script that creates the RNBO device  -->
@@ -47,14 +44,24 @@
             <script type="text/javascript" src="js/drawKnob01.js"></script>
             <script type="text/javascript" src="js/drawVisualizer01.js"></script>
             <script type="text/javascript" src="js/drawToggle01.js"></script>
+            <script type="text/javascript" src="js/assignParamFuncs01.js"></script>
 
 
-            <h1 id="titleHeader">Relax</h1>
-            <h3 id="clickMessage">(click/tap anywhere to begin)</h1>
+
+            <div id="controlRow02">
+                <h1 id="titleHeader">Relax</h1>
+
+                <div>
+                    <div id="clickhereText">(click here to begin)</div>
+                    <canvas id="mute"></canvas>
+                </div>
+            </div>
+
+            <!-- <h3 id="clickMessage">(click/tap anywhere to begin)</h1> -->
 
             
 
-            <div class="controlRow01">
+            <div id="controlRow01">
                 <div>
                     <canvas id="canvas1"></canvas>
                     <h3 id="canvas1label">Drive</h3>
@@ -73,12 +80,7 @@
                 </div>
             </div>
 
-            <div class="controlRow01">
-                <div>
-                    <canvas id="mute"></canvas>
-                    <h3 id="muteText">Mute</h3>
-                </div>
-            </div>
+
 
 
 
