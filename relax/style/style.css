@@ -113,7 +113,7 @@ h2, em {
 
 #controlRow02 {
     display:grid;
-    grid-template-rows:200px;
+    grid-template-rows:100px;
     /* grid-template-columns:200px 200px; */
     grid-template-columns:1fr 1fr;
 
@@ -149,6 +149,7 @@ h1 {
     font-style: normal;
     font-size: 5rem;
     user-select:none;
+    margin:0;
     /* overflow:hidden; */
 }
 
