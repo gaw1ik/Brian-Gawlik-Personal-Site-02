@@ -1,5 +1,5 @@
 // GLOBAL VARS
-mobileCutoff = 700;
+mobileCutoff = 800;
 
 
 
@@ -240,7 +240,11 @@ async function setup() {
             assignParam_curve(device);
 
             
-            drawKnob(canvas,val);
+            if(activeCanvasNum==0) {
+                drawKnobDrive(canvas,val);
+            } else {
+                drawKnob(canvas,val);
+            }            
     
             lastY = y;
             LASTY[activeCanvasNum] = lastY;
@@ -283,7 +287,11 @@ async function setup() {
     
             assignParam_curve(device);
 
-            drawKnob(canvas,val);
+            if(activeCanvasNum==0) {
+                drawKnobDrive(canvas,val);
+            } else {
+                drawKnob(canvas,val);
+            }    
     
             lastY = y;
             LASTY[activeCanvasNum] = lastY;
@@ -435,14 +443,22 @@ function handleResize() {
     siteContainer = document.getElementById("siteContainer");
     siteContainer.style.height = window_innerHeight + "px";
 
-    if(window_innerWidth < mobileCutoff) {
+    clickhereText = document.getElementById("clickhereText");
+
+
+    if(window_innerWidth < mobileCutoff) { // Mobile
         let controlRow01 = document.getElementById("controlRow01");
         controlRow01.style.gridTemplateRows = "200px 200px";
         controlRow01.style.gridTemplateColumns = "200px 200px";
-    } else {
+        clickhereText.style.top = "20%";
+        clickhereText.style.left = "64%";
+
+    } else { // Desktop
         let controlRow01 = document.getElementById("controlRow01");
         controlRow01.style.gridTemplateRows = "200px";
         controlRow01.style.gridTemplateColumns = "200px 200px 200px 200px";
+        clickhereText.style.top = "30%";
+        clickhereText.style.left = "69%";
     }
 
 
@@ -460,13 +476,13 @@ function handleResize() {
 
 
     ////////// Control Canvases
-    if( window_innerWidth > mobileCutoff ) { //horizontal
-        HEIGHTSTYLE = window_innerHeight*0.15;
-        WIDTHSTYLE = HEIGHTSTYLE;
-    } else { // vertical
+    if( window_innerWidth < mobileCutoff ) { //horizontal
         // WIDTHSTYLE = window_innerWidth*0.2;
         WIDTHSTYLE = 150;
         HEIGHTSTYLE = WIDTHSTYLE;
+    } else { // vertical
+        HEIGHTSTYLE = window_innerHeight*0.15;
+        WIDTHSTYLE = HEIGHTSTYLE;
     }
 
     WIDTH = WIDTHSTYLE*2;
@@ -478,7 +494,12 @@ function handleResize() {
         canvas.height = HEIGHT;
         canvas.style.width = WIDTHSTYLE.toString() + "px";
         canvas.style.height = HEIGHTSTYLE.toString() + "px";
-        drawKnob(canvas,VAL[i]);
+        let val = VAL[i];
+        if(i==0) {
+            drawKnobDrive(canvas,val);
+        } else {
+            drawKnob(canvas,val);
+        }    
     }
 
     ////////// Mute Control Canvas
@@ -509,6 +530,7 @@ function setupCanvases() {
 
     console.log("window loaded");
 
+
     
 
     myrng = new Math.seedrandom();
@@ -523,7 +545,9 @@ function setupCanvases() {
 
     // INITIAL STATE VALUES
     currentMuteState = 0;
-    VAL = [0.75,0.15,0.03,0.1]; // Initial Param Values
+    // VAL = [0.75,0.15,0.03,0.1]; // Initial Param Values
+    // VAL = [0.832, 0.15, 0.30, 0.22];
+    VAL = [0.833, 0.500, 0.594, 0.682];
     LASTY = [0,0,0,0];
 
     xC_arr = [];
@@ -565,10 +589,18 @@ function setupCanvases() {
 
 
 
+
+
+
+
     handleResize();
 
 
-
+    // let muteControl_clientRectX = muteControl.getBoundingClientRect().x;
+    // let muteControl_clientRectY = muteControl.getBoundingClientRect().y;
+    // let clickhereText = document.getElementById("clickhereText");
+    // clickhereText.style.left = muteControl_clientRectX + 15 + "px";
+    // clickhereText.style.top  = muteControl_clientRectY + 90 + "px";
 
 
     

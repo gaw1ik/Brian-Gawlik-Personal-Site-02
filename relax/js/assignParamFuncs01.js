@@ -3,7 +3,7 @@
 
 function assignParam_gain(device) {
     const param_gain = device.parametersById.get("gain");
-    let adjustedValue = VAL[0]*157.0;
+    let adjustedValue = VAL[0]*120.0;
     param_gain.value = adjustedValue;
     document.getElementById("canvas1label").textContent = "Drive (" + adjustedValue.toFixed(0) + ")";
     // console.log("gain",adjustedValue);
@@ -29,9 +29,10 @@ function assignParam_time(device) {
 
 function assignParam_curve(device) {
     const param_curve = device.parametersById.get("curve");
-    let adjustedValue = calcParamValue(VAL[3],-0.9,32,2);
+    let adjustedValue = calcParamValue(1-VAL[3],-0.9,32,2);
     param_curve.value = adjustedValue;
-    document.getElementById("canvas4label").textContent = "Release (" + adjustedValue.toFixed(1) + ")";
+    let displayedValue = 1+ (VAL[3])*99;
+    document.getElementById("canvas4label").textContent = "Release (" + displayedValue.toFixed(0) + ")";
     // console.log("release",adjustedValue);
 }
 
