@@ -61,7 +61,7 @@ async function playSound() {
 };
 
 
-
+device = {};
 
 
 async function setup() {
@@ -143,7 +143,7 @@ async function setup() {
     } catch (e) {}
 
     // Create the device
-    let device;
+    device;
     try {
         device = await RNBO.createDevice({ context, patcher });
     } catch (err) {
