@@ -168,6 +168,10 @@ async function setup() {
 
     const param_rms = device.parametersById.get("rms");
 
+    // device.parametersById.get("test3").value = 1;
+
+
+
 
     // With ParameterNotificationSetting.All, the device AND the parameter emit an event when we change the value
     param_monosynth1note.changeEvent.subscribe((v) => {
@@ -193,9 +197,12 @@ async function setup() {
 
         assignParam_curve(device);
 
+        device.parametersById.get("master_cracklepop").value = 0.002;
+
         isDragging = false;
         isTouching = false;
 
+        // device.parametersById.get("test3").value = getRandomFloat();
 
         document.addEventListener('mousemove', (event) => {
 
@@ -299,6 +306,7 @@ async function setup() {
     
         });
 
+
         let canvases = document.getElementsByClassName("dial");
         for(let i=0; i<canvases.length; i++) {
             canvases[i].style.cursor="grab";
@@ -365,7 +373,7 @@ async function setup() {
         }
         
     
-    
+
     
     
         // console.log("hi")
@@ -378,6 +386,8 @@ async function setup() {
             console.log("currentMuteState",currentMuteState);
             gainNode.gain.setValueAtTime(currentMuteState, context.currentTime);
             drawToggle(muteControl,currentMuteState);
+            // device.parametersById.get("test3").value = getRandomFloat();
+
     
         });
     
@@ -547,7 +557,7 @@ function setupCanvases() {
     currentMuteState = 0;
     // VAL = [0.75,0.15,0.03,0.1]; // Initial Param Values
     // VAL = [0.832, 0.15, 0.30, 0.22];
-    VAL = [0.833, 0.500, 0.594, 0.682];
+    VAL = [0.833, 0.400, 0.594, 0.682];
     LASTY = [0,0,0,0];
 
     xC_arr = [];

@@ -14,7 +14,7 @@ function assignParam_prob(device) {
     const param_prob = device.parametersById.get("prob");
     let adjustedValue = calcParamValue(VAL[1],1,100,2);
     param_prob.value = adjustedValue;
-    document.getElementById("canvas2label").textContent = "Density (" + adjustedValue.toFixed(0) + "%)";
+    document.getElementById("canvas2label").textContent = "Chance (" + adjustedValue.toFixed(0) + "%)";
     // console.log("prob",adjustedValue);
 }
 
