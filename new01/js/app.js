@@ -61,45 +61,17 @@ async function playSound() {
 };
 
 
+
 device = {};
 
-
 async function setup() {
-    const patchExportURL = "export/patch.export.json";
+
+    const patchExportURL = "export/new01.export.json";
 
 
 
 
 
-    
-
-
-
-    // document.body.onclick = () => {
-    //     document.getElementById("titleHeader").textContent = "Relax";
-    //     // gainNode.connect(context.destination);
-    //     context.resume();
-    // }
-
-
-
-
-
-
-    // window.addEventListener('touchstart', playSoundIOS) 
-    
-    // function playSoundIOS() {
-    
-    //     document.getElementById("titleHeader").textContent = "Relax";
-    //     context.resume();
-    //     window.removeEventListener('touchstart', playSoundIOS);
-
-    // };
-
-
-
-    
-    
     // Fetch the exported patcher
     let response, patcher;
     try {
@@ -143,7 +115,7 @@ async function setup() {
     } catch (e) {}
 
     // Create the device
-    device;
+    // let device;
     try {
         device = await RNBO.createDevice({ context, patcher });
     } catch (err) {
@@ -164,20 +136,16 @@ async function setup() {
 
 
     // Let's assume this exists in our patcher
-    const param_monosynth1note = device.parametersById.get("monosynth1note");
+    // const param_monosynth1note = device.parametersById.get("monosynth1note");
 
     const param_rms = device.parametersById.get("rms");
 
-    // device.parametersById.get("test3").value = 1;
-
-
-
 
     // With ParameterNotificationSetting.All, the device AND the parameter emit an event when we change the value
-    param_monosynth1note.changeEvent.subscribe((v) => {
-        // console.log(`ChangeEvent: ${v}`);
-        // vizCall = vizCallMax; // this resets the viz
-    });
+    // param_monosynth1note.changeEvent.subscribe((v) => {
+    //     // console.log(`ChangeEvent: ${v}`);
+    //     // vizCall = vizCallMax; // this resets the viz
+    // });
 
     param_rms.changeEvent.subscribe((rms) => {
         // console.log(`RMS: ${v}`);
@@ -185,11 +153,12 @@ async function setup() {
         drawToggle(muteControl,currentMuteState,rms);
     });
 
+    setupParams();
 
 
 
         ///////// INITIAL PARAMETER SETTING
-        assignParam_gain(device);
+        assignParam_drive(device);
     
         assignParam_prob(device);
 
@@ -197,12 +166,9 @@ async function setup() {
 
         assignParam_curve(device);
 
-        device.parametersById.get("master_cracklepop").value = 0.002;
-
         isDragging = false;
         isTouching = false;
 
-        // device.parametersById.get("test3").value = getRandomFloat();
 
         document.addEventListener('mousemove', (event) => {
 
@@ -238,7 +204,7 @@ async function setup() {
             // var adjustedValue;
 
 
-            assignParam_gain(device);
+            assignParam_drive(device);
     
             assignParam_prob(device);
     
@@ -286,7 +252,7 @@ async function setup() {
             var adjustedValue;
 
 
-            assignParam_gain(device);
+            assignParam_drive(device);
     
             assignParam_prob(device);
     
@@ -305,7 +271,6 @@ async function setup() {
             // console.log("LASTY",LASTY);
     
         });
-
 
         let canvases = document.getElementsByClassName("dial");
         for(let i=0; i<canvases.length; i++) {
@@ -373,7 +338,7 @@ async function setup() {
         }
         
     
-
+    
     
     
         // console.log("hi")
@@ -386,8 +351,6 @@ async function setup() {
             console.log("currentMuteState",currentMuteState);
             gainNode.gain.setValueAtTime(currentMuteState, context.currentTime);
             drawToggle(muteControl,currentMuteState);
-            // device.parametersById.get("test3").value = getRandomFloat();
-
     
         });
     
@@ -409,17 +372,47 @@ async function setup() {
     
         }); 
 
+        
 
+        // setInterval(play_monosynth01,800,device);
+
+
+
+        setTimeout(play_monosynth01, TIME);
+
+
+
+
+        setTimeout(play_monosynth02, TIME*2);
+
+
+
+
+        setTimeout(play_polysynth01, TIME*4);
+
+
+
+
+        setTimeout(play_bass01, TIME*3);
 
 
 
 
 }
 
+TIME = 800;
+// PROB = 0.25;
 
 
 
 
+
+// function play_monosynth01() {
+//     console.log("play_monosynth01")
+//     const param_monosynth01deg = this.parametersById.get("monosynth01deg");
+//     let adjustedValue = 1;
+//     param_monosynth01deg.value = adjustedValue;
+// }
 
 
 
@@ -557,7 +550,7 @@ function setupCanvases() {
     currentMuteState = 0;
     // VAL = [0.75,0.15,0.03,0.1]; // Initial Param Values
     // VAL = [0.832, 0.15, 0.30, 0.22];
-    VAL = [0.917, 0.400, 0.594, 0.682];
+    VAL = [0.875, 0.500, 0.594, 0.682];
     LASTY = [0,0,0,0];
 
     xC_arr = [];
