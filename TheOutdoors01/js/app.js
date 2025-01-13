@@ -5,7 +5,7 @@ TIME = 800;
 window.addEventListener("load", setupCanvases); // commented this out bc setupCanvases() is already called in setup()
 
 
-
+window.scrollTo(0,1);
 
 document.body.addEventListener('click', playSound);
 
