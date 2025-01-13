@@ -23,7 +23,7 @@ function setInitialParams() {
         insects_freq:0.7,
 
         birds_gain:0.5,
-        birds_thresh:0.5,
+        birds_period0:0.5,
 
         master_gain:0.5,
         master_LPF:0.7,
@@ -87,7 +87,7 @@ function setupCanvases() {
 
     // // BIRDS
     // CANVAS.push( document.getElementById("canvas_birds_gain") );
-    // CANVAS.push( document.getElementById("canvas_birds_thresh") );
+    // CANVAS.push( document.getElementById("canvas_birds_period0") );
     // // CANVAS.push( document.getElementById("canvas_5c") );
 
     // CANVAS.push( document.getElementById("canvas_master_gain") );
@@ -129,7 +129,7 @@ function setupCanvases() {
 
     //     birds_gain:0,
     //     // birds_filt:0,
-    //     birds_thresh:0,
+    //     birds_period0:0,
 
     //     master_gain:0,
     //     master_filt:0,

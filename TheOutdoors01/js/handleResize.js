@@ -1,5 +1,7 @@
 function handleResize() {
 
+    mobileCutoff = 700;
+
     console.log("resize")
 
     window_innerWidth = window.innerWidth;
@@ -26,16 +28,31 @@ function handleResize() {
     //     clickhereText.style.left = "69%";
     // }
 
+    // let h1 = document.getElementsByTagName("h1");
+    // let h2 = document.getElementsByTagName("h2");
+    // let h3 = document.getElementsByTagName("h3"); 
+
+    // if(window_innerWidth < mobileCutoff) { // Mobile
+    //     h1.style.fontSize = '1rem';
+    //     h2.style.fontSize = '1rem';
+    //     h3.style.fontSize = '1rem'; 
+
+    // } else { // Desktop
+    //     h1.style.fontSize = '1rem';
+    //     h2.style.fontSize = '1rem';
+    //     h3.style.fontSize = '1rem'; 
+    // }
+
     let gridColumnWidth = Math.min(window_innerWidth*0.15,200);
     let gridLastColumnWidth = gridColumnWidth;
     // let gridLastColumnWidth = Math.min(window_innerWidth*0.075,250);
 
-    // controlRow01.style.gridTemplateColumns = "repeat(5, " + gridColumnWidth + "px)";
+    controlRow01.style.gridTemplateColumns = "repeat(5, " + gridColumnWidth + "px)";
     // controlRow01.style.gridTemplateColumns = gridColumnWidth + "px " + gridColumnWidth + "px " + gridColumnWidth + "px "+ gridColumnWidth + "px "+ gridLastColumnWidth + "px";
 
 
-    let controlRow0W2idth = gridColumnWidth*5;
-    controlRow02.style.gridTemplateColumns = controlRow0W2idth + "px)";
+    // let controlRow0W2idth = gridColumnWidth*5;
+    // controlRow02.style.gridTemplateColumns = controlRow0W2idth + "px)";
 
     ////////// Visualizer Canvas
     WIDTHSTYLE_VIZ = window_innerWidth;
@@ -85,6 +102,8 @@ function handleResize() {
 
     let controlRow01_width = document.getElementById("controlRow01").clientWidth;
     // let controlRow02_width = controlRow01_width;
+    // console.log("controlRow01_width",controlRow01_width)
+
     document.getElementById("controlRow02").style.width = controlRow01_width.toString() + "px";
 
 

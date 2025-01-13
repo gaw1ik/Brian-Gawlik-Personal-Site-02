@@ -1,5 +1,5 @@
 // GLOBAL VARS
-mobileCutoff = 800;
+// mobileCutoff = 800;
 device = {};
 TIME = 800;
 window.addEventListener("load", setupCanvases); // commented this out bc setupCanvases() is already called in setup()

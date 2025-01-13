@@ -75,17 +75,19 @@ h2, em {
     display:grid;
     /* grid-template-rows:200px 200px; */
     /* grid-template-columns:200px 200px; */
-    grid-template-rows: 400px;
-    grid-template-columns: auto auto auto auto auto;
+    /* grid-template-rows: 400px; */
+    grid-template-columns: repeat(5,1fr);
     justify-items:start;
     align-items:start;
 }
 
 #controlRow02 {
     display:grid;
-    grid-template-rows:150px;
+    /* grid-template-rows:150px; */
     /* grid-template-columns:200px 200px; */
-    grid-template-columns:1fr 1fr;
+    /* grid-template-columns:1fr 1fr; */
+    grid-template-columns:auto auto;
+
 
 
     justify-items:center;
@@ -140,6 +142,8 @@ canvas {
     left: 0;
     top: 0;
     user-select:none;
+    opacity: 30%;
+    margin: 0.5rem;
 }
 
 #briangawliktag {
@@ -157,7 +161,8 @@ h1 {
     font-family: "Alumni Sans Pinstripe", serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 5rem;
+    /* font-size: 5rem; */
+    font-size: min(8vw, 5rem);
     user-select:none;
     margin:0;
     color:hsl(130, 0%, 60%, 1.0);
@@ -168,7 +173,8 @@ h2 {
     font-family: "Alumni Sans Pinstripe", serif;
     font-weight: 500;
     font-style: normal;
-    font-size: 2rem;
+    /* font-size: 2rem; */
+    font-size: min(3vw,2rem);
     margin:1rem 0 0 0;
     user-select:none;
 }
@@ -178,7 +184,8 @@ h3 {
     font-family: "Alumni Sans Pinstripe", serif;
     font-weight: 600;
     font-style: normal;
-    font-size: 1rem;
+    /* font-size: 1rem; */
+    font-size: min(1vw,1rem);
     margin:1rem 0 0 0;
     user-select:none;
 }

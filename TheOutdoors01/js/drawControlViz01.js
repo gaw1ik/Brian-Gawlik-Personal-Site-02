@@ -188,27 +188,34 @@ function draw_wash_controlViz() {
 
     let xC_arc = 0;
     let yC_arc = 0.01;
-    let radX_arc = artboardWo2*0.75;
+    let radX_arc = artboardWo2; // *0.75
     let radY_arc = 0.95*gain;
     // drawPath(ctx, path, lw, hue, sat, lit, alpha, 1, 0);
     drawEllipse(ctx, xC_arc, yC_arc, radX_arc, radY_arc, rot, lw, hue, sat, lit, alpha, 1);
 
     var alpha = 255;
-
-    let radX_dot = 0.03;
+    let radX_dot = 0.02;
     let radY_dot = radX_dot;
+    let L_dot = 0.05;
+    lw = 0.02;
     if(t1!=0) {
         // console.log("t",t1)
-        let theta = -PI - t1*PI;
-        let xC_dot = xC_arc + radX_arc*Math.cos(theta); 
-        let yC_dot = yC_arc + radY_arc*Math.sin(theta); 
-        drawEllipse(ctx, xC_dot, yC_dot, radX_dot, radY_dot, rot, lw, hue, sat, lit, alpha, 0);
+        let theta1 = -PI-PIo16 + t1*(PI+PIo8);
+        let theta2 = theta1 + PIo16;
+        let xC_dot = xC_arc + radX_arc*Math.cos(theta1); 
+        let yC_dot = yC_arc + radY_arc*Math.sin(theta1); 
+        drawArc(ctx, xC_arc, yC_arc, radX_arc, radY_arc, rot, theta1, theta2, lw, hue, sat, lit, alpha, 1);
+
+        // drawEllipse(ctx, xC_dot, yC_dot, radX_dot, radY_dot, rot, lw, hue, sat, lit, alpha, 0);
     } else {
         // console.log("t2",t2)
         // let theta = -PI - t*PI;
-        let xC_dot = radX_arc - t2*radX_arc*2; 
+        let xC_dot1 = radX_arc + L_dot - t2*(radX_arc+L_dot)*2; 
         let yC_dot = 0; 
-        drawEllipse(ctx, xC_dot, yC_dot, radX_dot, radY_dot, rot, lw, hue, sat, lit, alpha, 0);
+        let xC_dot2 = xC_dot1 - L_dot;
+        let path = [[xC_dot1,yC_dot],[xC_dot2,yC_dot]];
+        drawPath(ctx, path, lw, hue, sat, lit, alpha, 1, 0);
+        // drawEllipse(ctx, xC_dot, yC_dot, radX_dot, radY_dot, rot, lw, hue, sat, lit, alpha, 0);
     }
 
 

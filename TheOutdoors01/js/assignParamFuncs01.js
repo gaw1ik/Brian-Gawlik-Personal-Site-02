@@ -30,7 +30,7 @@ function setupParams() {
 
     //     birds_gain: device.parametersById.get("birds_gain"),
     //     birds_filt: device.parametersById.get("birds_filt"),
-    //     birds_thresh: device.parametersById.get("birds_thresh"),
+    //     birds_period0: device.parametersById.get("birds_period0"),
 
     //     master_filt: device.parametersById.get("master_filt"),
 
@@ -63,7 +63,7 @@ function setupParams() {
     device.parametersById.get("birds_pan").value = 0.10;
     //// Others
     device.parametersById.get("birds_LPF").value = 4800;
-    device.parametersById.get("master_monoToggle").value = 1;
+    device.parametersById.get("master_monoToggle").value = 0;
     device.parametersById.get("master_reverb").value = 80;
     device.parametersById.get("master_HPF").value = 120;
     device.parametersById.get("wash_start").value = 1;
@@ -161,10 +161,10 @@ function updateRNBOPARAM_birds_gain() {
 //     device.parametersById.get("birds_filt").value = adjustedValue;
 // }
 
-function updateRNBOPARAM_birds_thresh() {
-    let val = PARAMS.birds_thresh;
+function updateRNBOPARAM_birds_period0() {
+    let val = PARAMS.birds_period0;
     let adjustedValue = calcParamValue(val,100,4000,1); // val min max pow
-    device.parametersById.get("birds_thresh").value = adjustedValue;
+    device.parametersById.get("birds_period0").value = adjustedValue;
 }
 
 // master
