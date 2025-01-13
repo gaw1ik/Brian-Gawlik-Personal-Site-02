@@ -4,6 +4,7 @@ html, body {
     font-family: "Alumni Sans Pinstripe", serif;
     overflow:hidden;
     color:hsl(130, 0%, 80%, 1.0);
+    background-color: black;
 }
 
 * {
