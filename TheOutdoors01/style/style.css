@@ -1,4 +1,7 @@
-html {}
+html {
+    /* background-color: black; */
+    background-color: hsl(130, 20%, 20%, 1.0);
+}
 
 body {
     margin: 0;
@@ -12,8 +15,9 @@ body {
     /* overflow-y:auto; */
     /* overflow-y: scroll; */
     color:hsl(130, 0%, 80%, 1.0);
+    /* background-color: hsl(130, 20%, 20%, 1.0); */
     /* background-color: black; */
-    background-image: linear-gradient(green, black);
+    /* background-image: linear-gradient(green, black); */
 }
 
 * {
