@@ -49,7 +49,7 @@ body {
     justify-content: center;
     align-items: center;
     top:0%;
-    /* bottom:0px; */
+    bottom:0lvh;
     height:100lvh;
     width:100%;
     /* background-color: hsl(0, 0%, 90%, 1.0); */
