@@ -48,8 +48,8 @@ body {
     position:fixed;
     justify-content: center;
     align-items: center;
-    height:100%;
-    width:100vw;
+    height:100svh;
+    width:100%;
     /* background-color: hsl(0, 0%, 90%, 1.0); */
     background-color: hsl(130, 20%, 20%, 1.0);
     overflow:hidden;
