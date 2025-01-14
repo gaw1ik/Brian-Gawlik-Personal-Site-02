@@ -18,9 +18,9 @@ body {
     overflow-x:hidden;
     /* overflow-y:auto; */
     overflow-y:scroll;
-    color:hsl(130, 0%, 80%, 1.0);
+    color:hsl(130, 20%, 20%, 1.0);
 
-    background-color: black;
+    /* background-color: black; */
 }
 
 * {
@@ -48,6 +48,7 @@ body {
     position:fixed;
     justify-content: center;
     align-items: center;
+    top:0svh;
     height:100svh;
     width:100%;
     /* background-color: hsl(0, 0%, 90%, 1.0); */
