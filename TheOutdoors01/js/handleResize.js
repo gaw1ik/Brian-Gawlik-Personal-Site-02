@@ -5,7 +5,7 @@ function handleResize() {
     console.log("resize")
 
     window_innerWidth = window.innerWidth;
-    window_innerHeight = window.innerHeight;
+    window_innerHeight = window.outerHeight;
 
     siteContainer = document.getElementById("siteContainer");
     // siteContainer.style.height = window_innerHeight + "px";

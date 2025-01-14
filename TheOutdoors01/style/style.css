@@ -48,7 +48,7 @@ body {
     position:fixed;
     justify-content: center;
     align-items: center;
-    /* top:0lvh; */
+    top:0lvh;
     height:100lvh;
     width:100%;
     /* background-color: hsl(0, 0%, 90%, 1.0); */
@@ -137,6 +137,8 @@ body {
     left: 0;
     top: 0;
     z-index: 0;
+    height:100lvh;
+
 }
 
 canvas {
