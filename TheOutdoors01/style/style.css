@@ -1,6 +1,8 @@
 html {
     /* background-color: black; */
     background-color: hsl(130, 20%, 20%, 1.0);
+    /* position:fixed; */
+
 }
 
 body {
@@ -10,9 +12,9 @@ body {
     height:150vh;
     /* position:fixed; */
     font-family: "Alumni Sans Pinstripe", serif;
-    /* overflow:hidden; */
+    overflow-x:hidden;
     /* overflow-y:auto; */
-    overflow-y: scroll;
+    overflow-y:scroll;
     color:hsl(130, 0%, 80%, 1.0);
 
     background-color: black;
@@ -26,10 +28,10 @@ body {
     height: 100vh;
     width: 100vw;
 }
-#background {
+/* #background {
     position: absolute;
     z-index: -1;
-}
+} */
 
 h2, em {
     width: 100%;
@@ -58,7 +60,7 @@ h2, em {
     top: 0; */
     z-index: 2;
     flex-direction: column;
-    align-items: center;;
+    align-items: center;
 }
 
 
