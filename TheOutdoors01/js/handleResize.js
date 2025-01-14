@@ -8,7 +8,7 @@ function handleResize() {
     window_innerHeight = window.innerHeight;
 
     siteContainer = document.getElementById("siteContainer");
-    siteContainer.style.height = window_innerHeight + "px";
+    // siteContainer.style.height = window_innerHeight + "px";
 
     clickhereText = document.getElementById("clickhereText");
 
