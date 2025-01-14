@@ -3,6 +3,7 @@ html {
     background-color: hsl(130, 20%, 20%, 1.0);
     /* position:fixed; */
     height:100%;
+    width:100%
 
 
 }
@@ -10,8 +11,8 @@ html {
 body {
     margin: 0;
     padding: 0;
-    width: 100vw;
-    height:150vh;
+    width: 100%;
+    height:150%;
     /* position:fixed; */
     font-family: "Alumni Sans Pinstripe", serif;
     overflow-x:hidden;
