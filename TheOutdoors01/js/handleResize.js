@@ -4,8 +4,8 @@ function handleResize() {
 
     console.log("resize")
 
-    window_innerWidth = window.innerWidth;
-    window_innerHeight = window.outerHeight;
+    window_innerWidth  = window.innerWidth;
+    window_innerHeight = window.innerHeight;
 
     siteContainer = document.getElementById("siteContainer");
     // siteContainer.style.height = window_innerHeight + "px";
@@ -55,6 +55,7 @@ function handleResize() {
 
     // Mobile Rotated
     if(window_innerHeight < 550) {
+        // console.log("<550")
         gridColumnWidth = Math.min(window_innerWidth*0.10,200);
         // gridLastColumnWidth = gridColumnWidth;
     } 
