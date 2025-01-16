@@ -16,7 +16,7 @@ myrng = new Math.seedrandom();
 window.addEventListener("load", setupCanvases); // commented this out bc setupCanvases() is already called in setup()
 
 
-window.scrollTo(0,1);
+// window.scrollTo(0,1);
 
 
 

@@ -10,6 +10,8 @@ function handleResize() {
     siteContainer = document.getElementById("siteContainer");
     // siteContainer.style.height = window_innerHeight + "px";
 
+    console.log("[window_innerWidth,window_innerHeight]",[window_innerWidth,window_innerHeight]);
+
     clickhereText = document.getElementById("clickhereText");
 
 
@@ -54,7 +56,7 @@ function handleResize() {
     // Mobile Rotated
     if(window_innerHeight < 550) {
         gridColumnWidth = Math.min(window_innerWidth*0.10,200);
-        gridLastColumnWidth = gridColumnWidth;
+        // gridLastColumnWidth = gridColumnWidth;
     } 
 
     controlRow01.style.gridTemplateColumns = "repeat(5, " + gridColumnWidth + "px)";
