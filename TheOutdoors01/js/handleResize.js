@@ -67,12 +67,18 @@ function handleResize() {
     // controlRow02.style.gridTemplateColumns = controlRow0W2idth + "px)";
 
     ////////// Visualizer Canvas
-    WIDTHSTYLE_VIZ = window_innerWidth;
-    HEIGHTSTYLE_VIZ = window_innerHeight;
-    WIDTH_VIZ = WIDTHSTYLE_VIZ*2;
-    HEIGHT_VIZ = HEIGHTSTYLE_VIZ*2;
+    // WIDTHSTYLE_VIZ = window_innerWidth;
+    // HEIGHTSTYLE_VIZ = window_innerHeight;
+    // WIDTH_VIZ = WIDTHSTYLE_VIZ*2;
+    // HEIGHT_VIZ = HEIGHTSTYLE_VIZ*2;
 
-    canvasViz01.width = WIDTH_VIZ;
+    WIDTHSTYLE_VIZ  = canvasViz01.clientWidth;
+    HEIGHTSTYLE_VIZ = canvasViz01.clientHeight;
+
+    WIDTH_VIZ  = WIDTHSTYLE_VIZ  * 2;
+    HEIGHT_VIZ = HEIGHTSTYLE_VIZ * 2;
+
+    canvasViz01.width  = WIDTH_VIZ ;
     canvasViz01.height = HEIGHT_VIZ;
     // canvasViz01.style.width = WIDTHSTYLE_VIZ.toString() + "px";
     // canvasViz01.style.height = HEIGHTSTYLE_VIZ.toString() + "px";
