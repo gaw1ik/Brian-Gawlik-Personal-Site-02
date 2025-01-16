@@ -1,9 +1,104 @@
 
 
 
-
-
 function drawVisualizer() {
+
+    let canvas = canvasViz01;
+    let ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+
+    artboardH = canvas.height;
+    artboardW = canvas.width;
+    artboardAR = artboardH/artboardW;
+    artboardWo2 = (1/artboardAR)/2;
+    xCenterOffset = artboardWo2;
+    yCenterOffset = 0.0;
+
+    var [hue,sat,lit] = [150,30,20];
+    var alpha = 255;
+    var lw = 0;
+    drawRect(ctx,-artboardWo2,0,artboardWo2*2,1, lw, hue, sat, lit, alpha, 0);
+
+    var rms;
+
+    try {
+        rms = device.parametersById.get("master_rms").value;
+    } catch (error) {
+        rms = 0;
+    }
+
+    artboardH = canvas.height;
+    artboardW = canvas.width;
+    artboardAR = artboardH/artboardW;
+    artboardWo2 = (1/artboardAR)/2;
+    xCenterOffset = artboardWo2;
+    yCenterOffset = 0.0;
+
+    let rmsScaled = rms*0.0;
+    // let rmsScaled = 1;
+
+    drawRect(ctx,-artboardWo2,0,artboardWo2*2,1, 0, hueUI2, satUI2, litUI2, alphaUI2, 0);
+
+
+
+    ctx.lineCap = "round";
+
+    for(let i=0;i<N_VIZ_SHAPES;i++) {
+
+        let shape = VIZ_SHAPES[i];
+
+        let nextShape = draw_segwave(ctx,shape,rmsScaled);
+
+        VIZ_SHAPES[i] = nextShape;
+
+        // console.log(phaseOffset);
+
+    }
+    
+}
+
+
+function draw_segwave(ctx,shape,rmsScaled) {
+
+    let lw = shape.lw;
+    let [hue,sat,lit] = shape.HSL;
+    let alpha = shape.alpha;
+    let phaseOffset = shape.phaseOffset;
+    let nSegs = shape.nSegs;
+    let Y0 = shape.Y0;
+    let amplitude = shape.amplitude;
+    let xSpan = shape.xSpan;
+    let speed = shape.speed;
+
+    for(let i=0;i<nSegs;i++) {
+
+        let t1 = i/(nSegs-1);
+
+        var theta1 = phaseOffset + t1 * twoPI;
+        let x1 = -artboardWo2 + t1*(xSpan);
+        let y1 = Y0 + amplitude*Math.sin(theta1) + rmsScaled;
+
+        var theta2 = phaseOffset + (i+1)/(nSegs-1) * twoPI;
+
+        let t2 = (i+1)/(nSegs-1);
+        let x2 = -artboardWo2 + t2*(xSpan);
+        let y2 = Y0 + amplitude*Math.sin(theta2) + rmsScaled;
+
+        let path = [[x1,y1],[x2,y2]];
+
+        drawPath(ctx, path, lw, hue, sat, lit, alpha, 1, 0);
+
+    }
+
+    shape.phaseOffset = phaseOffset + speed + rmsScaled/8;
+
+
+    return shape;
+}
+
+
+function drawVisualizer02() {
 
     let canvas = canvasViz01;
     let ctx = canvas.getContext("2d");

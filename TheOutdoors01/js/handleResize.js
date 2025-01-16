@@ -43,12 +43,21 @@ function handleResize() {
     //     h3.style.fontSize = '1rem'; 
     // }
 
-    let gridColumnWidth = Math.min(window_innerWidth*0.15,200);
-    let gridLastColumnWidth = gridColumnWidth;
+
+
+    var gridColumnWidth = Math.min(window_innerWidth*0.15,200);
+    // var gridLastColumnWidth = gridColumnWidth;
     // let gridLastColumnWidth = Math.min(window_innerWidth*0.075,250);
 
-    controlRow01.style.gridTemplateColumns = "repeat(5, " + gridColumnWidth + "px)";
     // controlRow01.style.gridTemplateColumns = gridColumnWidth + "px " + gridColumnWidth + "px " + gridColumnWidth + "px "+ gridColumnWidth + "px "+ gridLastColumnWidth + "px";
+
+    // Mobile Rotated
+    if(window_innerHeight < 550) {
+        gridColumnWidth = Math.min(window_innerWidth*0.10,200);
+        gridLastColumnWidth = gridColumnWidth;
+    } 
+
+    controlRow01.style.gridTemplateColumns = "repeat(5, " + gridColumnWidth + "px)";
 
 
     // let controlRow0W2idth = gridColumnWidth*5;
@@ -62,26 +71,42 @@ function handleResize() {
 
     canvasViz01.width = WIDTH_VIZ;
     canvasViz01.height = HEIGHT_VIZ;
-    canvasViz01.style.width = WIDTHSTYLE_VIZ.toString() + "px";
-    canvasViz01.style.height = HEIGHTSTYLE_VIZ.toString() + "px";
+    // canvasViz01.style.width = WIDTHSTYLE_VIZ.toString() + "px";
+    // canvasViz01.style.height = HEIGHTSTYLE_VIZ.toString() + "px";
 
 
+    // canvasViz02.width = WIDTH_VIZ;
+    // canvasViz02.height = HEIGHT_VIZ;
+    // let canvasViz02_clientLeft = document.getElementById("controlRow02").getBoundingClientRect().x;
+    // let canvasViz02_clientTop = document.getElementById("controlRow02").getBoundingClientRect().y;
 
-    // ////////// Control Canvases
-    // if( window_innerWidth < mobileCutoff ) { // vertical
-    //     // WIDTHSTYLE = window_innerWidth*0.2;
-    //     WIDTHSTYLE = 100;
-    //     HEIGHTSTYLE = WIDTHSTYLE;
-    // } else { // horizontal
-        HEIGHTSTYLE = Math.min(window_innerWidth*0.07,100);
-        WIDTHSTYLE = HEIGHTSTYLE;
-    // }
+    // canvasViz02.style.left = canvasViz02_clientLeft + "px";
+    // canvasViz02.style.top = canvasViz02_clientTop + "px";
 
+    // let canvasViz02_styleWidth = document.getElementById("controlRow01").getBoundingClientRect().right - canvasViz02_clientLeft;
+    // let canvasViz02_styleHeight = document.getElementById("controlRow01").getBoundingClientRect().bottom - canvasViz02_clientTop;
+
+    // canvasViz02.style.width = canvasViz02_styleWidth + "px";
+    // canvasViz02.style.height = canvasViz02_styleHeight + "px";
+
+
+    //////////// Control Canvases
+    HEIGHTSTYLE = Math.min(gridColumnWidth/2,100);
+    WIDTHSTYLE = HEIGHTSTYLE;
+    
     WIDTH = WIDTHSTYLE*2;
     HEIGHT = HEIGHTSTYLE*2;
 
-    for(let i=0; i<CANVAS.length; i++) {
-        let canvas = CANVAS[i];
+    for(let i=0; i<blankControlCanvases.length; i++) {
+        let canvas = blankControlCanvases[i];
+        canvas.width = WIDTH;
+        canvas.height = HEIGHT;
+        canvas.style.width = WIDTHSTYLE.toString() + "px";
+        canvas.style.height = HEIGHTSTYLE.toString() + "px";
+    }
+
+    for(let i=0; i<canvases.length; i++) {
+        let canvas = canvases[i];
         canvas.width = WIDTH;
         canvas.height = HEIGHT;
         canvas.style.width = WIDTHSTYLE.toString() + "px";

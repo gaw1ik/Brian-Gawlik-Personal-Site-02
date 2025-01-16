@@ -7,7 +7,6 @@ window.addEventListener("load", setupCanvases); // commented this out bc setupCa
 
 window.scrollTo(0,1);
 
-document.body.addEventListener('click', playSound);
 
 
 
@@ -56,7 +55,12 @@ async function playSound() {
     // document.getElementById("clickhereText").textContent = "ON";
 
     // muteControl.removeEventListener('click', playSound);
-    document.body.removeEventListener('click', playSound);
+    // document.body.removeEventListener('click', playSound);
+
+    for(let i=0; i<canvases.length; i++) {
+        canvases[i].style.cursor="grab";
+        canvases[i].removeEventListener('mousedown', playSound);
+    }
 
 
 
@@ -65,6 +69,56 @@ async function playSound() {
 
 };
 
+
+
+
+
+[hueUI1,satUI1,litUI1] = [200,50,80];
+[hueUI2, satUI2, litUI2] = [0,0,0];
+alphaUI2 = 0;
+
+
+
+    ////////////////////////////////////////////////////////////////// INITIALIZE VIZ SHAPES ARRAY
+    VIZ_SHAPES = [];
+    N_VIZ_SHAPES = 2;
+    let nSegs = 32;
+    let lw = 0.40;
+    let amplitude = 0.2;
+    let xSpan = 1.7;
+    let speed = PI/512;
+    let alpha = 200;
+
+    // for(let i=0;i<N_VIZ_SHAPES;i++) {
+    var shape = {
+        lw: lw,
+        HSL: [160,40,30],
+        alpha: alpha,
+        phaseOffset: 0,
+        Y0: 0.0,
+        nSegs:nSegs,
+        amplitude:amplitude,
+        xSpan:xSpan,
+        speed:speed*2.0,
+    }
+    VIZ_SHAPES.push(shape);
+
+    shape = {
+        lw: lw,
+        HSL: [50,30,25],
+        alpha: alpha,
+        phaseOffset: PIo4,
+        Y0: 1.0,
+        nSegs:nSegs,
+        amplitude:amplitude,
+        xSpan:xSpan,
+        speed:speed,
+    }
+    VIZ_SHAPES.push(shape);
+    
+
+    setInterval(drawVisualizer,34);
+    // setInterval(drawVisualizer2,34);
 
 
 
@@ -142,32 +196,30 @@ async function setup() {
     device.node.connect(gainNode);
 
 
-    // Let's assume this exists in our patcher
-    // const param_monosynth1note = device.parametersById.get("monosynth1note");
 
-    setInterval(drawVisualizer,34);
+
+
+
+
+
+
+
+
 
     setInterval(draw_background_controlViz,34);
 
     setInterval(draw_wash_controlViz,34);
 
     RUSH_SHAPES = [];
-    // N_RUSH_SHAPES = 8;
-    // for(let i=0;i<N_RUSH_SHAPES;i++) {
-        // let theta = i/(N_RUSH_SHAPES-1) * twoPI;
-        // let t = i/(N_RUSH_SHAPES-1);
-        let shape = {
-            phaseOffset:0,
-            // x:-1 + t*(2),
-            // y:Math.sin(theta),
-        }
-        RUSH_SHAPES.push(shape);
-    // }
+    var shape = {
+        phaseOffset:0,
+    }
+    RUSH_SHAPES.push(shape);
     setInterval(draw_rush_controlViz,34);
 
     INSECTS_SHAPES = [];
     for(let i=0;i<8;i++) {
-        let shape = {
+        var shape = {
             xC:getRandomFloat(-1,1),
             yC:getRandomFloat(),
             rad:0.01,
@@ -185,9 +237,95 @@ async function setup() {
 
 
 
-    isDragging = false;
-    isTouching = false;
 
+
+
+
+
+
+    
+    
+    
+
+
+
+
+
+}
+
+
+isDragging = false;
+isTouching = false;
+
+let canvases = document.getElementsByClassName("dial");
+for(let i=0; i<canvases.length; i++) {
+    canvases[i].style.cursor="grab";
+    canvases[i].addEventListener('mousedown', playSound);
+}
+
+let blankControlCanvases = document.getElementsByClassName("blankControlCanvas");
+
+
+for(let i=0; i<canvases.length; i++) {
+
+    let canvas = canvases[i];
+
+    canvas.addEventListener('mousedown', (event) => {
+        
+        isDragging = true;
+        // console.log("isDragging",isDragging)
+
+        // lastX = event.clientX - canvas.offsetLeft;
+        // lastY = event.clientY - canvas.offsetTop;
+        lastX = event.clientX;
+        lastY = event.clientY;
+        //thisCanvasOffsetLeft = canvas.offsetLeft
+        //thisCanvasOffsetTop = canvas.offsetTop
+        activeCanvasID = event.target.id;
+        activeCanvasNum = activeCanvasID.substr(6,1) - 1; // index of the current active canvas (0,1,2,3,etc)
+        activeCanvasName = get_activeCanvasName(activeCanvasID);
+        console.log("event.target.id",event.target.id);
+        // let canvases = document.getElementsByClassName("dial");
+        for(let i=0; i<canvases.length; i++) {
+            canvases[i].style.cursor="grabbing";
+        }
+    });
+
+    document.addEventListener('mouseup', () => {
+        isDragging = false;
+        document.body.style.cursor = "default";
+        // let canvases = document.getElementsByClassName("dial");
+        for(let i=0; i<canvases.length; i++) {
+            canvases[i].style.cursor="grab";
+        }
+        // console.log("isDragging",isDragging)
+
+    });
+
+
+    canvas.addEventListener('touchstart', (event) => {
+        
+        isTouching = true;
+        console.log("touchstart")
+
+        const touch = event.touches[0];
+        lastX = touch.clientX;
+        lastY = touch.clientY;
+        // thisCanvasOffsetLeft = canvas.offsetLeft
+        // thisCanvasOffsetTop = canvas.offsetTop
+        activeCanvasID = event.target.id;
+        activeCanvasNum = activeCanvasID.substr(6,1) - 1; // index of the current active canvas (0,1,2,3,etc)
+        activeCanvasName = get_activeCanvasName(activeCanvasID);
+        console.log("event.target.id",event.target.id);
+    });
+
+    document.addEventListener('touchend', () => {
+        console.log("touchend")
+        isTouching = false;
+        // lastY[activeCanvasNum] = 0; // reset lastY back to 0
+        // console.log("isDragging",isDragging)
+
+    });
 
     document.addEventListener('mousemove', (event) => {
 
@@ -241,7 +379,7 @@ async function setup() {
         }            
 
         lastY = y;
-        LASTY[activeCanvasNum] = lastY;
+        // LASTY[activeCanvasNum] = lastY;
         // console.log("LASTY",LASTY);
 
     });
@@ -288,118 +426,17 @@ async function setup() {
         }    
 
         lastY = y;
-        LASTY[activeCanvasNum] = lastY;
+        // LASTY[activeCanvasNum] = lastY;
         // console.log("LASTY",LASTY);
 
     });
-
-    let canvases = document.getElementsByClassName("dial");
-    for(let i=0; i<canvases.length; i++) {
-        canvases[i].style.cursor="grab";
-    }
-
-    for(let i=0; i<CANVAS.length; i++) {
-
-        let canvas = CANVAS[i];
-
-        canvas.addEventListener('mousedown', (event) => {
-            
-            isDragging = true;
-            // console.log("isDragging",isDragging)
-
-            // lastX = event.clientX - canvas.offsetLeft;
-            // lastY = event.clientY - canvas.offsetTop;
-            lastX = event.clientX;
-            lastY = event.clientY;
-            //thisCanvasOffsetLeft = canvas.offsetLeft
-            //thisCanvasOffsetTop = canvas.offsetTop
-            activeCanvasID = event.target.id;
-            activeCanvasNum = activeCanvasID.substr(6,1) - 1; // index of the current active canvas (0,1,2,3,etc)
-            activeCanvasName = get_activeCanvasName(activeCanvasID);
-            console.log("event.target.id",event.target.id);
-            let canvases = document.getElementsByClassName("dial");
-            for(let i=0; i<canvases.length; i++) {
-                canvases[i].style.cursor="grabbing";
-            }
-        });
-
-        document.addEventListener('mouseup', () => {
-            isDragging = false;
-            document.body.style.cursor = "default";
-            let canvases = document.getElementsByClassName("dial");
-            for(let i=0; i<canvases.length; i++) {
-                canvases[i].style.cursor="grab";
-            }
-            // console.log("isDragging",isDragging)
-
-        });
-
-
-        canvas.addEventListener('touchstart', (event) => {
-            
-            isTouching = true;
-            console.log("touchstart")
-
-            const touch = event.touches[0];
-            lastX = touch.clientX;
-            lastY = touch.clientY;
-            // thisCanvasOffsetLeft = canvas.offsetLeft
-            // thisCanvasOffsetTop = canvas.offsetTop
-            activeCanvasID = event.target.id;
-            activeCanvasNum = activeCanvasID.substr(6,1) - 1; // index of the current active canvas (0,1,2,3,etc)
-            activeCanvasName = get_activeCanvasName(activeCanvasID);
-            console.log("event.target.id",event.target.id);
-        });
-
-        document.addEventListener('touchend', () => {
-            console.log("touchend")
-            isTouching = false;
-            // lastY[activeCanvasNum] = 0; // reset lastY back to 0
-            // console.log("isDragging",isDragging)
-
-        });
-    }
-    
-    
-    
-    
-    
-    // console.log("hi")
-
-
-
-    
-        // muteControl.addEventListener('click', (event) => {
-    
-        //     currentMuteState = 1 - currentMuteState; 
-        //     console.log("currentMuteState",currentMuteState);
-        //     gainNode.gain.setValueAtTime(currentMuteState, context.currentTime);
-        //     drawToggle(muteControl,currentMuteState);
-    
-        // });
-    
-
-        // let isToggled = false; 
-    
-        // muteControl.addEventListener("touchstart", (event) => {
-    
-        //     event.preventDefault();
-    
-        //     isToggled = !isToggled; 
-    
-        //     currentMuteState = 1 - currentMuteState; 
-        //     console.log("currentMuteState (touched)",currentMuteState);
-        //     gainNode.gain.setValueAtTime(currentMuteState, context.currentTime);
-        //     drawToggle(muteControl,currentMuteState);
-    
-        // }); 
-
-        
-
-
-
-
 }
+
+
+
+
+
+
 
 
 function get_activeCanvasName(activeCanvasID) {

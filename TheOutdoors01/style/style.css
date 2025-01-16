@@ -58,15 +58,7 @@ body {
 
 }
 
-#controlsContainer01 {
-    display:flex;
-    position:relative;
-    /* left: 0;
-    top: 0; */
-    z-index: 2;
-    flex-direction: column;
-    align-items: center;
-}
+
 
 
 
@@ -90,6 +82,20 @@ body {
     top:3px; /* this is weird but centered it better... */
 }
 
+
+#controlsContainer01 {
+    display:flex;
+    position:relative;
+    z-index: 2;
+    flex-direction: column;
+    align-items: center;
+    background-color: hsl(130, 0%, 100%, 0.01);
+    padding:2rem;
+    border:solid 1px hsl(0,0%,60%,0.1);
+    border-radius:1rem;
+
+}
+
 #controlRow01 {
     display:grid;
     /* grid-template-rows:200px 200px; */
@@ -106,9 +112,6 @@ body {
     /* grid-template-columns:200px 200px; */
     /* grid-template-columns:1fr 1fr; */
     grid-template-columns:auto auto;
-
-
-
     justify-items:center;
     align-items:center;
 }
@@ -138,9 +141,13 @@ body {
     left: 0;
     top: 0;
     z-index: 0;
-    height:100lvh;
-
+    height:100vh;
+    width:100vw;
 }
+/* #canvasViz02 {
+    position: absolute;
+    z-index: 0;
+} */
 
 canvas {
     -webkit-tap-highlight-color: transparent;
@@ -150,6 +157,7 @@ canvas {
 .dial {
     /* cursor: default; */
 }
+
 
 .toggle {
     cursor: pointer;
@@ -210,3 +218,35 @@ h3 {
     margin:1rem 0 0 0;
     user-select:none;
 }
+
+.emptyh3 {
+    height: min(1vw,1rem);
+    /* height: 1rem; */
+    /* width: */
+    display:inline-block;
+}
+
+h4 {
+    text-align: center;
+    font-family: "Alumni Sans Pinstripe", serif;
+    font-weight: 400;
+    font-style: normal;
+    /* font-size: 1rem; */
+    opacity:50%;
+    font-size: min(1vw,1rem);
+    margin:0 0 0 0;
+    user-select:none;
+    letter-spacing: 0.2rem;
+}
+
+#headerSubheader {
+    display:flex;
+    flex-direction:column;
+
+}
+
+
+
+/* @media only screen and (max-height: 400px) {
+
+} */

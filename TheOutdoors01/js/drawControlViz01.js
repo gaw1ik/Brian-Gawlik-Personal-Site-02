@@ -1,8 +1,5 @@
 
 
-[hueUI1,satUI1,litUI1] = [200,50,80];
-[hueUI2, satUI2, litUI2] = [0,0,0];
-alphaUI2 = 0;
 
 function draw_controlViz(canvas,rms) {
 
@@ -59,12 +56,20 @@ function draw_controlViz(canvas,rms) {
 
 function draw_background_controlViz() {
 
-    let rms = device.parametersById.get("background_rms").value;
-    let gain = PARAMS.background_gain;
-    // let gain = 0.5;
-    let hiss = PARAMS.background_hiss;
-    let LPF = PARAMS.background_LPF;
+    var rms;
+    var gain;
+    var hiss;
+    var LPF;
 
+    // try {
+        rms = device.parametersById.get("background_rms").value;
+    // } catch(error) {
+    //     rms = 0.5;
+    // }
+
+    gain = PARAMS.background_gain;
+    hiss = PARAMS.background_hiss;
+    LPF = PARAMS.background_LPF;
 
 
     let canvas = canvas_background_controlViz;
@@ -78,16 +83,16 @@ function draw_background_controlViz() {
     xCenterOffset = artboardWo2;
     yCenterOffset = 0.0;
 
-    MASTER_GAIN = 0.5;
+    // MASTER_GAIN = 0.5;s
 
     drawRect(ctx,-artboardWo2,0,artboardWo2*2,1, 0, hueUI2, satUI2, litUI2, alphaUI2, 0);
 
 
-    let rmsScaled = (rms)/(MASTER_GAIN+0.001);
+    let rmsScaled = rms/0.5;
 
     var mag = hiss*0.2*rmsScaled;
 
-    let y1 = 0.6*gain + mag  + 0.01;
+    let y1 = Math.tanh(gain + mag  + 0.01);
 
     let y_hiss = 0.8 - mag*0.2;
 

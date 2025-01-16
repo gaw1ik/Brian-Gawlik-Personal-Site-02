@@ -10,32 +10,6 @@ function setupParams() {
 
 
     
-    // RNBOPARAMS = {
-
-    //     background_gain: device.parametersById.get("background_gain"),
-    //     background_hiss: device.parametersById.get("background_hiss"),
-    //     background_filt: device.parametersById.get("background_filt"),
-    //     background_param: device.parametersById.get("background_param"),
-
-    //     wash_gain: device.parametersById.get("wash_gain"),
-    //     wash_period: device.parametersById.get("wash_period"),
-
-    //     rush_gain: device.parametersById.get("rush_gain"),
-    //     rush_speed: device.parametersById.get("rush_speed"),
-
-    //     insects_gain: device.parametersById.get("insects_gain"),
-    //     insects_period: device.parametersById.get("insects_period"),
-    //     insects_rate: device.parametersById.get("insects_rate"),
-    //     insects_freq: device.parametersById.get("insects_freq"), // this is a normalized value
-
-    //     birds_gain: device.parametersById.get("birds_gain"),
-    //     birds_filt: device.parametersById.get("birds_filt"),
-    //     birds_period0: device.parametersById.get("birds_period0"),
-
-    //     master_filt: device.parametersById.get("master_filt"),
-
-    // }
-
 
 
 
@@ -83,101 +57,105 @@ function setupParams() {
 function updateRNBOPARAM_background_gain() {
     // console.log("updateRNBOPARAM_background_gain")
     let adjustedValue = PARAMS.background_gain;
-    device.parametersById.get("background_gain").value = adjustedValue;
+    try{ device.parametersById.get("background_gain").value = adjustedValue } catch(error) {}
     // document.getElementById("canvasLabel_background_gain").textContent = "Drive (" + adjustedValue.toFixed(0) + ")";
 }
 
 function updateRNBOPARAM_background_hiss() {
     let adjustedValue = PARAMS.background_hiss;
-    device.parametersById.get("background_hiss").value = adjustedValue;
+    try{ device.parametersById.get("background_hiss").value = adjustedValue } catch(error) {}
 }
 
 function updateRNBOPARAM_background_LPF() {
     let val = PARAMS.background_LPF;
     let adjustedValue = calcParamValue(val,1,20000,2);
     // console.log("adjustedValue",adjustedValue)
-    device.parametersById.get("background_LPF").value = adjustedValue;
+    try{ device.parametersById.get("background_LPF").value = adjustedValue } catch(error) {}
 }
 
 function updateRNBOPARAM_background_param() {
     let adjustedValue = PARAMS.background_param;
-    device.parametersById.get("background_param").value = adjustedValue;
+    try{ device.parametersById.get("background_param").value = adjustedValue } catch(error) {}
 }
 
 // wash
 function updateRNBOPARAM_wash_gain() {
     let adjustedValue = PARAMS.wash_gain;
-    device.parametersById.get("wash_gain").value = adjustedValue;
+    try{ device.parametersById.get("wash_gain").value = adjustedValue } catch(error) {}
 }
 
 function updateRNBOPARAM_wash_period() {
     let val = PARAMS.wash_period;
     let adjustedValue = calcParamValue(val,1000,20000,1); // val min max pow
-    device.parametersById.get("wash_period").value = adjustedValue;
+    try{ device.parametersById.get("wash_period").value = adjustedValue } catch(error) {}
 }
 
 // rush
 function updateRNBOPARAM_rush_gain() {
     let adjustedValue = PARAMS.rush_gain;
-    device.parametersById.get("rush_gain").value = adjustedValue;
+    try{ device.parametersById.get("rush_gain").value = adjustedValue } catch(error) {}
 }
 
 function updateRNBOPARAM_rush_speed() {
     let adjustedValue = PARAMS.rush_speed;
-    device.parametersById.get("rush_speed").value = adjustedValue;
+    try{ device.parametersById.get("rush_speed").value = adjustedValue } catch(error) {}
 }
 
 // insects
 function updateRNBOPARAM_insects_gain() {
     let adjustedValue = PARAMS.insects_gain;
-    device.parametersById.get("insects_gain").value = adjustedValue;
+    try{ device.parametersById.get("insects_gain").value = adjustedValue } catch(error) {}
 }
 
 function updateRNBOPARAM_insects_period() {
     let val = PARAMS.insects_period;
     let adjustedValue = calcParamValue(val,100,8000,1); // val min max pow
-    device.parametersById.get("insects_period").value = adjustedValue;
+    try{ device.parametersById.get("insects_period").value = adjustedValue } catch(error) {}
 }
 
 function updateRNBOPARAM_insects_rate() {
     let val = PARAMS.insects_rate;
     let adjustedValue = calcParamValue(val,4,16,1); // val min max pow
-    device.parametersById.get("insects_rate").value = adjustedValue;
+    try{ device.parametersById.get("insects_rate").value = adjustedValue } catch(error) {}
 }  
 
 function updateRNBOPARAM_insects_freq() { // i think this ties into both freq and Q (a normalized value)
     let adjustedValue = PARAMS.insects_freq;
-    device.parametersById.get("insects_freq").value = adjustedValue;
+    try{ device.parametersById.get("insects_freq").value = adjustedValue } catch(error) {}
 }
 
 // birds
 function updateRNBOPARAM_birds_gain() {
     let adjustedValue = PARAMS.birds_gain;
-    device.parametersById.get("birds_gain").value = adjustedValue;
+    try{ device.parametersById.get("birds_gain").value = adjustedValue } catch(error) {}
 }
 
 // function updateRNBOPARAM_birds_filt() {
 //     let adjustedValue = PARAMS.birds_filt*20000;
-//     device.parametersById.get("birds_filt").value = adjustedValue;
+//     try{ device.parametersById.get("birds_filt").value = adjustedValue } catch(error) {}
 // }
 
 function updateRNBOPARAM_birds_period0() {
     let val = PARAMS.birds_period0;
     let adjustedValue = calcParamValue(val,100,4000,1); // val min max pow
-    device.parametersById.get("birds_period0").value = adjustedValue;
+    try{ device.parametersById.get("birds_period0").value = adjustedValue } catch(error) {}
 }
 
 // master
 function updateRNBOPARAM_master_gain() {
     let val = PARAMS.master_gain;
     let adjustedValue = calcParamValue(val,0,1,2);
-    device.parametersById.get("master_gain").value = adjustedValue;
+    try{
+        try{ device.parametersById.get("master_gain").value = adjustedValue } catch(error) {}
+    } catch(error) {
+        //
+    }
 }  
 
 function updateRNBOPARAM_master_LPF() {
     let val = PARAMS.master_LPF;
     let adjustedValue = calcParamValue(val,1,20000,2);
-    device.parametersById.get("master_LPF").value = adjustedValue;
+    try{ device.parametersById.get("master_LPF").value = adjustedValue } catch(error) {}
 }
 
 

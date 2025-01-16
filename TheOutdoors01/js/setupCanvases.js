@@ -9,7 +9,7 @@ function setInitialParams() {
         background_gain:0.3,
         background_LPF:0.35,
         background_hiss:0.3,
-        background_param:0.0,
+        // background_param:0.0,
 
         wash_gain:0.4,
         wash_period:0.4,
@@ -58,12 +58,12 @@ function setupCanvases() {
     PARAMS = setInitialParams();
 
     ///////////////////////////////////////////////////////////////////////////
-    CANVAS = [];
+    // CANVAS = [];
 
-    for(let i=0; i<Object.keys(PARAMS).length; i++) {
-        let paramName = Object.keys(PARAMS)[i];
-        CANVAS.push( document.getElementById("canvas_" + paramName) );
-    }
+    // for(let i=0; i<Object.keys(PARAMS).length; i++) {
+    //     let paramName = Object.keys(PARAMS)[i];
+    //     CANVAS.push( document.getElementById("canvas_" + paramName) );
+    // }
 
     // // BACKGROUND
     // CANVAS.push( document.getElementById("canvas_background_gain") );
@@ -136,29 +136,31 @@ function setupCanvases() {
     // }
 
 
-    LASTY = [0,0,0,0];
+    // LASTY = [0,0,0,0];
 
-    xC_arr = [];
-    yC_arr = [];
-    rMaxThis_arr = [];
-    vizCallMax = 64;
-    vizCall = vizCallMax; // initially set to maxCall
-    SHAPES = [];
-    for(let i=0; i<1; i++) {
-        let xC1 = 0.5;
-        let yC1 = 0.3;
-        let xC2 = -0.5;
-        let yC2 = 1.0;
-        // let speed = getRandomFloat(1.0,8.0);
-        // let aspect = 1.0;
-        // let age = 0.0;
-        let shape = {xC1:xC1, yC1:yC1, xC2:xC2, yC2:yC2,};
-        SHAPES.push(shape);
-        // console.log(shape);
-    }
+    // xC_arr = [];
+    // yC_arr = [];
+    // rMaxThis_arr = [];
+    // vizCallMax = 64;
+    // vizCall = vizCallMax; // initially set to maxCall
+    // SHAPES = [];
+    // for(let i=0; i<1; i++) {
+    //     let xC1 = 0.5;
+    //     let yC1 = 0.3;
+    //     let xC2 = -0.5;
+    //     let yC2 = 1.0;
+    //     // let speed = getRandomFloat(1.0,8.0);
+    //     // let aspect = 1.0;
+    //     // let age = 0.0;
+    //     let shape = {xC1:xC1, yC1:yC1, xC2:xC2, yC2:yC2,};
+    //     SHAPES.push(shape);
+    //     // console.log(shape);
+    // }
 
 
     canvasViz01 = document.getElementById("canvasViz01");
+    canvasViz02 = document.getElementById("canvasViz02");
+
 
 
 
