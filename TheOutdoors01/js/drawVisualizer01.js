@@ -18,10 +18,10 @@ function drawVisualizer() {
 
 
 
-    var [hue,sat,lit] = [150,30,20];
+    // var [hue,sat,lit] = [150,30,20];
     var alpha = 255;
     var lw = 0;
-    drawRect(ctx,-artboardWo2,0,artboardWo2*2,1, lw, hue, sat, lit, alpha, 0);
+    drawRect(ctx,-artboardWo2,0,artboardWo2*2,1, lw, hueBG, satBG, litBG, alpha, 0);
 
     var rms;
 
@@ -74,15 +74,17 @@ function draw_segwave(ctx,shape,rmsScaled) {
     let xSpan = shape.xSpan;
     let speed = shape.speed;
 
+    let period = PI*3;
+
     for(let i=0;i<nSegs;i++) {
 
         let t1 = i/(nSegs-1);
 
-        var theta1 = phaseOffset + t1 * twoPI;
+        var theta1 = phaseOffset + t1 * period;
         let x1 = -artboardWo2 + t1*(xSpan);
         let y1 = Y0 + amplitude*Math.sin(theta1) + rmsScaled;
 
-        var theta2 = phaseOffset + (i+1)/(nSegs-1) * twoPI;
+        var theta2 = phaseOffset + (i+1)/(nSegs-1) * period;
 
         let t2 = (i+1)/(nSegs-1);
         let x2 = -artboardWo2 + t2*(xSpan);

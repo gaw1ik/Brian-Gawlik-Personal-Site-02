@@ -26,7 +26,7 @@ function drawKnob(canvas,val) {
     // ctx.rect(0, 0, WIDTH, HEIGHT);
     // ctx.fill();
 
-    // SHADOW
+    //////////////////////////////////////////////////////////////////////// SHADOW
     ctx.beginPath();
     let rPixShadowX = rPix*0.7;
     let rPixShadowY = rPix*0.8;
@@ -35,14 +35,14 @@ function drawKnob(canvas,val) {
     ctx.fillStyle = "hsl(0, 0%, 0%, 0.4)";
     // ctx.fill();
 
-    // SHAFT
+    //////////////////////////////////////////////////////////////////////// BOTTOM
     ctx.beginPath();
     let rPix2 = rPix*0.9;
     ctx.ellipse(xC+2, yC+15, rPix2, rPix2, 0, 0, twoPI);
-    ctx.fillStyle = "hsl(150, 30%, 8%, 1.0)";
+    ctx.fillStyle = "hsl(150, 10%, 6%, 1.0)";
     ctx.fill();
 
-    // TOP
+    //////////////////////////////////////////////////////////////////////// TOP
     ctx.beginPath();
     // ctx.ellipse(xC, yC, rPix, rPix, 0, circStart, circEnd);
 
@@ -53,6 +53,8 @@ function drawKnob(canvas,val) {
 
     ctx.lineWidth = 4;
     ctx.strokeStyle = "hsl(150, 30%, 85%, 0.2)";
+    // ctx.strokeStyle = "hsl(" + hueUI1 + satUI2 + "%, " + litUI1 + "%, " + "0.1)";
+
     ctx.stroke();
 
 
@@ -74,14 +76,14 @@ function drawKnob(canvas,val) {
     // ctx.ellipse(xC, yC, rPix, rPix, 0, 0, twoPI);
     // ctx.fill();
 
-    // draw needle
+    //////////////////////////////////////////////////////////////////////// NEEDLE
     // theta = circStart + val * (circEnd-circStart); 
     let rNeedleStart = 0.1;
     x1 = WIDTH/2  + Math.cos(theta)*rNeedleStart*HEIGHT;
     y1 = HEIGHT/2 + Math.sin(theta)*rNeedleStart*HEIGHT;
     x2 = WIDTH/2  + Math.cos(theta)*rControl*HEIGHT;
     y2 = HEIGHT/2 + Math.sin(theta)*rControl*HEIGHT;
-    ctx.strokeStyle = "hsl(0, 0%, 10%, 0.8)";
+    ctx.strokeStyle = "hsl(0, 0%, 50%, 0.8)";
     ctx.lineWidth = 3;
 
     ctx.beginPath();

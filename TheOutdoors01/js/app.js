@@ -4,6 +4,20 @@ device = {};
 TIME = 800;
 [hueUI1,satUI1,litUI1] = [200,50,80];
 [hueUI2, satUI2, litUI2] = [0,0,0];
+[hueBG, satBG, litBG] =  [160,30,17];
+[hueWave1, satWave1, litWave1] =  [170,30,28];
+[hueWave2, satWave2, litWave2] =  [50,24,26];
+
+// LIGHT
+// [hueBG, satBG, litBG] =  [160,30,60];
+// [hueUI1,satUI1,litUI1] = [200,50,10];
+
+// document.body.style.color = "black";
+// document.getElementById("titleHeader").style.color = "black";
+
+
+
+
 alphaUI2 = 0;
 onePI = Math.PI; 
 twoPI = Math.PI * 2;
@@ -66,7 +80,7 @@ async function playSound() {
     // document.getElementById("clickhereText").textContent = "ON";
 
     // muteControl.removeEventListener('click', playSound);
-    // document.body.removeEventListener('click', playSound);
+    document.body.removeEventListener('click', playSound);
 
     for(let i=0; i<canvases.length; i++) {
         canvases[i].style.cursor="grab";
@@ -94,29 +108,29 @@ N_VIZ_SHAPES = 2;
 let nSegs = 32;
 let lw = 0.40;
 let amplitude = 0.2;
-let xSpan = 1.7;
+let xSpan = 2.5;
 let speed = PI/512;
 let alpha = 200;
 
 // for(let i=0;i<N_VIZ_SHAPES;i++) {
 var shape = {
     lw: lw,
-    HSL: [160,40,30],
+    HSL: [hueWave1, satWave1, litWave1],
     alpha: alpha,
     phaseOffset: 0,
     Y0: 0.0,
     nSegs:nSegs,
     amplitude:amplitude,
     xSpan:xSpan,
-    speed:speed*2.0,
+    speed:speed*1.7,
 }
 VIZ_SHAPES.push(shape);
 
 shape = {
     lw: lw,
-    HSL: [50,30,25],
+    HSL: [hueWave2, satWave2, litWave2],
     alpha: alpha,
-    phaseOffset: PIo4,
+    phaseOffset: PIo2,
     Y0: 1.0,
     nSegs:nSegs,
     amplitude:amplitude,
@@ -260,6 +274,8 @@ async function setup() {
 
 
 }
+
+document.body.addEventListener('click', playSound);
 
 
 isDragging = false;
