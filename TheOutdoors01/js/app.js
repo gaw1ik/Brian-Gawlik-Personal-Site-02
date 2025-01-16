@@ -2,6 +2,10 @@
 // mobileCutoff = 800;
 device = {};
 TIME = 800;
+[hueUI1,satUI1,litUI1] = [200,50,80];
+[hueUI2, satUI2, litUI2] = [0,0,0];
+alphaUI2 = 0;
+
 window.addEventListener("load", setupCanvases); // commented this out bc setupCanvases() is already called in setup()
 
 
@@ -73,52 +77,49 @@ async function playSound() {
 
 
 
-[hueUI1,satUI1,litUI1] = [200,50,80];
-[hueUI2, satUI2, litUI2] = [0,0,0];
-alphaUI2 = 0;
 
 
 
-    ////////////////////////////////////////////////////////////////// INITIALIZE VIZ SHAPES ARRAY
-    VIZ_SHAPES = [];
-    N_VIZ_SHAPES = 2;
-    let nSegs = 32;
-    let lw = 0.40;
-    let amplitude = 0.2;
-    let xSpan = 1.7;
-    let speed = PI/512;
-    let alpha = 200;
 
-    // for(let i=0;i<N_VIZ_SHAPES;i++) {
-    var shape = {
-        lw: lw,
-        HSL: [160,40,30],
-        alpha: alpha,
-        phaseOffset: 0,
-        Y0: 0.0,
-        nSegs:nSegs,
-        amplitude:amplitude,
-        xSpan:xSpan,
-        speed:speed*2.0,
-    }
-    VIZ_SHAPES.push(shape);
+////////////////////////////////////////////////////////////////// INITIALIZE VIZ SHAPES ARRAY
+VIZ_SHAPES = [];
+N_VIZ_SHAPES = 2;
+let nSegs = 32;
+let lw = 0.40;
+let amplitude = 0.2;
+let xSpan = 1.7;
+let speed = PI/512;
+let alpha = 200;
 
-    shape = {
-        lw: lw,
-        HSL: [50,30,25],
-        alpha: alpha,
-        phaseOffset: PIo4,
-        Y0: 1.0,
-        nSegs:nSegs,
-        amplitude:amplitude,
-        xSpan:xSpan,
-        speed:speed,
-    }
-    VIZ_SHAPES.push(shape);
-    
+// for(let i=0;i<N_VIZ_SHAPES;i++) {
+var shape = {
+    lw: lw,
+    HSL: [160,40,30],
+    alpha: alpha,
+    phaseOffset: 0,
+    Y0: 0.0,
+    nSegs:nSegs,
+    amplitude:amplitude,
+    xSpan:xSpan,
+    speed:speed*2.0,
+}
+VIZ_SHAPES.push(shape);
 
-    setInterval(drawVisualizer,34);
-    // setInterval(drawVisualizer2,34);
+shape = {
+    lw: lw,
+    HSL: [50,30,25],
+    alpha: alpha,
+    phaseOffset: PIo4,
+    Y0: 1.0,
+    nSegs:nSegs,
+    amplitude:amplitude,
+    xSpan:xSpan,
+    speed:speed,
+}
+VIZ_SHAPES.push(shape);
+
+
+
 
 
 

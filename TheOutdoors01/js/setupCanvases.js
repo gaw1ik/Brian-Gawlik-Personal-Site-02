@@ -191,7 +191,8 @@ function setupCanvases() {
 
     
     
-
+    setInterval(drawVisualizer,34);
+// setInterval(drawVisualizer2,34);
 
 
 
