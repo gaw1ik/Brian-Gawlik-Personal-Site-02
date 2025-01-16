@@ -5,6 +5,13 @@ TIME = 800;
 [hueUI1,satUI1,litUI1] = [200,50,80];
 [hueUI2, satUI2, litUI2] = [0,0,0];
 alphaUI2 = 0;
+onePI = Math.PI; 
+twoPI = Math.PI * 2;
+PIo2  = Math.PI * 0.5;
+PIo4  = Math.PI * 0.25;
+PIo8  = Math.PI * 0.125;
+PIo16 = Math.PI * 0.0625;
+myrng = new Math.seedrandom();
 
 window.addEventListener("load", setupCanvases); // commented this out bc setupCanvases() is already called in setup()
 

@@ -97,13 +97,13 @@ function handleResize() {
     WIDTH = WIDTHSTYLE*2;
     HEIGHT = HEIGHTSTYLE*2;
 
-    for(let i=0; i<blankControlCanvases.length; i++) {
-        let canvas = blankControlCanvases[i];
-        canvas.width = WIDTH;
-        canvas.height = HEIGHT;
-        canvas.style.width = WIDTHSTYLE.toString() + "px";
-        canvas.style.height = HEIGHTSTYLE.toString() + "px";
-    }
+    // for(let i=0; i<blankControlCanvases.length; i++) {
+    //     let canvas = blankControlCanvases[i];
+    //     canvas.width = WIDTH;
+    //     canvas.height = HEIGHT;
+    //     canvas.style.width = WIDTHSTYLE.toString() + "px";
+    //     canvas.style.height = HEIGHTSTYLE.toString() + "px";
+    // }
 
     for(let i=0; i<canvases.length; i++) {
         let canvas = canvases[i];

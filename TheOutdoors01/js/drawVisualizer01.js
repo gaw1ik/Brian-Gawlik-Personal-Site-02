@@ -15,6 +15,9 @@ function drawVisualizer() {
     xCenterOffset = artboardWo2;
     yCenterOffset = 0.0;
 
+
+
+
     var [hue,sat,lit] = [150,30,20];
     var alpha = 255;
     var lw = 0;
