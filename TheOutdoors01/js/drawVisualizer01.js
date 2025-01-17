@@ -43,21 +43,29 @@ function drawVisualizer() {
 
     drawRect(ctx,-artboardWo2,0,artboardWo2*2,1, 0, hueUI2, satUI2, litUI2, alphaUI2, 0);
 
-
-
     ctx.lineCap = "round";
 
-    for(let i=0;i<N_VIZ_SHAPES;i++) {
+    // for(let i=0;i<N_VIZ_SHAPES;i++) {
 
-        let shape = VIZ_SHAPES[i];
+    //     let shape = VIZ_SHAPES[i];
 
-        let nextShape = draw_segwave(ctx,shape,rmsScaled);
+    //     let nextShape = draw_segwave(ctx,shape,rmsScaled);
 
-        VIZ_SHAPES[i] = nextShape;
+    //     VIZ_SHAPES[i] = nextShape;
 
-        // console.log(phaseOffset);
+    //     // console.log(phaseOffset);
 
-    }
+    // }
+
+    var shape = VIZ_SHAPES[0];
+    shape.HSL = [hueWave1,satWave1,litWave1];
+    var nextShape = draw_segwave(ctx,shape,rmsScaled);
+    VIZ_SHAPES[0] = nextShape;
+
+    var shape = VIZ_SHAPES[1];
+    shape.HSL = [hueWave2,satWave2,litWave2];
+    var nextShape = draw_segwave(ctx,shape,rmsScaled);
+    VIZ_SHAPES[1] = nextShape;
     
 }
 

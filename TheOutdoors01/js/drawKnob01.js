@@ -39,7 +39,8 @@ function drawKnob(canvas,val) {
     ctx.beginPath();
     let rPix2 = rPix*0.9;
     ctx.ellipse(xC+2, yC+15, rPix2, rPix2, 0, 0, twoPI);
-    ctx.fillStyle = "hsl(150, 10%, 6%, 1.0)";
+    ctx.fillStyle = "hsl(" + hueKnobBottom + ", " + satKnobBottom + "%, " + litKnobBottom + "%, " + alphaKnobBottom + ")";
+    // ctx.fillStyle = "hsl(150, 10%, 6%, 1.0)";
     ctx.fill();
 
     //////////////////////////////////////////////////////////////////////// TOP
@@ -83,8 +84,8 @@ function drawKnob(canvas,val) {
     y1 = HEIGHT/2 + Math.sin(theta)*rNeedleStart*HEIGHT;
     x2 = WIDTH/2  + Math.cos(theta)*rControl*HEIGHT;
     y2 = HEIGHT/2 + Math.sin(theta)*rControl*HEIGHT;
-    ctx.strokeStyle = "hsl(0, 0%, 50%, 0.8)";
-    ctx.lineWidth = 3;
+    ctx.strokeStyle = "hsl(" + hueKnobNeedle + ", " + satKnobNeedle + "%, " + litKnobNeedle + "%, " + alphaKnobNeedle + ")";
+    ctx.lineWidth = 1;
 
     ctx.beginPath();
     ctx.moveTo(x1,y1);

@@ -2,11 +2,35 @@
 // mobileCutoff = 800;
 device = {};
 TIME = 800;
-[hueUI1,satUI1,litUI1] = [200,50,80];
+// [hueUI1,satUI1,litUI1] = [200,50,80];
+// [hueUI2, satUI2, litUI2] = [0,0,0];
+// [hueBG, satBG, litBG] =  [160,30,17];
+// [hueWave1, satWave1, litWave1] =  [170,30,28];
+// [hueWave2, satWave2, litWave2] =  [50,24,26];
+
+
+//// ControlViz's
+[hueUI1,satUI1,litUI1] = [200,50,100];
 [hueUI2, satUI2, litUI2] = [0,0,0];
-[hueBG, satBG, litBG] =  [160,30,17];
-[hueWave1, satWave1, litWave1] =  [170,30,28];
-[hueWave2, satWave2, litWave2] =  [50,24,26];
+
+//// VIZ
+[hueBG, satBG, litBG] =  [160,30,27];
+// [hueBG, satBG, litBG] =  [40,40,20];
+[hueWave1, satWave1, litWave1] =  [50,30,46];
+[hueWave2, satWave2, litWave2] =  [170,40,48];
+// [hueWave2, satWave2, litWave2] =  [40,40,20];
+
+//// KNOBS
+[hueKnobNeedle,satKnobNeedle,litKnobNeedle,alphaKnobNeedle] = [0,0,100,0.7];
+[hueKnobBottom,satKnobBottom,litKnobBottom,alphaKnobBottom] = [0,0,4,0.8];
+
+// CSS
+const cssroot = document.documentElement;
+let hslBG = "hsl(" + hueBG + ", " + satBG + "%, " + litBG + "%)";
+cssroot.style.setProperty('--bg-hsl', hslBG);
+cssroot.style.setProperty('--text-color-body', 'hsl(0,0%,100%)');
+cssroot.style.setProperty('--text-color-h1','hsl(0,0%,80%)');
+cssroot.style.setProperty('--controlsContainer01-bghsl','hsl(160, 30%, 35%, 0.1)');
 
 // LIGHT
 // [hueBG, satBG, litBG] =  [160,30,60];
@@ -113,9 +137,22 @@ let speed = PI/512;
 let alpha = 200;
 
 // for(let i=0;i<N_VIZ_SHAPES;i++) {
+shape = {
+    lw: lw,
+    // HSL: [hueWave1, satWave1, litWave1],
+    alpha: alpha,
+    phaseOffset: PIo2,
+    Y0: 1.0,
+    nSegs:nSegs,
+    amplitude:amplitude,
+    xSpan:xSpan,
+    speed:speed,
+}
+VIZ_SHAPES.push(shape);
+
 var shape = {
     lw: lw,
-    HSL: [hueWave1, satWave1, litWave1],
+    // HSL: [hueWave1, satWave1, litWave1],
     alpha: alpha,
     phaseOffset: 0,
     Y0: 0.0,
@@ -126,18 +163,7 @@ var shape = {
 }
 VIZ_SHAPES.push(shape);
 
-shape = {
-    lw: lw,
-    HSL: [hueWave2, satWave2, litWave2],
-    alpha: alpha,
-    phaseOffset: PIo2,
-    Y0: 1.0,
-    nSegs:nSegs,
-    amplitude:amplitude,
-    xSpan:xSpan,
-    speed:speed,
-}
-VIZ_SHAPES.push(shape);
+
 
 
 

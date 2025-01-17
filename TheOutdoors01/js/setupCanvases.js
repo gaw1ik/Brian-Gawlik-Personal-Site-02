@@ -59,7 +59,7 @@ function setupCanvases() {
 
 
     canvasViz01 = document.getElementById("canvasViz01");
-    // canvasViz02 = document.getElementById("canvasViz02");
+    canvasViz02 = document.getElementById("canvasViz02");
 
 
 

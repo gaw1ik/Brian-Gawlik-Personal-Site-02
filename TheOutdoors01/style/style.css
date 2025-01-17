@@ -1,6 +1,15 @@
+:root {
+    --bg-hsl: hsl(150,20%,20%);
+    --text-color-body: hsl(0,0%,100%);
+    --text-color-h1: hsl(0,0%,80%);
+
+}
+
+
 html {
     /* background-color: black; */
-    background-color: hsl(130, 20%, 20%, 1.0);
+    /* background-color: hsl(130, 20%, 20%, 1.0); */
+    background-color: var(--bg-hsl);
     /* position:fixed; */
     height:100lvh;
     width:100%
@@ -18,7 +27,8 @@ body {
     overflow-x:hidden;
     /* overflow-y:auto; */
     overflow-y:scroll;
-    color:hsl(130, 0%, 80%, 1.0);
+    /* color:hsl(130, 0%, 80%, 1.0); */
+    color:var(--text-color-body);
 
     /* background-color: black; */
 }
@@ -26,19 +36,6 @@ body {
 * {
     box-sizing: border-box;
 }
-
-/* #rnbo-root {
-    height: 100vh;
-    width: 100vw;
-} */
-/* #background {
-    position: absolute;
-    z-index: -1;
-} */
-
-/* h2, em {
-    width: 100%;
-} */
 
 
 
@@ -53,7 +50,8 @@ body {
     height:100lvh;
     width:100%;
     /* background-color: hsl(0, 0%, 90%, 1.0); */
-    background-color: hsl(130, 20%, 20%, 1.0);
+    /* background-color: hsl(130, 20%, 20%, 1.0); */
+    background-color: var(--bg-hsl);
     overflow:hidden;
 
 }
@@ -90,7 +88,9 @@ body {
     flex-direction: column;
     align-items: center;
     /* background-color: hsl(130, 0%, 100%, 0.035); */
-    background-color: hsl(160, 30%, 20%, 0.1);
+    /* background-color: hsl(160, 30%, 20%, 0.1); */
+
+    background-color: var(--controlsContainer01-bghsl);
 
     padding:2rem;
     border:solid 1px hsl(0,0%,60%,0.1);
@@ -145,11 +145,12 @@ body {
     z-index: 0;
     height:100vh;
     width:100vw;
+    /* padding:3rem; */
 }
-/* #canvasViz02 {
+#canvasViz02 {
     position: absolute;
     z-index: 0;
-} */
+}
 
 canvas {
     -webkit-tap-highlight-color: transparent;
@@ -197,6 +198,7 @@ h1 {
     user-select:none;
     margin:0;
     color:hsl(130, 0%, 60%, 1.0);
+    color: var(--text-color-h1);
 }
 
 h2 {

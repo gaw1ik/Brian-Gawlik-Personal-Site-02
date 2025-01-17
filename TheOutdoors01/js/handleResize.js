@@ -10,7 +10,7 @@ function handleResize() {
     siteContainer = document.getElementById("siteContainer");
     // siteContainer.style.height = window_innerHeight + "px";
 
-    console.log("[window_innerWidth,window_innerHeight]",[window_innerWidth,window_innerHeight]);
+    // console.log("[window_innerWidth,window_innerHeight]",[window_innerWidth,window_innerHeight]);
 
     clickhereText = document.getElementById("clickhereText");
 
@@ -89,11 +89,13 @@ function handleResize() {
     // let canvasViz02_clientLeft = document.getElementById("controlRow02").getBoundingClientRect().x;
     // let canvasViz02_clientTop = document.getElementById("controlRow02").getBoundingClientRect().y;
 
-    // canvasViz02.style.left = canvasViz02_clientLeft + "px";
-    // canvasViz02.style.top = canvasViz02_clientTop + "px";
+    // fwidth = 30;
 
-    // let canvasViz02_styleWidth = document.getElementById("controlRow01").getBoundingClientRect().right - canvasViz02_clientLeft;
-    // let canvasViz02_styleHeight = document.getElementById("controlRow01").getBoundingClientRect().bottom - canvasViz02_clientTop;
+    // canvasViz02.style.left = canvasViz02_clientLeft-fwidth + "px";
+    // canvasViz02.style.top = canvasViz02_clientTop-fwidth + "px";
+
+    // let canvasViz02_styleWidth = document.getElementById("controlRow01").getBoundingClientRect().right - canvasViz02_clientLeft+fwidth*2;
+    // let canvasViz02_styleHeight = document.getElementById("controlRow01").getBoundingClientRect().bottom - canvasViz02_clientTop+fwidth*2;
 
     // canvasViz02.style.width = canvasViz02_styleWidth + "px";
     // canvasViz02.style.height = canvasViz02_styleHeight + "px";
