@@ -70,7 +70,7 @@ h2, em {
     /* height:100vh; */
     width:100vw;
     background-color: hsl(0, 0%, 90%, 1.0);
-    background-color: hsl(185, 50%, 90%, 1.0);
+    background-color: hsl(190, 90%, 86%, 1.0);
     overflow:hidden;
 
 }
@@ -82,6 +82,10 @@ h2, em {
     top: 0; */
     z-index: 2;
     flex-direction: column;
+    padding:2rem;
+    border-radius: 1rem;
+    border:solid 1px hsl(0, 0%, 100%, 0.1);
+    background-color: hsl(205, 90%, 70%, 0.1);
 }
 
 /* .controlRow01 {
