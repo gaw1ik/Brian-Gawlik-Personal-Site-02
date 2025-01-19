@@ -72,7 +72,7 @@ async function playSound() {
 
     for(let i=0; i<canvases.length; i++) {
         canvases[i].removeEventListener('mousedown', playSound);
-        canvases[i].removeEventListener('touchdown', playSound);
+        canvases[i].removeEventListener('touchstart', playSound);
 
     }
 
@@ -292,7 +292,7 @@ let canvases = document.getElementsByClassName("dial");
 for(let i=0; i<canvases.length; i++) {
     canvases[i].style.cursor="grab";
     canvases[i].addEventListener('mousedown', playSound);
-    canvases[i].addEventListener('touchdown', playSound);
+    canvases[i].addEventListener('touchstart', playSound);
 
 }
 
