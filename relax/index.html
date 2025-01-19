@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&display=swap" rel="stylesheet">
 
 
-    <title>Relax</title>
+    <title>Tones</title>
 </head>
 
 <body>
@@ -25,7 +25,7 @@
             <canvas id="canvasViz01"></canvas>
         </div>
 
-        <div id="versionNumber">Version 1.06g</div>
+        <div id="versionNumber">Version 2.01a</div>
         <a id="briangawliktag" href="\">BrianGawlik.com</a>
 
 
@@ -42,21 +42,30 @@
 
             <!-- Import RNBO Engine Wrapper -->
             <!-- Make sure to include the RNBO engine version to the version of your exported code, found in rnbopackage.json -->
-            <script type="text/javascript" src="js/app.js"></script>
-            <script type="text/javascript" src="js/drawKnob01.js"></script>
-            <script type="text/javascript" src="js/drawVisualizer01.js"></script>
-            <script type="text/javascript" src="js/drawToggle01.js"></script>
-            <script type="text/javascript" src="js/assignParamFuncs01.js"></script>
+
 
 
 
             <div id="controlRow02">
-                <h1 id="titleHeader">Relax</h1>
-
-                <div>
-                    <div id="clickhereText">(click here to begin)</div>
-                    <canvas class="toggle" id="mute"></canvas>
+                <div id="headerSubheader">
+                    <h1 id="titleHeader">Tones</h1>
+                    <h4 id="titleSubHeader">A Generative Soundscape</h4>
                 </div>
+
+                <!-- <div class="controlFlex02"> -->
+                    <div class="canvasAndLabel">
+                        <canvas class="dial" id="canvas_master_gain"></canvas>
+                        <h3 id="canvasLabel_master_gain">Volume</h3>
+                    </div>
+                    <!-- <div id="clickhereText">(click here to begin)</div> -->
+                     <div class="canvasAndLabel">
+                        <canvas class="dial" id="canvas_master_LPF"></canvas>
+                        <h3 id="canvasLabel_master_LPF">Filter</h3>
+                    </div>
+
+
+                    <!-- <canvas class="toggle" id="mute"></canvas> -->
+                <!-- </div> -->
             </div>
 
             <!-- <h3 id="clickMessage">(click/tap anywhere to begin)</h1> -->
@@ -64,21 +73,18 @@
             
 
             <div id="controlRow01">
-                <div>
-                    <canvas class="dial" id="canvas1"></canvas>
-                    <h3 id="canvas1label">Drive</h3>
+
+                <div class="canvasAndLabel">
+                    <canvas class="dial" id="canvas_chance"></canvas>
+                    <h3 id="canvasLabel_chance">Chance</h3>
                 </div>
-                <div>
-                    <canvas class="dial" id="canvas2"></canvas>
-                    <h3 id="canvas2label">Chance</h3>
+                <div class="canvasAndLabel">
+                    <canvas class="dial" id="canvas_time"></canvas>
+                    <h3 id="canvasLabel_time">Time</h3>
                 </div>
-                <div>
-                    <canvas class="dial" id="canvas3"></canvas>
-                    <h3 id="canvas3label">Time</h3>
-                </div>
-                <div>
-                    <canvas class="dial" id="canvas4"></canvas>
-                    <h3 id="canvas4label">Release</h3>
+                <div class="canvasAndLabel">
+                    <canvas class="dial" id="canvas_release"></canvas>
+                    <h3 id="canvasLabel_release">Release</h3>
                 </div>
             </div>
 
@@ -90,6 +96,13 @@
 
     </div>
 
+    <script type="text/javascript" src="js/drawKnob01.js"></script>
+    <script type="text/javascript" src="js/drawVisualizer01.js"></script>
+    <script type="text/javascript" src="js/drawToggle01.js"></script>
+    <script type="text/javascript" src="js/assignParamFuncs01.js"></script>
+    <script type="text/javascript" src="js/handleResize.js"></script>
+    <script type="text/javascript" src="js/setupCanvases.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
 
 
 </body>

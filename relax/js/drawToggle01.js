@@ -42,7 +42,7 @@ function drawToggle(canvas,val,rms) {
             ctx.fill();
         }
 
-        document.getElementById("clickhereText").textContent = "";
+        // document.getElementById("clickhereText").textContent = "";
 
 
     } else {

@@ -434,7 +434,6 @@ for(let i=0; i<canvases.length; i++) {
 
     });
 
-
     document.addEventListener('touchmove', (event) => {
 
         // console.log("touchmove")

@@ -9,7 +9,7 @@ html, body {
     box-sizing: border-box;
 }
 
-#rnbo-root {
+/* #rnbo-root {
     height: 100vh;
     width: 100vw;
 }
@@ -20,9 +20,9 @@ html, body {
 
 h2, em {
     width: 100%;
-}
+} */
 
-#rnbo-root {
+/* #rnbo-root {
     margin: auto;
     max-width: 540px;
 }
@@ -58,7 +58,7 @@ h2, em {
 
 #rnbo-parameter-sliders > div > input:first-of-type {
     flex-grow: 1;
-}
+} */
 
 
 
@@ -70,23 +70,12 @@ h2, em {
     /* height:100vh; */
     width:100vw;
     background-color: hsl(0, 0%, 90%, 1.0);
-    background-color: hsl(190, 90%, 86%, 1.0);
+    background-color: hsl(190, 100%, 92%, 1.0);
     overflow:hidden;
 
 }
 
-#controlsContainer01 {
-    display:flex;
-    position:relative;
-    /* left: 0;
-    top: 0; */
-    z-index: 2;
-    flex-direction: column;
-    padding:2rem;
-    border-radius: 1rem;
-    border:solid 1px hsl(0, 0%, 100%, 0.1);
-    background-color: hsl(205, 90%, 70%, 0.1);
-}
+
 
 /* .controlRow01 {
     display:flex;
@@ -113,22 +102,62 @@ h2, em {
     top:3px; /* this is weird but centered it better... */
 }
 
+#controlsContainer01 {
+    display:flex;
+    position:relative;
+    z-index: 2;
+    flex-direction: column;
+    /* padding:min(10vw,40px) min(10vw,10px); */
+    padding:40px 10px;
+    margin:0;
+    border-radius: 20px;
+    border:solid 1px hsl(0, 0%, 100%, 0.1);
+    background-color: hsl(205, 90%, 70%, 0.1);
+
+}
+
+.canvasAndLabel{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    /* width:100%; */
+}
+
+#controlRow02 {
+    position:relative;
+    display:grid;
+    /* grid-template-rows:150px; */
+    /* grid-template-columns:150px 150px 150px; */
+    grid-template-columns:2fr 1fr 1fr;
+
+
+    /* grid-template-columns:calc(450px*0.6) calc(450px*0.2) calc(450px*0.2); */
+    /* grid-template-columns:auto auto; */
+
+    justify-items:center;
+    align-items:center;
+}
+
 #controlRow01 {
+    position:relative;
+
     display:grid;
     /* grid-template-rows:200px 200px; */
     /* grid-template-columns:200px 200px; */
     justify-items:center;
     align-items:center;
+    grid-template-columns:1fr 1fr 1fr;
+    /* grid-template-columns:150px 150px 150px; */
+
+
 }
 
-#controlRow02 {
-    display:grid;
-    grid-template-rows:150px;
-    /* grid-template-columns:200px 200px; */
-    grid-template-columns:1fr 1fr;
 
-    justify-items:center;
-    align-items:center;
+
+.controlFlex02 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 
@@ -145,7 +174,23 @@ canvas {
 }
 
 .dial {
-    /* cursor: default; */
+    position: relative;
+
+    /* width:min(10vw,100px);
+    height:min(10vw,100px); */
+    /* height:100%; */
+    /* width:100%; */
+    width:150px;
+    height:150px;
+
+    /* margin:3%; */
+    /* margin:0 50px; */
+    /* margin:0 min(6vw,50px); */
+
+}
+
+#canvas_master_gain, #canvas_master_LPF{
+    margin:0;
 }
 
 .toggle {
@@ -157,11 +202,21 @@ h1 {
     font-family: "Alumni Sans Pinstripe", serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 5rem;
+    /* font-size: min(12vw,100px); */
+font-size:100px;
     user-select:none;
     margin:0;
-    /* overflow:hidden; */
 }
+
+#headerSubheader {
+    display:flex;
+    flex-direction:column;
+    margin:0;
+    /* margin-left:1rem; */
+    /* width:150px; */
+}
+
+/* #titleHeader */
 
 #versionNumber {
     font-size: 1rem;
@@ -169,6 +224,8 @@ h1 {
     left: 0;
     top: 0;
     user-select:none;
+    margin:0.3rem;
+    opacity:0.3;
 }
 
 #briangawliktag {
@@ -181,12 +238,107 @@ h1 {
     color:hsl(200, 50%, 50%, 0.5);
 }
 
+
+
 h3 {
+    /* position: absolute; */
+    /* bottom:0;
+    left:40%; */
+
     text-align: center;
     font-family: "Alumni Sans Pinstripe", serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 1rem;
+    font-size: 10px;
+    /* font-size: min(1.5vw,10px); */
     margin:0;
     user-select:none;
 }
+
+h4 {
+    text-align: center;
+    font-family: "Alumni Sans Pinstripe", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 10px;
+    opacity:50%;
+    /* font-size: min(1vw,10px); */
+    margin:0 0 0 0;
+    user-select:none;
+    letter-spacing: 3px;
+}
+
+
+@media screen and (max-width: 800px) {
+
+    /* .controlsContainer {
+        margin:5vw 1vw;
+    } */
+
+    /* .dial{
+        width:10vw;
+        height:10vw;
+        margin:0 max(7vw,50px);
+    } */
+    h1{
+        /* font-size:max(20vw,100px); */
+    }
+    h3{
+        /* font-size:max(1vw,10px); */
+
+    }
+    h4{
+        /* font-size:max(1vw,10px); */
+
+    }
+}
+
+/* @media (max-aspect-ratio: 1) { */
+@media screen and (max-width: 900px) {
+
+    #controlsContainer01 {
+        padding: 10vw 3vw;
+    }
+
+    .dial {
+        width:20vw;
+        height:20vw;
+    }
+    h1{
+        font-size:13vw;
+    }
+    h3{
+        font-size:2vw;
+    }
+    h4{
+        font-size:2vw;
+        letter-spacing: 0.5vw;
+
+    }
+}
+
+@media screen and (max-height: 600px) {
+
+    #controlsContainer01 {
+        padding: 10vh 3vh;
+    }
+
+    .dial {
+        width:17vh;
+        height:17vh;
+    }
+    h1{
+        font-size:13vh;
+    }
+    h3{
+        font-size:2vh;
+    }
+    h4{
+        font-size:2vh;
+        letter-spacing: 0.5vh;
+
+    }
+}
+ 
+
+

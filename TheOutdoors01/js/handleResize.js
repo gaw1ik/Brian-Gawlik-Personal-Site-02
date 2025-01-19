@@ -127,7 +127,7 @@ function handleResize() {
         // activeCanvasNum = activeCanvasID.substr(6,1) - 1; // index of the current active canvas (0,1,2,3,etc)
         let activeCanvasName = get_activeCanvasName(activeCanvasID);
 
-        // console.log("activeCanvasName",activeCanvasName);
+        console.log("activeCanvasName",activeCanvasName);
         let val = PARAMS[activeCanvasName];
         // if(i==0) {
         //     drawKnobDrive(canvas,val);

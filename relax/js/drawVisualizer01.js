@@ -2,12 +2,21 @@
 
 
 
-function drawVisualizer(canvas,val0) {
+function drawVisualizer() {
 
-    ctx = canvas.getContext("2d");
+    let canvas = canvasViz01;
+    let ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    let val = Math.tanh((val0+0.4)*4.0);
+    var rms;
+    try{
+        rms = device.parametersById.get("rms").value;
+    } catch(error) {
+        rms = 0.01;
+    }
+
+
+    let val = Math.tanh((rms+0.4)*4.0);
 
     // let val = 1.0;
 
@@ -41,14 +50,14 @@ function drawVisualizer(canvas,val0) {
 
         let shape = SHAPES[i];
 
-        let speed = shape.speed;
-        let xC = shape.xC - 0.001 + getRandomFloat(0.0007,0.001)*speed*val0*4.0;
-        let yC = shape.yC + getRandomFloat(0.0007,0.001)*speed;
-        let rad = shape.rad + 0.001 + getRandomFloat(0.001,0.01)*val0*4.0;
+        let speed = shape.speed * 0.3;
+        let xC = shape.xC - 0.0001 + getRandomFloat(0.0007,0.001)*speed*rms*4.0;
+        let yC = shape.yC + getRandomFloat(0.0007,0.001)*speed*0.50;
+        let rad = shape.rad + 0.0001 + getRandomFloat(0.001,0.01)*rms*1.0;
         // let aspect = shape.aspect + randomSign() * val*getRandomFloat(0.005,0.01);
-        let age = shape.age + 0.01;
-        let aspect = 1.0 + val0*0.1;
-        let alpha = shape.alpha * 0.96;
+        let age = shape.age + 0.005;
+        let aspect = 1.0 + rms*0.1;
+        let alpha = shape.alpha * 0.98;
 
         let xCPix = xC*WIDTH_VIZ;
         let yCPix = yC*HEIGHT_VIZ;
@@ -105,12 +114,12 @@ function drawVisualizer(canvas,val0) {
 
 
 
-function drawVisualizer01(canvas,val0) {
+function drawVisualizer01(canvas,rms) {
 
     ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    let val = Math.tanh((val0+0.4)*4.0);
+    let val = Math.tanh((rms+0.4)*4.0);
 
     let nShapes = 12;
 
