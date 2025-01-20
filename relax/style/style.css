@@ -1,3 +1,13 @@
+:root {
+
+    --canvasHeight:28vw;
+    --h1Size: calc(var(--canvasHeight) * 0.67);
+    --h3Size: calc(var(--h1Size) * 0.15);
+    --h4Size: calc(var(--h1Size) * 0.15);
+
+}
+
+
 html, body {
     margin: 0;
     padding: 0;
@@ -8,57 +18,6 @@ html, body {
 * {
     box-sizing: border-box;
 }
-
-/* #rnbo-root {
-    height: 100vh;
-    width: 100vw;
-}
-#background {
-    position: absolute;
-    z-index: -1;
-}
-
-h2, em {
-    width: 100%;
-} */
-
-/* #rnbo-root {
-    margin: auto;
-    max-width: 540px;
-}
-
-#rnbo-clickable-keyboard {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-#rnbo-clickable-keyboard > div {
-    margin: 2px;
-    border: solid black 1px;
-    min-height: 50px;
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#rnbo-clickable-keyboard > div.clicked {
-    background: #222222;
-    color: #dddddd;
-}
-
-#rnbo-parameter-sliders {
-    display: flex;
-    flex-direction: column;
-}
-
-#rnbo-parameter-sliders > div {
-    display: flex;
-}
-
-#rnbo-parameter-sliders > div > input:first-of-type {
-    flex-grow: 1;
-} */
 
 
 
@@ -77,10 +36,7 @@ h2, em {
 
 
 
-/* .controlRow01 {
-    display:flex;
-    flex-direction: row;
-} */
+
 
 #clickhereText {
     text-align: center;
@@ -114,6 +70,8 @@ h2, em {
     border:solid 1px hsl(0, 0%, 100%, 0.1);
     background-color: hsl(205, 90%, 70%, 0.1);
 
+    padding: 10vw 3vw;
+
 }
 
 .canvasAndLabel{
@@ -126,19 +84,11 @@ h2, em {
 #controlRow02 {
     position:relative;
     display:grid;
-    /* grid-template-rows:150px; */
-    /* grid-template-columns:150px 150px 150px; */
-    /* grid-template-columns:2fr 1fr 1fr; */
-    grid-template-columns:1fr 1fr;
-
-
-
-
-    /* grid-template-columns:calc(450px*0.6) calc(450px*0.2) calc(450px*0.2); */
-    /* grid-template-columns:auto auto; */
-
     justify-items:center;
     align-items:center;
+
+    grid-template-columns: 1fr;
+    grid-template-rows:0.3fr 1fr;
 }
 
 #gainAndLPFContainer {
@@ -183,17 +133,8 @@ canvas {
 
 .dial {
     position: relative;
-
-    /* width:min(10vw,100px);
-    height:min(10vw,100px); */
-    /* height:100%; */
-    /* width:100%; */
-    width:150px;
-    height:150px;
-
-    /* margin:3%; */
-    /* margin:0 50px; */
-    /* margin:0 min(6vw,50px); */
+    width:var(--canvasHeight);
+    height:var(--canvasHeight);
 
 }
 
@@ -211,7 +152,7 @@ h1 {
     font-weight: 400;
     font-style: normal;
     /* font-size: min(12vw,100px); */
-font-size:100px;
+    font-size:var(--h1Size);
     user-select:none;
     margin:0;
 }
@@ -227,7 +168,7 @@ font-size:100px;
 /* #titleHeader */
 
 #versionNumber {
-    font-size: 1rem;
+    font-size: var(--h3Size);
     position: absolute;
     left: 0;
     top: 0;
@@ -237,7 +178,7 @@ font-size:100px;
 }
 
 #briangawliktag {
-    font-size: 2rem;
+    font-size: calc( var(--h1Size) * 0.3 );
     position: absolute;
     right:30px;
     bottom: 30px;
@@ -257,8 +198,7 @@ h3 {
     font-family: "Alumni Sans Pinstripe", serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 10px;
-    /* font-size: min(1.5vw,10px); */
+    font-size:var(--h3Size);
     margin:0;
     user-select:none;
 }
@@ -268,7 +208,7 @@ h4 {
     font-family: "Alumni Sans Pinstripe", serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 10px;
+    font-size:var(--h4Size);
     opacity:50%;
     /* font-size: min(1vw,10px); */
     margin:0 0 0 0;
@@ -278,57 +218,58 @@ h4 {
 
 
 
-/* @media (max-aspect-ratio: 1) { */
-@media screen and (max-width: 900px) {
-
-    #controlsContainer01 {
-        padding: 10vw 3vw;
-    }
-
-    #controlRow02 {
-        grid-template-columns: 1fr;
-        grid-template-rows:0.3fr 1fr;
-    }
-
-    .dial {
-        width:30vw;
-        height:30vw;
-    }
-    h1{
-        font-size:13vw;
-    }
-    h3{
-        font-size:2vw;
-    }
-    h4{
-        font-size:2vw;
-        letter-spacing: 0.5vw;
-
-    }
+/* @media screen and (max-width: 900px) {
 }
 
 @media screen and (max-height: 600px) {
+} */
+ 
+/* @media only screen and (max-aspect-ratio: 3/4) {
+} */
+
+@media only screen and (min-aspect-ratio: 0.67) {
+
+    :root {
+        --canvasHeight:15vh;
+        --h1Size: calc(var(--canvasHeight) * 0.67);
+        --h3Size: calc(var(--h1Size) * 0.15);
+        --h4Size: calc(var(--h1Size) * 0.15);
+    }
+
 
     #controlsContainer01 {
         padding: 10vh 3vh;
     }
 
-    .dial {
-        width:17vh;
-        height:17vh;
-    }
-    h1{
-        font-size:13vh;
-    }
-    h3{
-        font-size:2vh;
-    }
-    h4{
-        font-size:2vh;
-        letter-spacing: 0.5vh;
-
-    }
 }
- 
 
+
+
+
+@media only screen and (min-aspect-ratio: 3/2) {
+
+    :root {
+        --canvasHeight:20vh;
+        --h1Size: calc(var(--canvasHeight) * 0.67);
+        --h3Size: calc(var(--h1Size) * 0.15);
+        --h4Size: calc(var(--h1Size) * 0.15);
+    }
+
+    .dial {
+        width:var(--canvasHeight);
+        height:var(--canvasHeight);
+    }
+
+    #controlsContainer01 {
+        padding: 10vh 3vh;
+    }
+
+    #controlRow02 {
+        grid-template-rows: 1fr;
+        grid-template-columns:1fr 1fr;
+
+    }
+
+
+}
 
