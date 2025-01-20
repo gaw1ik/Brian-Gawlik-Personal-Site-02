@@ -83,7 +83,7 @@ body {
 
 #controlsContainer01 {
     display:flex;
-    position:relative;
+    position:fixed;
     z-index: 2;
     flex-direction: column;
     align-items: center;
@@ -139,7 +139,7 @@ body {
 }
 
 #canvasViz01 {
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     z-index: 0;
@@ -148,7 +148,7 @@ body {
     /* padding:3rem; */
 }
 #canvasViz02 {
-    position: absolute;
+    position: fixed;
     z-index: 0;
 }
 
