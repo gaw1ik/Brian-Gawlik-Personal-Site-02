@@ -60,7 +60,7 @@ function handleResize() {
         // gridLastColumnWidth = gridColumnWidth;
     } 
 
-    controlRow01.style.gridTemplateColumns = "repeat(5, " + gridColumnWidth + "px)";
+    // controlRow01.style.gridTemplateColumns = "repeat(5, " + gridColumnWidth + "px)";
 
 
     // let controlRow0W2idth = gridColumnWidth*5;
@@ -102,11 +102,11 @@ function handleResize() {
 
 
     //////////// Control Canvases
-    HEIGHTSTYLE = Math.min(gridColumnWidth/2,100);
-    WIDTHSTYLE = HEIGHTSTYLE;
+    // HEIGHTSTYLE = Math.min(gridColumnWidth/2,100);
+    // WIDTHSTYLE = HEIGHTSTYLE;
     
-    WIDTH = WIDTHSTYLE*2;
-    HEIGHT = HEIGHTSTYLE*2;
+    // WIDTH = WIDTHSTYLE*2;
+    // HEIGHT = HEIGHTSTYLE*2;
 
     // for(let i=0; i<blankControlCanvases.length; i++) {
     //     let canvas = blankControlCanvases[i];
@@ -118,10 +118,15 @@ function handleResize() {
 
     for(let i=0; i<canvases.length; i++) {
         let canvas = canvases[i];
-        canvas.width = WIDTH;
-        canvas.height = HEIGHT;
-        canvas.style.width = WIDTHSTYLE.toString() + "px";
-        canvas.style.height = HEIGHTSTYLE.toString() + "px";
+        // canvas.width = WIDTH;
+        // canvas.height = HEIGHT;
+        // canvas.style.width = WIDTHSTYLE.toString() + "px";
+        // canvas.style.height = HEIGHTSTYLE.toString() + "px";
+
+        canvas_style_width = canvas.clientWidth;
+        canvas_style_height = canvas.clientHeight;
+        canvas.width = canvas_style_width*2;
+        canvas.height = canvas_style_height*2;
 
         let activeCanvasID = canvas.id;
         // activeCanvasNum = activeCanvasID.substr(6,1) - 1; // index of the current active canvas (0,1,2,3,etc)
@@ -136,28 +141,31 @@ function handleResize() {
         // }    
     }
 
-    let controlRow01_width = document.getElementById("controlRow01").clientWidth;
-    // let controlRow02_width = controlRow01_width;
-    // console.log("controlRow01_width",controlRow01_width)
+    // let controlRow01_width = document.getElementById("controlRow01").clientWidth;
 
-    document.getElementById("controlRow02").style.width = controlRow01_width.toString() + "px";
+    // document.getElementById("controlRow02").style.width = controlRow01_width.toString() + "px";
 
 
 
     let CONTROLVIZ = document.getElementsByClassName("controlViz");
 
-    let controlViz_widthstyle = WIDTHSTYLE*1.5;
-    let controlViz_heightstyle = HEIGHTSTYLE;
-    let controlViz_width = controlViz_widthstyle*2;
-    let controlViz_height = controlViz_heightstyle*2;
-
+    // let controlViz_widthstyle = WIDTHSTYLE*1.5;
+    // let controlViz_heightstyle = HEIGHTSTYLE;
+    // let controlViz_width = controlViz_widthstyle*2;
+    // let controlViz_height = controlViz_heightstyle*2;
 
     for(let i=0; i<CONTROLVIZ.length; i++) {
         let canvas = CONTROLVIZ[i];
-        canvas.width = controlViz_width;
-        canvas.height = controlViz_height;
-        canvas.style.width = controlViz_widthstyle.toString() + "px";
-        canvas.style.height = controlViz_heightstyle.toString() + "px";
+
+        canvas_style_width = canvas.clientWidth;
+        canvas_style_height = canvas.clientHeight;
+        canvas.width = canvas_style_width*2;
+        canvas.height = canvas_style_height*2;
+
+        // canvas.width = controlViz_width;
+        // canvas.height = controlViz_height;
+        // canvas.style.width = controlViz_widthstyle.toString() + "px";
+        // canvas.style.height = controlViz_heightstyle.toString() + "px";
     }
 
     // ////////// Mute Control Canvas

@@ -10,7 +10,8 @@ TIME = 800;
 
 
 //// ControlViz's
-[hueUI1,satUI1,litUI1] = [200,50,100];
+[hueUI1,satUI1,litUI1] = [200,0,100];
+alphaUI1 = 255;
 [hueUI2, satUI2, litUI2] = [0,0,0];
 
 //// VIZ

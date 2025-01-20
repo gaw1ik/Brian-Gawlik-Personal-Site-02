@@ -10,7 +10,7 @@ function drawKnob(canvas,val) {
 
     ctx.clearRect(0, 0, canvasW, canvasH);
 
-    let rControl = 0.31;
+    let rControl = 0.35;
     let rPix = canvasH*rControl;
     let circStart = PIo2 + PIo4;
     let circEnd   = PIo2 + twoPI - PIo4;

@@ -111,7 +111,7 @@ function draw_background_controlViz() {
     drawPath(ctx, path1, lw, hue, sat, lit, alpha, 1, 0);
 
     // var [hue,sat,lit] = [150,30,6];
-    var alpha = 100;
+    var alpha = alphaUI1;
     
     var mag = LPF*0.2*rmsScaled;
 
@@ -179,8 +179,8 @@ function draw_wash_controlViz() {
     // path = [[-artboardWo2,rmsScaled],[artboardWo2,rmsScaled]];
 
     // let path = [ [-artboardWo2,0], [0,rmsScaled], [artboardWo2,0] ];
-    let [hue,sat,lit] = [hueUI1,satUI1,litUI1];
-    var alpha = 100;
+    var [hue,sat,lit] = [hueUI1,satUI1,litUI1];
+    var alpha = alphaUI1;
 
     // drawRect(ctx, -artboardWo2+0.05, 0, artboardWo2*1.9, 0.01, 0, hue, sat, lit, alpha, 0);
 
@@ -198,7 +198,8 @@ function draw_wash_controlViz() {
     // drawPath(ctx, path, lw, hue, sat, lit, alpha, 1, 0);
     drawEllipse(ctx, xC_arc, yC_arc, radX_arc, radY_arc, rot, lw, hue, sat, lit, alpha, 1);
 
-    var alpha = 255;
+    var [hue,sat,lit] = [hueUI1,satUI1,litUI1/2];
+    var alpha = alphaUI1;
     let radX_dot = 0.02;
     let radY_dot = radX_dot;
     let L_dot = 0.05;
@@ -282,7 +283,7 @@ function draw_rush_controlViz() {
     
     // console.log([[-artboardWo2-0.6,0.0],[xC1,yC1],[xC2,yC2],[artboardWo2+0.6,1.0]]);
     let [hue,sat,lit] = [hueUI1,satUI1,litUI1];
-    let alpha = 100;
+    let alpha = alphaUI1;
     let lw = 0.01;
     // drawPath(ctx, path, lw, hue, sat, lit, alpha, 1, 0);
     let shape = RUSH_SHAPES[0];
@@ -355,7 +356,7 @@ function draw_insects_controlViz() {
 
 
     let [hue,sat,lit] = [hueUI1,satUI1,litUI1];
-    let alpha = 170;
+    let alpha = alphaUI1;
     let lw = 0;
 
 
@@ -428,7 +429,7 @@ function draw_birds_controlViz() {
 
 
     let [hue,sat,lit] = [hueUI1,satUI1,litUI1];
-    let alpha = 100;
+    let alpha = alphaUI1;
     let lw = 0.02;
 
     var x = getRandomFloat()*artboardWo2*randomSign();

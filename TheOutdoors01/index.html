@@ -30,26 +30,12 @@
             <canvas id="canvasViz02"></canvas>
         </div> -->
 
-        <div id="versionNumber">Version 1.05k</div>
+        <div id="versionNumber">Version 2.01a</div>
 
         <a id="briangawliktag" href="\">BrianGawlik.com</a>
 
 
         <div id="controlsContainer01">
-
-
-            <!-- Load the script that creates the RNBO device  -->
-            <!-- Uncomment if you know the version of your exported RNBO patch to avoid dynamic loading -->
-            <!-- <script type="text/javascript" src="https://cdn.cycling74.com/rnbo/latest/rnbo.min.js"></script> -->
-
-            <!-- (Optional) The guardrails.js script isn't required for RNBO to work, and you can skip including it -->
-            <!-- It simply offers some helpful error messages for common problems -->
-            <!-- <script type="text/javascript" src="js/guardrails.js"></script> -->
-
-            <!-- Import RNBO Engine Wrapper -->
-            <!-- Make sure to include the RNBO engine version to the version of your exported code, found in rnbopackage.json -->
-
-
 
 
             <div id="controlRow02">
@@ -58,9 +44,9 @@
                     <h4 id="titleSubHeader">A Generative Soundscape</h4>
                 </div>
 
-                <div id="controlFlex02">
+                <div id="controlFlex03">
                     <div>
-                        <h3 id="canvas1label">Gain</h3>
+                        <h3 id="canvas1label">Volume</h3>
                         <canvas class="dial" id="canvas_master_gain"></canvas>
                     </div>
                     <div>
@@ -77,130 +63,157 @@
             <!-- <h3 id="clickMessage">(click/tap anywhere to begin)</h1> -->
 
             
-
             <div id="controlRow01">
 
-                <div id="controlFlex01">
 
+                <div class="deviceContainer">
                     <h2 id="canvas1label">Background</h3>
+                    <div id="controlFlex01">
 
-                    <canvas class="controlViz" id="canvas_background_controlViz"></canvas>
+                        <!-- <div class="canvasAndLabel"> -->
+                        <!-- </div> -->
 
-                    <div id="controlFlex02">
+                        <!-- <div id="controlFlex02"> -->
+                            <canvas class="controlViz02" id="canvas_background_controlViz"></canvas>
 
-                        <div id="controlFlex01">
-                            <div>
-                                <h3 id="canvas1label">Gain</h3>
-                                <canvas class="dial" id="canvas_background_gain"></canvas>
-                            </div>
-                            <div>
-                                <h3 id="canvas1label">Hiss</h3>
-                                <canvas class="dial" id="canvas_background_hiss"></canvas>
-                            </div>
-                        </div>
 
-                        <div id="controlFlex01">
-                            <div>
-                                <h3 id="canvas1label">Filter</h3>
-                                <canvas class="dial" id="canvas_background_LPF"></canvas>
-                            </div>
-                            <div>
-                                <h3 id="canvas1label">Param</h3>
-                                <canvas class="dial" id="canvas_background_param"></canvas>
-                            </div>
-                        </div>
+                            <!-- <div id="controlFlex01"> -->
+                                <div class="canvasAndLabel">
+                                    <h3 id="canvas1label">Volume</h3>
+                                    <canvas class="dial" id="canvas_background_gain"></canvas>
+                                </div>
+                                <div class="canvasAndLabel">
+                                    <h3 id="canvas1label">Hiss</h3>
+                                    <canvas class="dial" id="canvas_background_hiss"></canvas>
+                                </div>
+                            <!-- </div> -->
+
+                            <!-- <div id="controlFlex01"> -->
+                                <div class="canvasAndLabel">
+                                    <h3 id="canvas1label">Filter</h3>
+                                    <canvas class="dial" id="canvas_background_LPF"></canvas>
+                                </div>
+                                <!-- <div class="canvasAndLabel">
+                                    <h3 id="canvas1label">Param</h3>
+                                    <canvas class="dial" id="canvas_background_param"></canvas>
+                                </div> -->
+                            <!-- </div> -->
+
+
+                        <!-- </div> -->
 
                     </div>
+                    <div class="line"></div>
 
                 </div>
-
-                <div id="controlFlex01">
-
+                <div class="deviceContainer">
                     <h2 id="canvas1label">Wash</h3>
+                    <div id="controlFlex01">
 
-                    <canvas class="controlViz" id="canvas_wash_controlViz"></canvas>
 
-                    <div>
-                        <h3 id="canvas2label">Gain</h3>
-                        <canvas class="dial" id="canvas_wash_gain"></canvas>
+                        <canvas class="controlViz02" id="canvas_wash_controlViz"></canvas>
+
+                        <!-- <div id="controlFlex03"> -->
+                            <div class="canvasAndLabel">
+                                <h3 id="canvas2label">Volume</h3>
+                                <canvas class="dial" id="canvas_wash_gain"></canvas>
+                            </div>
+                            <div class="canvasAndLabel">
+                                <h3 id="canvas2label">Period</h3>
+                                <canvas class="dial" id="canvas_wash_period"></canvas>
+                            </div>
+                        <!-- </div> -->
+
+
+
                     </div>
-                    <div>
-                        <h3 id="canvas2label">Period</h3>
-                        <canvas class="dial" id="canvas_wash_period"></canvas>
-                    </div>
+                    <div class="line"></div>
+
                 </div>
-
-                <div id="controlFlex01">
-
+                <div class="deviceContainer">
                     <h2 id="canvas1label">Rush</h3>
+                    <div id="controlFlex01">
 
-                    <canvas class="controlViz" id="canvas_rush_controlViz"></canvas>
+                        <canvas class="controlViz02" id="canvas_rush_controlViz"></canvas>
 
-                    <div>
-                        <h3 id="canvas3label">Gain</h3>
-                        <canvas class="dial" id="canvas_rush_gain"></canvas>
+                        <!-- <div id="controlFlex02"> -->
+                            <div class="canvasAndLabel">
+                                <h3 id="canvas3label">Volume</h3>
+                                <canvas class="dial" id="canvas_rush_gain"></canvas>
+                            </div>
+                            <div class="canvasAndLabel">
+                                <h3 id="canvas3label">Speed</h3>
+                                <canvas class="dial" id="canvas_rush_speed"></canvas>
+                            </div>
+                        <!-- </div> -->
+
+
+
                     </div>
-                    <div>
-                        <h3 id="canvas3label">Speed</h3>
-                        <canvas class="dial" id="canvas_rush_speed"></canvas>
-                    </div>
+                    <div class="line"></div>
+
                 </div>
-
-                <div id="controlFlex01">
-
+                <div class="deviceContainer">
                     <h2 id="canvas1label">Insects</h3>
+                    <div id="controlFlex01">
 
-                    <canvas class="controlViz" id="canvas_insects_controlViz"></canvas>
+                        <canvas class="controlViz" id="canvas_insects_controlViz"></canvas>
 
-                    <div id="controlFlex02">
+                        <!-- <div id="controlFlex02"> -->
 
-                        <div id="controlFlex01">
-                            <div>
-                                <h3 id="canvas1label">Gain</h3>
-                                <canvas class="dial" id="canvas_insects_gain"></canvas>
-                            </div>
-                            <div>
-                                <h3 id="canvas1label">Period</h3>
-                                <canvas class="dial" id="canvas_insects_period"></canvas>
-                            </div>
-                        </div>
+                            <!-- <div id="controlFlex01"> -->
+                                <div class="canvasAndLabel">
+                                    <h3 id="canvas1label">Volume</h3>
+                                    <canvas class="dial" id="canvas_insects_gain"></canvas>
+                                </div>
+                                <div class="canvasAndLabel">
+                                    <h3 id="canvas1label">Period</h3>
+                                    <canvas class="dial" id="canvas_insects_period"></canvas>
+                                </div>
+                            <!-- </div> -->
 
-                        <div id="controlFlex01">
+                            <!-- <div id="controlFlex01"> -->
 
-                            <div>
-                                <h3 id="canvas1label">Rate</h3>
-                                <canvas class="dial" id="canvas_insects_rate"></canvas>
-                            </div>
-                            <div>
-                                <h3 id="canvas1label">Freq</h3>
-                                <canvas class="dial" id="canvas_insects_freq"></canvas>
-                            </div>
-                        </div>
+                                <div class="canvasAndLabel">
+                                    <h3 id="canvas1label">Rate</h3>
+                                    <canvas class="dial" id="canvas_insects_rate"></canvas>
+                                </div>
+                                <div class="canvasAndLabel">
+                                    <h3 id="canvas1label">Freq</h3>
+                                    <canvas class="dial" id="canvas_insects_freq"></canvas>
+                                </div>
+                            <!-- </div> -->
+
+                        <!-- </div> -->
 
                     </div>
+                    <div class="line"></div>
 
                 </div>
-
-                <div id="controlFlex01">
-
+                <div class="deviceContainer">
                     <h2 id="canvas1label">Birds</h3>
+                    <div id="controlFlex01">
 
-                    <canvas class="controlViz" id="canvas_birds_controlViz"></canvas>
+                        <canvas class="controlViz02" id="canvas_birds_controlViz"></canvas>
 
-                    <div>
-                        <h3 id="canvas5label">Gain</h3>
-                        <canvas class="dial" id="canvas_birds_gain"></canvas>
+                        <!-- <div id="controlFlex02"> -->
+                            <div class="canvasAndLabel">
+                                <h3 id="canvas5label">Volume</h3>
+                                <canvas class="dial" id="canvas_birds_gain"></canvas>
+                            </div>
+                            <div class="canvasAndLabel">
+                                <h3 id="canvas5label">Period</h3>
+                                <canvas class="dial" id="canvas_birds_period0"></canvas>
+                            </div>
+                        <!-- </div> -->
+                        <!-- <div>
+                            <h3 id="canvas5label">Thresh</h3>
+                            <canvas class="dial" id="canvas_5c"></canvas>
+                        </div> -->
                     </div>
-                    <div>
-                        <h3 id="canvas5label">Period</h3>
-                        <canvas class="dial" id="canvas_birds_period0"></canvas>
-                    </div>
-                    <!-- <div>
-                        <h3 id="canvas5label">Thresh</h3>
-                        <canvas class="dial" id="canvas_5c"></canvas>
-                    </div> -->
+                    <div class="line"></div>
+
                 </div>
-
             </div>
 
 
