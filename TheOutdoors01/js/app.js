@@ -24,6 +24,9 @@ TIME = 800;
 [hueKnobNeedle,satKnobNeedle,litKnobNeedle,alphaKnobNeedle] = [0,0,100,0.7];
 [hueKnobBottom,satKnobBottom,litKnobBottom,alphaKnobBottom] = [0,0,4,0.8];
 
+isDragging = false;
+isTouching = false;
+
 // CSS
 const cssroot = document.documentElement;
 let hslBG = "hsl(" + hueBG + ", " + satBG + "%, " + litBG + "%)";
@@ -304,8 +307,7 @@ async function setup() {
 document.body.addEventListener('click', playSound);
 
 
-isDragging = false;
-isTouching = false;
+
 
 let canvases = document.getElementsByClassName("dial");
 for(let i=0; i<canvases.length; i++) {
@@ -323,19 +325,31 @@ for(let i=0; i<canvases.length; i++) {
     canvas.addEventListener('mousedown', (event) => {
         
         isDragging = true;
-        // console.log("isDragging",isDragging)
-
-        // lastX = event.clientX - canvas.offsetLeft;
-        // lastY = event.clientY - canvas.offsetTop;
         lastX = event.clientX;
         lastY = event.clientY;
-        //thisCanvasOffsetLeft = canvas.offsetLeft
-        //thisCanvasOffsetTop = canvas.offsetTop
         activeCanvasID = event.target.id;
         activeCanvasNum = activeCanvasID.substr(6,1) - 1; // index of the current active canvas (0,1,2,3,etc)
         activeCanvasName = get_activeCanvasName(activeCanvasID);
         console.log("event.target.id",event.target.id);
-        // let canvases = document.getElementsByClassName("dial");
+        for(let i=0; i<canvases.length; i++) {
+            canvases[i].style.cursor="grabbing";
+        }
+    });
+
+    canvas.addEventListener('touchstart', (event) => {
+
+        isDragging = true;
+
+        const touch = event.touches[0]; // Get the first touch point
+
+        lastX = touch.clientX;
+        lastY = touch.clientY;
+
+        activeCanvasID = event.target.id;
+        activeCanvasName = get_activeCanvasName(activeCanvasID);
+        console.log("activeCanvasName",activeCanvasName)
+
+        console.log("event.target.id",event.target.id);
         for(let i=0; i<canvases.length; i++) {
             canvases[i].style.cursor="grabbing";
         }
@@ -344,139 +358,56 @@ for(let i=0; i<canvases.length; i++) {
     document.addEventListener('mouseup', () => {
         isDragging = false;
         document.body.style.cursor = "default";
-        // let canvases = document.getElementsByClassName("dial");
         for(let i=0; i<canvases.length; i++) {
             canvases[i].style.cursor="grab";
         }
-        // console.log("isDragging",isDragging)
 
-    });
-
-
-    canvas.addEventListener('touchstart', (event) => {
-        
-        isTouching = true;
-        console.log("touchstart")
-
-        const touch = event.touches[0];
-        lastX = touch.clientX;
-        lastY = touch.clientY;
-        // thisCanvasOffsetLeft = canvas.offsetLeft
-        // thisCanvasOffsetTop = canvas.offsetTop
-        activeCanvasID = event.target.id;
-        activeCanvasNum = activeCanvasID.substr(6,1) - 1; // index of the current active canvas (0,1,2,3,etc)
-        activeCanvasName = get_activeCanvasName(activeCanvasID);
-        console.log("event.target.id",event.target.id);
     });
 
     document.addEventListener('touchend', () => {
-        console.log("touchend")
-        isTouching = false;
-        // lastY[activeCanvasNum] = 0; // reset lastY back to 0
-        // console.log("isDragging",isDragging)
+        isDragging = false;
+        document.body.style.cursor = "default";
+        for(let i=0; i<canvases.length; i++) {
+            canvases[i].style.cursor="grab";
+        }
 
     });
 
     document.addEventListener('mousemove', (event) => {
 
-        // console.log("isDragging",isDragging)
         if (!isDragging) return;
         document.body.style.cursor = "grabbing";
-
-        // startX = lastX;
-        // lastY = startY;
-
-        const x = event.clientX;
+        // const x = event.clientX;
         const y = event.clientY;
-            //const x = event.clientX - thisCanvasOffsetLeft;
-        //const y = event.clientY - thisCanvasOffsetTop;
-
-        // calculate delta movements
-
         let dy = y - lastY;
-        //dx = startX - x;
-        //dxy = dy+dx;
-
-        // let v = VAL[activeCanvasNum] - dy*0.007;
         let v = PARAMS[activeCanvasName] - dy*0.007;
-
         val = Math.min(Math.max(0,v),1);
-
-        // VAL[activeCanvasNum] = val;
         PARAMS[activeCanvasName] = val;
-
-        // console.log("VAL",VAL);
-
         let canvas = document.getElementById(activeCanvasID);
-
         let funcName = "updateRNBOPARAM_"+ activeCanvasName;
-        window[funcName](); // run the assign function corresponding to the active parameter
-
-
-        // assignParam_drive(device);
-
-        // assignParam_prob(device);
-
-        // assignParam_time(device);
-
-        // assignParam_curve(device);
-
-        
-        if(activeCanvasNum==0) {
-            drawKnobDrive(canvas,val);
-        } else {
-            drawKnob(canvas,val);
-        }            
-
+        window[funcName](); // run the assign function corresponding to the active parameter     
         lastY = y;
-        // LASTY[activeCanvasNum] = lastY;
-        // console.log("LASTY",LASTY);
+        drawKnob(canvas,val);
 
     });
 
     document.addEventListener('touchmove', (event) => {
 
-        // console.log("touchmove")
-        if (!isTouching) return;
-
+        if (!isDragging) return;
         const touch = event.touches[0]; // Get the first touch point
-
-        // const x = touch.clientX;
         const y = touch.clientY;
-
-        // calculate delta movements
+        document.body.style.cursor = "grabbing";
         let dy = y - lastY;
-
-        let v = VAL[activeCanvasNum] - dy*0.007;
-
+        let v = PARAMS[activeCanvasName] - dy*0.007;
         val = Math.min(Math.max(0,v),1);
-
-        VAL[activeCanvasNum] = val;
-
-        // console.log("VAL",VAL);
-
+        PARAMS[activeCanvasName] = val;
         let canvas = document.getElementById(activeCanvasID);
-
-        var adjustedValue;
-
-
-        // assignParam_drive(device);
-
-        // assignParam_prob(device);
-
-        // assignParam_time(device);
-
-        // assignParam_curve(device);
-
-        if(activeCanvasNum==0) {
-            drawKnobDrive(canvas,val);
-        } else {
-            drawKnob(canvas,val);
-        }    
-
+        let funcName = "updateRNBOPARAM_"+ activeCanvasName;
+        window[funcName](); // run the assign function corresponding to the active parameter     
         lastY = y;
-        // LASTY[activeCanvasNum] = lastY;
-        // console.log("LASTY",LASTY);
+
+        drawKnob(canvas,val);
+
 
     });
 }
