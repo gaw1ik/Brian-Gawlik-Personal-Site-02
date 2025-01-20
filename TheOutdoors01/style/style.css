@@ -1,11 +1,12 @@
 :root {
     --bg-hsl: hsl(150,20%,20%);
-    --text-color-body: hsl(0,0%,100%);
-    --text-color-h1: hsl(0,0%,80%);
-    /* --canvasHeight:50px; */
-    --canvasHeight:8vh;
-    --canvasHeight:60px;
-    --h1Size: 40px;
+    /* --text-color-body: hsl(0,0%,100%);
+    --text-color-h1: hsl(0,0%,80%); */
+    --text-color-body: hsl(0,0%,10%);
+    --text-color-h1: hsl(0,0%,10%);
+
+    --canvasHeight:10vw;
+    --h1Size: 5vw;
     --h2Size: calc(var(--h1Size) * 0.5);
     --h3Size: calc(var(--h1Size) * 0.5);
     --h4Size: calc(var(--h1Size) * 0.5);
@@ -16,10 +17,12 @@
 html {
     /* background-color: black; */
     /* background-color: hsl(130, 20%, 20%, 1.0); */
-    background-color: var(--bg-hsl);
+    /* background-color: var(--bg-hsl); */
     /* position:fixed; */
     height:100lvh;
-    width:100%
+    width:100%;
+    background-color: white;
+
 
 
 }
@@ -40,7 +43,9 @@ body {
     /* color:hsl(130, 0%, 80%, 1.0); */
     color:var(--text-color-body);
 
-    /* background-color: black; */
+    background-color: white;
+
+    /* padding:1rem; */
 }
 
 * {
@@ -61,8 +66,10 @@ body {
     width:100%;
     /* background-color: hsl(0, 0%, 90%, 1.0); */
     /* background-color: hsl(130, 20%, 20%, 1.0); */
-    background-color: var(--bg-hsl);
+    /* background-color: var(--bg-hsl); */
     overflow:hidden;
+
+    /* padding:2rem; */
 
 }
 
@@ -100,10 +107,12 @@ body {
     /* background-color: hsl(130, 0%, 100%, 0.035); */
     /* background-color: hsl(160, 30%, 20%, 0.1); */
 
-    background-color: var(--controlsContainer01-bghsl);
+    /* background-color: var(--controlsContainer01-bghsl); */
 
     padding:2rem;
-    border:solid 1px hsl(0,0%,60%,0.1);
+    /* border:solid 1px hsl(0,0%,60%,0.1); */
+    /* border:solid 1px hsl(0,0%,60%,0.1); */
+
     border-radius:1rem;
 
 }
@@ -151,7 +160,7 @@ body {
     display:flex;
     flex-direction: column;
 
-    border: solid 1px hsl(0,0%,100%,0.2);
+    border: solid 1px hsl(0,0%,10%,0.2);
     border-left:none;
     border-right:none;
     border-bottom:none;
@@ -177,15 +186,16 @@ body {
     display:flex;
     flex-direction: row;
     align-items:center;
-    width:calc(var(--canvasHeight)*5);
+    width:calc(var(--canvasHeight)*6);
     justify-content: space-between;
 }
 
 #controlFlex02 {
     display:flex;
     flex-direction: row;
-    /* flex-direction: column; */
     align-items:center;
+    width:calc(var(--canvasHeight)*6);
+
 }
 
 #controlFlex03 {
@@ -221,7 +231,8 @@ body {
     z-index: 0;
     height:100vh;
     width:100vw;
-    /* padding:3rem; */
+
+    padding:0rem;
 }
 #canvasViz02 {
     position: fixed;
@@ -261,7 +272,7 @@ canvas {
 
 
 #versionNumber {
-    font-size: 1rem;
+    font-size: var(--h3Size);
     position: absolute;
     left: 0;
     top: 0;
@@ -271,7 +282,7 @@ canvas {
 }
 
 #briangawliktag {
-    font-size: 2rem;
+    font-size: calc( var(--h1Size) * 0.3 );
     position: absolute;
     right:30px;
     bottom: 30px;
@@ -285,12 +296,10 @@ h1 {
     font-family: "Alumni Sans Pinstripe", serif;
     font-weight: 400;
     font-style: normal;
-    /* font-size: 5rem; */
     font-size: var(--h1Size);
     user-select:none;
     margin:0;
-    color:hsl(130, 0%, 60%, 1.0);
-    color: var(--text-color-h1);
+    /* color:hsl(130, 0%, 60%, 1.0); */
 }
 
 h2 {
@@ -298,7 +307,6 @@ h2 {
     font-family: "Alumni Sans Pinstripe", serif;
     font-weight: 500;
     font-style: normal;
-    /* font-size: 2rem; */
     font-size: var(--h2Size);
     margin:0 0 0 0;
     user-select:none;
@@ -309,7 +317,6 @@ h3 {
     font-family: "Alumni Sans Pinstripe", serif;
     font-weight: 600;
     font-style: normal;
-    /* font-size: 1rem; */
     font-size:var(--h3Size);
     margin:0 0 0 0;
     user-select:none;
@@ -327,7 +334,6 @@ h4 {
     font-family: "Alumni Sans Pinstripe", serif;
     font-weight: 400;
     font-style: normal;
-    /* font-size: 1rem; */
     opacity:50%;
     font-size:var(--h4Size);
     margin:0 0 0 0;
@@ -344,31 +350,23 @@ h4 {
 
 
 
-/* @media only screen and (max-width: 500px) { */
-@media only screen and (max-aspect-ratio: 3/4) {
-
-    :root {
-        --canvasHeight:10vw;
-        --h1Size: 5vw;
-        --h2Size: calc(var(--h1Size) * 0.5);
-        --h3Size: calc(var(--h1Size) * 0.5);
-        --h4Size: calc(var(--h1Size) * 0.5);
-    }
-
-    #controlFlex01 {
-        width:calc(var(--canvasHeight)*6);
-    }
-}
 
 /* @media only screen and (min-width: 500px) { */
-@media only screen and (min-aspect-ratio: 3/4) {
+@media only screen and (min-aspect-ratio: 0.67) {
 
     :root {
-        --canvasHeight:6vh;
+        /* --canvasHeight:6vh;
         --h1Size: 6vh;
         --h2Size: calc(var(--h1Size) * 0.5);
         --h3Size: calc(var(--h1Size) * 0.2);
-        --h4Size: calc(var(--h1Size) * 0.2);
+        --h4Size: calc(var(--h1Size) * 0.2); */
+
+        --canvasHeight:6vh;
+        --h1Size: calc(var(--canvasHeight) * 0.67);
+        --h2Size: calc(var(--h1Size) * 0.5);
+        --h3Size: calc(var(--h1Size) * 0.5);
+        --h4Size: calc(var(--h1Size) * 0.5);
+        
     }
 
     #controlFlex01 {
@@ -377,27 +375,28 @@ h4 {
 }
 
 
-
-
 /* @media only screen and (min-width: 1025px) and (min-aspect-ratio 1) { */
-@media only screen and (min-aspect-ratio: 1) {
+@media only screen and (min-aspect-ratio: 1.5) {
 
     :root {
-        --canvasHeight:8vh;
-        --h1Size: 7vh;
+        --canvasHeight:10vh;
+        --h1Size: calc(var(--canvasHeight) * 7/8);
         --h2Size: calc(var(--h1Size) * 0.5);
         --h3Size: calc(var(--h1Size) * 0.2);
         --h4Size: calc(var(--h1Size) * 0.2);
     }
 
     #controlsContainer01 {
+        /* flex-direction: column; */
         flex-direction: row-reverse;
         column-gap:100px;
-        align-items:flex-start;
+        align-items:start;
     }
 
     #controlRow01 {
-        row-gap:5px;
+        column-gap: calc(var(--canvasHeight) * 0.5);
+        flex-direction: row;
+        align-items:start;
     }
     
     #controlRow02 {
@@ -405,69 +404,44 @@ h4 {
     }
 
     .deviceContainer {
-        /* display:flex; */
-        /* flex-direction: row; */
-        border: solid 1px hsl(0,0%,100%,0.2);
+        border: solid 1px hsl(0,0%,0%,0.2);
         border-left:none;
         border-right:none;
-        border-bottom:none;
         border-radius: 5px;
-        align-items:flex-end;
+        align-items:center;
+        padding: calc(var(--canvasHeight) * 0.2)
     }
     
     #controlFlex01 {
         display:flex;
         position:relative;
-        flex-direction: row-reverse;
+        flex-direction: column;
         align-items:center;
-        justify-content: space-between;
-        width:calc(var(--canvasHeight) * 6);
-    }
-    
-    #controlFlex02 {
-
-    }
-
-    #controlFlex03 {
-
-    }
-
-    .dial {
-        width:var(--canvasHeight);
-        height:var(--canvasHeight);
+        justify-content: flex-start;
+        height:calc(var(--canvasHeight)*6);
+        width:auto;
     }
 
     .controlViz {
         position:static;
-        /* z-index:0; */
-        width:calc(var(--canvasHeight) * 2);
+        width:calc(var(--canvasHeight) * 1);
         height:var(--canvasHeight);
         margin:0;
     }
 
     .controlViz02 {
-        width:calc(var(--canvasHeight) * 2);
+        width:calc(var(--canvasHeight) * 1);
         height:var(--canvasHeight);
         margin:0 8px;
     }
 
-    h1{
-        font-size: var(--h1Size);
-    }
-
     h2{
-        font-size: var(--h2Size);
-        opacity:0.5;
+        opacity:0.8;
         margin:0;
     }
 
     h3{
-        font-size: var(--h3Size);
         margin:5px 0 0 0;
-    }
-
-    h4{
-        font-size: var(--h4Size);
     }
 
 }

@@ -1,5 +1,16 @@
 // GLOBAL VARS
 // mobileCutoff = 800;
+alphaUI2 = 0;
+onePI = Math.PI; 
+twoPI = Math.PI * 2;
+PIo2  = Math.PI * 0.5;
+PIo4  = Math.PI * 0.25;
+PIo8  = Math.PI * 0.125;
+PIo16 = Math.PI * 0.0625;
+myrng = new Math.seedrandom();
+
+
+
 device = {};
 TIME = 800;
 // [hueUI1,satUI1,litUI1] = [200,50,80];
@@ -10,20 +21,25 @@ TIME = 800;
 
 
 //// ControlViz's
-[hueUI1,satUI1,litUI1] = [200,0,100];
+[hueUI1,satUI1,litUI1] = [200,0,10];
 alphaUI1 = 255;
 [hueUI2, satUI2, litUI2] = [0,0,0];
 
 //// VIZ
-[hueBG, satBG, litBG] =  [160,30,27];
+// [hueBG, satBG, litBG] =  [160,30,27];
 // [hueBG, satBG, litBG] =  [40,40,20];
+[hueBG, satBG, litBG] =  [150,20,50];
+
 [hueWave1, satWave1, litWave1] =  [50,30,46];
-[hueWave2, satWave2, litWave2] =  [170,40,48];
-// [hueWave2, satWave2, litWave2] =  [40,40,20];
+// [hueWave2, satWave2, litWave2] =  [170,40,48];
+[hueWave2, satWave2, litWave2] =  [170,100,90];
+alphaWave1 = 255;
 
 //// KNOBS
-[hueKnobNeedle,satKnobNeedle,litKnobNeedle,alphaKnobNeedle] = [0,0,100,0.7];
-[hueKnobBottom,satKnobBottom,litKnobBottom,alphaKnobBottom] = [0,0,4,0.8];
+[hueKnobNeedle,satKnobNeedle,litKnobNeedle,alphaKnobNeedle] = [0,0,10,1.0];
+[hueKnobBottom,satKnobBottom,litKnobBottom,alphaKnobBottom] = [0,0,4,1.0];
+[hueKnobTop,satKnobTop,litKnobTop,alphaKnobTop] = [150, 15, 30, 1.0];
+
 
 isDragging = false;
 isTouching = false;
@@ -32,9 +48,9 @@ isTouching = false;
 const cssroot = document.documentElement;
 let hslBG = "hsl(" + hueBG + ", " + satBG + "%, " + litBG + "%)";
 cssroot.style.setProperty('--bg-hsl', hslBG);
-cssroot.style.setProperty('--text-color-body', 'hsl(0,0%,100%)');
-cssroot.style.setProperty('--text-color-h1','hsl(0,0%,80%)');
-cssroot.style.setProperty('--controlsContainer01-bghsl','hsl(160, 30%, 35%, 0.1)');
+cssroot.style.setProperty('--text-color-body', 'hsl(0,0%,10%)');
+cssroot.style.setProperty('--text-color-h1','hsl(0,0%,10%)');
+cssroot.style.setProperty('--controlsContainer01-bghsl','hsl(160, 50%, 70%, 0.2)');
 
 // LIGHT
 // [hueBG, satBG, litBG] =  [160,30,60];
@@ -43,17 +59,47 @@ cssroot.style.setProperty('--controlsContainer01-bghsl','hsl(160, 30%, 35%, 0.1)
 // document.body.style.color = "black";
 // document.getElementById("titleHeader").style.color = "black";
 
+////////////////////////////////////////////////////////////////// INITIALIZE VIZ SHAPES ARRAY
+VIZ_SHAPES = [];
+N_VIZ_SHAPES = 2;
+let nSegs = 64;
+let lw = 0.003;
+let amplitude = 0.2;
+let xSpan = 2.5;
+let speed = PI/1000;
+let alpha = alphaWave1;
+
+// for(let i=0;i<N_VIZ_SHAPES;i++) {
+shape = {
+    lw: lw,
+    // HSL: [hueWave1, satWave1, litWave1],
+    alpha: alpha,
+    phaseOffset: PIo2,
+    Y0: 0.90,
+    nSegs:nSegs,
+    amplitude:amplitude,
+    xSpan:xSpan,
+    speed:speed,
+    phase2:0,
+}
+VIZ_SHAPES.push(shape);
+
+var shape = {
+    lw: lw,
+    // HSL: [hueWave1, satWave1, litWave1],
+    alpha: alpha,
+    phaseOffset: 0,
+    Y0: 0.10,
+    nSegs:nSegs,
+    amplitude:amplitude,
+    xSpan:xSpan,
+    speed:speed*1.0,
+    phase2:PIo2,
+}
+VIZ_SHAPES.push(shape);
 
 
 
-alphaUI2 = 0;
-onePI = Math.PI; 
-twoPI = Math.PI * 2;
-PIo2  = Math.PI * 0.5;
-PIo4  = Math.PI * 0.25;
-PIo8  = Math.PI * 0.125;
-PIo16 = Math.PI * 0.0625;
-myrng = new Math.seedrandom();
 
 window.addEventListener("load", setupCanvases); // commented this out bc setupCanvases() is already called in setup()
 
@@ -130,42 +176,7 @@ async function playSound() {
 
 
 
-////////////////////////////////////////////////////////////////// INITIALIZE VIZ SHAPES ARRAY
-VIZ_SHAPES = [];
-N_VIZ_SHAPES = 2;
-let nSegs = 32;
-let lw = 0.40;
-let amplitude = 0.2;
-let xSpan = 2.5;
-let speed = PI/512;
-let alpha = 200;
 
-// for(let i=0;i<N_VIZ_SHAPES;i++) {
-shape = {
-    lw: lw,
-    // HSL: [hueWave1, satWave1, litWave1],
-    alpha: alpha,
-    phaseOffset: PIo2,
-    Y0: 1.0,
-    nSegs:nSegs,
-    amplitude:amplitude,
-    xSpan:xSpan,
-    speed:speed,
-}
-VIZ_SHAPES.push(shape);
-
-var shape = {
-    lw: lw,
-    // HSL: [hueWave1, satWave1, litWave1],
-    alpha: alpha,
-    phaseOffset: 0,
-    Y0: 0.0,
-    nSegs:nSegs,
-    amplitude:amplitude,
-    xSpan:xSpan,
-    speed:speed*1.7,
-}
-VIZ_SHAPES.push(shape);
 
 
 
