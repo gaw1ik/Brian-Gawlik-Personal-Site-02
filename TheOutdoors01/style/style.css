@@ -5,7 +5,7 @@
     --text-color-body: hsl(0,0%,10%);
     --text-color-h1: hsl(0,0%,10%);
 
-    --canvasHeight:10vw;
+    --canvasHeight:14vw;
     --h1Size: 5vw;
     --h2Size: calc(var(--h1Size) * 0.5);
     --h3Size: calc(var(--h1Size) * 0.5);
