@@ -344,7 +344,9 @@ h4 {
 
 
 
-@media only screen and (max-width: 500px) {
+/* @media only screen and (max-width: 500px) { */
+@media only screen and (max-aspect-ratio: 3/4) {
+
     :root {
         --canvasHeight:10vw;
         --h1Size: 5vw;
@@ -358,7 +360,9 @@ h4 {
     }
 }
 
-@media only screen and (min-width: 500px) {
+/* @media only screen and (min-width: 500px) { */
+@media only screen and (min-aspect-ratio: 3/4) {
+
     :root {
         --canvasHeight:6vh;
         --h1Size: 6vh;
@@ -375,10 +379,15 @@ h4 {
 
 
 
-@media only screen and (min-width: 1000px) {
+/* @media only screen and (min-width: 1025px) and (min-aspect-ratio 1) { */
+@media only screen and (min-aspect-ratio: 1) {
 
     :root {
-        --canvasHeight:60px;
+        --canvasHeight:8vh;
+        --h1Size: 7vh;
+        --h2Size: calc(var(--h1Size) * 0.5);
+        --h3Size: calc(var(--h1Size) * 0.2);
+        --h4Size: calc(var(--h1Size) * 0.2);
     }
 
     #controlsContainer01 {
@@ -412,7 +421,7 @@ h4 {
         flex-direction: row-reverse;
         align-items:center;
         justify-content: space-between;
-        width:400px;
+        width:calc(var(--canvasHeight) * 6);
     }
     
     #controlFlex02 {
@@ -443,21 +452,22 @@ h4 {
     }
 
     h1{
-        font-size: 50px;
+        font-size: var(--h1Size);
     }
 
     h2{
+        font-size: var(--h2Size);
         opacity:0.5;
         margin:0;
-
     }
 
     h3{
+        font-size: var(--h3Size);
         margin:5px 0 0 0;
     }
 
     h4{
-
+        font-size: var(--h4Size);
     }
 
 }
