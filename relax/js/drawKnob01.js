@@ -100,7 +100,6 @@ function drawKnob(canvas,val) {
     let rPixShadowY = rPix*1.0;
     var xC_Offset = 0.03*canvasH;
     var yC_Offset = xC_Offset*4;
-    // ctx.ellipse(xC+10, yC+5, rPix, rPix, 0, circStart, circEnd);
     ctx.ellipse(xC+xC_Offset, yC+yC_Offset, rPixShadowX, rPixShadowY, -PIo16, 0, twoPI);
     ctx.fillStyle = "hsl(0, 0%, 50%, 0.1)";
     ctx.fill();
