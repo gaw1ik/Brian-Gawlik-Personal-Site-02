@@ -128,7 +128,10 @@ h2, em {
     display:grid;
     /* grid-template-rows:150px; */
     /* grid-template-columns:150px 150px 150px; */
-    grid-template-columns:2fr 1fr 1fr;
+    /* grid-template-columns:2fr 1fr 1fr; */
+    grid-template-columns:1fr 1fr;
+
+
 
 
     /* grid-template-columns:calc(450px*0.6) calc(450px*0.2) calc(450px*0.2); */
@@ -136,6 +139,11 @@ h2, em {
 
     justify-items:center;
     align-items:center;
+}
+
+#gainAndLPFContainer {
+    display:grid;
+    grid-template-columns:1fr 1fr;
 }
 
 #controlRow01 {
@@ -269,29 +277,6 @@ h4 {
 }
 
 
-@media screen and (max-width: 800px) {
-
-    /* .controlsContainer {
-        margin:5vw 1vw;
-    } */
-
-    /* .dial{
-        width:10vw;
-        height:10vw;
-        margin:0 max(7vw,50px);
-    } */
-    h1{
-        /* font-size:max(20vw,100px); */
-    }
-    h3{
-        /* font-size:max(1vw,10px); */
-
-    }
-    h4{
-        /* font-size:max(1vw,10px); */
-
-    }
-}
 
 /* @media (max-aspect-ratio: 1) { */
 @media screen and (max-width: 900px) {
@@ -300,9 +285,14 @@ h4 {
         padding: 10vw 3vw;
     }
 
+    #controlRow02 {
+        grid-template-columns: 1fr;
+        grid-template-rows:0.3fr 1fr;
+    }
+
     .dial {
-        width:20vw;
-        height:20vw;
+        width:30vw;
+        height:30vw;
     }
     h1{
         font-size:13vw;
