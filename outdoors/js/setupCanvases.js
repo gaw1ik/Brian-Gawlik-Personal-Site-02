@@ -15,7 +15,7 @@ function setInitialParams() {
         wash_period:0.4,
 
         rush_gain:0.20,
-        rush_speed:1.0,
+        rush_flux:0.5,
 
         insects_gain:0.5,
         insects_rate:0.4,
@@ -23,7 +23,7 @@ function setInitialParams() {
         insects_freq:0.7,
 
         birds_gain:0.5,
-        birds_period0:0.5,
+        birds_period:0.5,
 
         master_gain:0.5,
         master_LPF:0.7,

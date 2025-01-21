@@ -96,9 +96,10 @@ function updateRNBOPARAM_rush_gain() {
     try{ device.parametersById.get("rush_gain").value = adjustedValue } catch(error) {}
 }
 
-function updateRNBOPARAM_rush_speed() {
-    let adjustedValue = PARAMS.rush_speed;
-    try{ device.parametersById.get("rush_speed").value = adjustedValue } catch(error) {}
+function updateRNBOPARAM_rush_flux() {
+    let val = PARAMS.rush_flux;
+    let adjustedValue = calcParamValue(val,0.05,1,2); // val min max pow
+    try{ device.parametersById.get("rush_flux").value = adjustedValue } catch(error) {}
 }
 
 // insects
@@ -135,10 +136,10 @@ function updateRNBOPARAM_birds_gain() {
 //     try{ device.parametersById.get("birds_filt").value = adjustedValue } catch(error) {}
 // }
 
-function updateRNBOPARAM_birds_period0() {
-    let val = PARAMS.birds_period0;
+function updateRNBOPARAM_birds_period() {
+    let val = PARAMS.birds_period;
     let adjustedValue = calcParamValue(val,100,4000,1); // val min max pow
-    try{ device.parametersById.get("birds_period0").value = adjustedValue } catch(error) {}
+    try{ device.parametersById.get("birds_period").value = adjustedValue } catch(error) {}
 }
 
 // master
