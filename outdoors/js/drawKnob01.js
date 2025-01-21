@@ -31,14 +31,14 @@ function drawKnob(canvas,val) {
 
     //////////////////////////////////////////////////////////////////////// SHADOW
     ctx.beginPath();
-    let rPixShadowX = rPix*0.7;
+    let rPixShadowX = rPix*0.8;
     let rPixShadowY = rPix*0.8;
     var xC_Offset = 0.03*canvasH;
     var yC_Offset = xC_Offset*4;
     ctx.ellipse(xC+xC_Offset, yC+yC_Offset, rPixShadowX, rPixShadowY, -PIo16, 0, twoPI);
     // ctx.ellipse(xC+1, yC+30, rPixShadowX, rPixShadowY, -PIo16, 0, twoPI);
-    ctx.fillStyle = "hsl(0, 0%, 0%, 0.4)";
-    // ctx.fill();
+    ctx.fillStyle = "hsl(0, 0%, 0%, 0.2)";
+    ctx.fill();
 
     //////////////////////////////////////////////////////////////////////// BOTTOM
     ctx.beginPath();
@@ -92,7 +92,9 @@ function drawKnob(canvas,val) {
     y1 = canvasH/2 + Math.sin(theta)*rNeedleStart*canvasH;
     x2 = canvasW/2  + Math.cos(theta)*rControl*canvasH;
     y2 = canvasH/2 + Math.sin(theta)*rControl*canvasH;
-    ctx.strokeStyle = "hsl(" + hueKnobNeedle + ", " + satKnobNeedle + "%, " + litKnobNeedle + "%, " + alphaKnobNeedle + ")";
+    // ctx.strokeStyle = "hsl(" + hueKnobNeedle + ", " + satKnobNeedle + "%, " + litKnobNeedle + "%, " + alphaKnobNeedle + ")";
+    ctx.strokeStyle = "hsl(" + hueKnobNeedle + ", " + satKnobNeedle + "%, " + 100 + "%, " + alphaKnobNeedle + ")";
+
     ctx.lineWidth = 1;
 
     ctx.beginPath();
@@ -102,7 +104,7 @@ function drawKnob(canvas,val) {
 }
 
 
-function drawKnob(canvas,val) {
+function drawKnob00(canvas,val) {
 
     // get context and clear for new drawing
     ctx = canvas.getContext("2d");
