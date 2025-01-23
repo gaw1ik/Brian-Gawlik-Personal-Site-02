@@ -25,6 +25,12 @@
 
   --navToggleBar_height: 8vh;
 
+
+  --h1Size: 10vw;
+  --h2Size: calc(var(--h1Size) * 0.5);
+  --h3Size: calc(var(--h1Size) * 0.35);
+  --h4Size: calc(var(--h1Size) * 0.2);
+
 }
 
 
@@ -55,12 +61,15 @@ body {
 
 p {
   margin: 1rem 0;
-  font-size: 1rem;
+  /* font-size: 1rem; */
+  font-size: var(--h3Size);
+
   /* text-align: center; */
 }
 
 h1 {
-  font-size: 3rem;
+  /* font-size: 3rem; */
+  font-size: var(--h1Size);
   /* text-align: center; */
   font-weight: 500;
   margin:0;
@@ -72,24 +81,30 @@ h1 {
 }
 
 h2 {
-  font-size: 2rem;
-  margin:4rem 0 1rem 0;
-  margin-top: 0.2rem;
+  /* font-size: 2rem; */
+    font-size: var(--h2Size);
+
+  margin:0;
+  margin-top: 1rem;
   font-weight: 500;
-  text-align: center;
+  text-align: left;
 }
 
 h3 {
-  font-size: 1.5rem;
+  /* font-size: 1.5rem; */
+    font-size: var(--h3Size);
+
   margin:0;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
   font-weight: 600;
 }
 
 h4 {
-  font-size: 1rem;
+  /* font-size: 1rem; */
+    font-size: var(--h4Size);
+
   margin:0;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
   font-weight: 550;
 }
 
@@ -147,16 +162,34 @@ button :hover {
 .pageContainer {
   display:flex;
   flex-direction: column;
-  align-items: start;
+  /* position:relative; */
+
+  align-items: center;
   align-content: center;
   justify-content: center;
   background: none;
+  /* width: 25rem; */
+  /* max-width:80%; */
+  width:100vw;
+  height:100vh;
+  /* margin-left:auto;
+  margin-right:auto;
+  gap:1rem; */
+}
+
+.contentContainer {
+
+  display:flex;
+  /* position:relative; */
+  flex-direction: column;
+  align-items: start;
+  /* align-content: center;
+  justify-content: center; */
+  /* overflow:hidden; */
+  /* overflow-y:scroll; */
   width: 25rem;
   max-width:80%;
-  height:100vh;
-  margin-left:auto;
-  margin-right:auto;
-  gap:1rem;
+
 }
 
 
@@ -166,15 +199,18 @@ button :hover {
   align-items: center;
   /* width: 80%; */
 
-  height: 5rem;
+  /* height: 5rem; */
+  height: var(--h1Size);
+
   /* margin-left:auto; */
   /* margin:0 auto; */
   border-top:1px solid white;
 }
 
 .socialButtonsBar img {
-  margin: 0 2rem;
-  height: 2rem;
+  margin: 0 var(--h1Size);
+  /* height: 2rem; */
+  height: var(--h2Size);
 }
 
 
@@ -236,3 +272,41 @@ button :hover {
   /* background: #555; */
 }
 
+
+
+
+
+
+
+
+
+
+/* @media only screen and (min-width: 1025px) and (min-aspect-ratio 1) { */
+@media only screen and (min-aspect-ratio: 1.1) {
+
+  :root {
+      /* --canvasHeight:10vh; */
+      --h1Size: 8vh;
+      /* --h2Size: calc(var(--h1Size) * 0.5);
+      --h3Size: calc(var(--h1Size) * 0.2);
+      --h4Size: calc(var(--h1Size) * 0.2); */
+  }
+
+
+  .contentContainer {
+
+    display:flex;
+    flex-direction: column;
+    align-items: start;
+    /* width: 40vw; */
+    width:auto;
+    /* max-width:80%; */
+  
+  }
+
+
+
+
+
+
+}
