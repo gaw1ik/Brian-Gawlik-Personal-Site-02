@@ -22,7 +22,7 @@ function drawVisualizer() {
     xCenterOffset = artboardWo2;
     yCenterOffset = 0.0;
 
-    // drawRect(ctx,-artboardWo2,0,artboardWo2*2,1, 0, hueUI2, satUI2, litUI2, alphaUI2, 0);
+    drawRect(ctx,-artboardWo2,0,artboardWo2*2,1, 0, hueBG, satBG, litBG, 255, 0);
 
     let rmsScaled = rms/0.5;
 

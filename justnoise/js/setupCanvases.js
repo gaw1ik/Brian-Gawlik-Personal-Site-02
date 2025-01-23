@@ -1,38 +1,5 @@
 
 
-// window.addEventListener("load", setupCanvases);
-
-
-function setInitialParams() {
-
-    let params = {
-        background_gain:0.3,
-        background_LPF:0.35,
-        
-        hiss_gain:0.3,
-        // background_param:0.0,
-
-        wash_gain:0.4,
-        wash_period:0.4,
-
-        rush_gain:0.20,
-        rush_speed:1.0,
-
-        // insects_gain:0.5,
-        // insects_rate:0.4,
-        // insects_period:0.6,
-        // insects_freq:0.7,
-
-        // birds_gain:0.5,
-        // birds_period0:0.5,
-
-        master_gain:0.5,
-        master_LPF:0.7,
-    }
-
-    return params;
-}
-
 
 
 
@@ -46,13 +13,6 @@ function setupCanvases() {
 
 
     
-
-
-
-
-
-    PARAMS = setInitialParams();
-
 
     // INITIAL STATE VALUES
     currentMuteState = 0;

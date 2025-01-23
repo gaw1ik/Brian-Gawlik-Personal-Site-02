@@ -93,15 +93,21 @@
                 </div>
 
                 <div class="deviceContainer">
-                    <h2 id="canvas1label">Hiss</h3>
+                    <h2 id="canvas1label">Air</h3>
                     <div id="controlFlex01">
 
-                            <canvas class="controlViz02" id="canvas_hiss_controlViz"></canvas>
+                        <canvas class="controlViz02" id="canvas_hiss_controlViz"></canvas>
 
-                                <div class="canvasAndLabel">
-                                    <h3 id="canvas1label">Volume</h3>
-                                    <canvas class="dial" id="canvas_hiss_gain"></canvas>
-                                </div>
+                        <div class="canvasAndLabel">
+                            <h3 id="canvas1label">Volume</h3>
+                            <canvas class="dial" id="canvas_hiss_gain"></canvas>
+                        </div>
+
+                        <div class="canvasAndLabel">
+                            <h3 id="canvas1label">Freq(Hz)</h3>
+                            <canvas class="dial" id="canvas_hiss_BPF"></canvas>
+                        </div>
+
 
                     </div>
                     <div class="line"></div>
@@ -145,8 +151,36 @@
                                 <canvas class="dial" id="canvas_rush_gain"></canvas>
                             </div>
                             <div class="canvasAndLabel">
-                                <h3 id="canvas3label">Speed</h3>
-                                <canvas class="dial" id="canvas_rush_speed"></canvas>
+                                <h3 id="canvas3label">Flux</h3>
+                                <canvas class="dial" id="canvas_rush_flux"></canvas>
+                            </div>
+                        <!-- </div> -->
+
+
+
+                    </div>
+                    <div class="line"></div>
+
+                </div>
+
+                <div class="deviceContainer">
+                    <h2 id="canvas1label">Crackle</h3>
+                    <div id="controlFlex01">
+
+                        <canvas class="controlViz02" id="canvas_crackle_controlViz"></canvas>
+
+                        <!-- <div id="controlFlex02"> -->
+                            <div class="canvasAndLabel">
+                                <h3 id="canvas3label">Volume</h3>
+                                <canvas class="dial" id="canvas_crackle_gain"></canvas>
+                            </div>
+                            <div class="canvasAndLabel">
+                                <h3 id="canvas3label">Density</h3>
+                                <canvas class="dial" id="canvas_crackle_thresh"></canvas>
+                            </div>
+                            <div class="canvasAndLabel">
+                                <h3 id="canvas3label">Tone</h3>
+                                <canvas class="dial" id="canvas_crackle_LPF"></canvas>
                             </div>
                         <!-- </div> -->
 

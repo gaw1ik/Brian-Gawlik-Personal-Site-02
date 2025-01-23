@@ -54,7 +54,77 @@ function draw_controlViz(canvas,rms) {
 
 }
 
+
 function draw_background_controlViz() {
+
+    var rms;
+    var gain;
+    var LPF;
+
+    // try {
+    rms = device.parametersById.get("background_rms").value;
+
+    // } catch(error) {
+    //     rms = 0.5;
+    // }
+
+    gain = PARAMS.background_gain;
+    LPF = PARAMS.background_LPF;
+
+
+    let canvas = canvas_background_controlViz;
+    let ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+
+    // try {
+    //     rms = device.parametersById.get("master_rms").value;
+    // } catch (error) {
+    //     rms = 0;
+    // }
+
+    artboardH = canvas.height;
+    artboardW = canvas.width;
+    artboardAR = artboardH/artboardW;
+    artboardWo2 = (1/artboardAR)/2;
+    xCenterOffset = artboardWo2;
+    yCenterOffset = 0.0;
+
+    // drawRect(ctx,-artboardWo2,0,artboardWo2*2,1, 0, hueBG, satBG, litBG, 255, 0);
+
+    let rmsScaled = rms*1;
+
+    let [hue,sat,lit] = [hueUI1,satUI1,litUI1];
+    var alpha = 255;
+    var lw = 0.01;
+
+    var path = [];
+    randFloats = [];
+    let nSegs =  32;
+    let scale1 = 0.6*gain;
+    let scale2 = 0.4*LPF;
+    var y1 = 0.5;
+
+    rmsScaled = 0.2;
+
+    for(let i=0; i<nSegs; i++) {
+
+        let randFloat1 = getRandomFloat()*scale1;
+        let randFloat2 = randFloat1 + getRandomFloat()*scale2;
+
+        let t = i/(nSegs-1) + getRandomFloat(0,0.001);
+
+        path.push([-artboardWo2+artboardWo2*2*t,y1+rmsScaled*randFloat1])
+        path.push([-artboardWo2+artboardWo2*2*t,y1+rmsScaled*randFloat2])
+        path.push([-artboardWo2+artboardWo2*2*t,y1+rmsScaled*randFloat1])
+
+    }
+
+    drawPath(ctx, path, lw, hue, sat, lit, alpha, 1, 0);
+   
+}
+
+function draw_background_controlViz01() {
 
     var rms;
     var gain;
@@ -85,6 +155,7 @@ function draw_background_controlViz() {
 
     // MASTER_GAIN = 0.5;s
 
+
     drawRect(ctx,-artboardWo2,0,artboardWo2*2,1, 0, hueUI2, satUI2, litUI2, alphaUI2, 0);
 
 
@@ -106,7 +177,7 @@ function draw_background_controlViz() {
     // ];
 
     let [hue,sat,lit] = [hueUI1,satUI1,litUI1];
-    var alpha = hiss*255;
+    var alpha = 255;
     var lw = 0.01;
     // drawPath(ctx, path1, lw, hue, sat, lit, alpha, 1, 0);
 
@@ -407,16 +478,41 @@ function draw_rush_controlViz() {
 
 }
 
-function draw_insects_controlViz() {
 
-    let rms = device.parametersById.get("insects_rms").value;
-    // let gain = device.parametersById.get("birds_gain").value;
-    // let gain = PARAMS.birds_gain;
 
-    let canvas = canvas_insects_controlViz;
+
+
+function draw_crackle_controlViz() {
+
+    var rms;
+    var gain;
+    var LPF;
+
+    // try {
+    // rms = device.parametersById.get("crackle_rms").value;
+    rms = 1;
+
+    // } catch(error) {
+    //     rms = 0.5;
+    // }
+
+    gain = PARAMS.crackle_gain;
+    thresh = PARAMS.crackle_thresh;
+
+    LPF = PARAMS.crackle_LPF;
+
+
+    let canvas = canvas_crackle_controlViz;
     let ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+
+    // try {
+    //     rms = device.parametersById.get("master_rms").value;
+    // } catch (error) {
+    //     rms = 0;
+    // }
+
     artboardH = canvas.height;
     artboardW = canvas.width;
     artboardAR = artboardH/artboardW;
@@ -424,106 +520,92 @@ function draw_insects_controlViz() {
     xCenterOffset = artboardWo2;
     yCenterOffset = 0.0;
 
-    drawRect(ctx,-artboardWo2,0,artboardWo2*2,1, 0, hueUI2, satUI2, litUI2, alphaUI2, 0);
+    // drawRect(ctx,-artboardWo2,0,artboardWo2*2,1, 0, hueBG, satBG, litBG, 255, 0);
 
-
-
-    // let rmsScaled = rms*7;
-
-    // let mag = 1.0*rmsScaled;
-
-    // let y1 = rmsScaled;
-    // let y2 = gain + mag*Q;
-
-
+    let rmsScaled = rms*1;
 
     let [hue,sat,lit] = [hueUI1,satUI1,litUI1];
-    let alpha = alphaUI1;
-    let lw = 0;
+    var alpha = 255;
+    var lw = 0.01;
+
+    randFloats = [];
+    // let nSegs =  1;
+    // let nShapes = CRACKLE_SHAPES.length;
+    let scale1 = 0.6*gain;
+    let scale2 = 0.4*LPF;
+    var y1 = 0.0;
+
+    rmsScaled = 0.8;
+
+    let nShapes = Math.ceil(thresh*32);
+
+    for(let i=0; i<nShapes; i++) {
+
+        let shape = CRACKLE_SHAPES[i];
+        let age = shape.age;
+        let x = shape.x;
+        let y = shape.y;
 
 
+        let on = shape.on;
 
-    for(let i=0; i<8; i++) {
+        var newShape = {};
 
-        let shape = INSECTS_SHAPES[i];
+        if(on==1) {
+            var path = [];
 
-        var xC = shape.xC + randomSign()*0.01;
-        var yC = shape.yC + randomSign()*0.01;
-        var rad = shape.rad + rms*0.35;
+            // let randFloat1 = getRandomFloat()*scale1;
+            // let randFloat2 =  getRandomFloat()*scale2;
+    
+            // let t = getRandomFloat(0,1);
+    
+            // path.push([x,y1])
+            // path.push([x,y1+rmsScaled*randFloat2])
+            // path.push([-artboardWo2+artboardWo2*2*t,y1+rmsScaled*randFloat1])
+    
+            // drawPath(ctx, path, lw, hue, sat, lit, alpha, 1, 0);
+    
+            // yC = getRandomFloat()
+            let AR = 1+LPF*7;
+            let radX = 0.01;
+            let radY = radX*AR;
+            let alpha = 150*gain;
+    
+            drawEllipse(ctx, x,y,radX,radY, 0,lw, hue, sat, lit, alpha, 0);
+            drawEllipse(ctx, x,y,radY,radX, 0,lw, hue, sat, lit, alpha, 0);
 
-        drawCircle(ctx, xC, yC, rad, lw, hue, sat, lit, alpha, 0);
-
-
-
-        var newShape = {}
-
-        if(Math.abs(xC)>artboardWo2+0.03 || yC<-0.03 || yC>1.03) {
-            newShape = {
-                xC:getRandomFloat(-1,1),
-                yC:getRandomFloat(),
-                rad:0.01,
+    
+    
+            
+            if(age<1) {
+                newShape.age = age + 1;
+                newShape.x = x;
+                newShape.y = y;
+                newShape.on = on;
+    
+            } else {
+                newShape.age = 0;
+                newShape.x = 0 + getRandomFloat(-1,1)*artboardWo2;
+                newShape.y = getRandomFloat(0.3,0.7);
+                newShape.on = 0;
             }
+            CRACKLE_SHAPES[i] = newShape;
+
         } else {
-            newShape.xC = xC;
-            newShape.yC = yC;
-            newShape.rad = 0.01;
+
+            newShape.age = 0;
+            newShape.x = 0 + getRandomFloat(-1,1)*artboardWo2;
+            newShape.y = getRandomFloat(0.3,0.7);
+            newShape.on = makeChoice(50);
         }
 
-        INSECTS_SHAPES[i] = newShape;
+        CRACKLE_SHAPES[i] = newShape;
+
+
+
+
+
     }
 
-    // var x = 0;
-    // var y = 0;
-    // var width = artboardWo2;
-    // var height = y2 + 0.01;
-    // drawRect(ctx, x, y, width, height, lw, hue, sat, lit, alpha, 0);
-
-}
-
-function draw_birds_controlViz() {
-
-    let rms = device.parametersById.get("birds_rms").value;
-    // let gain = device.parametersById.get("birds_gain").value;
-    // let gain = PARAMS.birds_gain;
-
-    let canvas = canvas_birds_controlViz;
-    let ctx = canvas.getContext("2d");
-    // ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    artboardH = canvas.height;
-    artboardW = canvas.width;
-    artboardAR = artboardH/artboardW;
-    artboardWo2 = (1/artboardAR)/2;
-    xCenterOffset = artboardWo2;
-    yCenterOffset = 0.0;
-
-
-    let rmsScaled = rms*7;
-
-    // drawRect(ctx,-artboardWo2,0,artboardWo2*2,1, 0, hueUI2, satUI2, litUI2, alphaUI2, 0);
-
-
-    // let mag = 1.0*rmsScaled;
-
-    let y1 = rmsScaled;
-    // let y2 = gain + mag*Q;
-
-
-
-    let [hue,sat,lit] = [hueUI1,satUI1,litUI1];
-    let alpha = alphaUI1;
-    let lw = 0.02;
-
-    var x = getRandomFloat()*artboardWo2*randomSign();
-    var y = 0;
-    var width = 0.01;
-    var height = y1 + 0.01;
-    drawRect(ctx, x, y, width, height, lw, hue, sat, lit, alpha, 0);
-
-    // var x = 0;
-    // var y = 0;
-    // var width = artboardWo2;
-    // var height = y2 + 0.01;
-    // drawRect(ctx, x, y, width, height, lw, hue, sat, lit, alpha, 0);
-
+   
 }

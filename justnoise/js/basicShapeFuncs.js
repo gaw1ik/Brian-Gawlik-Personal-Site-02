@@ -1,7 +1,7 @@
 // Copyright © 2022 Brian Gawlik
 // See LICENSE.txt for license information
 
-function drawArc(ctxToDrawToNow, x, y, radX, radY, rotation, startAngle, endAngle, lineWidth, hue, sat, lit, alpha, fillMode) {
+function drawArc(ctx, x, y, radX, radY, rotation, startAngle, endAngle, lineWidth, hue, sat, lit, alpha, fillMode) {
 
     // console.log("ctxIndex",ctxIndex);
 
@@ -18,21 +18,21 @@ function drawArc(ctxToDrawToNow, x, y, radX, radY, rotation, startAngle, endAngl
     // //console.log("y",y);
     // //console.log("rad",rad);
 
-    ctxToDrawToNow.beginPath();
+    ctx.beginPath();
 
     // //console.log("ctx",ctx)
 
-    ctxToDrawToNow.ellipse(x,y,radX,radY,rotation,startAngle,endAngle);
+    ctx.ellipse(x,y,radX,radY,rotation,startAngle,endAngle);
 
     // //console.log("hsla",hue,sat,lit,alpha/255);
 
     if(fillMode==0) {
-        ctxToDrawToNow.fillStyle   = 'hsla(' + hue + ', ' +  sat + '%, ' + lit + '%,'  + alpha + ')'; 
-        ctxToDrawToNow.fill();
+        ctx.fillStyle   = 'hsla(' + hue + ', ' +  sat + '%, ' + lit + '%,'  + alpha + ')'; 
+        ctx.fill();
     } else {
-        ctxToDrawToNow.strokeStyle = 'hsla(' + hue + ', ' +  sat + '%, ' + lit + '%,'  + alpha + ')'; 
-        ctxToDrawToNow.lineWidth = lineWidth * artboardH;
-        ctxToDrawToNow.stroke()
+        ctx.strokeStyle = 'hsla(' + hue + ', ' +  sat + '%, ' + lit + '%,'  + alpha + ')'; 
+        ctx.lineWidth = lineWidth * artboardH;
+        ctx.stroke()
     }
     
 }
@@ -85,7 +85,7 @@ function drawBezierCurve(ctx, bezCurve, lineWidth, hue, sat, lit, alpha, fillMod
 
     }
 
-    // ctxToDrawToNow.closePath();
+    // ctx.closePath();
 
     if(fillMode==0) {
         ctx.fillStyle   = 'hsla(' + hue + ', ' +  sat + '%, ' + lit + '%,'  + alpha + ')';
@@ -153,13 +153,13 @@ function drawBezierPath(bezierPath, lineWidth, hue, sat, lit, alpha, fillMode, r
 
     let circle = [];
 
-    ctxToDrawToNow.beginPath();
+    ctx.beginPath();
 
     //let i = 0;
     //var x1  = (  bezierPath[i][0][0]+xCenterOffset) * artboardH;
     //var y1  = (1-bezierPath[i][0][1]-yCenterOffset) * artboardH;
 
-    ctxToDrawToNow.moveTo(x1,y1);
+    ctx.moveTo(x1,y1);
 
     for(let i=0; i<bezierPath.length-1; i++) {
 
@@ -174,21 +174,21 @@ function drawBezierPath(bezierPath, lineWidth, hue, sat, lit, alpha, fillMode, r
         var yC2 = (1-bezierPath[i+1][1][1]-yCenterOffset) * artboardH;
 
 
-        ctxToDrawToNow.bezierCurveTo( xC1,yC1, xC2,yC2, x2,y2 );
+        ctx.bezierCurveTo( xC1,yC1, xC2,yC2, x2,y2 );
 
         // //console.log(bezierPath);
 
     }
 
-    ctxToDrawToNow.closePath();
+    ctx.closePath();
 
     if(fillMode==0) {
-        ctxToDrawToNow.fillStyle   = 'hsla(' + hue + ', ' +  sat + '%, ' + lit + '%,'  + alpha + ')';; 
-        ctxToDrawToNow.fill();
+        ctx.fillStyle   = 'hsla(' + hue + ', ' +  sat + '%, ' + lit + '%,'  + alpha + ')';; 
+        ctx.fill();
     } else {
-        ctxToDrawToNow.strokeStyle = 'hsla(' + hue + ', ' +  sat + '%, ' + lit + '%,'  + alpha + ')';;
-        ctxToDrawToNow.lineWidth = lineWidth * artboardH;
-        ctxToDrawToNow.stroke()
+        ctx.strokeStyle = 'hsla(' + hue + ', ' +  sat + '%, ' + lit + '%,'  + alpha + ')';;
+        ctx.lineWidth = lineWidth * artboardH;
+        ctx.stroke()
     }
 
 
@@ -232,7 +232,7 @@ function drawBezierPath(bezierPath, lineWidth, hue, sat, lit, alpha, fillMode, r
     
 }
 
-function drawCircle(ctxToDrawToNow, x, y, rad, lineWidth, hue, sat, lit, alpha, fillMode) {
+function drawCircle(ctx, x, y, rad, lineWidth, hue, sat, lit, alpha, fillMode) {
 
     // console.log("ctxIndex",ctxIndex);
 
@@ -253,26 +253,26 @@ function drawCircle(ctxToDrawToNow, x, y, rad, lineWidth, hue, sat, lit, alpha, 
     // console.log("y",y);
     // console.log("rad",rad);
 
-    ctxToDrawToNow.beginPath();
+    ctx.beginPath();
 
     // //console.log("ctx",ctx)
 
-    ctxToDrawToNow.ellipse(x,y,rad,rad,0,0,twoPI);
+    ctx.ellipse(x,y,rad,rad,0,0,twoPI);
 
     // //console.log("hsla",hue,sat,lit,alpha/255);
 
     if(fillMode==0) {
-        ctxToDrawToNow.fillStyle   = 'hsla(' + hue + ', ' +  sat + '%, ' + lit + '%,'  + alpha + ')'; 
-        ctxToDrawToNow.fill();
+        ctx.fillStyle   = 'hsla(' + hue + ', ' +  sat + '%, ' + lit + '%,'  + alpha + ')'; 
+        ctx.fill();
     } else {
-        ctxToDrawToNow.strokeStyle = 'hsla(' + hue + ', ' +  sat + '%, ' + lit + '%,'  + alpha + ')'; 
-        ctxToDrawToNow.lineWidth = lineWidth * artboardH;
-        ctxToDrawToNow.stroke()
+        ctx.strokeStyle = 'hsla(' + hue + ', ' +  sat + '%, ' + lit + '%,'  + alpha + ')'; 
+        ctx.lineWidth = lineWidth * artboardH;
+        ctx.stroke()
     }
     
 }
 
-function drawEllipse(ctxToDrawToNow, x, y, radX, radY, rotation, lineWidth, hue, sat, lit, alpha, fillMode) {
+function drawEllipse(ctx, x, y, radX, radY, rotation, lineWidth, hue, sat, lit, alpha, fillMode) {
 
     // console.log("ctxIndex",ctxIndex);
 
@@ -289,32 +289,32 @@ function drawEllipse(ctxToDrawToNow, x, y, radX, radY, rotation, lineWidth, hue,
     // //console.log("y",y);
     // //console.log("rad",rad);
 
-    ctxToDrawToNow.beginPath();
+    ctx.beginPath();
 
     // //console.log("ctx",ctx)
 
-    ctxToDrawToNow.ellipse(x,y,radX,radY,rotation,0,twoPI);
+    ctx.ellipse(x,y,radX,radY,rotation,0,twoPI);
 
     // //console.log("hsla",hue,sat,lit,alpha/255);
 
     if(fillMode==0) {
-        ctxToDrawToNow.fillStyle   = 'hsla(' + hue + ', ' +  sat + '%, ' + lit + '%,'  + alpha + ')'; 
-        ctxToDrawToNow.fill();
+        ctx.fillStyle   = 'hsla(' + hue + ', ' +  sat + '%, ' + lit + '%,'  + alpha + ')'; 
+        ctx.fill();
     } else {
-        ctxToDrawToNow.strokeStyle = 'hsla(' + hue + ', ' +  sat + '%, ' + lit + '%,'  + alpha + ')'; 
-        ctxToDrawToNow.lineWidth = lineWidth*artboardH;
-        ctxToDrawToNow.stroke()
+        ctx.strokeStyle = 'hsla(' + hue + ', ' +  sat + '%, ' + lit + '%,'  + alpha + ')'; 
+        ctx.lineWidth = lineWidth*artboardH;
+        ctx.stroke()
     }
     
 }
 
 
 
-function drawPath(ctxToDrawToNow, path, lineWidth, hue, sat, lit, alpha, fillMode, close) {
+function drawPath(ctx, path, lineWidth, hue, sat, lit, alpha, fillMode, close) {
 
     // console.log("path",path);
 
-    ctxToDrawToNow.beginPath()
+    ctx.beginPath()
 
     //var x = (x+xCenterOffset)*artboardH;
     //var y = (y+yCenterOffset)*artboardH;
@@ -322,41 +322,41 @@ function drawPath(ctxToDrawToNow, path, lineWidth, hue, sat, lit, alpha, fillMod
     var x = (path[0][0]+xCenterOffset  ) * artboardH;
     var y = (1-path[0][1]-yCenterOffset) * artboardH;
 
-    ctxToDrawToNow.moveTo(x,y)   
+    ctx.moveTo(x,y)   
 
     for(let i=1; i<path.length; i++) {
         
         x = (path[i][0]+xCenterOffset  ) * artboardH;
         y = (1-path[i][1]-yCenterOffset) * artboardH;
-        ctxToDrawToNow.lineTo(x,y)
+        ctx.lineTo(x,y)
         // //console.log("[x,y]",[x,y])
     }
 
     if(close==1){
-        ctxToDrawToNow.closePath();
+        ctx.closePath();
     }
 
     var alpha = alpha/255;
     
 
     if(fillMode==0) {
-        ctxToDrawToNow.fillStyle   = 'hsla(' + hue + ', ' +  sat + '%, ' + lit + '%,'  + alpha + ')'; 
-        ctxToDrawToNow.fill();
+        ctx.fillStyle   = 'hsla(' + hue + ', ' +  sat + '%, ' + lit + '%,'  + alpha + ')'; 
+        ctx.fill();
     } else if(fillMode==1) {
-        ctxToDrawToNow.strokeStyle   = 'hsla(' + hue + ', ' +  sat + '%, ' + lit + '%,'  + alpha + ')'; 
-        ctxToDrawToNow.lineWidth = lineWidth*artboardH;
-        ctxToDrawToNow.stroke()
+        ctx.strokeStyle   = 'hsla(' + hue + ', ' +  sat + '%, ' + lit + '%,'  + alpha + ')'; 
+        ctx.lineWidth = lineWidth*artboardH;
+        ctx.stroke()
     } else {
-        ctxToDrawToNow.fillStyle   = 'hsla(' + hue + ', ' +  sat + '%, ' + lit + '%,'  + alpha + ')'; 
-        ctxToDrawToNow.fill();
-        ctxToDrawToNow.strokeStyle   = 'hsla(' + 210 + ', ' +  70 + '%, ' + 95 + '%,'  + alpha + ')'; 
-        ctxToDrawToNow.lineWidth = lineWidth*artboardH;
-        ctxToDrawToNow.stroke()
+        ctx.fillStyle   = 'hsla(' + hue + ', ' +  sat + '%, ' + lit + '%,'  + alpha + ')'; 
+        ctx.fill();
+        ctx.strokeStyle   = 'hsla(' + 210 + ', ' +  70 + '%, ' + 95 + '%,'  + alpha + ')'; 
+        ctx.lineWidth = lineWidth*artboardH;
+        ctx.stroke()
     }
     
 }
 
-function drawRect(ctxToDrawToNow, x, y, width, height, lineWidth=0.005, hue=0, sat=0, lit=0, alpha=255, fillMode=0) {
+function drawRect(ctx, x, y, width, height, lineWidth=0.005, hue=0, sat=0, lit=0, alpha=255, fillMode=0) {
 
     //let layerIndex = layer.ctxIndex;
 
@@ -378,24 +378,24 @@ function drawRect(ctxToDrawToNow, x, y, width, height, lineWidth=0.005, hue=0, s
 
     var alpha = alpha/255;
 
-    ctxToDrawToNow.beginPath();
+    ctx.beginPath();
 
-    ctxToDrawToNow.rect(x,y,width,height);
+    ctx.rect(x,y,width,height);
 
 
     if(fillMode==0) {
-        ctxToDrawToNow.fillStyle   = 'hsla(' + hue + ', ' +  sat + '%, ' + lit + '%,'  + alpha + ')'; 
-        ctxToDrawToNow.fill();
+        ctx.fillStyle   = 'hsla(' + hue + ', ' +  sat + '%, ' + lit + '%,'  + alpha + ')'; 
+        ctx.fill();
     } else {
-        ctxToDrawToNow.strokeStyle = 'hsla(' + hue + ', ' +  sat + '%, ' + lit + '%,'  + alpha + ')'; 
-        ctxToDrawToNow.lineWidth = lineWidth*artboardH;
-        ctxToDrawToNow.stroke()
+        ctx.strokeStyle = 'hsla(' + hue + ', ' +  sat + '%, ' + lit + '%,'  + alpha + ')'; 
+        ctx.lineWidth = lineWidth*artboardH;
+        ctx.stroke()
     }
 
     
 }
 
-function drawText(ctxToDrawToNow, text, x, y, fontSize, hue, sat, lit) {
+function drawText(ctx, text, x, y, fontSize, hue, sat, lit) {
 
 
     var x = (x+xCenterOffset  ) * artboardH;
@@ -403,18 +403,18 @@ function drawText(ctxToDrawToNow, text, x, y, fontSize, hue, sat, lit) {
 
 
 
-    ctxToDrawToNow.beginPath();
+    ctx.beginPath();
 
     var fontSizePix = fontSize*artboardH;
 
-    ctxToDrawToNow.font = fontSizePix.toString() + "px serif";
+    ctx.font = fontSizePix.toString() + "px serif";
 
-        // ctxToDrawToNow.fontSize = fontSizePix.toString() + "px"; // doesn't work....
+        // ctx.fontSize = fontSizePix.toString() + "px"; // doesn't work....
 
 
-    ctxToDrawToNow.fillStyle   = 'hsl(' + hue + ', ' +  sat + '%, ' + lit + '%'  +')'; 
+    ctx.fillStyle   = 'hsl(' + hue + ', ' +  sat + '%, ' + lit + '%'  +')'; 
 
-    ctxToDrawToNow.fillText(text, x, y);
+    ctx.fillText(text, x, y);
 
     // console.log("x",x,"y",y)
 
@@ -422,15 +422,15 @@ function drawText(ctxToDrawToNow, text, x, y, fontSize, hue, sat, lit) {
 
 }
 
-function drawTextPix(ctxToDrawToNow, text, x, y, fontSizePix, hue, sat, lit) {
+function drawTextPix(ctx, text, x, y, fontSizePix, hue, sat, lit) {
 
-    ctxToDrawToNow.beginPath();
+    ctx.beginPath();
 
-    ctxToDrawToNow.font = fontSizePix.toString() + "px serif";
+    ctx.font = fontSizePix.toString() + "px serif";
 
-    ctxToDrawToNow.fillStyle   = 'hsl(' + hue + ', ' +  sat + '%, ' + lit + '%'  +')'; 
+    ctx.fillStyle   = 'hsl(' + hue + ', ' +  sat + '%, ' + lit + '%'  +')'; 
 
-    ctxToDrawToNow.fillText(text, x*artboardW, y*artboardH);
+    ctx.fillText(text, x*artboardW, y*artboardH);
 
     //ctx.endPath();
 
@@ -463,18 +463,18 @@ function drawRectRGB(x, y, width, height, lineWidth=0.005, R,G,B, alpha=255, fil
 
     var alpha = alpha/255;
 
-    ctxToDrawToNow.beginPath();
+    ctx.beginPath();
 
-    ctxToDrawToNow.rect(x,y,width,height);
+    ctx.rect(x,y,width,height);
 
 
     if(fillMode==0) {
-        ctxToDrawToNow.fillStyle   = 'rgba(' + R + ', ' +  G + ', ' + B + ', '  + alpha + ')'; 
-        ctxToDrawToNow.fill();
+        ctx.fillStyle   = 'rgba(' + R + ', ' +  G + ', ' + B + ', '  + alpha + ')'; 
+        ctx.fill();
     } else {
-        ctxToDrawToNow.strokeStyle = 'rgba(' + R + ', ' +  G + ', ' + B + ', '  + alpha + ')'; 
-        ctxToDrawToNow.lineWidth = lineWidth*artboardH;
-        ctxToDrawToNow.stroke()
+        ctx.strokeStyle = 'rgba(' + R + ', ' +  G + ', ' + B + ', '  + alpha + ')'; 
+        ctx.lineWidth = lineWidth*artboardH;
+        ctx.stroke()
     }
 
     
@@ -484,7 +484,7 @@ function drawPathRGB(path, lineWidth, R, G, B, alpha, fillMode, close) {
 
     // console.log("path",path);
 
-    ctxToDrawToNow.beginPath()
+    ctx.beginPath()
 
     //var x = (x+xCenterOffset)*artboardH;
     //var y = (y+yCenterOffset)*artboardH;
@@ -492,30 +492,30 @@ function drawPathRGB(path, lineWidth, R, G, B, alpha, fillMode, close) {
     var x = (path[0][0]+xCenterOffset  ) * artboardH;
     var y = (1-path[0][1]-yCenterOffset) * artboardH;
 
-    ctxToDrawToNow.moveTo(x,y)   
+    ctx.moveTo(x,y)   
 
     for(let i=1; i<path.length; i++) {
         
         x = (path[i][0]+xCenterOffset  ) * artboardH;
         y = (1-path[i][1]-yCenterOffset) * artboardH;
-        ctxToDrawToNow.lineTo(x,y)
+        ctx.lineTo(x,y)
         // //console.log("[x,y]",[x,y])
     }
 
     if(close==1){
-        ctxToDrawToNow.closePath();
+        ctx.closePath();
     }
 
     var alpha = alpha/255;
     
 
     if(fillMode==0) {
-        ctxToDrawToNow.fillStyle   = 'rgba(' + R + ', ' +  G + ', ' + B + ', '  + alpha + ')'; 
-        ctxToDrawToNow.fill();
+        ctx.fillStyle   = 'rgba(' + R + ', ' +  G + ', ' + B + ', '  + alpha + ')'; 
+        ctx.fill();
     } else {
-        ctxToDrawToNow.strokeStyle = 'rgba(' + R + ', ' +  G + ', ' + B + ', '  + alpha + ')'; 
-        ctxToDrawToNow.lineWidth = lineWidth*artboardH;
-        ctxToDrawToNow.stroke()
+        ctx.strokeStyle = 'rgba(' + R + ', ' +  G + ', ' + B + ', '  + alpha + ')'; 
+        ctx.lineWidth = lineWidth*artboardH;
+        ctx.stroke()
     }
     
 }
@@ -529,19 +529,19 @@ function drawEllipseRGB(x, y, radX, radY, rotation, lineWidth, R, G, B, alpha, f
 
     var alpha = alpha/255;
 
-    ctxToDrawToNow.beginPath();
+    ctx.beginPath();
 
-    ctxToDrawToNow.ellipse(x,y,radX,radY,rotation,0,twoPI);
+    ctx.ellipse(x,y,radX,radY,rotation,0,twoPI);
 
     // //console.log("hsla",hue,sat,lit,alpha/255);
 
     if(fillMode==0) {
-        ctxToDrawToNow.fillStyle   = 'rgba(' + R + ', ' +  G + ', ' + B + ', '  + alpha + ')'; 
-        ctxToDrawToNow.fill();
+        ctx.fillStyle   = 'rgba(' + R + ', ' +  G + ', ' + B + ', '  + alpha + ')'; 
+        ctx.fill();
     } else {
-        ctxToDrawToNow.strokeStyle = 'rgba(' + R + ', ' +  G + ', ' + B + ', '  + alpha + ')'; 
-        ctxToDrawToNow.lineWidth = lineWidth*artboardH;
-        ctxToDrawToNow.stroke()
+        ctx.strokeStyle = 'rgba(' + R + ', ' +  G + ', ' + B + ', '  + alpha + ')'; 
+        ctx.lineWidth = lineWidth*artboardH;
+        ctx.stroke()
     }
     
 }
@@ -560,14 +560,14 @@ function drawBezierCurveRGB(bezCurve, lineWidth, R, G, B, alpha, fillMode, refer
 
 
 
-    ctxToDrawToNow.beginPath();
+    ctx.beginPath();
 
     let i = 0;
 
     var x1  = (  bezCurve[i][0][0]+xCenterOffset) * artboardH;
     var y1  = (1-bezCurve[i][0][1]-yCenterOffset) * artboardH;
 
-    ctxToDrawToNow.moveTo(x1,y1);
+    ctx.moveTo(x1,y1);
 
 
     for(let i=0; i<bezCurve.length; i++) {
@@ -587,21 +587,21 @@ function drawBezierCurveRGB(bezCurve, lineWidth, R, G, B, alpha, fillMode, refer
 
 
 
-        ctxToDrawToNow.bezierCurveTo( xC1,yC1, xC2,yC2, x2,y2 );
+        ctx.bezierCurveTo( xC1,yC1, xC2,yC2, x2,y2 );
 
         // //console.log(bezCurve);
 
     }
 
-    // ctxToDrawToNow.closePath();
+    // ctx.closePath();
 
     if(fillMode==0) {
-        ctxToDrawToNow.fillStyle   = 'rgba(' + R + ', ' +  G + ', ' + B + ', '  + alpha + ')'; 
-        ctxToDrawToNow.fill();
+        ctx.fillStyle   = 'rgba(' + R + ', ' +  G + ', ' + B + ', '  + alpha + ')'; 
+        ctx.fill();
     } else {
-        ctxToDrawToNow.strokeStyle = 'rgba(' + R + ', ' +  G + ', ' + B + ', '  + alpha + ')'; 
-        ctxToDrawToNow.lineWidth = lineWidth*artboardH;
-        ctxToDrawToNow.stroke()
+        ctx.strokeStyle = 'rgba(' + R + ', ' +  G + ', ' + B + ', '  + alpha + ')'; 
+        ctx.lineWidth = lineWidth*artboardH;
+        ctx.stroke()
     }
 
 

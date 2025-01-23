@@ -389,7 +389,7 @@ h4 {
         flex-direction: row-reverse;
         column-gap:100px;
         align-items:start;
-        padding: 6rem 20rem;
+        padding: 2vw 20vw;
     }
 
     #controlRow01 {
@@ -417,7 +417,7 @@ h4 {
         flex-direction: column;
         align-items:center;
         justify-content: flex-start;
-        height:calc(var(--canvasHeight)*4);
+        height:calc(var(--canvasHeight)*6);
         width:auto;
     }
 

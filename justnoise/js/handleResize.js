@@ -147,7 +147,7 @@ function handleResize() {
 
 
 
-    let CONTROLVIZ = document.getElementsByClassName("controlViz");
+    let CONTROLVIZ = document.getElementsByClassName("controlViz02");
 
     // let controlViz_widthstyle = WIDTHSTYLE*1.5;
     // let controlViz_heightstyle = HEIGHTSTYLE;
