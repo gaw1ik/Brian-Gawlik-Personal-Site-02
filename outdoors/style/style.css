@@ -5,6 +5,8 @@
     --text-color-body: hsl(0,0%,10%);
     --text-color-h1: hsl(0,0%,10%);
 
+    /* --border-color-deviceContainer:  */
+
     /* --controlsContainer01-bghsl: hsl(168, 100%, 91%, 0.5); */
 
     --canvasHeight:14vw;
@@ -19,11 +21,11 @@
 html {
     /* background-color: black; */
     /* background-color: hsl(130, 20%, 20%, 1.0); */
-    /* background-color: var(--bg-hsl); */
+    background-color: var(--bg-hsl);
     /* position:fixed; */
     height:100lvh;
     width:100%;
-    background-color: white;
+    /* background-color: white; */
 
 
 
@@ -45,8 +47,7 @@ body {
     /* color:hsl(130, 0%, 80%, 1.0); */
     color:var(--text-color-body);
 
-    background-color: white;
-
+    background-color: var(--bg-hsl);
     /* padding:1rem; */
 }
 
@@ -154,7 +155,7 @@ body {
     display:flex;
     flex-direction: column;
 
-    border: solid 1px hsl(0,0%,10%,0.2);
+    border: solid 1px var(--border-color-deviceContainer);
     border-left:none;
     border-right:none;
     border-bottom:none;
@@ -403,7 +404,7 @@ h4 {
     }
 
     .deviceContainer {
-        border: solid 1px hsl(0,0%,0%,0.2);
+        border: solid 1px var(--border-color-deviceContainer);
         border-left:none;
         border-right:none;
         border-radius: 5px;

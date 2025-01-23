@@ -3,34 +3,34 @@
 // window.addEventListener("load", setupCanvases);
 
 
-function setInitialParams() {
+// function setInitialParams() {
 
-    let params = {
-        background_gain:0.3,
-        background_LPF:0.35,
-        background_hiss:0.3,
-        // background_param:0.0,
+//     let params = {
+//         background_gain:0.3,
+//         background_LPF:0.35,
+//         background_hiss:0.3,
+//         // background_param:0.0,
 
-        wash_gain:0.4,
-        wash_period:0.4,
+//         wash_gain:0.4,
+//         wash_period:0.4,
 
-        rush_gain:0.20,
-        rush_flux:0.5,
+//         rush_gain:0.20,
+//         rush_flux:0.5,
 
-        insects_gain:0.5,
-        insects_rate:0.4,
-        insects_period:0.6,
-        insects_freq:0.7,
+//         insects_gain:0.5,
+//         insects_rate:0.4,
+//         insects_period:0.6,
+//         insects_freq:0.7,
 
-        birds_gain:0.5,
-        birds_period:0.5,
+//         birds_gain:0.5,
+//         birds_period:0.5,
 
-        master_gain:0.5,
-        master_LPF:0.7,
-    }
+//         master_gain:0.5,
+//         master_LPF:0.7,
+//     }
 
-    return params;
-}
+//     return params;
+// }
 
 
 
@@ -50,7 +50,7 @@ function setupCanvases() {
 
 
 
-    PARAMS = setInitialParams();
+    // PARAMS = setInitialParams();
 
 
     // INITIAL STATE VALUES
@@ -76,12 +76,10 @@ function setupCanvases() {
     // clickhereText.style.top  = muteControl_clientRectY + 90 + "px";
 
 
-    console.log("canvas",canvasViz01)
-    console.log("VIZ_SHAPES",VIZ_SHAPES)
+    // console.log("canvas",canvasViz01)
     
     
     setInterval(drawVisualizer,34);
-// setInterval(drawVisualizer2,34);
 
 
 

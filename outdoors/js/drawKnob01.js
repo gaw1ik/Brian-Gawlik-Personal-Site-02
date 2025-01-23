@@ -61,9 +61,7 @@ function drawKnob(canvas,val) {
     ctx.fill();
 
     ctx.lineWidth = 0.01*canvasH;
-    ctx.strokeStyle = "hsl(150, 30%, 85%, 0.2)";
-    // ctx.strokeStyle = "hsl(" + hueUI1 + satUI2 + "%, " + litUI1 + "%, " + "0.1)";
-
+    ctx.strokeStyle = "hsl(150, 30%, 85%," + alphaKnobTopStroke + ")";
     ctx.stroke();
 
 

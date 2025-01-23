@@ -9,55 +9,102 @@ PIo8  = Math.PI * 0.125;
 PIo16 = Math.PI * 0.0625;
 myrng = new Math.seedrandom();
 
-
-
-device = {};
-TIME = 800;
-// [hueUI1,satUI1,litUI1] = [200,50,80];
-// [hueUI2, satUI2, litUI2] = [0,0,0];
-// [hueBG, satBG, litBG] =  [160,30,17];
-// [hueWave1, satWave1, litWave1] =  [170,30,28];
-// [hueWave2, satWave2, litWave2] =  [50,24,26];
-
-
-//// ControlViz's
-[hueUI1,satUI1,litUI1] = [200,0,10];
-alphaUI1 = 255;
-[hueUI2, satUI2, litUI2] = [0,0,0];
-
-//// VIZ
-// [hueBG, satBG, litBG] =  [160,30,27];
-// [hueBG, satBG, litBG] =  [40,40,20];
-[hueBG, satBG, litBG] =  [150,20,50];
-
-[hueWave1, satWave1, litWave1] =  [50,30,46];
-// [hueWave2, satWave2, litWave2] =  [170,40,48];
-[hueWave2, satWave2, litWave2] =  [170,100,90];
-alphaWave1 = 255;
-
-//// KNOBS
-[hueKnobNeedle,satKnobNeedle,litKnobNeedle,alphaKnobNeedle] = [0,0,10,1.0];
-[hueKnobBottom,satKnobBottom,litKnobBottom,alphaKnobBottom] = [0,0,4,1.0];
-[hueKnobTop,satKnobTop,litKnobTop,alphaKnobTop] = [150, 15, 40, 1.0];
-
-
 isDragging = false;
 isTouching = false;
 
-// CSS
-const cssroot = document.documentElement;
-let hslBG = "hsl(" + hueBG + ", " + satBG + "%, " + litBG + "%)";
-cssroot.style.setProperty('--bg-hsl', hslBG);
-cssroot.style.setProperty('--text-color-body', 'hsl(0,0%,10%)');
-cssroot.style.setProperty('--text-color-h1','hsl(0,0%,10%)');
-cssroot.style.setProperty('--controlsContainer01-bghsl','hsl(168, 100%, 91%, 0.5)');
+device = {};
 
-// LIGHT
-// [hueBG, satBG, litBG] =  [160,30,60];
-// [hueUI1,satUI1,litUI1] = [200,50,10];
 
-// document.body.style.color = "black";
-// document.getElementById("titleHeader").style.color = "black";
+
+PARAMS = {
+    background_gain:0.3,
+    background_LPF:0.35,
+    background_hiss:0.3,
+    // background_param:0.0,
+
+    wash_gain:0.4,
+    wash_period:0.4,
+
+    rush_gain:0.20,
+    rush_flux:0.5,
+
+    insects_gain:0.5,
+    insects_rate:0.4,
+    insects_period:0.6,
+    insects_freq:0.7,
+
+    birds_gain:0.5,
+    birds_period:0.5,
+
+    master_gain:0.5,
+    master_LPF:0.7,
+}
+
+
+
+
+
+window.addEventListener("load", setupCanvases); // commented this out bc setupCanvases() is already called in setup()
+canvases = document.getElementsByClassName("dial");
+
+
+
+setTheme('light');
+
+function setTheme(themeName) {
+
+    //////// Colors
+    const cssroot = document.documentElement;
+
+    if (themeName=='light') {
+        //// Light
+        // JS
+        [hueUI1,satUI1,litUI1] = [200,0,10];
+        alphaUI1 = 255;
+        [hueUI2, satUI2, litUI2] = [0,0,0];
+        [hueBG, satBG, litBG] =  [150,20,50];
+        [hueWave1, satWave1, litWave1] =  [50,30,46];
+        [hueWave2, satWave2, litWave2] =  [170,100,90];
+        alphaWave1 = 255;
+        //// KNOBS
+        [hueKnobNeedle,satKnobNeedle,litKnobNeedle,alphaKnobNeedle] = [0,0,10,1.0];
+        [hueKnobBottom,satKnobBottom,litKnobBottom,alphaKnobBottom] = [0,0,4,1.0];
+        [hueKnobTop,satKnobTop,litKnobTop,alphaKnobTop] = [150, 15, 40, 1.0];
+        alphaKnobTopStroke = 0.2;
+        // CSS
+        var hslBG = "hsl(" + hueBG + ", " + satBG + "%, " + litBG + "%)";
+        cssroot.style.setProperty('--bg-hsl', hslBG);
+        cssroot.style.setProperty('--text-color-body', 'hsl(0,0%,10%)');
+        cssroot.style.setProperty('--text-color-h1','hsl(0,0%,10%)');
+        cssroot.style.setProperty('--controlsContainer01-bghsl','hsl(168, 100%, 91%, 0.5)');
+        cssroot.style.setProperty('--border-color-deviceContainer','hsl(0,0%,10%,0.2)');
+
+    } else if (themeName=='dark') {
+        //// Dark
+        // JS
+        [hueUI1,satUI1,litUI1] = [200,0,100];
+        alphaUI1 = 255;
+        [hueUI2, satUI2, litUI2] = [0,0,0];
+        [hueBG, satBG, litBG] =  [150,20,10];
+        [hueWave1, satWave1, litWave1] =  [50,30,46];
+        [hueWave2, satWave2, litWave2] =  [190,50,25];
+        alphaWave1 = 255;
+        //// KNOBS
+        [hueKnobNeedle,satKnobNeedle,litKnobNeedle,alphaKnobNeedle] = [0,0,10,1.0];
+        [hueKnobBottom,satKnobBottom,litKnobBottom,alphaKnobBottom] = [0,0,4,1.0];
+        [hueKnobTop,satKnobTop,litKnobTop,alphaKnobTop] = [150, 15, 10, 1.0];
+        alphaKnobTopStroke = 0.05;
+        // CSS
+        var hslBG = "hsl(" + hueBG + ", " + satBG + "%, " + litBG + "%)";
+        cssroot.style.setProperty('--bg-hsl', hslBG);
+        cssroot.style.setProperty('--text-color-body', 'hsl(0,0%,100%)');
+        cssroot.style.setProperty('--text-color-h1','hsl(0,0%,100%)');
+        cssroot.style.setProperty('--controlsContainer01-bghsl','hsl(168, 100%, 10%, 0.1)');
+        cssroot.style.setProperty('--border-color-deviceContainer','hsl(0,0%,100%,0.1)');
+    }
+    handleResize();
+}
+
 
 ////////////////////////////////////////////////////////////////// INITIALIZE VIZ SHAPES ARRAY
 VIZ_SHAPES = [];
@@ -101,7 +148,6 @@ VIZ_SHAPES.push(shape);
 
 
 
-window.addEventListener("load", setupCanvases); // commented this out bc setupCanvases() is already called in setup()
 
 
 // window.scrollTo(0,1);
@@ -321,13 +367,12 @@ document.body.addEventListener('click', playSound);
 
 
 
-let canvases = document.getElementsByClassName("dial");
 for(let i=0; i<canvases.length; i++) {
     canvases[i].style.cursor="grab";
     canvases[i].addEventListener('mousedown', playSound);
 }
 
-let blankControlCanvases = document.getElementsByClassName("blankControlCanvas");
+// let blankControlCanvases = document.getElementsByClassName("blankControlCanvas");
 
 
 for(let i=0; i<canvases.length; i++) {
