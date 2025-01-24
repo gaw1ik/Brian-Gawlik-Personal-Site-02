@@ -1,22 +1,6 @@
 
 
 
-function setInitialParams() {
-
-    let params = {
-
-        master_gain:0.8,
-        master_LPF:1.0,
-        chance:0.2,
-        time:0.4,
-        release:0.20,
-
-    }
-
-    return params;
-}
-
-
 
 
 
@@ -32,7 +16,7 @@ function setupCanvases() {
 
     
 
-    PARAMS = setInitialParams();
+    // PARAMS = setInitialParams();
 
 
 

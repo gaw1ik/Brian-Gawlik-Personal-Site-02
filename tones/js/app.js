@@ -15,6 +15,16 @@ isToggled = false;
 isDragging = false;
 isTouching = false;
 
+PARAMS = {
+
+    master_gain:0.8,
+    master_LPF:0.80,
+    chance:0.27,
+    time:0.4,
+    release:0.749,
+
+}
+
 document.body.addEventListener("click",playSound);
 
 

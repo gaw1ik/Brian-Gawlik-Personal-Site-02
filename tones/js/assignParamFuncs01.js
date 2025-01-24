@@ -76,7 +76,8 @@ function updateRNBOPARAM_release() {
     let val = PARAMS.release;
     let adjustedValue = calcParamValue(1-val,-0.9,32,2);
     try{ device.parametersById.get("curve").value = adjustedValue } catch(error) {}
-    document.getElementById("canvasLabel_release").textContent = "Release (" + adjustedValue.toFixed(0) + ")";
+        let displayedValue = 1 + (val)*99;
+    document.getElementById("canvasLabel_release").textContent = "Release (" + displayedValue.toFixed(0) + ")";
 }
 
 
