@@ -130,6 +130,13 @@ function handleResize() {
 
     // drawToggle(muteControl,currentMuteState,0);
 
+    WIDTHSTYLE_VIZ  = canvas_setTheme.clientWidth;
+    HEIGHTSTYLE_VIZ = canvas_setTheme.clientHeight;
+    WIDTH_VIZ  = WIDTHSTYLE_VIZ  * 2;
+    HEIGHT_VIZ = HEIGHTSTYLE_VIZ * 2;
+    canvas_setTheme.width  = WIDTH_VIZ ;
+    canvas_setTheme.height = HEIGHT_VIZ;
+    draw_canvasSetTheme();
 
 
 

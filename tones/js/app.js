@@ -15,6 +15,8 @@ isToggled = false;
 isDragging = false;
 isTouching = false;
 
+themeIndex = 0;
+
 PARAMS = {
 
     master_gain:0.8,
@@ -25,11 +27,79 @@ PARAMS = {
 
 }
 
+
+window.addEventListener("load", setupCanvases); // commented this out bc setupCanvases() is already called in setup()
+
+canvases = document.getElementsByClassName("dial");
+
+
+
+setTheme();
+
+function setTheme() {
+
+    let themes = ['light','dark'];
+    themeIndex = (themeIndex + 1) % 2;
+    themeName = themes[themeIndex];
+
+
+    // console.log(themeIndex)
+    // console.log(themeName)
+
+
+    const cssroot = document.documentElement;
+
+    if(themeName=='light') {
+
+
+        //////// JS
+        //// KNOBS
+        [hueKnobNeedle,satKnobNeedle,litKnobNeedle,alphaKnobNeedle] = [0, 0, 30, 0.5];
+        [hueKnobBottom,satKnobBottom,litKnobBottom,alphaKnobBottom] = [200, 0, 40, 1.0];
+        [hueKnobTop,satKnobTop,litKnobTop,alphaKnobTop] = [200, 50, 70, 1.0];
+        [hueKnobShadow,satKnobShadow,litKnobShadow,alphaKnobShadow] = [0, 0, 0, 0.10];
+
+        //////// CSS
+        [hueBG, satBG, litBG] =  [190,100,92];
+        let hslBG = "hsl(" + hueBG + ", " + satBG + "%, " + litBG + "%)";
+        cssroot.style.setProperty('--bg-hsl', hslBG);
+        cssroot.style.setProperty('--text-color-body', 'hsl(0,0%,10%)');
+        cssroot.style.setProperty('--text-color-h1','hsl(0,0%,10%)');
+        cssroot.style.setProperty('--controlsContainer01-hsl','hsl(205, 90%, 70%, 0.1)');
+
+    } else if (themeName=='dark') {
+
+        //////// JS
+        //// KNOBS
+        [hueKnobNeedle,satKnobNeedle,litKnobNeedle,alphaKnobNeedle] = [0, 0, 90, 0.5];
+        [hueKnobBottom,satKnobBottom,litKnobBottom,alphaKnobBottom] = [200, 0, 20, 1.0];
+        [hueKnobTop,satKnobTop,litKnobTop,alphaKnobTop] = [200, 50, 26, 1.0];
+        [hueKnobShadow,satKnobShadow,litKnobShadow,alphaKnobShadow] = [0, 0, 0, 0.13];
+
+        //////// CSS
+        [hueBG, satBG, litBG] =  [210,30,15];
+        let hslBG = "hsl(" + hueBG + ", " + satBG + "%, " + litBG + "%)";
+        cssroot.style.setProperty('--bg-hsl', hslBG);
+        cssroot.style.setProperty('--text-color-body', 'hsl(0,0%,90%)');
+        cssroot.style.setProperty('--text-color-h1','hsl(0,0%,90%)');
+        cssroot.style.setProperty('--controlsContainer01-hsl','hsl(205, 50%, 60%, 0.1)');
+
+    }
+
+    handleResize();
+
+    draw_canvasSetTheme();
+
+
+}
+
+
+
 document.body.addEventListener("click",playSound);
 
 
 
-window.addEventListener("load", setupCanvases); // commented this out bc setupCanvases() is already called in setup()
+// window.addEventListener("load", setupCanvases); // commented this out bc setupCanvases() is already called in setup()
 
 
 async function silenceTrick() {
@@ -298,7 +368,7 @@ async function setup() {
 
 
 
-let canvases = document.getElementsByClassName("dial");
+// canvases = document.getElementsByClassName("dial");
 for(let i=0; i<canvases.length; i++) {
     canvases[i].style.cursor="grab";
     canvases[i].addEventListener('mousedown', playSound);
@@ -325,7 +395,7 @@ for(let i=0; i<canvases.length; i++) {
 
         activeCanvasID = event.target.id;
         activeCanvasName = get_activeCanvasName(activeCanvasID);
-        console.log("event.target.id",event.target.id);
+        // console.log("event.target.id",event.target.id);
         for(let i=0; i<canvases.length; i++) {
             canvases[i].style.cursor="grabbing";
         }
@@ -342,7 +412,7 @@ for(let i=0; i<canvases.length; i++) {
 
         activeCanvasID = event.target.id;
         activeCanvasName = get_activeCanvasName(activeCanvasID);
-        console.log("event.target.id",event.target.id);
+        // console.log("event.target.id",event.target.id);
         for(let i=0; i<canvases.length; i++) {
             canvases[i].style.cursor="grabbing";
         }

@@ -3,6 +3,50 @@
 
 
 
+function draw_canvasSetTheme() {
+
+    let canvas = canvas_setTheme;
+    ctx = canvas.getContext("2d");
+    let canvasW = canvas.width;
+    let canvasH = canvas.height;
+    ctx.clearRect(0, 0, canvasW, canvasH);
+
+
+    let rPix = canvasH*0.45;
+    let xC = canvasW/2;
+    let yC = canvasH/2;
+
+    console.log(rPix,xC,yC)
+    console.log(canvasH,canvasW)
+
+    console.log(themeName)
+
+
+    var hue;
+    var sat;
+    var lit;
+    var alpha;
+
+    if(themeName=='light') {
+        [hue,sat,lit,alpha] = [200,90,90,1];
+    } else if (themeName=='dark') {
+        [hue,sat,lit,alpha] = [0,0,10,1];
+    } else {
+        console.log('that was not a theme');
+    }
+
+    console.log([hue,sat,lit,alpha])
+
+
+    // 
+    ctx.beginPath();
+    ctx.ellipse(xC, yC, rPix, rPix, 0, 0, twoPI);
+    ctx.fillStyle = "hsl(" + hue + ", " + sat + "%, " + lit + "%, " + alpha + ")";
+    ctx.fill();
+
+}
+
+
 function drawToggle(canvas,val,rms) {
 
     // if(rms===undefined) {
