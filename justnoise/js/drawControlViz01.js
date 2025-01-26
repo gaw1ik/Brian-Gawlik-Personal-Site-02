@@ -312,44 +312,28 @@ function draw_wash_controlViz() {
 
     let rmsScaled = (rms)/(MASTER_GAIN+0.001);
 
-    // console.log("rmsScaled",rmsScaled);
 
 
 
     drawRect(ctx,-artboardWo2,0,artboardWo2*2,1, 0, hueUI2, satUI2, litUI2, alphaUI2, 0);
 
 
-    let mag = 1.0*rmsScaled;
-
-    // console.log("mag",mag);
 
 
-    // let shape = SHAPES[0];
-
-    // let [xC1,yC1] = [shape.xC1+randomSign()*mag, shape.yC1+randomSign()*mag];
-    // let [xC2,yC2] = [shape.xC2+randomSign()*mag, shape.yC2+randomSign()*mag];
-
-    // path = [[-artboardWo2,rmsScaled],[artboardWo2,rmsScaled]];
-
-    // let path = [ [-artboardWo2,0], [0,rmsScaled], [artboardWo2,0] ];
     var [hue,sat,lit] = [hueUI1,satUI1,litUI1];
     var alpha = alphaUI1;
 
-    // drawRect(ctx, -artboardWo2+0.05, 0, artboardWo2*1.9, 0.01, 0, hue, sat, lit, alpha, 0);
 
-    // bezCurve = [];
-    // bezCurve[0] = [[-artboardWo2-0.6,0.0],[xC1,yC1],[xC2,yC2],[artboardWo2+0.6,1.0]];
-    
-    // console.log([[-artboardWo2-0.6,0.0],[xC1,yC1],[xC2,yC2],[artboardWo2+0.6,1.0]]);
     let lw = 0.01;
     let rot = 0;
 
     let xC_arc = 0;
-    let yC_arc = 0.01;
+    let yC_arc = 0.3;
     let radX_arc = artboardWo2; // *0.75
-    let radY_arc = 0.95*gain;
-    // drawPath(ctx, path, lw, hue, sat, lit, alpha, 1, 0);
-    drawEllipse(ctx, xC_arc, yC_arc, radX_arc, radY_arc, rot, lw, hue, sat, lit, alpha, 1);
+    let radY_arc = 0.95*gain * (1-yC_arc);
+    let startAngle = -PI;
+    let endAngle = 0;
+    drawArc(ctx, xC_arc, yC_arc, radX_arc, radY_arc, rot, startAngle, endAngle, lw, hue, sat, lit, alpha, 1);
 
     var [hue,sat,lit] = [hueUI1,satUI1,litUI1/2];
     var alpha = alphaUI1;
@@ -359,22 +343,18 @@ function draw_wash_controlViz() {
     lw = 0.02;
     if(t1!=0) {
         // console.log("t",t1)
-        let theta1 = -PI-PIo16 + t1*(PI+PIo8);
+        let theta1 = -PI + t1*(PI-PIo16);
         let theta2 = theta1 + PIo16;
-        let xC_dot = xC_arc + radX_arc*Math.cos(theta1); 
-        let yC_dot = yC_arc + radY_arc*Math.sin(theta1); 
-        drawArc(ctx, xC_arc, yC_arc, radX_arc, radY_arc, rot, theta1, theta2, lw, hue, sat, lit, alpha, 1);
 
-        // drawEllipse(ctx, xC_dot, yC_dot, radX_dot, radY_dot, rot, lw, hue, sat, lit, alpha, 0);
+        drawArc(ctx, xC_arc, yC_arc, radX_arc, radY_arc, rot, theta1, theta2, lw, hue, sat, lit, alpha, 1);
     } else {
         // console.log("t2",t2)
         // let theta = -PI - t*PI;
         let xC_dot1 = radX_arc + L_dot - t2*(radX_arc+L_dot)*2; 
-        let yC_dot = 0; 
+        let yC_dot = yC_arc; 
         let xC_dot2 = xC_dot1 - L_dot;
         let path = [[xC_dot1,yC_dot],[xC_dot2,yC_dot]];
         drawPath(ctx, path, lw, hue, sat, lit, alpha, 1, 0);
-        // drawEllipse(ctx, xC_dot, yC_dot, radX_dot, radY_dot, rot, lw, hue, sat, lit, alpha, 0);
     }
 
 
@@ -481,8 +461,131 @@ function draw_rush_controlViz() {
 
 
 
-
 function draw_crackle_controlViz() {
+
+    var rms;
+    var gain;
+    var LPF;
+
+    // rms = 1;
+
+    gain = PARAMS.crackle_gain;
+    thresh = PARAMS.crackle_thresh;
+    LPF = PARAMS.crackle_LPF;
+
+    let canvas = canvas_crackle_controlViz;
+    let ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    artboardH = canvas.height;
+    artboardW = canvas.width;
+    artboardAR = artboardH/artboardW;
+    artboardWo2 = (1/artboardAR)/2;
+    xCenterOffset = artboardWo2;
+    yCenterOffset = 0.0;
+
+    // let rmsScaled = rms*1;
+
+    let [hue,sat,lit] = [hueUI1,satUI1,litUI1];
+    // var alpha = 127;
+    var lw = 0.02;
+
+    var path = [[-artboardWo2,0.5],[artboardWo2,0.5]];
+    drawPath(ctx, path, lw, hue, sat, lit, alpha, 1, 0);
+
+    let maxHeight = 0.3*gain;
+
+    // rmsScaled = 0.8;
+
+    // let nShapes = Math.ceil(thresh*32);
+
+    var lw = 0.005 + 0.02 * (1-LPF);
+    var alpha = 50 + 205*LPF;
+
+    let speed = 0.01;
+
+    for(let i=0; i<N_CRACKLESHAPES; i++) {
+
+        let shape = CRACKLE_SHAPES[i];
+        // let age = shape.age;
+        // let x = shape.x;
+        // let y = shape.y;
+
+        let on = shape.on;
+
+        // var newShape = {};
+
+        if(on==1) {
+
+            var path = [];
+
+            // let randFloat1 = getRandomFloat()*scale1;
+            // let randFloat2 =  getRandomFloat()*scale2;
+    
+            // let t = getRandomFloat(0,1);
+    
+            // path.push([x,y1])
+            // path.push([x,y1+rmsScaled*randFloat2])
+            // path.push([-artboardWo2+artboardWo2*2*t,y1+rmsScaled*randFloat1])
+    
+            let height = shape.height;
+            let x1 = shape.x1;
+            let lw = shape.lw;
+
+            // console.log("lw",lw)
+
+
+            let y1 = 0.5;
+            let x2 = x1;
+            let y2 = y1+height;
+
+            var path = [[x1,y1],[x2,y2]];
+
+            // console.log("x1",x1)
+            drawPath(ctx, path, lw, hue, sat, lit, alpha, 1, 0);
+    
+            // yC = getRandomFloat()
+            // let AR = 1+LPF*7;
+            // let radX = 0.01;
+            // let radY = radX*AR;
+            // let alpha = 150*gain;
+    
+            // drawEllipse(ctx, x,y,radX,radY, 0,lw, hue, sat, lit, alpha, 0);
+            // drawEllipse(ctx, x,y,radY,radX, 0,lw, hue, sat, lit, alpha, 0);
+
+            if(x1<-artboardWo2) {
+                // newShape.age = age + 1;
+                // newShape.x1 = 0;
+                // shape.height = randomSign()*getRandomFloat(0.5,1)*maxHeight;
+                shape.on = 0;
+    
+            } else {
+                // newShape.age = 0;
+                shape.x1 = x1 - speed - 0.10*thresh;
+                // newShape.height = getRandomFloat(0.3,0.7);
+                // newShape.on = 1;
+            }
+
+            // CRACKLE_SHAPES[i] = shape;
+
+        } else {
+
+            // newShape.age = 0;
+            shape.x1 = artboardWo2 + getRandomFloat(0,0.1);
+            shape.lw = vary(lw,50);
+            shape.height = randomSign()*getRandomFloat(0.1,1)*maxHeight;
+            shape.on = makeChoice(5);
+        }
+
+        CRACKLE_SHAPES[i] = shape;
+
+
+    }
+
+   
+}
+
+function draw_crackle_controlViz01() {
 
     var rms;
     var gain;

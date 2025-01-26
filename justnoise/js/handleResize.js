@@ -147,25 +147,20 @@ function handleResize() {
 
 
 
-    let CONTROLVIZ = document.getElementsByClassName("controlViz02");
-
-    // let controlViz_widthstyle = WIDTHSTYLE*1.5;
-    // let controlViz_heightstyle = HEIGHTSTYLE;
-    // let controlViz_width = controlViz_widthstyle*2;
-    // let controlViz_height = controlViz_heightstyle*2;
+    let CONTROLVIZ = document.getElementsByClassName("controlViz");
 
     for(let i=0; i<CONTROLVIZ.length; i++) {
         let canvas = CONTROLVIZ[i];
+        canvas.width = canvas.clientWidth*2;
+        canvas.height = canvas.clientHeight*2;
+    }
 
-        canvas_style_width = canvas.clientWidth;
-        canvas_style_height = canvas.clientHeight;
-        canvas.width = canvas_style_width*2;
-        canvas.height = canvas_style_height*2;
+    let CONTROLVIZ02 = document.getElementsByClassName("controlViz02");
 
-        // canvas.width = controlViz_width;
-        // canvas.height = controlViz_height;
-        // canvas.style.width = controlViz_widthstyle.toString() + "px";
-        // canvas.style.height = controlViz_heightstyle.toString() + "px";
+    for(let i=0; i<CONTROLVIZ02.length; i++) {
+        let canvas = CONTROLVIZ02[i];
+        canvas.width = canvas.clientWidth*2;
+        canvas.height = canvas.clientHeight*2;
     }
 
     // ////////// Mute Control Canvas

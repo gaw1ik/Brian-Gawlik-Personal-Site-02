@@ -12,7 +12,7 @@ myrng = new Math.seedrandom();
 isDragging = false;
 isTouching = false;
 
-themeIndex = 1;
+themeIndex = 0;
 
 
 device = {};
@@ -50,7 +50,6 @@ setTheme();
 function setTheme() {
 
     let themes = ['light','dark'];
-    themeIndex = (themeIndex + 1) % 2;
     themeName = themes[themeIndex];
 
     const cssroot = document.documentElement;
@@ -78,6 +77,7 @@ function setTheme() {
         cssroot.style.setProperty('--text-color-body', 'hsl(0,0%,10)');
         cssroot.style.setProperty('--text-color-h1','hsl(0,0%,10%)');
         cssroot.style.setProperty('--controlsContainer01-bghsl','hsl(168, 0%, 91%, 0.7)');
+        cssroot.style.setProperty('--deviceContainer-hsl','hsl(0,0%,10%,0.2)');
 
     } else if (themeName=='dark') {
 
@@ -102,9 +102,14 @@ function setTheme() {
         cssroot.style.setProperty('--text-color-body', 'hsl(0,0%,90%)');
         cssroot.style.setProperty('--text-color-h1','hsl(0,0%,80%)');
         cssroot.style.setProperty('--controlsContainer01-bghsl','hsl(168, 0%, 25%, 0.7)');
+        cssroot.style.setProperty('--deviceContainer-hsl','hsl(0,0%,90%,0.2)');
+
     }
 
     handleResize();
+
+    themeIndex = (themeIndex + 1) % 2;
+
 
 }
 
@@ -345,12 +350,13 @@ async function setup() {
 
 
     CRACKLE_SHAPES = [];
-    for(let i=0; i<32; i++) {
+    N_CRACKLESHAPES = 128;
+    for(let i=0; i<N_CRACKLESHAPES; i++) {
     let shape = {
-            age:0,
-            x: 0+getRandomFloat(-1,1)*artboardWo2,
-            y: getRandomFloat(0.3,0.7),
-            on:makeChoice(50),
+            // age:0,
+            x1: artboardWo2,
+            height: 0,
+            on:0,
         }
         CRACKLE_SHAPES.push(shape);
     }

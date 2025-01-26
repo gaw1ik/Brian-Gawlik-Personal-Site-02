@@ -37,8 +37,8 @@ function setupCanvases() {
     // clickhereText.style.top  = muteControl_clientRectY + 90 + "px";
 
 
-    console.log("canvas",canvasViz01)
-    console.log("VIZ_SHAPES",VIZ_SHAPES)
+    // console.log("canvas",canvasViz01)
+    // console.log("VIZ_SHAPES",VIZ_SHAPES)
 
     canvas_setTheme = document.getElementById("canvas_setTheme");
     canvas_setTheme.addEventListener("click", setTheme); // commented this out bc setupCanvases() is already called in setup()

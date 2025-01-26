@@ -153,8 +153,7 @@ body {
 .deviceContainer {
     display:flex;
     flex-direction: column;
-
-    border: solid 1px hsl(0,0%,10%,0.2);
+    border: solid 1px var(--deviceContainer-hsl);
     border-left:none;
     border-right:none;
     border-bottom:none;
@@ -228,9 +227,16 @@ body {
 
     padding:0rem;
 }
-#canvasViz02 {
+
+#canvas_setTheme {
     position: fixed;
-    z-index: 0;
+    right: 0;
+    top: 0;
+    z-index: 2;
+    margin:1vh;
+    width:4vh;
+    height:4vh;
+    cursor:pointer;
 }
 
 
@@ -282,7 +288,7 @@ canvas {
     bottom: 30px;
     user-select:none;
     text-decoration:none;
-    color:hsl(135, 30%, 50%, 0.5);
+    color:hsl(0, 0%, 50%, 0.5);
 }
 
 h1 {
@@ -370,6 +376,12 @@ h4 {
     #controlFlex01 {
         width:calc(var(--canvasHeight)*6);
     }
+
+    #canvas_setTheme {
+        margin:1vh;
+        width:4vh;
+        height:4vh;
+    }
 }
 
 
@@ -443,6 +455,12 @@ h4 {
         width:calc(var(--canvasHeight) * 1);
         height:var(--canvasHeight);
         margin:0 8px;
+    }
+
+    #canvas_setTheme {
+        margin:1vh;
+        width:4vh;
+        height:4vh;
     }
 
     h2{
