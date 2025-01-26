@@ -20,7 +20,7 @@ function setupParams() {
     //// MASTER
     device.parametersById.get("master_monoToggle").value = 0;
     device.parametersById.get("master_cracklepop").value = 0.002;
-    device.parametersById.get("master_reverb").value = 92;
+    device.parametersById.get("master_reverb").value = 96;
     //// INSTRUMENTS
     device.parametersById.get("wash_gain").value = 0.03;
     device.parametersById.get("bass01_gain").value = 0.50;

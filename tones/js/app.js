@@ -20,7 +20,7 @@ themeIndex = 1;
 PARAMS = {
 
     master_gain:0.8,
-    master_LPF:0.80,
+    master_LPF:0.737,
     chance:0.27,
     time:0.4,
     release:0.749,
