@@ -15,7 +15,7 @@ isToggled = false;
 isDragging = false;
 isTouching = false;
 
-themeIndex = 1;
+themeIndex = 0;
 
 PARAMS = {
 

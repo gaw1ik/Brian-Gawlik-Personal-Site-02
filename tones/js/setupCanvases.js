@@ -39,7 +39,7 @@ function setupCanvases() {
         let speed = getRandomFloat(1.0,8.0);
         let aspect = 1.0;
         let age = 0.0;
-        let shape = {rad:0, xC:xC, yC:yC, aspect:aspect, alpha:1.0, speed:speed, age:age};
+        let shape = {rad:0, xC:xC, yC:yC, aspect:aspect, alpha:1.0, speed:speed, age:age, on:0};
         SHAPES.push(shape);
         // console.log(shape);
     }

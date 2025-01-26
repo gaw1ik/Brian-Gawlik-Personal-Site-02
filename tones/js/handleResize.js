@@ -28,15 +28,19 @@ function handleResize() {
 
 
     ////////// Visualizer Canvas
-    WIDTHSTYLE_VIZ = window_innerWidth;
-    HEIGHTSTYLE_VIZ = window_innerHeight;
-    WIDTH_VIZ = WIDTHSTYLE_VIZ*2;
-    HEIGHT_VIZ = HEIGHTSTYLE_VIZ*2;
+    // WIDTHSTYLE_VIZ = window_innerWidth;
+    // HEIGHTSTYLE_VIZ = window_innerHeight;
+    // WIDTH_VIZ = WIDTHSTYLE_VIZ*2;
+    // HEIGHT_VIZ = HEIGHTSTYLE_VIZ*2;
 
-    canvasViz01.width = WIDTH_VIZ;
-    canvasViz01.height = HEIGHT_VIZ;
-    canvasViz01.style.width = WIDTHSTYLE_VIZ.toString() + "px";
-    canvasViz01.style.height = HEIGHTSTYLE_VIZ.toString() + "px";
+    // canvasViz01.width = WIDTH_VIZ;
+    // canvasViz01.height = HEIGHT_VIZ;
+    // canvasViz01.style.width = WIDTHSTYLE_VIZ.toString() + "px";
+    // canvasViz01.style.height = HEIGHTSTYLE_VIZ.toString() + "px";
+
+
+    canvasViz01.width  = canvasViz01.clientWidth  * 2;
+    canvasViz01.height = canvasViz01.clientHeight * 2;
 
 
     // document.getElementById()
@@ -91,32 +95,32 @@ function handleResize() {
         // WIDTHSTYLE = Math.min(window_innerWidth*0.14,150);
 
 
-        for(let i=0; i<canvases.length; i++) {
+    for(let i=0; i<canvases.length; i++) {
 
-            let canvas = canvases[i];
+        let canvas = canvases[i];
 
-            let activeCanvasID = canvas.id;
-            let activeCanvasName = get_activeCanvasName(activeCanvasID);
+        let activeCanvasID = canvas.id;
+        let activeCanvasName = get_activeCanvasName(activeCanvasID);
 
-            // WIDTHSTYLE = 150;
-            // HEIGHTSTYLE = WIDTHSTYLE*0.7;
-            // WIDTH = WIDTHSTYLE*2;
-            // HEIGHT = HEIGHTSTYLE*2;
+        // WIDTHSTYLE = 150;
+        // HEIGHTSTYLE = WIDTHSTYLE*0.7;
+        // WIDTH = WIDTHSTYLE*2;
+        // HEIGHT = HEIGHTSTYLE*2;
 
-            canvas_style_width = canvas.clientWidth;
-            canvas_style_height = canvas.clientHeight;
-            canvas.width = canvas_style_width*2;
-            canvas.height = canvas_style_height*2;
-    
-            // console.log("activeCanvasName",activeCanvasName);
-            let val = PARAMS[activeCanvasName];
+        canvas_style_width = canvas.clientWidth;
+        canvas_style_height = canvas.clientHeight;
+        canvas.width = canvas_style_width*2;
+        canvas.height = canvas_style_height*2;
 
-            // if(activeCanvasName=="master_gain" || activeCanvasName=="master_LPF") {
-            //     drawKnobDrive(canvas,val);
-            // } else {
-                drawKnob(canvas,val);
-            // }    
-        }
+        // console.log("activeCanvasName",activeCanvasName);
+        let val = PARAMS[activeCanvasName];
+
+        // if(activeCanvasName=="master_gain" || activeCanvasName=="master_LPF") {
+        //     drawKnobDrive(canvas,val);
+        // } else {
+            drawKnob(canvas,val);
+        // }    
+    }
 
 
     // }
@@ -130,10 +134,10 @@ function handleResize() {
 
     // drawToggle(muteControl,currentMuteState,0);
 
-    WIDTHSTYLE_VIZ  = canvas_setTheme.clientWidth;
-    HEIGHTSTYLE_VIZ = canvas_setTheme.clientHeight;
-    WIDTH_VIZ  = WIDTHSTYLE_VIZ  * 2;
-    HEIGHT_VIZ = HEIGHTSTYLE_VIZ * 2;
+    var WIDTHSTYLE_VIZ  = canvas_setTheme.clientWidth;
+    var HEIGHTSTYLE_VIZ = canvas_setTheme.clientHeight;
+    var WIDTH_VIZ  = WIDTHSTYLE_VIZ  * 2;
+    var HEIGHT_VIZ = HEIGHTSTYLE_VIZ * 2;
     canvas_setTheme.width  = WIDTH_VIZ ;
     canvas_setTheme.height = HEIGHT_VIZ;
     draw_canvasSetTheme();
