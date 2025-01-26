@@ -131,10 +131,10 @@ html, body {
     position: fixed;
     right: 0;
     top: 0;
-    z-index: 0;
-    margin:1vw;
-    width:2vw;
-    height:2vw;
+    z-index: 2;
+    margin:1vh;
+    width:4vh;
+    height:4vh;
     cursor:pointer;
 }
 
@@ -254,6 +254,12 @@ h4 {
         padding: 10vh 3vh;
     }
 
+    #canvas_setTheme {
+        margin:1vh;
+        width:4vh;
+        height:4vh;
+    }
+
 }
 
 
@@ -280,7 +286,12 @@ h4 {
     #controlRow02 {
         grid-template-rows: 1fr;
         grid-template-columns:1fr 1fr;
+    }
 
+    #canvas_setTheme {
+        margin:1vh;
+        width:4vh;
+        height:4vh;
     }
 
 

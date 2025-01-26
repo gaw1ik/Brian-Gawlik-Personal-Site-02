@@ -39,7 +39,7 @@ setTheme();
 function setTheme() {
 
     let themes = ['light','dark'];
-    themeIndex = (themeIndex + 1) % 2;
+
     themeName = themes[themeIndex];
 
 
@@ -89,6 +89,9 @@ function setTheme() {
     handleResize();
 
     // draw_canvasSetTheme();
+
+    themeIndex = (themeIndex + 1) % 2;
+
 
 
 }
