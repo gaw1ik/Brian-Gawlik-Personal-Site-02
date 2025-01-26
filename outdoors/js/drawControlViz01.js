@@ -132,7 +132,7 @@ function draw_background_controlViz() {
     // drawRect(ctx, x, y, width, height, lw, hue, sat, lit, alpha, 0);
     drawPath(ctx, path2, lw, hue, sat, lit, alpha, 1, 0);
 
-;
+
 }
 
 function draw_wash_controlViz() {
@@ -166,37 +166,22 @@ function draw_wash_controlViz() {
     drawRect(ctx,-artboardWo2,0,artboardWo2*2,1, 0, hueUI2, satUI2, litUI2, alphaUI2, 0);
 
 
-    let mag = 1.0*rmsScaled;
-
-    // console.log("mag",mag);
 
 
-    // let shape = SHAPES[0];
-
-    // let [xC1,yC1] = [shape.xC1+randomSign()*mag, shape.yC1+randomSign()*mag];
-    // let [xC2,yC2] = [shape.xC2+randomSign()*mag, shape.yC2+randomSign()*mag];
-
-    // path = [[-artboardWo2,rmsScaled],[artboardWo2,rmsScaled]];
-
-    // let path = [ [-artboardWo2,0], [0,rmsScaled], [artboardWo2,0] ];
     var [hue,sat,lit] = [hueUI1,satUI1,litUI1];
     var alpha = alphaUI1;
 
-    // drawRect(ctx, -artboardWo2+0.05, 0, artboardWo2*1.9, 0.01, 0, hue, sat, lit, alpha, 0);
 
-    // bezCurve = [];
-    // bezCurve[0] = [[-artboardWo2-0.6,0.0],[xC1,yC1],[xC2,yC2],[artboardWo2+0.6,1.0]];
-    
-    // console.log([[-artboardWo2-0.6,0.0],[xC1,yC1],[xC2,yC2],[artboardWo2+0.6,1.0]]);
     let lw = 0.01;
     let rot = 0;
 
     let xC_arc = 0;
-    let yC_arc = 0.01;
+    let yC_arc = 0.3;
     let radX_arc = artboardWo2; // *0.75
-    let radY_arc = 0.95*gain;
-    // drawPath(ctx, path, lw, hue, sat, lit, alpha, 1, 0);
-    drawEllipse(ctx, xC_arc, yC_arc, radX_arc, radY_arc, rot, lw, hue, sat, lit, alpha, 1);
+    let radY_arc = 0.95*gain * (1-yC_arc);
+    let startAngle = -PI;
+    let endAngle = 0;
+    drawArc(ctx, xC_arc, yC_arc, radX_arc, radY_arc, rot, startAngle, endAngle, lw, hue, sat, lit, alpha, 1);
 
     var [hue,sat,lit] = [hueUI1,satUI1,litUI1/2];
     var alpha = alphaUI1;
@@ -206,22 +191,18 @@ function draw_wash_controlViz() {
     lw = 0.02;
     if(t1!=0) {
         // console.log("t",t1)
-        let theta1 = -PI-PIo16 + t1*(PI+PIo8);
+        let theta1 = -PI + t1*(PI-PIo16);
         let theta2 = theta1 + PIo16;
-        let xC_dot = xC_arc + radX_arc*Math.cos(theta1); 
-        let yC_dot = yC_arc + radY_arc*Math.sin(theta1); 
-        drawArc(ctx, xC_arc, yC_arc, radX_arc, radY_arc, rot, theta1, theta2, lw, hue, sat, lit, alpha, 1);
 
-        // drawEllipse(ctx, xC_dot, yC_dot, radX_dot, radY_dot, rot, lw, hue, sat, lit, alpha, 0);
+        drawArc(ctx, xC_arc, yC_arc, radX_arc, radY_arc, rot, theta1, theta2, lw, hue, sat, lit, alpha, 1);
     } else {
         // console.log("t2",t2)
         // let theta = -PI - t*PI;
         let xC_dot1 = radX_arc + L_dot - t2*(radX_arc+L_dot)*2; 
-        let yC_dot = 0; 
+        let yC_dot = yC_arc; 
         let xC_dot2 = xC_dot1 - L_dot;
         let path = [[xC_dot1,yC_dot],[xC_dot2,yC_dot]];
         drawPath(ctx, path, lw, hue, sat, lit, alpha, 1, 0);
-        // drawEllipse(ctx, xC_dot, yC_dot, radX_dot, radY_dot, rot, lw, hue, sat, lit, alpha, 0);
     }
 
 
@@ -400,48 +381,115 @@ function draw_insects_controlViz() {
 
 function draw_birds_controlViz() {
 
-    let rms = device.parametersById.get("birds_rms").value;
-    // let gain = device.parametersById.get("birds_gain").value;
-    // let gain = PARAMS.birds_gain;
-
     let canvas = canvas_birds_controlViz;
     let ctx = canvas.getContext("2d");
-    // ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     artboardH = canvas.height;
     artboardW = canvas.width;
     artboardAR = artboardH/artboardW;
     artboardWo2 = (1/artboardAR)/2;
+    
     xCenterOffset = artboardWo2;
     yCenterOffset = 0.0;
 
 
-    let rmsScaled = rms*7;
-
-    // drawRect(ctx,-artboardWo2,0,artboardWo2*2,1, 0, hueUI2, satUI2, litUI2, alphaUI2, 0);
-
-
-    // let mag = 1.0*rmsScaled;
-
-    let y1 = rmsScaled;
-    // let y2 = gain + mag*Q;
 
 
 
+
+    // let rms = device.parametersById.get("birds_rms").value;
+    // let gain = PARAMS.birds_gain;
+    let t = device.parametersById.get("birds_t").value;
+    let tweetCountNow = device.parametersById.get("birds_tweet_count").value;
+
+
+    // let rmsScaled = rms*16;
     let [hue,sat,lit] = [hueUI1,satUI1,litUI1];
-    let alpha = alphaUI1;
-    let lw = 0.02;
 
-    var x = getRandomFloat()*artboardWo2*randomSign();
-    var y = 0;
-    var width = 0.01;
-    var height = y1 + 0.01;
-    drawRect(ctx, x, y, width, height, lw, hue, sat, lit, alpha, 0);
 
-    // var x = 0;
-    // var y = 0;
-    // var width = artboardWo2;
-    // var height = y2 + 0.01;
-    // drawRect(ctx, x, y, width, height, lw, hue, sat, lit, alpha, 0);
+    if(tweetCountNow!=tweetCountThen) {
+
+        let birdShapeIndex = tweetCountNow % N_BIRDSSHAPES;
+
+        console.log("tweetCountNow",tweetCountNow)
+        tweetCountThen = tweetCountNow;
+        var x1 = getRandomFloat(0,0.8)*artboardWo2*randomSign();
+        var height = getRandomFloat(0.3,0.7);
+        let lw = 0.02;
+
+        // new shape
+        let shape = BIRDS_SHAPES[birdShapeIndex];
+        shape.x1 = x1;
+        shape.age = 0;
+        shape.alpha = 255;
+        shape.height = height;
+        shape.on = 1;
+        shape.lw = lw;
+        BIRDS_SHAPES[birdShapeIndex] = shape;
+
+    }
+
+    var lw = 0.01;
+    var path = [[-artboardWo2,0],[artboardWo2,0]];
+    drawPath(ctx, path, lw, hue, sat, lit, 255, 1);
+
+
+    //// DRAW BIRD tARC
+    var lw = 0.01;
+    // var path = [[-artboardWo2+t*artboardWo2*2,0],[-artboardWo2+t*artboardWo2*2+0.1,0]];
+    // drawPath(ctx, path, lw, hue, sat, lit, 255, 1);
+    // let startAngle = (1-t) * PI;
+    // let endAngle = startAngle - PIo16;
+    let startAngle = (1-t)*-PI;
+    let endAngle = startAngle + PIo32;
+    // let xC = getRandomFloat();
+    drawArc(ctx, 0, 0, artboardWo2, 0.3, 0, startAngle, endAngle, lw, hue, sat, lit, alpha, 1);
+
+
+    //// DRAW VERTICAL LINES
+    for(let i=0; i<N_BIRDSSHAPES; i++) {
+
+        let shape = BIRDS_SHAPES[i];
+        let on = shape.on;
+
+        if(on==0) {
+            // console.log("i",i)
+            continue;
+        } else {
+        }
+
+        let age = shape.age;
+        let x1 = shape.x1;
+        let height = shape.height;
+        let lw = shape.lw;
+
+
+        age = age + 0.005;
+        let alpha = 255*(1-age);
+
+        var y1 = 0;
+        var x2 = x1;
+        var y2 = height;
+        var path = [[x1,y1],[x2,y2]];
+
+        drawPath(ctx, path, lw, hue, sat, lit, alpha, 1);
+
+        if(age>1) {
+            on = 0;
+        }
+
+        // update the new shape 
+        shape.x1 = x1;
+        shape.age = age;
+        shape.alpha = alpha;
+        shape.height = height;
+        shape.on = on;
+        shape.lw = lw;
+        BIRDS_SHAPES[i] = shape;
+
+    }
+
+
 
 }

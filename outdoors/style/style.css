@@ -213,6 +213,17 @@ body {
     margin:0;
 }
 
+#canvas_setTheme {
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 2;
+    margin:1vh;
+    width:4vh;
+    height:4vh;
+    cursor:pointer;
+}
+
 .controlViz02 {
     width:calc(var(--canvasHeight) * 2);
     height:var(--canvasHeight);
@@ -371,6 +382,12 @@ h4 {
     #controlFlex01 {
         width:calc(var(--canvasHeight)*6);
     }
+
+    #canvas_setTheme {
+        margin:1vh;
+        width:4vh;
+        height:4vh;
+    }
 }
 
 
@@ -433,6 +450,12 @@ h4 {
         width:calc(var(--canvasHeight) * 1);
         height:var(--canvasHeight);
         margin:0 8px;
+    }
+
+    #canvas_setTheme {
+        margin:1vh;
+        width:4vh;
+        height:4vh;
     }
 
     h2{

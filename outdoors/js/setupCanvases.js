@@ -1,39 +1,5 @@
 
 
-// window.addEventListener("load", setupCanvases);
-
-
-// function setInitialParams() {
-
-//     let params = {
-//         background_gain:0.3,
-//         background_LPF:0.35,
-//         background_hiss:0.3,
-//         // background_param:0.0,
-
-//         wash_gain:0.4,
-//         wash_period:0.4,
-
-//         rush_gain:0.20,
-//         rush_flux:0.5,
-
-//         insects_gain:0.5,
-//         insects_rate:0.4,
-//         insects_period:0.6,
-//         insects_freq:0.7,
-
-//         birds_gain:0.5,
-//         birds_period:0.5,
-
-//         master_gain:0.5,
-//         master_LPF:0.7,
-//     }
-
-//     return params;
-// }
-
-
-
 
 function setupCanvases() {
 
@@ -66,17 +32,23 @@ function setupCanvases() {
 
 
 
-    handleResize();
 
 
     // let muteControl_clientRectX = muteControl.getBoundingClientRect().x;
     // let muteControl_clientRectY = muteControl.getBoundingClientRect().y;
     // let clickhereText = document.getElementById("clickhereText");
     // clickhereText.style.left = muteControl_clientRectX + 15 + "px";
-    // clickhereText.style.top  = muteControl_clientRectY + 90 + "px";
+    // clickhereText.style.top  = muteControl_clientRectY + 90 + "px"
+    
+    canvas_setTheme = document.getElementById("canvas_setTheme");
+    canvas_setTheme.addEventListener("click", setTheme); // commented this out bc setupCanvases() is already called in setup()
+    // draw_canvasSetTheme();
 
 
     // console.log("canvas",canvasViz01)
+
+    // handleResize();
+
     
     
     setInterval(drawVisualizer,34);

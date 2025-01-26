@@ -1,18 +1,76 @@
+
 function handleResize() {
 
-    mobileCutoff = 700;
 
     console.log("resize")
 
-    window_innerWidth  = window.innerWidth;
-    window_innerHeight = window.innerHeight;
+ 
+    //// Background Visualizer
+    canvasViz01.width  = canvasViz01.clientWidth *2;
+    canvasViz01.height = canvasViz01.clientHeight*2;
 
-    siteContainer = document.getElementById("siteContainer");
+    //// Dials
+    for(let i=0; i<canvases.length; i++) {
+
+        let canvas = canvases[i];
+
+        canvas.width = canvas.clientWidth*2;
+        canvas.height = canvas.clientHeight*2;
+
+        let activeCanvasID = canvas.id;
+        let activeCanvasName = get_activeCanvasName(activeCanvasID);
+
+        // console.log("activeCanvasName",activeCanvasName);
+        let val = PARAMS[activeCanvasName];
+
+        drawKnob(canvas,val);
+ 
+    }
+
+
+    //// Control Visualizers
+    let CONTROLVIZ = document.getElementsByClassName("controlViz");
+
+    for(let i=0; i<CONTROLVIZ.length; i++) {
+        let canvas = CONTROLVIZ[i];
+        canvas.width  = canvas.clientWidth *2;
+        canvas.height = canvas.clientHeight*2;
+    }
+
+    let CONTROLVIZ02 = document.getElementsByClassName("controlViz02");
+
+    for(let i=0; i<CONTROLVIZ02.length; i++) {
+        let canvas = CONTROLVIZ02[i];
+        canvas.width  = canvas.clientWidth *2;
+        canvas.height = canvas.clientHeight*2;
+    }
+
+
+    //// setTheme Button
+    canvas_setTheme.width  = canvas_setTheme.clientWidth *2;
+    canvas_setTheme.height = canvas_setTheme.clientHeight*2;
+    draw_canvasSetTheme();
+
+
+}
+
+
+
+function handleResize01() {
+
+    // mobileCutoff = 700;
+
+    console.log("resize")
+
+    // window_innerWidth  = window.innerWidth;
+    // window_innerHeight = window.innerHeight;
+
+    // siteContainer = document.getElementById("siteContainer");
     // siteContainer.style.height = window_innerHeight + "px";
 
     // console.log("[window_innerWidth,window_innerHeight]",[window_innerWidth,window_innerHeight]);
 
-    clickhereText = document.getElementById("clickhereText");
+    // clickhereText = document.getElementById("clickhereText");
 
 
     // if(window_innerWidth < mobileCutoff) { // Mobile
@@ -47,18 +105,18 @@ function handleResize() {
 
 
 
-    var gridColumnWidth = Math.min(window_innerWidth*0.15,200);
+    // var gridColumnWidth = Math.min(window_innerWidth*0.15,200);
     // var gridLastColumnWidth = gridColumnWidth;
     // let gridLastColumnWidth = Math.min(window_innerWidth*0.075,250);
 
     // controlRow01.style.gridTemplateColumns = gridColumnWidth + "px " + gridColumnWidth + "px " + gridColumnWidth + "px "+ gridColumnWidth + "px "+ gridLastColumnWidth + "px";
 
     // Mobile Rotated
-    if(window_innerHeight < 550) {
-        // console.log("<550")
-        gridColumnWidth = Math.min(window_innerWidth*0.10,200);
-        // gridLastColumnWidth = gridColumnWidth;
-    } 
+    // if(window_innerHeight < 550) {
+    //     // console.log("<550")
+    //     gridColumnWidth = Math.min(window_innerWidth*0.10,200);
+    //     // gridLastColumnWidth = gridColumnWidth;
+    // } 
 
     // controlRow01.style.gridTemplateColumns = "repeat(5, " + gridColumnWidth + "px)";
 
@@ -72,14 +130,12 @@ function handleResize() {
     // WIDTH_VIZ = WIDTHSTYLE_VIZ*2;
     // HEIGHT_VIZ = HEIGHTSTYLE_VIZ*2;
 
-    WIDTHSTYLE_VIZ  = canvasViz01.clientWidth;
-    HEIGHTSTYLE_VIZ = canvasViz01.clientHeight;
-
-    WIDTH_VIZ  = WIDTHSTYLE_VIZ  * 2;
-    HEIGHT_VIZ = HEIGHTSTYLE_VIZ * 2;
-
-    canvasViz01.width  = WIDTH_VIZ ;
-    canvasViz01.height = HEIGHT_VIZ;
+    // var WIDTHSTYLE_VIZ  = canvasViz01.clientWidth;
+    // var HEIGHTSTYLE_VIZ = canvasViz01.clientHeight;
+    // var WIDTH_VIZ  = WIDTHSTYLE_VIZ  * 2;
+    // var HEIGHT_VIZ = HEIGHTSTYLE_VIZ * 2;
+    canvasViz01.width  = canvasViz01.clientWidth *2;
+    canvasViz01.height = canvasViz01.clientHeight*2;
     // canvasViz01.style.width = WIDTHSTYLE_VIZ.toString() + "px";
     // canvasViz01.style.height = HEIGHTSTYLE_VIZ.toString() + "px";
 
@@ -123,10 +179,10 @@ function handleResize() {
         // canvas.style.width = WIDTHSTYLE.toString() + "px";
         // canvas.style.height = HEIGHTSTYLE.toString() + "px";
 
-        canvas_style_width = canvas.clientWidth;
-        canvas_style_height = canvas.clientHeight;
-        canvas.width = canvas_style_width*2;
-        canvas.height = canvas_style_height*2;
+        // canvas_style_width = canvas.clientWidth;
+        // canvas_style_height = canvas.clientHeight;
+        canvas.width = canvas.clientWidth*2;
+        canvas.height = canvas.clientHeight*2;
 
         let activeCanvasID = canvas.id;
         // activeCanvasNum = activeCanvasID.substr(6,1) - 1; // index of the current active canvas (0,1,2,3,etc)
@@ -157,10 +213,10 @@ function handleResize() {
     for(let i=0; i<CONTROLVIZ.length; i++) {
         let canvas = CONTROLVIZ[i];
 
-        canvas_style_width = canvas.clientWidth;
-        canvas_style_height = canvas.clientHeight;
-        canvas.width = canvas_style_width*2;
-        canvas.height = canvas_style_height*2;
+        // canvas_style_width = canvas.clientWidth;
+        // canvas_style_height = canvas.clientHeight;
+        canvas.width  = canvas.clientWidth *2;
+        canvas.height = canvas.clientHeight*2;
 
         // canvas.width = controlViz_width;
         // canvas.height = controlViz_height;
@@ -175,6 +231,15 @@ function handleResize() {
     // muteControl.style.height = HEIGHTSTYLE.toString() + "px";
 
     // drawToggle(muteControl,currentMuteState,0);
+
+
+    // var WIDTHSTYLE_VIZ  = canvas_setTheme.clientWidth;
+    // var HEIGHTSTYLE_VIZ = canvas_setTheme.clientHeight;
+    // var WIDTH_VIZ  = WIDTHSTYLE_VIZ  * 2;
+    // var HEIGHT_VIZ = HEIGHTSTYLE_VIZ * 2;
+    canvas_setTheme.width  = canvas_setTheme.clientWidth *2;
+    canvas_setTheme.height = canvas_setTheme.clientHeight*2;
+    draw_canvasSetTheme();
 
 
 

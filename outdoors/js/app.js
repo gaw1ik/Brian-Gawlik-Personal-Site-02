@@ -12,6 +12,11 @@ myrng = new Math.seedrandom();
 isDragging = false;
 isTouching = false;
 
+tweetCountThen = -1;
+
+themeIndex = 0;
+
+
 device = {};
 
 
@@ -44,14 +49,17 @@ PARAMS = {
 
 
 
-window.addEventListener("load", setupCanvases); // commented this out bc setupCanvases() is already called in setup()
+window.addEventListener("load", setupCanvases);
 canvases = document.getElementsByClassName("dial");
 
 
 
-setTheme('light');
+setTheme();
 
-function setTheme(themeName) {
+function setTheme() {
+
+    let themes = ['light','dark'];
+    themeName = themes[themeIndex];
 
     //////// Colors
     const cssroot = document.documentElement;
@@ -103,6 +111,8 @@ function setTheme(themeName) {
         cssroot.style.setProperty('--border-color-deviceContainer','hsl(0,0%,100%,0.1)');
     }
     handleResize();
+    themeIndex = (themeIndex + 1) % 2;
+
 }
 
 
@@ -319,24 +329,39 @@ async function setup() {
 
     setInterval(draw_wash_controlViz,34);
 
+    // let shapeRush = {};
+
     RUSH_SHAPES = [];
-    var shape = {
+    let shapeRush = {
         phaseOffset:0,
     }
-    RUSH_SHAPES.push(shape);
+    RUSH_SHAPES.push(shapeRush);
     setInterval(draw_rush_controlViz,34);
 
     INSECTS_SHAPES = [];
     for(let i=0;i<8;i++) {
-        var shape = {
+        let shapeInsect = {
             xC:getRandomFloat(-1,1),
             yC:getRandomFloat(),
             rad:0.01,
         }
-        INSECTS_SHAPES.push(shape);
+        INSECTS_SHAPES.push(shapeInsect);
     }
     setInterval(draw_insects_controlViz,34);
 
+
+    BIRDS_SHAPES = [];
+    N_BIRDSSHAPES = 8;
+    for(let i=0;i<N_BIRDSSHAPES;i++) {
+        let shapeBird = {
+            x1:0,
+            height:0,
+            age:0,
+            on:0,
+            alpha:255,
+        }
+        BIRDS_SHAPES.push(shapeBird);
+    }
     setInterval(draw_birds_controlViz,34);
  
 
