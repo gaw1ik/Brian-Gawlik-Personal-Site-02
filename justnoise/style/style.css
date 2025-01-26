@@ -428,6 +428,17 @@ h4 {
         margin:0;
     }
 
+    #canvas_setTheme {
+        position: fixed;
+        right: 0;
+        top: 0;
+        z-index: 0;
+        margin:1vw;
+        width:2vw;
+        height:2vw;
+        cursor:pointer;
+    }
+
     .controlViz02 {
         width:calc(var(--canvasHeight) * 1);
         height:var(--canvasHeight);

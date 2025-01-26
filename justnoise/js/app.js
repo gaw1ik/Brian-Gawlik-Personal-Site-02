@@ -12,6 +12,9 @@ myrng = new Math.seedrandom();
 isDragging = false;
 isTouching = false;
 
+themeIndex = 1;
+
+
 device = {};
 
 
@@ -42,9 +45,13 @@ window.addEventListener("load", setupCanvases); // commented this out bc setupCa
 
 canvases = document.getElementsByClassName("dial");
 
-setTheme('light');
+setTheme();
 
-function setTheme(themeName) {
+function setTheme() {
+
+    let themes = ['light','dark'];
+    themeIndex = (themeIndex + 1) % 2;
+    themeName = themes[themeIndex];
 
     const cssroot = document.documentElement;
 

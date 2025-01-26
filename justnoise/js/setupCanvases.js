@@ -39,6 +39,10 @@ function setupCanvases() {
 
     console.log("canvas",canvasViz01)
     console.log("VIZ_SHAPES",VIZ_SHAPES)
+
+    canvas_setTheme = document.getElementById("canvas_setTheme");
+    canvas_setTheme.addEventListener("click", setTheme); // commented this out bc setupCanvases() is already called in setup()
+    // draw_canvasSetTheme();
     
     
     setInterval(drawVisualizer,34);
