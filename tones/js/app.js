@@ -88,7 +88,7 @@ function setTheme() {
 
     handleResize();
 
-    draw_canvasSetTheme();
+    // draw_canvasSetTheme();
 
 
 }
