@@ -65,7 +65,9 @@ function setTheme() {
         cssroot.style.setProperty('--bg-hsl', hslBG);
         cssroot.style.setProperty('--text-color-body', 'hsl(0,0%,10%)');
         cssroot.style.setProperty('--text-color-h1','hsl(0,0%,10%)');
-        cssroot.style.setProperty('--controlsContainer01-hsl','hsl(205, 90%, 70%, 0.1)');
+        cssroot.style.setProperty('--controlsContainer01-hsl','hsl(210, 90%, 70%, 0.1)');
+        cssroot.style.setProperty('--controlsContainer01-border-hsl','hsl(0, 0%, 100%, 0.1)');
+
 
     } else if (themeName=='dark') {
 
@@ -77,12 +79,13 @@ function setTheme() {
         [hueKnobShadow,satKnobShadow,litKnobShadow,alphaKnobShadow] = [0, 0, 0, 0.13];
 
         //////// CSS
-        [hueBG, satBG, litBG] =  [210,30,15];
+        [hueBG, satBG, litBG] =  [215,20,12];
         let hslBG = "hsl(" + hueBG + ", " + satBG + "%, " + litBG + "%)";
         cssroot.style.setProperty('--bg-hsl', hslBG);
         cssroot.style.setProperty('--text-color-body', 'hsl(0,0%,90%)');
         cssroot.style.setProperty('--text-color-h1','hsl(0,0%,90%)');
-        cssroot.style.setProperty('--controlsContainer01-hsl','hsl(205, 50%, 60%, 0.1)');
+        cssroot.style.setProperty('--controlsContainer01-hsl','hsl(215, 50%, 38%, 0.1)');
+        cssroot.style.setProperty('--controlsContainer01-border-hsl','hsl(0, 0%, 10%, 0.1)');
 
     }
 
