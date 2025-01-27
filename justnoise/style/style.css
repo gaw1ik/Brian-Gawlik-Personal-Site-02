@@ -224,7 +224,6 @@ body {
     z-index: 0;
     height:100vh;
     width:100vw;
-
     padding:0rem;
 }
 
@@ -401,7 +400,7 @@ h4 {
         flex-direction: row-reverse;
         column-gap:100px;
         align-items:start;
-        padding: 2vw 20vw;
+        padding: 4vw 20vw;
     }
 
     #controlRow01 {
@@ -429,7 +428,8 @@ h4 {
         flex-direction: column;
         align-items:center;
         justify-content: flex-start;
-        height:calc(var(--canvasHeight)*6);
+        /* height:calc(var(--canvasHeight)*6); */
+        height:auto;
         width:auto;
     }
 

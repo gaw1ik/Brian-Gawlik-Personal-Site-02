@@ -87,7 +87,6 @@ function setTheme() {
         alphaUI1 = 255;
         [hueUI2, satUI2, litUI2] = [0,0,0];
         //// VIZ
-        [hueBG, satBG, litBG] =  [150,0,10];
         [hueWave1, satWave1, litWave1] =  [50,0,46];
         [hueWave2, satWave2, litWave2] =  [170,0,90];
         alphaWave1 = 20;
@@ -97,6 +96,7 @@ function setTheme() {
         [hueKnobTop,satKnobTop,litKnobTop,alphaKnobTop] = [150, 0, 10, 1.0];
 
         // CSS
+        [hueBG, satBG, litBG] =  [150,0,10];
         let hslBG = "hsl(" + hueBG + ", " + satBG + "%, " + litBG + "%)";
         cssroot.style.setProperty('--bg-hsl', hslBG);
         cssroot.style.setProperty('--text-color-body', 'hsl(0,0%,90%)');
