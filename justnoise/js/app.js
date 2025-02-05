@@ -7,7 +7,7 @@ PIo2  = Math.PI * 0.5;
 PIo4  = Math.PI * 0.25;
 PIo8  = Math.PI * 0.125;
 PIo16 = Math.PI * 0.0625;
-myrng = new Math.seedrandom();
+myrng = new Math.seedrandom(Date.now());
 
 isDragging = false;
 isTouching = false;
