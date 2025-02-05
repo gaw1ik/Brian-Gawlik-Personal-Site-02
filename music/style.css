@@ -282,7 +282,7 @@ button :hover {
 
 
 /* @media only screen and (min-width: 1025px) and (min-aspect-ratio 1) { */
-@media only screen and (min-aspect-ratio: 1.1) {
+@media only screen and (min-aspect-ratio: 0.80) {
 
   :root {
       /* --canvasHeight:10vh; */

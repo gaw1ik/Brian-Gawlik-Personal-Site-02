@@ -1,32 +1,8 @@
-/* TABLE OF CONTENTS
-  0. variables
-  1. global styles
-  2. typography
-  3. components
-  4. layout */
 
-
-
-
-
-/* =============
-   variables
-   ============= */
 
 :root {
 
-  --bg-clr01: hsl(0,0%,10%);
-  --bg-clr02: hsl(0,0%,12%);
-  --bg-clr03: hsl(0,0%,10%);
-
-  --image-height: 70vh;
-
-  --navBarsBackgroundColor: hsla(0,0%,8%,0.97);
-
-  --navToggleBar_height: 8vh;
-
 }
-
 
 
 
@@ -38,11 +14,11 @@ html {
 
 body {
   line-height: 1.5;
-  margin: 0;
   font-family: "Cambria Math";
   font-size: 8pt;
-  color: black;
-  background-color: white;  
+  background-color: white;
+  margin:auto auto;
+  
 }
 
 * {
@@ -52,11 +28,10 @@ body {
 
 
 
-
 p {
   margin: 1rem 0;
   font-size: 1rem;
-  /* text-align: center; */
+  text-align: center;
 }
 
 h1 {
@@ -65,23 +40,19 @@ h1 {
   font-weight: 500;
   margin:0;
   margin-top: 0;
-  /* margin-bottom: 1.0rem; */
-  /* color:hsl(0,10%,80%); */
+  margin-bottom: 1.0rem;
   line-height:1;
-  /* color: hsl(0,0%,50%); */
 }
 
 h2 {
   font-size: 2rem;
-  margin:4rem 0 1rem 0;
-  margin-top: 0.2rem;
+  margin:2rem 0 1rem 0;
   font-weight: 500;
-  text-align: center;
+  text-align: left;
 }
 
 h3 {
   font-size: 1.5rem;
-  margin:0;
   margin-top: 0.5rem;
   font-weight: 600;
 }
@@ -101,17 +72,26 @@ h5 {
 }
 
 a {
-  color:hsl(200,80%,30%);
+  color:hsl(200,80%,50%);
   font-size: 1rem;
   text-align: center;
-  /* text-decoration:none; */
+}
+
+#versionNumber {
+  font-size: var(--h3Size);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  user-select:none;
+  opacity: 30%;
+  margin: 0.5rem;
 }
 
 
 img{
   width:100%;
   height:auto;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 button {
@@ -133,50 +113,47 @@ button :hover {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 .pageContainer {
   display:flex;
   flex-direction: column;
   align-items: start;
   align-content: center;
   justify-content: center;
-  background: none;
-  width: 25rem;
+  width:25rem;
   max-width:80%;
   height:100vh;
   margin-left:auto;
   margin-right:auto;
-  gap:1rem;
 }
+
+
+.pageButtonsBar {
+  display:flex;
+  flex-direction: column;
+  justify-content:space-evenly;
+  /* margin:0 2rem; */
+}
+
+
+
+
 
 
 .socialButtonsBar {
   display:flex;
   justify-content:space-around;
   align-items: center;
-  /* width: 80%; */
 
   height: 5rem;
   /* margin-left:auto; */
-  /* margin:0 auto; */
+  margin:0 auto;
   border-top:1px solid white;
 }
 
 .socialButtonsBar img {
-  margin: 0 2rem;
-  height: 2rem;
+  margin: 0;
+  height: 3rem;
 }
-
 
 .socialButton {
   display:flex;
@@ -186,6 +163,22 @@ button :hover {
   /* width: 2rem; */
 }
 
+.pageContainerBGImage {
+  height:100vh;
+
+  /* background-image: url("images/Astoria Cross Sign Photo 3.18c.jpg"); */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  /* background-size: cover; */
+
+  /* background-color:black; */
+
+  opacity:0.5;
+  position: relative;
+
+
+}
 
 
 
@@ -201,33 +194,69 @@ button :hover {
 
 
 
+.image-container {
+  display:flex;
+  /* width:90%;   */
+  height:35vw;
+  align-content: center;
+  padding:2vh 0;
+  border-top:1px solid gray;
+  overflow-x:scroll;
+  /* height:var(--image-height); */
+  overscroll-behavior-inline: contain;
+}
+
+.image-container > img {
+  margin-right:2vh;
+}
+
+
+.spacer {
+  height:5vh;
+  border-bottom:1px solid gray;
+}
+
+.spacer_img_vert {
+  height:100%;
+  width:2vh;
+}
+
+
+.fixed_width_img_container {
+  display:flex;
+  width:100%;
+  height:30vh;
+  margin:0;
+}
+
+.fixed_width_img_container > img {
+  object-fit: contain;
+  height:100%;
+  width:auto;
+  margin:0 auto;   
+}
 
 
 
 
 
-/* =============
-   components
-   ============= */
-/* width */
+
+
+
+
+
 ::-webkit-scrollbar {
   width: 5px;
 }
 /* Track */
 ::-webkit-scrollbar-track {
-  /* border-radius: 10px; */
-  /* background-color:var(--bg-clr03); */
   outline:none;
 }
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: white;
-  /* width:1px; */
   border-radius: 1px;
   border: 8px solid rgba(0, 0, 0, 0);
-  /* border-top: 20px solid rgba(0, 0, 0, 0); */
-  /* border-bottom: 20px solid rgba(0, 0, 0, 0); */
-  /* padding: 10rem; */
   background-clip: padding-box;
 }
 /* Handle on hover */
@@ -235,4 +264,3 @@ button :hover {
   /* width: 3px; */
   /* background: #555; */
 }
-
