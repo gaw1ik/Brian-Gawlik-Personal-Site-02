@@ -2,7 +2,7 @@
 device = {};
 
 mobileCutoff = 800;
-myrng = new Math.seedrandom();
+myrng = new Math.seedrandom(Date.now());
 
 onePI = Math.PI; 
 twoPI = Math.PI * 2;
