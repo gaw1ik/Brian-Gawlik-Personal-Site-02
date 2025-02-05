@@ -60,12 +60,12 @@ function setTheme() {
         [hueKnobShadow,satKnobShadow,litKnobShadow,alphaKnobShadow] = [0, 0, 0, 0.10];
 
         //////// CSS
-        [hueBG, satBG, litBG] =  [190,100,92];
+        [hueBG, satBG, litBG] =  [190,100,100];
         let hslBG = "hsl(" + hueBG + ", " + satBG + "%, " + litBG + "%)";
         cssroot.style.setProperty('--bg-hsl', hslBG);
         cssroot.style.setProperty('--text-color-body', 'hsl(0,0%,10%)');
         cssroot.style.setProperty('--text-color-h1','hsl(0,0%,10%)');
-        cssroot.style.setProperty('--controlsContainer01-hsl','hsl(210, 90%, 70%, 0.1)');
+        cssroot.style.setProperty('--controlsContainer01-hsl','hsl(210, 90%, 80%, 0.1)');
         cssroot.style.setProperty('--controlsContainer01-border-hsl','hsl(0, 0%, 100%, 0.1)');
 
 
