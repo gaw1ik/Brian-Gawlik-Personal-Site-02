@@ -9,9 +9,35 @@
 function setupCanvases() {
 
     
-
-
     console.log("window loaded");
+
+    mobileWarning = document.getElementById("mobileWarning");
+    proceedButton = document.getElementById("proceedButton");
+
+    //// alternatively could use this...
+    // let str = navigator.userAgent;
+    // let substring = 'Mobi';
+    // function containsSubstring(str, substring) {
+    //     return str.includes(substring);
+    // }
+
+    if(screen.width<800) {
+
+        mobileWarning.style.display = "flex";
+
+        proceedButton.addEventListener("click",proceed);
+
+        function proceed() {
+            console.log("proceed");
+
+            mobileWarning.style.display = "none";
+            proceedButton.removeEventListener("click",proceed);
+
+            document.body.addEventListener("click",playSound);
+
+
+        }
+    }
 
 
     let canvases = document.getElementsByClassName("dial");
