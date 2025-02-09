@@ -30,6 +30,8 @@
   --h2Size: calc(var(--h1Size) * 0.5);
   --h3Size: calc(var(--h1Size) * 0.35);
   --h4Size: calc(var(--h1Size) * 0.2);
+  --pSize: calc(var(--h1Size) * 0.25);
+
 
 }
 
@@ -46,6 +48,8 @@ body {
   line-height: 1.5;
   margin: 0;
   font-family: "Cambria Math";
+  /* font-family: "Alumni Sans Pinstripe", serif; */
+
   font-size: 8pt;
   color: black;
   background-color: white;  
@@ -62,9 +66,9 @@ body {
 p {
   margin: 1rem 0;
   /* font-size: 1rem; */
-  font-size: var(--h3Size);
+  font-size: var(--pSize);
 
-  /* text-align: center; */
+  text-align: justify;
 }
 
 h1 {
@@ -159,38 +163,32 @@ button :hover {
 
 
 
-.pageContainer {
+.contentContainer {
   display:flex;
   flex-direction: column;
   /* position:relative; */
 
-  align-items: center;
+  /* align-items: center; */
+  align-items: start;
   align-content: center;
   justify-content: center;
   background: none;
   /* width: 25rem; */
   /* max-width:80%; */
   width:100vw;
-  height:100vh;
-  /* margin-left:auto;
+  /* height:100vh; */
+  margin-left:auto;
   margin-right:auto;
-  gap:1rem; */
-}
-
-.contentContainer {
-
-  display:flex;
-  /* position:relative; */
-  flex-direction: column;
-  align-items: start;
-  /* align-content: center;
-  justify-content: center; */
-  /* overflow:hidden; */
-  /* overflow-y:scroll; */
+  margin-top:5rem;
+  gap:1rem;
   width: 25rem;
-  max-width:80%;
-
+  max-width:40%;
 }
+
+.contentContainer p {
+  margin: 0 0 2rem 0;
+}
+
 
 
 .socialButtonsBar {
