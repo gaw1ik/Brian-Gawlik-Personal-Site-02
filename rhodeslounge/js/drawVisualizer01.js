@@ -3,11 +3,11 @@
 
 
 
-function draw_visualizer() {}
+function draw_visualizer02() {}
 
 
 
-function draw_visualizer02() {
+function draw_visualizer() {
 
     let canvas = canvasViz01;
     let canvasW = canvas.width;
@@ -93,7 +93,7 @@ function draw_visualizer02() {
     var shape = VIZ_SHAPES[0];
     // rad = 0.002;
     var nSegs = 128;
-    var x0 = -0.7;
+    var x0 = -0.6;
     var rmsScaled = mp_rms*3;
     var freq = mp_freq;
     draw_string(nSegs,shape,x0,lw,rad,rmsScaled,hue,sat,lit,alpha,freq);
@@ -106,7 +106,7 @@ function draw_visualizer02() {
     var nSegs = 32;
 
     for(let i=0; i<8; i++) {
-        var x0 = 0.6 + 0.03*i;
+        var x0 = 0.0 + 0.1*i;
         // var freq = FREQ2[i];
         var freq = pp_freq_v[i];
         var rmsScaled = pp_rms_v[i]*0.5;

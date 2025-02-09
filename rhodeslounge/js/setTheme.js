@@ -21,7 +21,12 @@ function setTheme() {
         [hueKnobTop,satKnobTop,litKnobTop,alphaKnobTop] = [40, 50, 65, 1.0];
         [hueKnobShadow,satKnobShadow,litKnobShadow,alphaKnobShadow] = [0, 0, 0, 0.10];
 
-        [hueUI1,satUI1,litUI1,alphaUI1] = [40, 50, 50, 255];
+        [hueUI1,satUI1,litUI1,alphaUI1] = [40, 50, 50, 150];
+
+
+        // if(deviceWidth<800) {
+        //     alphaUI1 = 100;
+        // }
 
 
         //////// CSS
@@ -44,8 +49,11 @@ function setTheme() {
         [hueKnobTop,satKnobTop,litKnobTop,alphaKnobTop] = [40, 50, 26, 1.0];
         [hueKnobShadow,satKnobShadow,litKnobShadow,alphaKnobShadow] = [0, 0, 0, 0.13];
 
-        [hueUI1,satUI1,litUI1,alphaUI1] = [40, 50, 26, 255];
+        [hueUI1,satUI1,litUI1,alphaUI1] = [40, 50, 26, 150];
 
+        // if(deviceWidth<800) {
+        //     alphaUI1 = 100;
+        // }
 
         //////// CSS
         [hueBG, satBG, litBG] =  [220,20,10];

@@ -144,22 +144,22 @@ function setupCanvases() {
     
     setInterval(draw_visualizer,34);
 
-    setInterval(updatefreq,1000);
+    // setInterval(updatefreq,1000);
 
-    FREQ1 = 8;
-    FREQ2 = [16,16,16,16,16,16,16,16];
-    function updatefreq() {
+    // FREQ1 = 8;
+    // FREQ2 = [16,16,16,16,16,16,16,16];
+    // function updatefreq() {
 
-        FREQ1 = getRandomFloat() * 8 / 8; 
+    //     FREQ1 = getRandomFloat() * 8 / 8; 
 
-        for(let i=0; i<8; i++) {
-            FREQ2[i] = getRandomFloat(0.5,1.0) * 16 / 8; 
+    //     for(let i=0; i<8; i++) {
+    //         FREQ2[i] = getRandomFloat(0.5,1.0) * 16 / 8; 
 
-        }
+    //     }
 
-        // console.log(FREQ1,FREQ2)
+    //     // console.log(FREQ1,FREQ2)
 
-    }
+    // }
 
 
 

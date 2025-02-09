@@ -69,6 +69,7 @@ VIZ_SHAPES.push(shape);
 
 
 
+document.body.addEventListener("click",playSound);
 
 
 

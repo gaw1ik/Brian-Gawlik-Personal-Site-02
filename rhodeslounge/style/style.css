@@ -140,6 +140,13 @@ html, body {
     cursor:pointer;
 }
 
+#toggAndText {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* justify-content: space-between; */
+}
+
 
 .controlFlex01 {
     display: flex;
@@ -163,7 +170,7 @@ html, body {
     z-index: 0;
     width:100vw;
     height:100vh;
-    padding:2vw;
+    /* padding:2vw; */
 }
 
 #canvas_setTheme {
@@ -273,6 +280,8 @@ h4 {
 #titleSubHeader {
     margin-left: var(--h4Size);
 }
+
+
 
 
 
