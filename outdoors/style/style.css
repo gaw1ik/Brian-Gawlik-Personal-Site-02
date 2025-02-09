@@ -408,7 +408,8 @@ h4 {
         flex-direction: row-reverse;
         column-gap:100px;
         align-items:start;
-        padding: 6rem 20rem;
+        padding: 4rem 20rem;
+        background-color: hsl(0,0%,100%,0);
     }
 
     #controlRow01 {
