@@ -27,14 +27,14 @@ function draw_canvasSetTheme() {
     var lw = 0.01;
 
     if(themeName=='light') {
-        [hue,sat,lit,alpha] = [0,0,95,255];
-        drawCircle(ctx, 0, 0.5, rad, lw, hue, sat, lit, alpha, 0);
+        // [hue,sat,lit,alpha] = [0,0,95,255];
+        // drawCircle(ctx, 0, 0.5, rad, lw, hue, sat, lit, alpha, 0);
         [hueLine,satLine,litLine,alphaLine] = [200,90,0,255];
         drawSun(lw,hueLine,satLine,litLine,alphaLine)
 
     } else if (themeName=='dark') {
-        [hue,sat,lit,alpha] = [0,0,30,255];
-        drawCircle(ctx, 0, 0.5, rad, lw, hue, sat, lit, alpha, 0);
+        // [hue,sat,lit,alpha] = [0,0,30,255];
+        // drawCircle(ctx, 0, 0.5, rad, lw, hue, sat, lit, alpha, 0);
         [hueLine,satLine,litLine,alphaLine] = [200,90,100,255];
         drawMoon(lw,hueLine,satLine,litLine,alphaLine)
 
