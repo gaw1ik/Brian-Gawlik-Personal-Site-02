@@ -3,11 +3,11 @@
 
 
 
+function draw_visualizer() {}
 
 
 
-
-function draw_visualizer() {
+function draw_visualizer02() {
 
     let canvas = canvasViz01;
     let canvasW = canvas.width;

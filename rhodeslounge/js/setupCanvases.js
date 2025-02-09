@@ -21,7 +21,26 @@ function setupCanvases() {
     //     return str.includes(substring);
     // }
 
-    if(screen.width<800) {
+    // const isLandscape = () => {
+    //     return window.matchMedia("(orientation: landscape)").matches;
+    //   }
+      
+    // const handleOrientationChange = (event) => {
+    // const isCurrentlyLandscape = event.matches;
+    // if (isCurrentlyLandscape) {
+    //     deviceWidth = screen.height
+    // } else {
+    //     deviceWidth = screen.width
+    // }
+    // }
+
+    if(window.matchMedia("(orientation: landscape)").matches) {
+        deviceWidth = screen.height;
+    } else {
+        deviceWidth = screen.width
+    }
+
+    if(deviceWidth<800) {
 
         mobileWarning.style.display = "flex";
 

@@ -23,7 +23,7 @@ function setupParams() {
 
     //////// NON-UI PARAMS
     //// MASTER
-    device.parametersById.get("master_hpf").value = 120;
+    device.parametersById.get("master_HPF").value = 120;
     device.parametersById.get("master_monoToggle").value = 0;
     device.parametersById.get("master_noising").value = 0.002;
     device.parametersById.get("crackle_gain").value = 0.005;
