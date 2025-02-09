@@ -181,8 +181,8 @@ button :hover {
   margin-right:auto;
   margin-top:5rem;
   gap:1rem;
-  width: 25rem;
-  max-width:40%;
+  /* width: 25rem; */
+  max-width:80%;
 }
 
 .contentContainer p {
@@ -221,7 +221,15 @@ button :hover {
 }
 
 
-
+#versionNumber {
+  font-size: 0.5rem;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  user-select:none;
+  margin:0.3rem;
+  opacity:0.3;
+}
 
 
 
@@ -280,7 +288,7 @@ button :hover {
 
 
 /* @media only screen and (min-width: 1025px) and (min-aspect-ratio 1) { */
-@media only screen and (min-aspect-ratio: 0.80) {
+@media only screen and (min-aspect-ratio: 1.0) {
 
   :root {
       /* --canvasHeight:10vh; */
@@ -293,12 +301,8 @@ button :hover {
 
   .contentContainer {
 
-    display:flex;
-    flex-direction: column;
-    align-items: start;
-    /* width: 40vw; */
-    width:auto;
-    /* max-width:80%; */
+    width: 50rem;
+    max-width:60%;
   
   }
 
