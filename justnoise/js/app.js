@@ -12,7 +12,7 @@ myrng = new Math.seedrandom(Date.now());
 isDragging = false;
 isTouching = false;
 
-themeIndex = 0;
+themeIndex = 1;
 
 
 device = {};
