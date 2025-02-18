@@ -69,14 +69,14 @@ function setTheme() {
         //// KNOBS
         [hueKnobNeedle,satKnobNeedle,litKnobNeedle,alphaKnobNeedle] = [0,0,10,1.0];
         [hueKnobBottom,satKnobBottom,litKnobBottom,alphaKnobBottom] = [0,0,10,1.0];
-        [hueKnobTop,satKnobTop,litKnobTop,alphaKnobTop] = [150, 0, 40, 1.0];
+        [hueKnobTop,satKnobTop,litKnobTop,alphaKnobTop] = [150, 0, 32, 1.0];
 
         // CSS
         let hslBG = "hsl(" + hueBG + ", " + satBG + "%, " + litBG + "%)";
         cssroot.style.setProperty('--bg-hsl', hslBG);
         cssroot.style.setProperty('--text-color-body', 'hsl(0,0%,10)');
         cssroot.style.setProperty('--text-color-h1','hsl(0,0%,10%)');
-        cssroot.style.setProperty('--controlsContainer01-bghsl','hsl(168, 0%, 91%, 0.7)');
+        cssroot.style.setProperty('--controlsContainer01-bghsl','hsl(168, 0%, 91%, 0.3)');
         cssroot.style.setProperty('--deviceContainer-hsl','hsl(0,0%,10%,0.2)');
 
     } else if (themeName=='dark') {
