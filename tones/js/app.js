@@ -17,14 +17,15 @@ isTouching = false;
 
 themeIndex = 0;
 
-PARAMS = {
-
-    master_gain:0.8,
-    master_LPF:0.737,
-    chance:0.27,
-    time:0.4,
-    release:0.749,
-
+PARAMS = 
+{
+    onoff: 0,
+    master_gain: 0.951,
+    chance: 0.585,
+    time: 0.582,
+    release: 0.538,
+    curve: 0.537,
+    glide: 0.323,
 }
 
 
@@ -388,6 +389,17 @@ for(let i=0; i<canvases.length; i++) {
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////// ASSIGN EVENT LISTENERS
+
+canvas_onoff.addEventListener('click', (event) => {
+
+    PARAMS.onoff = !PARAMS.onoff;
+    draw_onoff();
+
+    updateRNBOPARAM_onoff();
+    // console.log("PARAMS.onoff",PARAMS.onoff);
+
+});
+
 for(let i=0; i<canvases.length; i++) {
 
     let canvas = canvases[i];

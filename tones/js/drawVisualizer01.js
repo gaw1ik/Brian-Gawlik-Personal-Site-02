@@ -37,9 +37,9 @@ function drawVisualizer() {
         }
 
         let speed = shape.speed * 0.3;
-        let xC = shape.xC - 0.0001 + getRandomFloat(0.0007,0.001)*speed*rms*2.0;
+        let xC = shape.xC - 0.0001 + getRandomFloat(0.0007,0.001)*speed*Math.tanh(rms)*2.0;
         let yC = shape.yC + getRandomFloat(0.0007,0.001)*speed*0.50;
-        let rad = shape.rad + 0.0001 + getRandomFloat(0.001,0.01)*rms*1.0;
+        let rad = shape.rad + 0.0001 + getRandomFloat(0.001,0.01)*Math.tanh(rms)*1.0;
         // let aspect = shape.aspect + randomSign() * val*getRandomFloat(0.005,0.01);
         let age = shape.age + 0.003;
         let aspect = 1.0 + rms*0.1;

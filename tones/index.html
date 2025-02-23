@@ -29,11 +29,16 @@
             <canvas id="canvas_setTheme"></canvas>
         </div>
 
-        <div id="versionNumber">2.04j</div>
+        <div id="versionNumber">2.05a</div>
         <a id="briangawliktag" href="\">BrianGawlik.com</a>
 
 
         <div id="controlsContainer01">
+
+            <div id="toggAndText">
+                <!-- <h3>ON/OFF</h3> -->
+                <canvas class="toggle" id="canvas_onoff"></canvas>
+            </div>
 
 
             <!-- Load the script that creates the RNBO device  -->
@@ -57,17 +62,11 @@
                 </div>
 
                 <!-- <div class="controlFlex02"> -->
-                <div id="gainAndLPFContainer">
-                    <div class="canvasAndLabel">
-                        <canvas class="dial" id="canvas_master_gain"></canvas>
-                        <h3 id="canvasLabel_master_gain">Volume</h3>
-                    </div>
+                <!-- <div id="gainAndLPFContainer"> -->
+
                     <!-- <div id="clickhereText">(click here to begin)</div> -->
-                     <div class="canvasAndLabel">
-                        <canvas class="dial" id="canvas_master_LPF"></canvas>
-                        <h3 id="canvasLabel_master_LPF">Filter</h3>
-                    </div>
-                </div>
+
+                <!-- </div> -->
 
 
                     <!-- <canvas class="toggle" id="mute"></canvas> -->
@@ -76,10 +75,8 @@
 
             <!-- <h3 id="clickMessage">(click/tap anywhere to begin)</h1> -->
 
-            
-
-            <div id="controlRow01">
-
+            <div id="controlRow01"> 
+                
                 <div class="canvasAndLabel">
                     <canvas class="dial" id="canvas_chance"></canvas>
                     <h3 id="canvasLabel_chance">Chance</h3>
@@ -89,9 +86,33 @@
                     <h3 id="canvasLabel_time">Time</h3>
                 </div>
                 <div class="canvasAndLabel">
+                    <canvas class="dial" id="canvas_master_gain"></canvas>
+                    <h3 id="canvasLabel_master_gain">Volume</h3>
+                </div>
+
+
+
+            </div>
+
+            <div id="controlRow01">
+
+                <div class="canvasAndLabel">
                     <canvas class="dial" id="canvas_release"></canvas>
                     <h3 id="canvasLabel_release">Release</h3>
                 </div>
+
+                <div class="canvasAndLabel">
+                    <canvas class="dial" id="canvas_curve"></canvas>
+                    <h3 id="canvasLabel_curve">Curve</h3>
+                </div>
+
+                <div class="canvasAndLabel">
+                    <canvas class="dial" id="canvas_glide"></canvas>
+                    <h3 id="canvasLabel_glide">Glide</h3>
+                </div>
+
+
+
             </div>
 
 

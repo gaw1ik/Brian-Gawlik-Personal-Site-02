@@ -38,7 +38,24 @@ html, body {
 }
 
 
+.toggle {
+    /* position:absolute; */
+    /* right:0px;
+    top:0px; */
+    width: calc(var(--canvasHeight) * 0.3);
+    height: calc(var(--canvasHeight) * 0.3);
+    cursor:pointer;
+}
 
+#toggAndText {
+    position:absolute;
+    right:0;
+    top:0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* justify-content: space-between; */
+}
 
 
 #clickhereText {
@@ -84,12 +101,12 @@ html, body {
 
 #controlRow02 {
     position:relative;
-    display:grid;
-    justify-items:center;
+    display:flex;
+    justify-content:space-evenly;
     align-items:center;
 
-    grid-template-columns: 1fr;
-    grid-template-rows:0.3fr 1fr;
+    /* grid-template-columns: 1fr;
+    grid-template-rows:0.3fr 1fr; */
 }
 
 #gainAndLPFContainer {
@@ -100,12 +117,12 @@ html, body {
 #controlRow01 {
     position:relative;
 
-    display:grid;
+    display:flex;
     /* grid-template-rows:200px 200px; */
     /* grid-template-columns:200px 200px; */
-    justify-items:center;
+    justify-content:center;
     align-items:center;
-    grid-template-columns:1fr 1fr 1fr;
+    /* grid-template-columns:1fr 1fr 1fr; */
     /* grid-template-columns:150px 150px 150px; */
 
 
@@ -245,15 +262,15 @@ h4 {
 @media only screen and (min-aspect-ratio: 0.67) {
 
     :root {
-        --canvasHeight:15vh;
-        --h1Size: calc(var(--canvasHeight) * 0.67);
-        --h3Size: calc(var(--h1Size) * 0.15);
-        --h4Size: calc(var(--h1Size) * 0.15);
+        --canvasHeight:19vh;
+        --h1Size: calc(var(--canvasHeight) * 0.90);
+        --h3Size: calc(var(--h1Size) * 0.10);
+        --h4Size: calc(var(--h1Size) * 0.10);
     }
 
 
     #controlsContainer01 {
-        padding: 10vh 3vh;
+        padding: 8vh 6vh 16vh 6vh;
     }
 
     #canvas_setTheme {
@@ -266,14 +283,14 @@ h4 {
 
 
 
-
+/* 
 @media only screen and (min-aspect-ratio: 3/2) {
 
     :root {
-        --canvasHeight:20vh;
-        --h1Size: calc(var(--canvasHeight) * 0.67);
-        --h3Size: calc(var(--h1Size) * 0.15);
-        --h4Size: calc(var(--h1Size) * 0.15);
+        --canvasHeight:19vh;
+        --h1Size: calc(var(--canvasHeight) * 0.90);
+        --h3Size: calc(var(--h1Size) * 0.10);
+        --h4Size: calc(var(--h1Size) * 0.10);
     }
 
     .dial {
@@ -282,7 +299,7 @@ h4 {
     }
 
     #controlsContainer01 {
-        padding: 10vh 3vh;
+        padding: 16vh 6vh;
     }
 
     #controlRow02 {
@@ -297,5 +314,5 @@ h4 {
     }
 
 
-}
+} */
 

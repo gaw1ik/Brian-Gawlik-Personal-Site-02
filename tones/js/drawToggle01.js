@@ -108,65 +108,21 @@ function drawSun(lw,hue,sat,lit,alpha) {
 
 
 
+function draw_onoff() {
 
 
 
-function draw_canvasSetTheme01() {
+    let rms = 1.0;
 
-    let canvas = canvas_setTheme;
-    ctx = canvas.getContext("2d");
+
+    // get context and clear for new drawing
+    let canvas = canvas_onoff;
+    let ctx = canvas.getContext("2d");
     let canvasW = canvas.width;
     let canvasH = canvas.height;
     ctx.clearRect(0, 0, canvasW, canvasH);
 
 
-    let rPix = canvasH*0.45;
-    let xC = canvasW/2;
-    let yC = canvasH/2;
-
-    console.log(rPix,xC,yC)
-    console.log(canvasH,canvasW)
-
-    console.log(themeName)
-
-
-    var hue;
-    var sat;
-    var lit;
-    var alpha;
-
-    if(themeName=='light') {
-        [hue,sat,lit,alpha] = [200,90,90,1];
-    } else if (themeName=='dark') {
-        [hue,sat,lit,alpha] = [0,0,10,1];
-    } else {
-        console.log('that was not a theme');
-    }
-
-    console.log([hue,sat,lit,alpha])
-
-
-    // 
-    ctx.beginPath();
-    ctx.ellipse(xC, yC, rPix, rPix, 0, 0, twoPI);
-    ctx.fillStyle = "hsl(" + hue + ", " + sat + "%, " + lit + "%, " + alpha + ")";
-    ctx.fill();
-
-}
-
-
-function drawToggle(canvas,val,rms) {
-
-    // if(rms===undefined) {
-    //     rms = 0.0;
-    // }
-    // get context and clear for new drawing
-    ctx = canvas.getContext("2d");
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    let rPix = HEIGHT*0.13;
-    let xC = WIDTH/2;
-    let yC = HEIGHT/2;
 
 
     //// draw circle
@@ -174,71 +130,67 @@ function drawToggle(canvas,val,rms) {
     ctx.strokeStyle = "hsl(200, 0%, 60%, 1.0)";
     ctx.lineWidth = 2;
 
+    artboardH = canvas.height;
+    artboardW = canvas.width;
+    artboardAR = artboardH/artboardW;
+    artboardWo2 = (1/artboardAR)/2;
+    xCenterOffset = artboardWo2;
+    yCenterOffset = 0.0;
+
+
+
 
     // ctx.beginPath();
-    // ctx.rect(0, 0, WIDTH, HEIGHT);
-    // ctx.fill();
+    // ctx.ellipse(xC, yC, rPix, rPix, 0, 0, twoPI);
+    // ctx.stroke();
 
-    ctx.beginPath();
-    ctx.ellipse(xC, yC, rPix, rPix, 0, 0, twoPI);
-    ctx.stroke();
+    let rad2 = 0.3;
 
-    if(val) { // if on
+    let radGlow0 = 0.25;
+
+    // let rPix = rad2;
+    // let xC = canvasW/2;
+    // let yC = canvasH/2;
+
+    let rad = 0.2;
+    let lw = 0.01;
+    let path = [[0,0.5],[0,0.75]];
+
+
+    if(PARAMS.onoff) { // if on
         for(let i=0;i<5;i++) {
-            ctx.beginPath();
-            rPix = (rPix)**1.05 + rms;
-            ctx.ellipse(xC, yC, rPix, rPix, 0, 0, twoPI);
-            // ctx.stroke();
-            let alpha = 0.7/2**i;
-            ctx.fillStyle = "hsl(40, 50%, 50%, " + alpha + ")";
-            ctx.fill();
+            // let radGlow = radGlow0*1.2**i + rms/64000;
+            // let alpha = 50/2**i;
+            // drawCircle(ctx, 0, 0.5, radGlow, 0, 50,50,50,alpha, 0);
+
+            let lwOn = lw*3;
+            let alpha = 150;
+            drawArc(ctx, 0, 0.5, rad, rad, PI+PI/4, PI-PI/2, 0, lwOn, 30,100,50,alpha, 1);
+            drawPath(ctx, path, lwOn, 30,100,50,alpha, 1, 0);
+
+            // let lwOnGlow = lw*15;
+            // let alpha = 10;
+            // drawArc(ctx, 0, 0.5, rad, rad, PI+PI/4, PI-PI/2, 0, lwOnGlow, 30,100,50,alpha, 1);
+            // drawPath(ctx, path, lwOnGlow, 30,100,50,alpha, 1, 0);
+
         }
 
         // document.getElementById("clickhereText").textContent = "";
 
 
     } else {
-        // document.getElementById("clickhereText").textContent = "OFF";
+
+        let alpha = 150;
+        drawArc(ctx, 0, 0.5, rad, rad, PI+PI/4, PI-PI/2, 0, lw, 0,0,0,alpha, 1);
+        drawPath(ctx, path, lw, 0,0,0,alpha, 1, 0)    
+    
     }
 
 
 
+    
+    drawCircle(ctx, 0, 0.5, rad2, lw, 0,0,0,30, 0);
+    drawCircle(ctx, 0, 0.5, rad2, lw/2, 0,0,0,255, 1);
 
-}
-
-
-
-function drawToggle01(canvas,val) {
-
-    // get context and clear for new drawing
-    ctx = canvas.getContext("2d");
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    let rControl = 0.15;
-    let rPix = HEIGHT*rControl;
-    let xC = WIDTH/2;
-    let yC = HEIGHT/2;
-
-
-    //// draw circle
-    ctx.fillStyle = "hsl(0, 50%, 50%, 0.1)";
-    ctx.strokeStyle = "hsl(200, 0%, 60%, 1.0)";
-    ctx.lineWidth = 2;
-
-
-    // ctx.beginPath();
-    // ctx.rect(0, 0, WIDTH, HEIGHT);
-    // ctx.fill();
-
-    ctx.beginPath();
-    ctx.ellipse(xC, yC, rPix, rPix, 0, 0, twoPI);
-
-    ctx.stroke();
-
-    if(val) {
-        ctx.fill();
-    }
-
-    // document.getElementById("muteText").textContent = "Mute (" + val.toString() + ")";
 
 }

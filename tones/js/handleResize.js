@@ -19,7 +19,7 @@ function handleResize() {
     //     clickhereText.style.left = "64%";
 
     // } else { // Desktop
-        let controlRow01 = document.getElementById("controlRow01");
+        // let controlRow01 = document.getElementById("controlRow01");
         // controlRow01.style.gridTemplateRows = "200px";
         // controlRow01.style.gridTemplateColumns = "200px 200px 200px 200px";
         // clickhereText.style.top = "30%";
@@ -125,14 +125,13 @@ function handleResize() {
 
     // }
 
+    // ONOFF CONTROL
+    canvas_onoff.width  = canvas_onoff.clientWidth  * 2;
+    canvas_onoff.height = canvas_onoff.clientHeight * 2;
+    draw_onoff();
 
-    ////////// Mute Control Canvas
-    // muteControl.width = WIDTH;
-    // muteControl.height = HEIGHT;
-    // muteControl.style.width = WIDTHSTYLE.toString() + "px";
-    // muteControl.style.height = HEIGHTSTYLE.toString() + "px";
 
-    // drawToggle(muteControl,currentMuteState,0);
+
 
     var WIDTHSTYLE_VIZ  = canvas_setTheme.clientWidth;
     var HEIGHTSTYLE_VIZ = canvas_setTheme.clientHeight;
