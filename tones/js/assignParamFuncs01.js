@@ -35,7 +35,7 @@ function setupParams() {
     //// INSTRUMENTS
     device.parametersById.get("wash_gain").value = 0.01;
     device.parametersById.get("bass01_gain").value = 0.50;
-    device.parametersById.get("monosynth01_gain").value = 0.50;
+    device.parametersById.get("monosynth01_gain").value = 0.10;
     device.parametersById.get("polysynth01_gain").value = 0.04;
 
 
