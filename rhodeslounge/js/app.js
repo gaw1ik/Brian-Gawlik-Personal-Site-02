@@ -206,99 +206,6 @@ async function setup() {
 
 
 
-
-
-
-
-
-    // for(let i=0; i<canvases.length; i++) {
-
-    //     let canvas = canvases[i];
-
-    //     canvas.addEventListener('mousedown', (event) => {
-            
-    //         isDragging = true;
-    //         // console.log("isDragging",isDragging)
-
-    //         // lastX = event.clientX - canvas.offsetLeft;
-    //         // lastY = event.clientY - canvas.offsetTop;
-    //         lastX = event.clientX;
-    //         lastY = event.clientY;
-    //         //thisCanvasOffsetLeft = canvas.offsetLeft
-    //         //thisCanvasOffsetTop = canvas.offsetTop
-    //         activeCanvasID = event.target.id;
-    //         // activeCanvasNum = activeCanvasID.substr(6,1) - 1; // index of the current active canvas (0,1,2,3,etc)
-    //         console.log("event.target.id",event.target.id);
-    //         let canvases = document.getElementsByClassName("dial");
-    //         for(let i=0; i<canvases.length; i++) {
-    //             canvases[i].style.cursor="grabbing";
-    //         }
-    //     });
-
-    //     document.addEventListener('mouseup', () => {
-    //         isDragging = false;
-    //         document.body.style.cursor = "default";
-    //         let canvases = document.getElementsByClassName("dial");
-    //         for(let i=0; i<canvases.length; i++) {
-    //             canvases[i].style.cursor="grab";
-    //         }
-    //         // console.log("isDragging",isDragging)
-
-    //     });
-
-
-    //     canvas.addEventListener('touchstart', (event) => {
-            
-    //         isTouching = true;
-    //         console.log("touchstart")
-
-    //         const touch = event.touches[0];
-    //         lastX = touch.clientX;
-    //         lastY = touch.clientY;
-    //         // thisCanvasOffsetLeft = canvas.offsetLeft
-    //         // thisCanvasOffsetTop = canvas.offsetTop
-    //         activeCanvasID = event.target.id;
-    //         activeCanvasNum = activeCanvasID.substr(6,1) - 1; // index of the current active canvas (0,1,2,3,etc)
-    //         console.log("event.target.id",event.target.id);
-    //     });
-
-    //     document.addEventListener('touchend', () => {
-    //         console.log("touchend")
-    //         isTouching = false;
-    //         // lastY[activeCanvasNum] = 0; // reset lastY back to 0
-    //         // console.log("isDragging",isDragging)
-
-    //     });
-    // }
-    
-    
-
-    
-    
-    // console.log("hi")
-
-
-
-
-
-
-
-
-
-    // muteControl.addEventListener("touchstart", (event) => {
-
-    //     event.preventDefault();
-
-    //     isToggled = !isToggled; 
-
-    //     currentMuteState = 1 - currentMuteState; 
-    //     console.log("currentMuteState (touched)",currentMuteState);
-    //     gainNode.gain.setValueAtTime(currentMuteState, context.currentTime);
-    //     drawToggle(muteControl,currentMuteState);
-
-    // }); 
-
-
     // ///////// INITIAL PARAMETER SETTING
     setupParams();
 
@@ -318,7 +225,6 @@ for(let i=0; i<canvases.length; i++) {
     canvases[i].addEventListener('touchstart', playSound);
 }
 
-// let blankControlCanvases = document.getElementsByClassName("blankControlCanvas");
 
 
 
