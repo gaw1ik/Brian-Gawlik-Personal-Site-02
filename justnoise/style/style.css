@@ -271,23 +271,26 @@ canvas {
 
 
 #versionNumber {
-    font-size: var(--h3Size);
-    position: absolute;
+    /* font-size: var(--h3Size); */
+    font-size:0.8rem;
+    position: fixed;
     left: 0;
-    top: 0;
+    bottom: 0;
     user-select:none;
-    opacity: 30%;
-    margin: 0.5rem;
+    margin:0.3rem;
+    opacity:0.3;
 }
 
 #briangawliktag {
-    font-size: calc( var(--h1Size) * 0.3 );
-    position: absolute;
-    right:30px;
-    bottom: 30px;
+    /* font-size: calc( var(--h1Size) * 0.25 ); */
+    font-size:1rem;
+    position: fixed;
+    left:0;
+    top: 0;
+    margin:0.3rem 0.6rem;
     user-select:none;
     text-decoration:none;
-    color:hsl(0, 0%, 50%, 0.5);
+    color:hsl(40, 0%, 50%, 0.7);
 }
 
 h1 {
