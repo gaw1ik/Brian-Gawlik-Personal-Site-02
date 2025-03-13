@@ -21,7 +21,7 @@ function setTheme() {
         [hueKnobTop,satKnobTop,litKnobTop,alphaKnobTop] = [40, 50, 65, 1.0];
         [hueKnobShadow,satKnobShadow,litKnobShadow,alphaKnobShadow] = [0, 0, 0, 0.10];
 
-        [hueUI1,satUI1,litUI1,alphaUI1] = [40, 50, 50, 150];
+        [hueUI1,satUI1,litUI1,alphaUI1] = [40, 50, 50, 100];
 
 
         // if(deviceWidth<800) {

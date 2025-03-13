@@ -194,10 +194,11 @@ function updateRNBOPARAM_Q() {
     let displayedValue = adjustedValue;
     document.getElementById("canvasLabel_Q").textContent = "Q (" + displayedValue.toFixed(0) + ")";
 }
+
 function updateRNBOPARAM_harmonics() {
     // console.log("updateRNBOPARAM_background_gain")
     let val = PARAMS.harmonics;
-    let adjustedValue = calcParamValue(1-val,4,14,4);
+    let adjustedValue = calcParamValue(1-val,3,14,4);
     try{ device.parametersById.get("monoPluck01_harmPow").value = adjustedValue } catch(error) {}
     try{ device.parametersById.get("polyPluck01_harmPow").value = adjustedValue } catch(error) {}    let displayedValue = 1 + val*99;
     document.getElementById("canvasLabel_harmonics").textContent = "Harmonics (" + displayedValue.toFixed(0) + ")";

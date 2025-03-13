@@ -46,7 +46,7 @@ PARAMS =
     hammer: 0.60,
     detune: 0.40,
     Q: 0.70,
-    harmonics: 0.32
+    harmonics: 0.20,
 }
 
 
