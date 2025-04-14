@@ -18,28 +18,28 @@ themeIndex = 1;
 device = {};
 
 
+JSPARAMS = {};
 
+PARAMS = 
+    {
+        
+        
+            master_gain: 0.6050000000000001,
+            master_LPF: 0.8,
+            background_gain: 0.119,
+            background_LPF: 0.35,
+            hiss_gain: 0.3710000000000001,
+            hiss_BPF: 0.8780000000000002,
+            wash_gain: 0.175,
+            wash_intervalTimeMin: 0.6800000000000003,
+            rush_gain: 0.20300000000000018,
+            rush_intervalTimeMin: 0.22999999999999932,
+            crackle_gain: 0.8529999999999999,
+            crackle_intervalTimeMin: 0.6790000000000005
+        
+        
+    }
 
-PARAMS = {
-    background_gain:0.5,
-    background_LPF:0.35,
-    
-    hiss_gain:0.4,
-    hiss_BPF: 0.5,
-    
-    wash_gain:0.5,
-    wash_period:0.4,
-
-    rush_gain:0.4,
-    rush_flux:0.3,
-
-    master_gain:0.5,
-    master_LPF:0.7,
-
-    crackle_gain: 0.25,
-    crackle_thresh: 0.5,
-    crackle_LPF: 0.5,
-};
 
 window.addEventListener("load", setupCanvases); // commented this out bc setupCanvases() is already called in setup()
 
@@ -91,9 +91,9 @@ function setTheme() {
         [hueWave2, satWave2, litWave2] =  [170,0,90];
         alphaWave1 = 20;
         //// KNOBS
-        [hueKnobNeedle,satKnobNeedle,litKnobNeedle,alphaKnobNeedle] = [0,0,90,1.0];
+        [hueKnobNeedle,satKnobNeedle,litKnobNeedle,alphaKnobNeedle] = [0,0,10,1.0];
         [hueKnobBottom,satKnobBottom,litKnobBottom,alphaKnobBottom] = [0,0,4,1.0];
-        [hueKnobTop,satKnobTop,litKnobTop,alphaKnobTop] = [150, 0, 10, 1.0];
+        [hueKnobTop,satKnobTop,litKnobTop,alphaKnobTop] = [150, 0, 60, 1.0];
 
         // CSS
         [hueBG, satBG, litBG] =  [150,0,10];
@@ -200,9 +200,9 @@ async function playSound() {
 
     // document.body.removeEventListener('click', playSound);
 
-    currentMuteState = 1 - currentMuteState; 
-    console.log("currentMuteState",currentMuteState);
-    gainNode.gain.setValueAtTime(currentMuteState, context.currentTime);
+    // currentMuteState = 1 - currentMuteState; 
+    // console.log("currentMuteState",currentMuteState);
+    // gainNode.gain.setValueAtTime(currentMuteState, context.currentTime);
     // drawToggle(muteControl,currentMuteState,0);
 
     // document.getElementById("clickhereText").textContent = "ON";
@@ -327,7 +327,6 @@ async function setup() {
 
     setInterval(draw_hiss_controlViz,34);
 
-
     setInterval(draw_wash_controlViz,34);
 
     RUSH_SHAPES = [];
@@ -336,18 +335,6 @@ async function setup() {
     }
     RUSH_SHAPES.push(shape);
     setInterval(draw_rush_controlViz,34);
-
-    // INSECTS_SHAPES = [];
-    // for(let i=0;i<8;i++) {
-    //     var shape = {
-    //         xC:getRandomFloat(-1,1),
-    //         yC:getRandomFloat(),
-    //         rad:0.01,
-    //     }
-    //     INSECTS_SHAPES.push(shape);
-    // }
-    // setInterval(draw_insects_controlViz,34);
-
 
     CRACKLE_SHAPES = [];
     N_CRACKLESHAPES = 128;
@@ -364,13 +351,21 @@ async function setup() {
  
 
 
-    // ///////// INITIAL PARAMETER SETTING
+    /////////// INITIAL PARAMETER SETTING
     setupParams();
 
 
 
 
 
+
+    // setInterval(playInstruments,50);
+
+    setTimeout(playWash,0);
+    // setTimeout(playRush,0);
+    setInterval(playRush,200);
+
+    setTimeout(playCrackle,0);
 
 
 

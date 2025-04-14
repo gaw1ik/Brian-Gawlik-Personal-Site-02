@@ -138,16 +138,18 @@ body {
     /* grid-template-columns:1fr 1fr; */
     grid-template-columns:auto auto;
     /* grid-template-rows:auto auto; */
-
     justify-items:center;
     align-items:center;
-
     display:grid;
     position:relative;
     grid-template-columns:1fr;
     grid-template-rows:auto auto;
     justify-items:center;
     align-items:center;
+    /* border: 1px solid gray; */
+    border-radius: 0.5rem;
+    border-left: none;
+    /* border-right: none; */
 }
 
 .deviceContainer {
@@ -439,7 +441,7 @@ h4 {
     .controlViz {
         position:static;
         width:calc(var(--canvasHeight) * 1);
-        height:var(--canvasHeight);
+        height:calc(var(--canvasHeight) * 0.5);
         margin:0;
     }
 
@@ -456,7 +458,7 @@ h4 {
 
     .controlViz02 {
         width:calc(var(--canvasHeight) * 1);
-        height:var(--canvasHeight);
+        height:calc(var(--canvasHeight) * 0.5);
         margin:0 8px;
     }
 

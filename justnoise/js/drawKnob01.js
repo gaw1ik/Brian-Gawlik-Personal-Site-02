@@ -93,9 +93,9 @@ function drawKnob(canvas,val) {
     x2 = canvasW/2  + Math.cos(theta)*rControl*canvasH;
     y2 = canvasH/2 + Math.sin(theta)*rControl*canvasH;
     // ctx.strokeStyle = "hsl(" + hueKnobNeedle + ", " + satKnobNeedle + "%, " + litKnobNeedle + "%, " + alphaKnobNeedle + ")";
-    ctx.strokeStyle = "hsl(" + hueKnobNeedle + ", " + satKnobNeedle + "%, " + 100 + "%, " + alphaKnobNeedle + ")";
+    ctx.strokeStyle = "hsl(" + hueKnobNeedle + ", " + satKnobNeedle + "%, " + litKnobNeedle + "%, " + alphaKnobNeedle + ")";
 
-    ctx.lineWidth = 1;
+    ctx.lineWidth = 2;
 
     ctx.beginPath();
     ctx.moveTo(x1,y1);

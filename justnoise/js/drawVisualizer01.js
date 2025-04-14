@@ -24,7 +24,7 @@ function drawVisualizer() {
 
     drawRect(ctx,-artboardWo2,0,artboardWo2*2,1, 0, hueBG, satBG, litBG, 255, 0);
 
-    let rmsScaled = rms/0.5;
+    let rmsScaled = rms*0.5;
 
     var mag = 0.2*rmsScaled;
 

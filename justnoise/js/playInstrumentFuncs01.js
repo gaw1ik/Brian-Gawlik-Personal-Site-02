@@ -1,52 +1,98 @@
+wash_timer = 0;
+wash_intervalTimeMin = 0;
+wash_nextIntervalTime = 0;
+wash_attackTime = 0;
+wash_decayTime = 0;
 
 
+function playWash() {
+
+    let vel = getRandomFloat(0.5,0.7);
+    playNote_ms01(1,vel);
+
+    // reset timer
+    wash_timer = 0;
+
+    let intervalTimeMin = wash_envelopeTime*1.1;
+    let intervalTimeMax = intervalTimeMin*1.5;
+    wash_nextIntervalTime = getRandomInt(intervalTimeMin,intervalTimeMax);
+
+    setTimeout(playWash,wash_nextIntervalTime);
+
+}
+
+rush_timer = [0,0,0,0,0,0,0,0];
+voiceI = 0;
+
+rush_attackTime = [0,0,0,0,0,0,0,0];
+rush_decayTime = [0,0,0,0,0,0,0,0];
 
 
-function play_monosynth01() {
-    // console.log("play_monosynth01")
+function playRush() {
 
-    if(makeChoice(PROB)) {
-        const param_monosynth01_deg = device.parametersById.get("monosynth01_deg");
-        let adjustedValue = getRandomInt(-4,5);
-        param_monosynth01_deg.value = adjustedValue;
+    
+
+    if(makeChoice(90)) {
+        return;
     }
-    setTimeout(play_monosynth01,TIME);
 
-};
+    // console.log(voiceI%8);
 
+    // device.parametersById.get("ps01/lpf").value = getRandomInt(400,8000);
 
-monosynth02_deg = 1;
+    let i = voiceI%8;
+    rush_attackTime[i] = getRandomFloat(800,1600);
+    rush_decayTime[i]  = getRandomFloat(3000,6000);
+    device.parametersById.get("ps01/attack").value = rush_attackTime[i];
+    device.parametersById.get("ps01/decay").value = rush_decayTime[i];
 
-function play_monosynth02() {
-    // console.log("play_monosynth02")
-    if(makeChoice(PROB)) {
-        const param_monosynth02_deg = device.parametersById.get("monosynth02_deg");
-        monosynth02_deg = monosynth02_deg + getRandomInt(1,2);
-        if(monosynth02_deg>10) {
-            monosynth02_deg = 1;
-        }
-        param_monosynth02_deg.value = monosynth02_deg;
-    }
-    setTimeout(play_monosynth02,TIME*2);
-};
+    let vel = getRandomFloat(0.3,0.7);
+    // let vel = 0.7;
 
-function play_polysynth01() {
-    // console.log("play_polysynth01")
-    if(makeChoice(PROB)) {
-        const param_polysynth01_deg = device.parametersById.get("polysynth01_deg");
-        let adjustedValue = chooseFromArray([-4, -2, -1, 1, 2, 3, 5]);
-        param_polysynth01_deg.value = adjustedValue;
-    }
-    setTimeout(play_polysynth01,TIME*4);
-};
+    playNote_ps01(1,vel);
+
+    
+
+    // let intervalTimeMin = rush_intervalTimeMin;
+    // let intervalTimeMax = intervalTimeMin*4;
+    // let nextIntervalTime = getRandomInt(intervalTimeMin,intervalTimeMax);
+
+    let nextIntervalTime = rush_attackTime[i];
 
 
-function play_bass01() {
-    // console.log("play_bass01")
-    if(makeChoice(PROB)) {
-        const param_bass01_deg = device.parametersById.get("bass01_deg");
-        let adjustedValue = chooseFromArray([1, -1, -3]);
-        param_bass01_deg.value = adjustedValue;
-    }
-    setTimeout(play_bass01,TIME*3);
-};
+    voiceI+=1;
+    rush_timer[i] = 0;
+    // setTimeout(playRush,nextIntervalTime);
+
+}
+
+function playCrackle() {
+
+    device.parametersById.get("ps02/attack").value = getRandomFloat(0,1);
+    device.parametersById.get("ps02/decay").value = getRandomFloat(1,10);
+
+    let vel = getRandomFloat(0.1,0.7);
+
+    playNote_ps02(1,vel);
+
+    let intervalTimeMin = crackle_intervalTimeMin;
+    let intervalTimeMax = intervalTimeMin*8;
+    let nextIntervalTime = getRandomInt(intervalTimeMin,intervalTimeMax);
+
+    setTimeout(playCrackle,nextIntervalTime);
+
+}
+
+
+function playNote_ms01(deg,vel) {
+    device.parametersById.get("ms01/vel").value = vel;
+    device.parametersById.get("ms01/deg").value = deg + getRandomFloat(0,0.1)*Math.sign(deg);
+}
+function playNote_ps01(deg,vel) {
+    device.parametersById.get("ps01/vel").value = vel;
+    device.parametersById.get("ps01/deg").value = deg + getRandomFloat(0,0.1)*Math.sign(deg);
+}
+function playNote_ps02(deg,vel) {
+    device.parametersById.get("ps02/vel").value = vel;
+    device.parametersById.get("ps02/deg").value = deg + getRandomFloat(0,0.1)*Math.sign(deg);
+}
