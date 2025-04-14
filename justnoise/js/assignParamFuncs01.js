@@ -201,7 +201,7 @@ function updateRNBOPARAM_crackle_intervalTimeMin() {
 
 function updateRNBOPARAM_master_gain() {
     let val = PARAMS.master_gain;
-    let adjustedValue = calcParamValue(val,0,3,2);
+    let adjustedValue = calcParamValue(val,0,16,2);
     try{
         try{ device.parametersById.get("master_gain").value = adjustedValue } catch(error) {}
     } catch(error) {

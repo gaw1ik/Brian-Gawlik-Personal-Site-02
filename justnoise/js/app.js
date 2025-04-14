@@ -24,18 +24,18 @@ PARAMS =
     {
         
         
-            master_gain: 0.6050000000000001,
-            master_LPF: 0.8,
+            master_gain: 0.750,
+            master_LPF: 0.800,
             background_gain: 0.119,
             background_LPF: 0.35,
-            hiss_gain: 0.3710000000000001,
-            hiss_BPF: 0.8780000000000002,
-            wash_gain: 0.175,
-            wash_intervalTimeMin: 0.6800000000000003,
-            rush_gain: 0.20300000000000018,
-            rush_intervalTimeMin: 0.22999999999999932,
-            crackle_gain: 0.8529999999999999,
-            crackle_intervalTimeMin: 0.6790000000000005
+            hiss_gain: 0.371,
+            hiss_BPF: 0.878,
+            wash_gain: 0.100,
+            wash_intervalTimeMin: 0.680,
+            rush_gain: 0.203,
+            rush_intervalTimeMin: 0.230,
+            crackle_gain: 0.500,
+            crackle_intervalTimeMin: 0.679,
         
         
     }
