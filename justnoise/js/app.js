@@ -34,7 +34,7 @@ PARAMS =
             wash_intervalTimeMin: 0.680,
             rush_gain: 0.203,
             rush_intervalTimeMin: 0.230,
-            crackle_gain: 0.500,
+            crackle_gain: 0.250,
             crackle_intervalTimeMin: 0.679,
         
         
