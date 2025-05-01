@@ -179,7 +179,7 @@ function updateRNBOPARAM_crackle_gain() {
 
 function updateRNBOPARAM_crackle_intervalTimeMin() {
     let val = PARAMS.crackle_intervalTimeMin;
-    let adjustedValue = calcParamValue(val,10,100,2);
+    let adjustedValue = calcParamValue(val,10,200,2);
     crackle_intervalTimeMin = adjustedValue;
 
     // try{ device.parametersById.get("crackle_thresh").value = adjustedValue } catch(error) {}
