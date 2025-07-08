@@ -26,11 +26,13 @@
   --navToggleBar_height: 8vh;
 
 
-  --h1Size: 10vw;
-  --h2Size: calc(var(--h1Size) * 0.5);
+  --h1Size: 5vw;
+  --h2Size: calc(var(--h1Size) * 0.9);
   --h3Size: calc(var(--h1Size) * 0.35);
   --h4Size: calc(var(--h1Size) * 0.2);
-  --pSize: calc(var(--h1Size) * 0.25);
+  --pSize: calc(var(--h1Size) * 0.5);
+
+  --textColor: hsl(0,0%,20%);
 
 
 }
@@ -53,6 +55,8 @@ body {
   font-size: 8pt;
   color: black;
   background-color: white;  
+  color:var(--textColor);
+  background-color: hsl(0,0%,100%);
 }
 
 * {
@@ -78,6 +82,7 @@ h1 {
   font-weight: 500;
   margin:0;
   margin-top: 0;
+  /* color: var(--textColor); */
   /* margin-bottom: 1.0rem; */
   /* color:hsl(0,10%,80%); */
   line-height:1;
@@ -92,6 +97,7 @@ h2 {
   margin-top: 1rem;
   font-weight: 500;
   text-align: left;
+  color: var(--textColor);
 }
 
 h3 {
@@ -101,6 +107,7 @@ h3 {
   margin:0;
   margin-top: 1rem;
   font-weight: 600;
+  color: var(--textColor);
 }
 
 h4 {
@@ -110,6 +117,7 @@ h4 {
   margin:0;
   margin-top: 1rem;
   font-weight: 550;
+  color: var(--textColor);
 }
 
 h5 {
@@ -117,6 +125,7 @@ h5 {
   margin:0;
   margin-top: 0.5rem;
   font-weight: 500;
+  color: var(--textColor);
 }
 
 a {
@@ -147,6 +156,12 @@ button :hover {
 
 
 
+.lineAcross {
+  border-top: 1px solid black;
+  height: 1rem;
+  width: 100%;
+  margin:4rem 0;
+}
 
 
 
@@ -195,14 +210,13 @@ button :hover {
   display:flex;
   justify-content:space-around;
   align-items: center;
-  /* width: 80%; */
+  width: 100%;
 
   /* height: 5rem; */
   height: var(--h1Size);
 
-  /* margin-left:auto; */
-  /* margin:0 auto; */
-  border-top:1px solid white;
+  margin:2rem 0;
+  /* border-top:1px solid white; */
 }
 
 .socialButtonsBar img {
@@ -291,11 +305,11 @@ button :hover {
 @media only screen and (min-aspect-ratio: 1.0) {
 
   :root {
-      /* --canvasHeight:10vh; */
-      --h1Size: 8vh;
-      /* --h2Size: calc(var(--h1Size) * 0.5);
-      --h3Size: calc(var(--h1Size) * 0.2);
-      --h4Size: calc(var(--h1Size) * 0.2); */
+    --h1Size: 3vw;
+      --h2Size: calc(var(--h1Size) * 0.9);
+      --h3Size: calc(var(--h1Size) * 0.35);
+      --h4Size: calc(var(--h1Size) * 0.2);
+      --pSize: calc(var(--h1Size) * 0.5);
   }
 
 
