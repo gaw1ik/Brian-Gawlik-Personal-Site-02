@@ -224,6 +224,7 @@ button :hover {
   /* height: 2rem; */
   height: var(--h2Size);
   width: auto;
+  object-fit: contain;
 }
 
 
