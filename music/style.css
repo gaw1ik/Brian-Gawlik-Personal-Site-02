@@ -223,6 +223,7 @@ button :hover {
   margin: 0 var(--h1Size);
   /* height: 2rem; */
   height: var(--h2Size);
+  width: auto;
 }
 
 
