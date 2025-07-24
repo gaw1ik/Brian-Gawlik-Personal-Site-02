@@ -49,9 +49,11 @@ html {
 body {
   line-height: 1.5;
   margin: 0;
-  font-family: "Cambria Math";
+  /* font-family: "Cambria Math"; */
   /* font-family: "Alumni Sans Pinstripe", serif; */
-
+    /* font-family: "Roboto", serif; */
+  /* font-family: "IBM Plex Sans Condensed", sans-serif; */
+    font-family: "Quicksand", sans-serif;
   font-size: 8pt;
   color: black;
   background-color: white;  
