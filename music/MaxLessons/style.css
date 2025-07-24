@@ -28,7 +28,7 @@
 
   --h1Size: 5vw;
   --h2Size: calc(var(--h1Size) * 1.5);
-  --h3Size: calc(var(--h1Size) * 0.35);
+  --h3Size: calc(var(--h1Size) * 0.8);
   --h4Size: calc(var(--h1Size) * 0.2);
   --pSize: calc(var(--h1Size) * 0.7);
 
@@ -68,11 +68,20 @@ body {
 
 
 p {
-  margin: 1rem 0;
-  /* font-size: 1rem; */
-  font-size: var(--pSize);
+    margin: 1rem 0;
+    font-size: var(--pSize);
+    text-align: justify;
+}
 
-  text-align: justify;
+li {
+    margin: 1rem 0;
+      font-size: var(--pSize);
+    
+      text-align: justify;
+}
+
+ul {
+  margin:0;
 }
 
 h1 {
@@ -91,8 +100,7 @@ h1 {
 
 h2 {
   /* font-size: 2rem; */
-    font-size: var(--h2Size);
-
+  font-size: var(--h2Size);
   margin:0;
   margin-top: 1rem;
   font-weight: 500;
@@ -102,11 +110,10 @@ h2 {
 
 h3 {
   /* font-size: 1.5rem; */
-    font-size: var(--h3Size);
-
+  font-size: var(--h3Size);
   margin:0;
   margin-top: 1rem;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--textColor);
 }
 
@@ -130,9 +137,11 @@ h5 {
 
 a {
   color:hsl(200,80%,30%);
-  margin: 1rem 0;
-  font-size: var(--pSize);
-  text-align: justify;
+    margin: 1rem 0;
+      font-size: var(--pSize);
+      text-align: justify;
+  /* text-align: center; */
+  /* text-decoration:none; */
 }
 
 
@@ -160,16 +169,7 @@ button :hover {
   border-top: 1px solid black;
   height: 1rem;
   width: 100%;
-  margin:1rem 0 3rem 0;
-  border-color:hsl(0,0%,50%)
-}
-
-.lineAcross2 {
-  border-top: 1px solid black;
-  height: 0rem;
-  width: 100%;
-  margin: 0rem 0 0rem 0;
-  border-color: hsl(0, 0%, 50%)
+  margin:4rem 0;
 }
 
 
@@ -178,10 +178,7 @@ button :hover {
 
 
 
-.flexRow {
-  display: flex;
-  flex-direction: row;
-}
+
 
 
 
@@ -212,9 +209,9 @@ button :hover {
   max-width:80%;
 }
 
-.contentContainer p {
+/* .contentContainer p {
   margin: 0 0 2rem 0;
-}
+} */
 
 
 
@@ -323,7 +320,7 @@ button :hover {
   :root {
     --h1Size: 2rem;
       --h2Size: calc(var(--h1Size) * 1.5);
-      --h3Size: calc(var(--h1Size) * 0.35);
+      --h3Size: calc(var(--h1Size) * 0.7);
       --h4Size: calc(var(--h1Size) * 0.2);
       --pSize: calc(var(--h1Size) * 0.5);
   }
