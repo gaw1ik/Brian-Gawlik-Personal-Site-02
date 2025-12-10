@@ -20,25 +20,21 @@ device = {};
 
 JSPARAMS = {};
 
-PARAMS = 
-    {
-        
-        
-            master_gain: 0.750,
-            master_LPF: 0.800,
-            background_gain: 0.119,
-            background_LPF: 0.35,
-            hiss_gain: 0.371,
-            hiss_BPF: 0.878,
-            wash_gain: 0.100,
-            wash_intervalTimeMin: 0.680,
-            rush_gain: 0.203,
-            rush_intervalTimeMin: 0.230,
-            crackle_gain: 0.250,
-            crackle_intervalTimeMin: 0.679,
-        
-        
-    }
+// Daytime Preset
+PARAMS = {
+    "master_gain": 0.5,
+    "master_LPF": 0.828,
+    "background_LPF": 0.6849999999999997,
+    "background_gain": 0.11199999999999993,
+    "crackle_gain": 0.3129999999999999,
+    "crackle_intervalTimeMin": 0.679,
+    "hiss_BPF": 0.878,
+    "hiss_gain": 0.49,
+    "rush_gain": 0.21700000000000003,
+    "rush_intervalTimeMin": 0.23,
+    "wash_gain": 0.1,
+    "wash_intervalTimeMin": 0.2739999999999997
+}
 
 
 window.addEventListener("load", setupCanvases); // commented this out bc setupCanvases() is already called in setup()
@@ -488,16 +484,109 @@ for(let i=0; i<canvases.length; i++) {
 }
 
 
+/////// PRESET TOGGLES
+toggles = document.getElementsByClassName("toggle");
+
+for (let i = 0; i < toggles.length; i++) {
+    let toggle = toggles[i];
+
+    // set to preset 1
+    drawToggle01(toggle,0);
+    drawToggle01(toggles[0], 1);
+
+    toggle.addEventListener('mousedown', updatePreset);
+}
 
 
+function updatePreset() {
+    // first zero out all the toggles
+    for (let i = 0; i < toggles.length; i++) {
+        let toggle = toggles[i];
+        drawToggle01(toggle, 0);
+    }
+
+    // then make the toggle that was just clicked of value 1
+    let id = this.id;
+    let num = id.substr(6, 2);
+
+    if (num == '01') {
+
+        // Daytime
+        PARAMS = {
+            "master_gain": 0.5,
+            "master_LPF": 0.828,
+            "background_LPF": 0.6849999999999997,
+            "background_gain": 0.11199999999999993,
+            "crackle_gain": 0.3129999999999999,
+            "crackle_intervalTimeMin": 0.679,
+            "hiss_BPF": 0.878,
+            "hiss_gain": 0.49,
+            "rush_gain": 0.21700000000000003,
+            "rush_intervalTimeMin": 0.23,
+            "wash_gain": 0.1,
+            "wash_intervalTimeMin": 0.2739999999999997
+        }
+
+        drawToggle01(toggles[0], 1);
+
+    }
+
+    if (num == '02') {
+
+        // Airplane
+        PARAMS = {
+            master_gain: 0.50,
+            master_LPF: 0.4009999999999997,
+            background_gain: 0.497,
+            background_LPF: 0.091,
+            hiss_gain: 0.5239999999999996,
+            hiss_BPF: 1,
+            wash_gain: 0,
+            wash_intervalTimeMin: 0.68,
+            rush_gain: 0.049,
+            rush_intervalTimeMin: 0.23,
+            crackle_gain: 0.12400000000000017,
+            crackle_intervalTimeMin: 0.3709999999999997
+        }
+        drawToggle01(toggles[1], 1);
+    }
+
+    if (num == '03') {
+
+        // Night
+        PARAMS = {
+            "master_gain": 0.75,
+            "master_LPF": 0.8,
+            "background_gain": 0.09799999999999986,
+            "background_LPF": 0.1609999999999998,
+            "hiss_gain": 0.2099999999999998,
+            "hiss_BPF": 0.5489999999999997,
+            "wash_gain": 0.08400000000000007,
+            "wash_intervalTimeMin": 0.8260000000000006,
+            "rush_gain": 0.06999999999999995,
+            "rush_intervalTimeMin": 1,
+            "crackle_gain": 0.35,
+            "crackle_intervalTimeMin": 0.4199999999999998
+        }
+
+        drawToggle01(toggles[2], 1);
+
+    }
+
+    
+    setupParams(); 
 
 
-
+}
 
 function get_activeCanvasName(activeCanvasID) {
     let activeCanvasName = activeCanvasID.substr(7,activeCanvasID.len);
     return activeCanvasName;
 }
+
+
+
+
 
 function loadRNBOScript(version) {
     return new Promise((resolve, reject) => {
