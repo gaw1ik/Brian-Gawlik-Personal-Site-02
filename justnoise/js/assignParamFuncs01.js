@@ -113,7 +113,7 @@ function updateRNBOPARAM_background_param() {
 // hiss
 function updateRNBOPARAM_hiss_gain() {
     let val = PARAMS.hiss_gain;
-    let adjustedValue = calcParamValue(val,0,1,4);
+    let adjustedValue = calcParamValue(val,0,1,2);
 
     try{ device.parametersById.get("hiss_gain").value = adjustedValue } catch(error) {}
 }
@@ -126,7 +126,7 @@ function updateRNBOPARAM_hiss_BPF() {
 // wash
 function updateRNBOPARAM_wash_gain() {
     let val = PARAMS.wash_gain;
-    let adjustedValue = calcParamValue(val,0,1,1);
+    let adjustedValue = calcParamValue(val,0,1,2);
     try{ device.parametersById.get("ms01/gain").value = adjustedValue } catch(error) {}
 }
 function updateRNBOPARAM_wash_intervalTimeMin() {
@@ -173,7 +173,7 @@ function updateRNBOPARAM_rush_intervalTimeMin() {
 // crackle
 function updateRNBOPARAM_crackle_gain() {
     let val = PARAMS.crackle_gain;
-    let adjustedValue = calcParamValue(val,0,4,4);
+    let adjustedValue = calcParamValue(val,0,4,2);
     try{ device.parametersById.get("ps02/gain").value = adjustedValue } catch(error) {}
 }
 
@@ -201,7 +201,7 @@ function updateRNBOPARAM_crackle_intervalTimeMin() {
 
 function updateRNBOPARAM_master_gain() {
     let val = PARAMS.master_gain;
-    let adjustedValue = calcParamValue(val,0,12,2);
+    let adjustedValue = calcParamValue(val,0,12,2) * 0.40; // that multiple is a fudge factor to offset the intensity
     try{
         try{ device.parametersById.get("master_gain").value = adjustedValue } catch(error) {}
     } catch(error) {

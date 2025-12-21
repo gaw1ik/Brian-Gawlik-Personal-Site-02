@@ -21,19 +21,21 @@ device = {};
 JSPARAMS = {};
 
 // Daytime Preset
+let fudge01 = 1.2; // fudge factor to get knobs in a better spot...
+
 PARAMS = {
-    "master_gain": 0.5,
-    "master_LPF": 0.828,
-    "background_LPF": 0.6849999999999997,
-    "background_gain": 0.11199999999999993,
-    "crackle_gain": 0.3129999999999999,
-    "crackle_intervalTimeMin": 0.679,
-    "hiss_BPF": 0.878,
-    "hiss_gain": 0.49,
-    "rush_gain": 0.21700000000000003,
-    "rush_intervalTimeMin": 0.23,
-    "wash_gain": 0.1,
-    "wash_intervalTimeMin": 0.2739999999999997
+    "master_gain": 0.50,
+    "master_LPF": 0.83,
+    "background_LPF": 0.50,
+    "background_gain": 0.20 * fudge01,
+    "crackle_gain": 0.20 * fudge01,
+    "crackle_intervalTimeMin": 0.99,
+    "hiss_BPF": 0.99,
+    "hiss_gain": 0.40 * fudge01,
+    "rush_gain": 0.30 * fudge01,
+    "rush_intervalTimeMin": 0.00,
+    "wash_gain": 0.20 * fudge01,
+    "wash_intervalTimeMin": 0.00,
 }
 
 
@@ -509,22 +511,25 @@ function updatePreset() {
     let id = this.id;
     let num = id.substr(6, 2);
 
+
     if (num == '01') {
+
+        let fudge01 = 1.2; // fudge factor to get knobs in a better spot...
 
         // Daytime
         PARAMS = {
-            "master_gain": 0.5,
-            "master_LPF": 0.828,
-            "background_LPF": 0.6849999999999997,
-            "background_gain": 0.11199999999999993,
-            "crackle_gain": 0.3129999999999999,
-            "crackle_intervalTimeMin": 0.679,
-            "hiss_BPF": 0.878,
-            "hiss_gain": 0.49,
-            "rush_gain": 0.21700000000000003,
-            "rush_intervalTimeMin": 0.23,
-            "wash_gain": 0.1,
-            "wash_intervalTimeMin": 0.2739999999999997
+            "master_gain": 0.50,
+            "master_LPF": 0.83,
+            "background_LPF": 0.50,
+            "background_gain": 0.20*fudge01,
+            "crackle_gain": 0.20*fudge01,
+            "crackle_intervalTimeMin": 0.99,
+            "hiss_BPF": 0.99,
+            "hiss_gain": 0.40*fudge01,
+            "rush_gain": 0.30*fudge01,
+            "rush_intervalTimeMin": 0.00,
+            "wash_gain": 0.20*fudge01,
+            "wash_intervalTimeMin": 0.00,
         }
 
         drawToggle01(toggles[0], 1);
@@ -533,40 +538,44 @@ function updatePreset() {
 
     if (num == '02') {
 
+        let fudge01 = 1.2; // fudge factor to get knobs in a better spot...
+
         // Airplane
         PARAMS = {
             master_gain: 0.50,
-            master_LPF: 0.4009999999999997,
-            background_gain: 0.497,
-            background_LPF: 0.091,
-            hiss_gain: 0.5239999999999996,
-            hiss_BPF: 1,
-            wash_gain: 0,
+            master_LPF: 0.40,
+            background_gain: 0.49*fudge01,
+            background_LPF: 0.09,
+            hiss_gain: 0.52*fudge01,
+            hiss_BPF: 0.99,
+            wash_gain: 0*fudge01,
             wash_intervalTimeMin: 0.68,
-            rush_gain: 0.049,
+            rush_gain: 0.05*fudge01,
             rush_intervalTimeMin: 0.23,
-            crackle_gain: 0.12400000000000017,
-            crackle_intervalTimeMin: 0.3709999999999997
+            crackle_gain: 0.12*fudge01,
+            crackle_intervalTimeMin: 0.37
         }
         drawToggle01(toggles[1], 1);
     }
 
     if (num == '03') {
 
+        let fudge01 = 1.5; // fudge factor to get knobs in a better spot...
+
         // Night
         PARAMS = {
-            "master_gain": 0.75,
-            "master_LPF": 0.8,
-            "background_gain": 0.09799999999999986,
-            "background_LPF": 0.1609999999999998,
-            "hiss_gain": 0.2099999999999998,
-            "hiss_BPF": 0.5489999999999997,
-            "wash_gain": 0.08400000000000007,
-            "wash_intervalTimeMin": 0.8260000000000006,
-            "rush_gain": 0.06999999999999995,
-            "rush_intervalTimeMin": 1,
-            "crackle_gain": 0.35,
-            "crackle_intervalTimeMin": 0.4199999999999998
+            "master_gain": 0.50,
+            "master_LPF": 0.80,
+            "background_gain": 0.10*fudge01,
+            "background_LPF": 0.50,
+            "hiss_gain": 0.10*fudge01,
+            "hiss_BPF": 0.55,
+            "wash_gain": 0.30*fudge01,
+            "wash_intervalTimeMin": 0.83,
+            "rush_gain": 0.07*fudge01,
+            "rush_intervalTimeMin": 0.99,
+            "crackle_gain": 0.10*fudge01,
+            "crackle_intervalTimeMin": 0.42,
         }
 
         drawToggle01(toggles[2], 1);
