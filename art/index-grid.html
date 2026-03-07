@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src="js/main.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cactus+Classical+Serif&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cactus+Classical+Serif&family=Scheherazade+New:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <title>Brian Gawlik — Art</title>
+
+    <style>
+      /* =============================================
+         SINGLE-COLUMN PROTOTYPE
+         Full-width images, downplayed text.
+         ============================================= */
+
+      @media only screen and (min-aspect-ratio: 1.0) {
+
+        /* Tighten gap between page header and first image */
+        .mainArtContainer0 {
+          margin-top: 1.5rem;
+        }
+
+        /* Compact header bio line */
+        .compact-bio {
+          font-style: italic;
+          margin: 0.25rem 0 0 0;
+        }
+
+        .compact-bio a {
+          font-size: inherit;
+          font-style: normal;
+        }
+
+        /* Section headers: small, line underneath */
+        .section-header {
+          font-size: 1.3rem;
+          font-weight: 400;
+          margin: 0 0 0.4rem 0;
+          padding-bottom: 0.4rem;
+          border-bottom: 1px solid hsl(0, 0%, 75%);
+        }
+
+        /* End-of-section marker: line + breathing room */
+        .section-end {
+          border-top: 1px solid hsl(0, 0%, 75%);
+          margin: 1rem 0 3rem 0;
+        }
+
+        /* Cards: full-width, tight spacing */
+        .art-card {
+          width: 100%;
+          margin-bottom: 1rem;
+          padding: 0.5rem 0;
+        }
+
+        /* Hide the in-card dividers */
+        .art-card .lineAcross {
+          display: none;
+        }
+
+        /* Downplayed per-card text */
+        .art-card p {
+          font-size: 0.80rem;
+          margin: 0.3rem 0 0.1rem 0;
+          color: hsl(0, 0%, 45%);
+        }
+
+        .art-card a {
+          font-size: 0.65rem;
+          color: hsl(200, 60%, 40%);
+        }
+
+      }
+    </style>
+
+  </head>
+
+  <body>
+
+    <div id="curtainForFullScreen" style="display:none;">
+    </div>
+
+    <div class="artOnTop" id="artOnTop" style="display:none;">
+    </div>
+
+
+    <div class="topContainer" id="topContainer">
+
+        <div>
+            <a href="../">
+                <h1 style="display:inline">Brian Gawlik</h1>
+            </a>
+            <h2 style="display:inline">&nbsp;/ Art</h2>
+        </div>
+
+        <p style="font-style:italic">Algorithmic artist creating digital art
+            with code. My work is often, but not always, in the style
+            of photorealism. I use algorithms to draw trees, birds, and powerlines
+            among other things.
+        </p>
+
+        <p class="compact-bio">
+            <a href="https://www.instagram.com/brian_gawlik/?hl=en" target="_blank">Instagram</a> &middot;
+            <a href="https://twitter.com/gaw1ik" target="_blank">Twitter</a> &middot;
+            <a href="https://foundation.app/@gaw1ik" target="_blank">Foundation</a> &middot;
+            <a href="https://objkt.com/profile/tz1hBvT91anRbQj83zbpwZC538PYiAWg3BPm/created" target="_blank">objkt</a> &middot;
+            <a href="https://www.fxhash.xyz/u/Brian%20Gawlik" target="_blank">fxhash</a>
+        </p>
+
+        <div class="lineAcross"></div>
+
+    </div>
+
+
+
+    <div class="mainArtContainer0" id="mainArtContainer0">
+
+
+        <h2 class="section-header">City Out There</h2>
+
+        <div class="art-card">
+            <div class="singleFrameWide">
+                <img class="art-img" src="images/Like Father Like Son - Web3000.jpg" id="LFLS">
+            </div>
+            <p><strong>Like Father, Like Son (June '24)</strong> — (unreleased)</p>
+            <div class="lineAcross"></div>
+        </div>
+
+
+        <div class="art-card">
+            <div class="singleFrameWide">
+                <img class="art-img" src="images/Bout To Rain - Web3000.jpg" id="BoutToRain">
+            </div>
+            <p><strong>Bout To Rain (Jan/Feb '24)</strong> — The world turns a certain shade of turquoise when it's about to rain.</p>
+            <a href="https://foundation.app/mint/base/0x97511814A5f223b955993d09bD0BFD56461dF8b4/7" target="_blank">NFT on Foundation</a>
+            <div class="lineAcross"></div>
+        </div>
+
+
+        <div class="art-card">
+            <div class="singleFrameWide">
+                <img class="art-img" src="images/Campus - Web3000.jpg" id="Campus">
+            </div>
+            <p><strong>Campus (Jan/Feb '24)</strong> — I sat there a lot, outside of the Main Building. Between the hard surface of the wall and the Texas heat, it was never comfortable, but I always preferred it over simply going home. At least if I sat there, in the open, the Universe had access to me and <em>theoretically</em> something interesting could happen.</p>
+            <a href="https://foundation.app/mint/base/0x97511814A5f223b955993d09bD0BFD56461dF8b4/6" target="_blank">NFT on Foundation</a>
+            <div class="lineAcross"></div>
+        </div>
+
+
+        <div class="art-card">
+            <div class="singleFrameWide">
+                <img class="art-img" src="images/Wildfires Haze - Web3000.jpg" id="WildfiresHaze">
+            </div>
+            <p><strong>Wildfires Haze (Jan/Feb '24)</strong> — As I was getting ready to move to New York last year, there was a rather crazy week during which NYC was covered in heavy orange smog from Canadian wildfires. Part of me questioned the move, wondering to what extent NYC was an attractor for apocalyptic episodes.</p>
+            <a href="https://foundation.app/mint/base/0x97511814A5f223b955993d09bD0BFD56461dF8b4/5" target="_blank">NFT on Foundation</a>
+            <div class="lineAcross"></div>
+        </div>
+
+
+        <div class="art-card">
+            <div class="singleFrameWide">
+                <img class="art-img" src="images/Trees For Sale - Web3000.jpg" id="TreesForSale">
+            </div>
+            <p><strong>Trees For Sale (Jan/Feb '24)</strong> — Somethin' about this tree. Might wanna take it home.</p>
+            <a href="https://foundation.app/mint/base/0x97511814A5f223b955993d09bD0BFD56461dF8b4/9" target="_blank">NFT on Foundation</a>
+            <div class="lineAcross"></div>
+        </div>
+
+
+        <div class="section-end"></div>
+
+        <h2 class="section-header">Siding</h2>
+
+        <div class="art-card">
+            <div class="singleFrameTall">
+                <img class="art-img" src="images/Siding No. 1 - Web Version - 1.02a.jpg" id="Tree on Siding">
+            </div>
+            <p><strong>Siding No. 1 (fall 2023)</strong> — This piece emphasizes the use of generative textures. The siding of the house, in particular, is all generated with code. The wood grain texture on each slat is generated and applied individually to the slat areas. Even the shape of each slat is generated to have a subtle noisy edge. There are no perfectly straight lines in the real world. The crack on the green wall utilizes the same noisy-line algorithm, but is made much more prominent.</p>
+            <a href="https://objkt.com/tokens/KT1Ki6TFiEN2qRviQzZ787aqp1XfJQK3q685/4" target="_blank">NFT on objkt</a>
+            <div class="lineAcross"></div>
+        </div>
+
+
+        <div class="section-end"></div>
+
+        <h2 class="section-header">Sky Through Lush Lines</h2>
+
+        <div class="art-card">
+            <div class="singleFrameWide">
+                <img class="art-img" src="images/Birds on the Line - 5.04d - web version.jpg" id="Birds on the Line">
+            </div>
+            <p><strong>Birds on the Line (early 2023)</strong></p>
+            <a href="https://objkt.com/asset/KT1Ki6TFiEN2qRviQzZ787aqp1XfJQK3q685/1" target="_blank">NFT on objkt</a>
+            <div class="lineAcross"></div>
+        </div>
+
+        <div class="art-card">
+            <div class="singleFrameWide">
+                <img class="art-img" src="images/StLL3 - FULL BLEED - 1.02a - Web Version.jpg" id="STLL3">
+            </div>
+            <p><strong>StLL #3 (fall 2023)</strong> — Emphasis on haze and grain.</p>
+            <a href="https://objkt.com/tokens/KT1Ki6TFiEN2qRviQzZ787aqp1XfJQK3q685/4" target="_blank">NFT on objkt</a>
+            <div class="lineAcross"></div>
+        </div>
+
+
+        <div class="art-card">
+            <div class="singleFrameTall">
+                <img class="art-img" src="images/Astoria Cross Sign - 12x18 cropped - Web Version - 1.01a.jpg" id="Astoria Cross Sign">
+            </div>
+            <p><strong>Astoria Cross Sign (summer 2023)</strong> — When I lived in Queens.</p>
+            <a href="https://objkt.com/tokens/KT1Ki6TFiEN2qRviQzZ787aqp1XfJQK3q685/3" target="_blank">NFT on objkt</a>
+            <div class="lineAcross"></div>
+        </div>
+
+
+        <div class="art-card">
+            <div class="singleFrameWide">
+                <img class="art-img" src="images/Bus Stop - 6.04e - web version.jpg" id="Bus Stop">
+            </div>
+            <p><strong>Bus Stop (early 2023)</strong></p>
+            <a href="https://objkt.com/asset/KT1Ki6TFiEN2qRviQzZ787aqp1XfJQK3q685/2" target="_blank">NFT on objkt</a>
+            <div class="lineAcross"></div>
+        </div>
+
+
+        <div class="art-card">
+            <div class="singleFrameWide">
+                <img class="art-img" src="images/STLL1 - web version.jpg" id="STLL1">
+            </div>
+            <p><strong>Sky Through Lush Lines #1 (early 2023)</strong> — This is the first piece I did in my hybrid, <span style="font-style:italic">generative-meets-photo-editing</span> workflow. This piece is currently owned (as a non-fungible token) and is not available for print.</p>
+            <a href="https://objkt.com/asset/KT1Ki6TFiEN2qRviQzZ787aqp1XfJQK3q685/0" target="_blank">NFT on objkt</a>
+            <div class="lineAcross"></div>
+        </div>
+
+
+        <div class="spaceAtBottom"></div>
+
+
+    </div>
+
+
+  </body>
+
+</html>
